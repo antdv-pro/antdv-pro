@@ -8,6 +8,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ctrl/tinycolor": "^3.6.0",
+    "@v-c/utils": "^0.0.23",
     "@vueuse/core": "^10.1.0",
     "ant-design-vue": "4.0.0-alpha.5",
     "pinia": "^2.0.35",
