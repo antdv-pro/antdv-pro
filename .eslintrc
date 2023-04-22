@@ -1,0 +1,3 @@
+{
+  "extends":"@mistjs/eslint-config-vue"
+}
