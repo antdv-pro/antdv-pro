@@ -68,4 +68,4 @@ export default {
     open: 'buka',
     close: 'tutup',
   },
-};
+}

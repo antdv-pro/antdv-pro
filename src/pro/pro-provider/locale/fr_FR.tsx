@@ -68,4 +68,4 @@ export default {
     open: 'ouvert',
     close: 'près',
   },
-};
+}

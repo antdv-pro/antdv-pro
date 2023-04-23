@@ -68,4 +68,4 @@ export default {
     open: 'açık',
     close: 'kapatmak',
   },
-};
+}

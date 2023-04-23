@@ -1,69 +1,69 @@
-﻿import { setAlpha } from '../use-style';
+import { setAlpha } from '../use-style'
 
-export type BaseLayoutDesignToken = {
-  hashId: string;
-  colorPrimary: string;
+export interface BaseLayoutDesignToken {
+  hashId: string
+  colorPrimary: string
   /**
    * 跨站点应用的图标hover颜色
    */
-  colorBgAppListIconHover: string;
+  colorBgAppListIconHover: string
   /**
    * 跨站点应用的图标hover颜色
    */
-  colorTextAppListIconHover: string;
+  colorTextAppListIconHover: string
   /**
    * 跨站点应用的图标hover颜色
    */
-  colorTextAppListIcon: string;
+  colorTextAppListIcon: string
 
   /**
    * layout 的背景颜色
    */
-  bgLayout: string;
+  bgLayout: string
 
   /**
    * 侧边side的 token 配置
    */
   sider: {
-    colorBgCollapsedButton: string;
-    colorTextCollapsedButtonHover: string;
-    colorTextCollapsedButton: string;
-    colorMenuBackground: string;
-    colorBgMenuItemCollapsedHover: string;
-    colorBgMenuItemCollapsedSelected: string;
-    colorBgMenuItemCollapsedElevated: string;
-    colorMenuItemDivider: string;
-    colorBgMenuItemHover: string;
-    colorBgMenuItemSelected: string;
-    colorTextMenuSelected: string;
-    colorTextMenuItemHover: string;
-    colorTextMenuActive: string;
-    colorTextMenu: string;
-    colorTextMenuSecondary: string;
-    paddingInlineLayoutMenu: number;
-    paddingBlockLayoutMenu: number;
+    colorBgCollapsedButton: string
+    colorTextCollapsedButtonHover: string
+    colorTextCollapsedButton: string
+    colorMenuBackground: string
+    colorBgMenuItemCollapsedHover: string
+    colorBgMenuItemCollapsedSelected: string
+    colorBgMenuItemCollapsedElevated: string
+    colorMenuItemDivider: string
+    colorBgMenuItemHover: string
+    colorBgMenuItemSelected: string
+    colorTextMenuSelected: string
+    colorTextMenuItemHover: string
+    colorTextMenuActive: string
+    colorTextMenu: string
+    colorTextMenuSecondary: string
+    paddingInlineLayoutMenu: number
+    paddingBlockLayoutMenu: number
     /**
      * menu 顶部 title 的字体颜色
      */
-    colorTextMenuTitle: string;
-    colorTextSubMenuSelected: string;
-  };
+    colorTextMenuTitle: string
+    colorTextSubMenuSelected: string
+  }
   /**
    * header 的 token 设置
    */
   header: {
-    colorBgHeader: string;
-    colorHeaderTitle: string;
-    colorBgMenuItemHover: string;
-    colorBgMenuItemSelected: string;
-    colorTextMenuSelected: string;
-    colorTextMenuActive: string;
-    colorTextMenu: string;
-    colorTextMenuSecondary: string;
-    colorBgRightActionsItemHover: string;
-    colorTextRightActionsItem: string;
-    heightLayoutHeader: number;
-  };
+    colorBgHeader: string
+    colorHeaderTitle: string
+    colorBgMenuItemHover: string
+    colorBgMenuItemSelected: string
+    colorTextMenuSelected: string
+    colorTextMenuActive: string
+    colorTextMenu: string
+    colorTextMenuSecondary: string
+    colorBgRightActionsItemHover: string
+    colorTextRightActionsItem: string
+    heightLayoutHeader: number
+  }
 
   /**
    * pageContainer
@@ -72,45 +72,45 @@ export type BaseLayoutDesignToken = {
     /**
      * pageContainer 的背景颜色
      */
-    colorBgPageContainer: string;
+    colorBgPageContainer: string
     /**
      * pageContainer 自带的 margin inline
      * @deprecated 请使用 paddingInlinePageContainerContent
      */
-    marginInlinePageContainerContent: number;
+    marginInlinePageContainerContent: number
     /**
      * pageContainer 自带的 margin block
      * @deprecated 请使用 paddingBlockPageContainerContent
      */
-    marginBlockPageContainerContent: number;
+    marginBlockPageContainerContent: number
     /**
      * pageContainer 自带的 padding inline
      */
-    paddingInlinePageContainerContent: number;
+    paddingInlinePageContainerContent: number
     /**
      * pageContainer 自带的 padding block
      */
-    paddingBlockPageContainerContent: number;
+    paddingBlockPageContainerContent: number
     /**
      * pageContainer 被固定时的背景颜色
      */
-    colorBgPageContainerFixed: string;
-  };
-};
+    colorBgPageContainerFixed: string
+  }
+}
 
 export type DeepPartial<T> = T extends object
   ? {
       [P in keyof T]?: DeepPartial<T[P]>;
     }
-  : T;
+  : T
 
-export type LayoutDesignToken = BaseLayoutDesignToken;
+export type LayoutDesignToken = BaseLayoutDesignToken
 
 export const getLayoutDesignToken: (
   baseDesignTokens: DeepPartial<LayoutDesignToken>,
   antdToken: Record<string, any>,
 ) => LayoutDesignToken = (designTokens, antdToken) => {
-  const finalDesignTokens = { ...designTokens };
+  const finalDesignTokens = { ...designTokens }
 
   return {
     bgLayout: `linear-gradient(${antdToken.colorBgContainer}, ${antdToken.colorBgLayout} 28%)`,
@@ -164,9 +164,9 @@ export const getLayoutDesignToken: (
       colorBgPageContainerFixed: antdToken.colorBgElevated,
       ...finalDesignTokens.pageContainer,
     },
-  } as LayoutDesignToken as LayoutDesignToken;
-};
+  } as LayoutDesignToken as LayoutDesignToken
+}
 
-export type ProTokenType = {
-  layout?: DeepPartial<LayoutDesignToken>;
-};
+export interface ProTokenType {
+  layout?: DeepPartial<LayoutDesignToken>
+}

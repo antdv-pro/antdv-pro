@@ -68,4 +68,4 @@ export default {
     open: 'otvori',
     close: 'zatvori',
   },
-};
+}

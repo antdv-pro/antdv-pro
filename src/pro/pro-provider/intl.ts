@@ -1,4 +1,4 @@
-﻿import arEG from './locale/ar_EG'
+import arEG from './locale/ar_EG'
 import caES from './locale/ca_ES'
 import csCZ from './locale/cs_CZ'
 import deDE from './locale/de_DE'

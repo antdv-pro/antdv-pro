@@ -71,4 +71,4 @@ export default {
     open: 'otevřít',
     close: 'zavřít',
   },
-};
+}

@@ -68,4 +68,4 @@ export default {
     open: '열',
     close: '가까 운',
   },
-};
+}

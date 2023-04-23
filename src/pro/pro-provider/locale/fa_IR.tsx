@@ -68,4 +68,4 @@ export default {
     open: 'باز',
     close: 'نزدیک',
   },
-};
+}

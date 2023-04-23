@@ -68,4 +68,4 @@ export default {
     open: 'mở',
     close: 'đóng',
   },
-};
+}

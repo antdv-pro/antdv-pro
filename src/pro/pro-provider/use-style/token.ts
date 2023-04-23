@@ -1,4 +1,4 @@
-﻿import { createTheme } from 'ant-design-vue/es/_util/cssinjs'
+import { createTheme } from 'ant-design-vue/es/_util/cssinjs'
 
 import { theme } from 'ant-design-vue/es'
 import type { GlobalToken } from 'ant-design-vue/es/theme/interface'
