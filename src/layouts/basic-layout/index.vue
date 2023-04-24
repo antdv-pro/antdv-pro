@@ -6,9 +6,14 @@ import Header from '../components/header/index.vue'
   <div class="ant-pro-basicLayout">
     <a-layout>
       <Header />
-      <a-layout-content>
-        <router-view />
-      </a-layout-content>
+      <a-layout>
+        <a-layout-sider width="200" style="background: #fff">
+          测试
+        </a-layout-sider>
+        <a-layout-content>
+          <router-view />
+        </a-layout-content>
+      </a-layout>
     </a-layout>
   </div>
 </template>
