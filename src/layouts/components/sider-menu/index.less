@@ -1,3 +1,11 @@
+html{
+  --ant-pro-sider-border-color: rgba(0,0,0,.06);
+}
+
+html.dark{
+  --ant-pro-sider-border-color: rgba(143, 132, 117, 0.06);
+}
+
 .ant-pro-sider{
   .ant-menu{
     background: 0 0;    
@@ -8,10 +16,14 @@
     min-height: 100%;
     border-inline-end: none !important;
   }
-}
 
-.ant-pro-sider-light{
-  .ant-menu-light{
-    border-right-color:  transparent;
+  &-collapsed-button{
+    border-top: 1px solid var(--ant-pro-sider-border-color);
   }
-} 
+
+  &-light{
+    .ant-menu-light{
+      border-right-color:  transparent;
+    }
+  }
+}

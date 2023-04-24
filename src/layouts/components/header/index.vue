@@ -24,16 +24,19 @@ const headerStyle = computed<CSSProperties>(() => {
 })
 const cls = computed(() => {
   const classes = []
-  if (props.fixedHeader)
+  if (props.fixedHeader || props.layout === 'mix')
     classes.push('ant-pro-fixed-header')
 
   return classes
 })
+const needFixed = computed(() =>
+  props.fixedHeader || props.layout === 'mix',
+)
 </script>
 
 <template>
   <a-layout-header
-    v-if="fixedHeader" :style="{
+    v-if="needFixed" :style="{
       height: `${props.headerHeight}px`,
       lineHeight: `${props.headerHeight}px`,
       background: 'transparent',
