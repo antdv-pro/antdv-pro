@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Header from '../components/header/index.vue'
+import SiderMenu from '../components/sider-menu/index.vue'
 withDefaults(defineProps<{
   layout?: 'mix' | 'side' | 'top'
   collapsedWidth?: number
@@ -9,7 +10,7 @@ withDefaults(defineProps<{
   layout: 'mix',
   collapsedWidth: 60,
   siderWidth: 200,
-  collapsed: true,
+  collapsed: false,
 })
 </script>
 
@@ -26,10 +27,10 @@ withDefaults(defineProps<{
           :width="siderWidth"
           collapsible
         >
-          测试
+          <SiderMenu />
         </a-layout-sider>
         <a-layout-content>
-          <router-view />
+          <slot />
         </a-layout-content>
       </a-layout>
     </a-layout>
