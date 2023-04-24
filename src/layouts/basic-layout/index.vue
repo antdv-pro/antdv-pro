@@ -1,5 +1,16 @@
 <script setup lang="ts">
 import Header from '../components/header/index.vue'
+withDefaults(defineProps<{
+  layout?: 'mix' | 'side' | 'top'
+  collapsedWidth?: number
+  siderWidth?: number
+  collapsed?: boolean
+}>(), {
+  layout: 'mix',
+  collapsedWidth: 60,
+  siderWidth: 200,
+  collapsed: true,
+})
 </script>
 
 <template>
@@ -7,7 +18,14 @@ import Header from '../components/header/index.vue'
     <a-layout>
       <Header />
       <a-layout>
-        <a-layout-sider width="200" style="background: #fff">
+        <a-layout-sider
+          theme="light"
+          :collapsed="collapsed"
+          :trigger="null"
+          :collapsed-width="collapsedWidth"
+          :width="siderWidth"
+          collapsible
+        >
           测试
         </a-layout-sider>
         <a-layout-content>

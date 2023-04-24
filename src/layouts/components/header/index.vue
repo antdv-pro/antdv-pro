@@ -2,7 +2,7 @@
 import type { CSSProperties } from 'vue'
 
 const props = withDefaults(defineProps<{
-  headerHeight: number
+  headerHeight?: number
 }>(), {
   headerHeight: 48,
 })
