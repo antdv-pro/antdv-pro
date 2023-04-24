@@ -1,11 +1,14 @@
 <script setup lang="ts">
+import Header from '../components/header/index.vue'
 </script>
 
 <template>
   <div class="ant-pro-basicLayout">
     <a-layout>
-      <a-layout-header />
-      <RouterView />
+      <Header />
+      <a-layout-content>
+        <router-view />
+      </a-layout-content>
     </a-layout>
   </div>
 </template>
