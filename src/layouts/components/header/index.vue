@@ -4,6 +4,7 @@ import type { CSSProperties } from 'vue'
 const props = withDefaults(defineProps<{
   headerHeight?: number
   fixedHeader?: boolean
+  layout?: 'mix' | 'side' | 'top'
 }>(), {
   headerHeight: 48,
   fixedHeader: true,
@@ -13,7 +14,7 @@ const headerStyle = computed<CSSProperties>(() => {
     height: `${props.headerHeight}px`,
     lineHeight: `${props.headerHeight}px`,
   }
-  if (props.fixedHeader) {
+  if (props.fixedHeader || props.layout === 'mix') {
     defaultStyle.zIndex = 100
     defaultStyle.width = '100%'
     defaultStyle.right = 0
