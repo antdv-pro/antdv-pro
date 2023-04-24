@@ -5,7 +5,7 @@ export const rootRoute: RouteRecordRaw = {
   path: '/',
   name: 'rootPath',
   redirect: ROOT_ROUTE_REDIRECT_PATH,
-  component: () => import('~/layouts/basic-layout.vue'),
+  component: () => import('~/layouts/basic-layout/index.vue'),
   children: [],
 }
 
