@@ -1,3 +1,18 @@
+html {
+  --text-color: rgba(0,0,0,.85);
+  --bg-color: #fff;
+}
+
+html.dark{
+  --text-color: rgba(229, 224, 216, 0.85);
+  --bg-color: rgb(36, 37, 37);
+}
+
+body{
+  color: var(--text-color);
+  background-color: var(--bg-color);
+}
+
 #app{
   width: 100%;
   height: 100%;

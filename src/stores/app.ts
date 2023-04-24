@@ -13,10 +13,14 @@ export const useAppStore = defineStore('app', () => {
       return
 
     layoutSetting.theme = theme
-    if (theme === 'light')
+    if (theme === 'light') {
       themeConfig.algorithm = antdTheme.defaultAlgorithm
-    else if (theme === 'dark')
+      toggleDark(false)
+    }
+    else if (theme === 'dark') {
+      toggleDark(true)
       themeConfig.algorithm = antdTheme.darkAlgorithm
+    }
   }
 
   return {
