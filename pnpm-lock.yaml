@@ -1,6 +1,9 @@
 lockfileVersion: '6.0'
 
 dependencies:
+  '@ant-design/icons-vue':
+    specifier: ^6.1.0
+    version: 6.1.0(vue@3.2.47)
   '@ctrl/tinycolor':
     specifier: ^3.6.0
     version: 3.6.0
@@ -11,8 +14,8 @@ dependencies:
     specifier: ^10.1.0
     version: 10.1.0(vue@3.2.47)
   ant-design-vue:
-    specifier: 4.0.0-alpha.5
-    version: 4.0.0-alpha.5(vue@3.2.47)
+    specifier: 4.0.0-alpha.6
+    version: 4.0.0-alpha.6(vue@3.2.47)
   pinia:
     specifier: ^2.0.35
     version: 2.0.35(typescript@5.0.2)(vue@3.2.47)
@@ -1461,8 +1464,8 @@ packages:
       color-convert: 2.0.1
     dev: true
 
-  /ant-design-vue@4.0.0-alpha.5(vue@3.2.47):
-    resolution: {integrity: sha512-2R2YcI8mRxBdQdgN+OWALbYVi1vieXJKqMZ/OeGtc+vxU+Hv9BlYSpoRKckVYwgXNW73hzdKLjtdG8Q2PDC8MA==}
+  /ant-design-vue@4.0.0-alpha.6(vue@3.2.47):
+    resolution: {integrity: sha512-H9m6RpuspQpo4JYZ1YzJAZ9mPgmE8JHmoSgajOVXQ5RHsIzi1Zi5sbpLTVH0Otcw1q19/1UfvIRkckR2oOMk+A==}
     engines: {node: '>=12.22.0'}
     peerDependencies:
       vue: '>=3.2.0'
