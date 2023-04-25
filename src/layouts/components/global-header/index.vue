@@ -1,12 +1,11 @@
 <script setup lang="ts">
+import { useLayoutState } from '../../basic-layout/context'
 import GlobalHeaderLogo from './global-header-logo.vue'
-const props = defineProps<{
-  layout?: 'mix' | 'side' | 'top'
-}>()
+const { layout } = useLayoutState()
 const prefixCls = shallowRef('ant-pro-global-header')
 const cls = computed(() => ({
   [prefixCls.value]: true,
-  [`${prefixCls.value}-layout-${props.layout}`]: !!props.layout,
+  [`${prefixCls.value}-layout-${layout.value}`]: !!layout.value,
 }))
 </script>
 

@@ -1,11 +1,14 @@
 <script setup lang="ts">
+import { useLayoutState } from '../../basic-layout/context'
+
+const { logo, title } = useLayoutState()
 </script>
 
 <template>
   <div class="ant-pro-global-header-logo">
     <a>
-      <img src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg">
-      <h1>Antdv Admin Pro</h1>
+      <img :src="logo">
+      <h1>{{ title }}</h1>
     </a>
   </div>
 </template>

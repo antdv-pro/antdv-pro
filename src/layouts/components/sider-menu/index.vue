@@ -1,17 +1,9 @@
 <script setup lang="ts">
 import { MenuFoldOutlined, MenuUnfoldOutlined, UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons-vue'
-const props = defineProps<{
-  collapsed?: boolean
-  collapsedWidth?: number
-  menuData?: any
-  onCollapsed?: (collapsed: boolean) => void
-}>()
+import { useLayoutState } from '../../basic-layout/context'
+const { collapsed, handleCollapsed } = useLayoutState()
 
 const selectedKeys = ref<string[]>([])
-
-const handleCollapsed = () => {
-  props?.onCollapsed?.(!props.collapsed)
-}
 </script>
 
 <template>
@@ -41,7 +33,7 @@ const handleCollapsed = () => {
       class="ant-pro-sider-menu"
       mode="inline"
       :selectable="false"
-      @click="handleCollapsed"
+      @click="handleCollapsed?.(!collapsed)"
     >
       <a-menu-item>
         <template #icon>

@@ -2,27 +2,11 @@
 import type { CSSProperties } from 'vue'
 import Header from '../components/header/index.vue'
 import SiderMenu from '../components/sider-menu/index.vue'
-import type { MenuData } from './typing'
-const props = withDefaults(defineProps<{
-  layout?: 'mix' | 'side' | 'top'
-  collapsedWidth?: number
-  siderWidth?: number
-  collapsed?: boolean
-  headerHeight?: number
-  menuData?: MenuData
-  fixedHeader?: boolean
-  onCollapsed?: (collapsed: boolean) => void
-  theme?: 'light' | 'dark'
-}>(), {
-  layout: 'mix',
-  collapsedWidth: 48,
-  siderWidth: 200,
-  collapsed: false,
-  headerHeight: 48,
-  theme: 'light',
-})
-
+import { proLayoutProps } from './typing'
+import { useLayoutProvider } from './context'
+const props = defineProps(proLayoutProps)
 const emit = defineEmits(['update:collapsed'])
+
 /**
  * 处理展开收起的事件参数
  * @param collapsed 展开收起的事件参数
@@ -36,6 +20,11 @@ const siderStyle = computed<CSSProperties>(() => {
   return {
     paddingTop: `${props.headerHeight}px`,
   }
+})
+
+// 依赖注入所有的配置项，对属性进行控制，减少传值
+useLayoutProvider(props, {
+  handleCollapsed,
 })
 </script>
 
@@ -52,14 +41,10 @@ const siderStyle = computed<CSSProperties>(() => {
         class="ant-pro-sider"
         :style="siderStyle"
       >
-        <SiderMenu :collapsed="collapsed" @collapsed="handleCollapsed" />
+        <SiderMenu />
       </a-layout-sider>
       <a-layout>
-        <Header
-          :header-height="headerHeight"
-          :fixed-header="fixedHeader"
-          :layout="layout"
-        />
+        <Header />
         <a-layout-content>
           <slot />
         </a-layout-content>

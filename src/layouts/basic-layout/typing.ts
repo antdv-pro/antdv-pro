@@ -1,4 +1,5 @@
-import type { VNodeChild } from 'vue'
+import type { ExtractPropTypes, VNodeChild } from 'vue'
+import { arrayType, booleanType, eventType, numberType, stringType } from '@v-c/utils'
 
 export type MenuData = MenuDataItem[]
 
@@ -10,3 +11,23 @@ export interface MenuDataItem {
   hideInMenu?: boolean
   parentKeys?: string[]
 }
+
+export type LayoutType = 'mix' | 'side' | 'top'
+
+export type ThemeType = 'light' | 'dark'
+
+export const proLayoutProps = {
+  layout: stringType<LayoutType>('mix'),
+  logo: stringType('https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg'),
+  title: stringType('Antdv Admin Pro'),
+  collapsedWidth: numberType(48),
+  siderWidth: numberType(200),
+  headerHeight: numberType(48),
+  menuData: arrayType<MenuData>(),
+  fixedHeader: booleanType(),
+  collapsed: booleanType<boolean>(false),
+  theme: stringType<ThemeType>('light'),
+  onCollapsed: eventType<(collapsed: boolean) => void>(),
+}
+
+export type ProLayoutProps = Partial<ExtractPropTypes<typeof proLayoutProps>>
