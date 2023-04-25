@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { CSSProperties } from 'vue'
+import GlobalHeader from '../global-header/index.vue'
 
 const props = withDefaults(defineProps<{
   headerHeight?: number
@@ -13,6 +14,7 @@ const headerStyle = computed<CSSProperties>(() => {
   const defaultStyle: CSSProperties = {
     height: `${props.headerHeight}px`,
     lineHeight: `${props.headerHeight}px`,
+    paddingInline: 0,
   }
   if (props.fixedHeader || props.layout === 'mix') {
     defaultStyle.zIndex = 100
@@ -43,7 +45,7 @@ const needFixed = computed(() =>
     }"
   />
   <a-layout-header :style="headerStyle" :class="cls">
-    <slot />
+    <GlobalHeader :layout="layout" />
   </a-layout-header>
 </template>
 

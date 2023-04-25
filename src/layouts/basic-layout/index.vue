@@ -11,13 +11,27 @@ const props = withDefaults(defineProps<{
   headerHeight?: number
   menuData?: MenuData
   fixedHeader?: boolean
+  onCollapsed?: (collapsed: boolean) => void
+  theme?: 'light' | 'dark'
 }>(), {
   layout: 'mix',
   collapsedWidth: 48,
   siderWidth: 200,
   collapsed: false,
   headerHeight: 48,
+  theme: 'light',
 })
+
+const emit = defineEmits(['update:collapsed'])
+/**
+ * 处理展开收起的事件参数
+ * @param collapsed 展开收起的事件参数
+ */
+const handleCollapsed = (collapsed: boolean) => {
+  emit('update:collapsed', collapsed)
+  props?.onCollapsed?.(collapsed)
+}
+
 const siderStyle = computed<CSSProperties>(() => {
   return {
     paddingTop: `${props.headerHeight}px`,
@@ -26,7 +40,7 @@ const siderStyle = computed<CSSProperties>(() => {
 </script>
 
 <template>
-  <div class="ant-pro-basicLayout">
+  <div class="ant-pro-basicLayout" :data-theme="theme">
     <a-layout>
       <a-layout-sider
         theme="light"
@@ -38,7 +52,7 @@ const siderStyle = computed<CSSProperties>(() => {
         class="ant-pro-sider"
         :style="siderStyle"
       >
-        <SiderMenu />
+        <SiderMenu :collapsed="collapsed" @collapsed="handleCollapsed" />
       </a-layout-sider>
       <a-layout>
         <Header

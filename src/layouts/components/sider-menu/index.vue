@@ -1,12 +1,17 @@
 <script setup lang="ts">
-import { ExpandOutlined, UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons-vue'
-defineProps<{
+import { MenuFoldOutlined, MenuUnfoldOutlined, UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons-vue'
+const props = defineProps<{
   collapsed?: boolean
   collapsedWidth?: number
   menuData?: any
+  onCollapsed?: (collapsed: boolean) => void
 }>()
 
 const selectedKeys = ref<string[]>([])
+
+const handleCollapsed = () => {
+  props?.onCollapsed?.(!props.collapsed)
+}
 </script>
 
 <template>
@@ -14,7 +19,7 @@ const selectedKeys = ref<string[]>([])
     <a-menu
       v-model:selectedKeys="selectedKeys"
       mode="inline"
-      :inline-collapsed="collapsed"
+      :collapsed="collapsed"
       class="ant-pro-sider-menu"
     >
       <a-menu-item key="1">
@@ -36,10 +41,12 @@ const selectedKeys = ref<string[]>([])
       class="ant-pro-sider-menu"
       mode="inline"
       :selectable="false"
+      @click="handleCollapsed"
     >
       <a-menu-item>
         <template #icon>
-          <ExpandOutlined />
+          <MenuFoldOutlined v-if="collapsed" />
+          <MenuUnfoldOutlined v-else />
         </template>
       </a-menu-item>
     </a-menu>

@@ -5,7 +5,7 @@ const appStore = useAppStore()
 
 <template>
   <a-watermark class="h-100%" content="Antdv Admin Pro">
-    <BasicLayout :collapsed="appStore.layoutSetting.collapsed">
+    <BasicLayout v-model:collapsed="appStore.layoutSetting.collapsed" :theme="appStore.layoutSetting.theme">
       <RouterView />
     </BasicLayout>
   </a-watermark>
