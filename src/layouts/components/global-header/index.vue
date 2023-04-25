@@ -11,7 +11,7 @@ const cls = computed(() => ({
 
 <template>
   <div :class="cls">
-    <GlobalHeaderLogo v-if="layout === 'mix'" />
+    <GlobalHeaderLogo v-if="layout !== 'side'" />
     <div class="flex-1">
       <slot name="headerContent" />
     </div>

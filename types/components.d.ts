@@ -23,6 +23,7 @@ declare module '@vue/runtime-core' {
     ASpace: typeof import('ant-design-vue/es')['Space']
     AWatermark: typeof import('ant-design-vue/es')['Watermark']
     HelloWorld: typeof import('./../src/components/HelloWorld.vue')['default']
+    Menu: typeof import('ant-design-vue/es')['Menu']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     UserAvatar: typeof import('./../src/components/user-avatar/index.vue')['default']

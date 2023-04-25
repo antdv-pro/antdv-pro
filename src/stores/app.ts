@@ -13,6 +13,17 @@ export const useAppStore = defineStore('app', () => {
   })
   const themeConfig = reactive<ThemeConfig>({
     algorithm: antdTheme.defaultAlgorithm,
+    token: {
+
+    },
+    components: {
+      Menu: {
+        colorBgContainer: 'var(--bg-color-container)',
+      },
+      Layout: {
+        colorBgContainer: 'var(--bg-color-container)',
+      },
+    },
   })
   const toggleTheme = (theme: LayoutSetting['theme']) => {
     if (layoutSetting.theme === theme)
@@ -28,6 +39,10 @@ export const useAppStore = defineStore('app', () => {
       themeConfig.algorithm = antdTheme.darkAlgorithm
     }
   }
+
+  // 如果加载进来是暗色模式，就切换到暗色模式
+  if (isDark.value)
+    toggleTheme('dark')
 
   const toggleCollapsed = (collapsed: boolean) => {
     layoutSetting.collapsed = collapsed

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Header from '../components/header/index.vue'
 import SiderMenu from '../components/sider-menu/index.vue'
+import Menu from '../components/menu/index.vue'
 import { proLayoutProps } from './typing'
 import { useLayoutProvider } from './context'
 const props = defineProps(proLayoutProps)
@@ -24,14 +25,16 @@ useLayoutProvider(props, {
 <template>
   <div class="ant-pro-basicLayout" :data-theme="theme">
     <a-layout>
-      <SiderMenu />
+      <SiderMenu v-if="layout !== 'top'" />
       <a-layout>
         <Header>
           <template v-if="$slots.headerActions" #headerActions>
             <slot name="headerActions" />
           </template>
-          <template v-if="$slots.headerContent" #headerContent>
-            <slot name="headerContent" />
+          <template v-if="$slots.headerContent || layout === 'top'" #headerContent>
+            <slot name="headerContent">
+              <Menu />
+            </slot>
           </template>
         </Header>
         <a-layout-content>

@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { MenuFoldOutlined, MenuUnfoldOutlined, UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons-vue'
+import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons-vue'
 import type { CSSProperties } from 'vue'
 import { useLayoutState } from '../../basic-layout/context'
+import Menu from '../menu/index.vue'
 const { collapsed, handleCollapsed, layout, logo, title, collapsedWidth, siderWidth, headerHeight, fixedSider } = useLayoutState()
 
 const prefixCls = shallowRef('ant-pro-sider')
@@ -19,8 +20,6 @@ const cls = computed(() => ({
   [`${prefixCls.value}-fixed`]: fixedSider.value,
   [`${prefixCls.value}-layout-${layout.value}`]: !!layout.value,
 }))
-
-const selectedKeys = ref<string[]>([])
 </script>
 
 <template>
@@ -49,25 +48,7 @@ const selectedKeys = ref<string[]>([])
       </a>
     </div>
     <div class="flex-1 of-x-hidden of-y-auto">
-      <a-menu
-        v-model:selectedKeys="selectedKeys"
-        mode="inline"
-        :collapsed="collapsed"
-        class="ant-pro-sider-menu"
-      >
-        <a-menu-item key="1">
-          <UserOutlined />
-          <span>nav 1</span>
-        </a-menu-item>
-        <a-menu-item key="2">
-          <VideoCameraOutlined />
-          <span>nav 2</span>
-        </a-menu-item>
-        <a-menu-item key="3">
-          <UploadOutlined />
-          <span>nav 3</span>
-        </a-menu-item>
-      </a-menu>
+      <Menu />
     </div>
     <div class="w-100% flex-shrink-0 ant-pro-sider-collapsed-button">
       <a-menu
