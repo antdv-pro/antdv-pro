@@ -12,6 +12,7 @@ const layoutStateFunc = (props: ProLayoutProps, methods: ProLayoutProviderMethod
   const siderWidth = computed(() => props.siderWidth)
   const menuData = computed(() => props.menuData)
   const fixedHeader = computed(() => props.fixedHeader)
+  const fixedSider = computed(() => props.fixedSider)
   const collapsed = computed(() => props.collapsed)
   const theme = computed(() => props.theme)
   const headerHeight = computed(() => props.headerHeight)
@@ -25,6 +26,7 @@ const layoutStateFunc = (props: ProLayoutProps, methods: ProLayoutProviderMethod
     menuData,
     siderWidth,
     fixedHeader,
+    fixedSider,
     headerHeight,
     theme,
     ...methods,

@@ -17,14 +17,15 @@ export type LayoutType = 'mix' | 'side' | 'top'
 export type ThemeType = 'light' | 'dark'
 
 export const proLayoutProps = {
-  layout: stringType<LayoutType>('mix'),
+  layout: stringType<LayoutType>('side'),
   logo: stringType('https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg'),
   title: stringType('Antdv Admin Pro'),
   collapsedWidth: numberType(48),
-  siderWidth: numberType(200),
+  siderWidth: numberType(234),
   headerHeight: numberType(48),
   menuData: arrayType<MenuData>(),
-  fixedHeader: booleanType(),
+  fixedHeader: booleanType(true),
+  fixedSider: booleanType(true),
   collapsed: booleanType<boolean>(false),
   theme: stringType<ThemeType>('light'),
   onCollapsed: eventType<(collapsed: boolean) => void>(),

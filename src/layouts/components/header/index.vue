@@ -2,7 +2,7 @@
 import type { CSSProperties } from 'vue'
 import GlobalHeader from '../global-header/index.vue'
 import { useLayoutState } from '../../basic-layout/context'
-const { headerHeight, fixedHeader, layout } = useLayoutState()
+const { headerHeight, fixedHeader, layout, collapsedWidth, siderWidth, collapsed } = useLayoutState()
 
 const headerStyle = computed<CSSProperties>(() => {
   const defaultStyle: CSSProperties = {
@@ -15,12 +15,21 @@ const headerStyle = computed<CSSProperties>(() => {
     defaultStyle.width = '100%'
     defaultStyle.right = 0
   }
+  if (layout.value === 'side') {
+    const width = collapsed.value ? collapsedWidth.value : siderWidth.value
+    defaultStyle.width = `calc(100% - ${width}px)`
+    defaultStyle.zIndex = 19
+  }
+
   return defaultStyle
 })
 const cls = computed(() => {
   const classes = []
   if (fixedHeader.value || layout.value === 'mix')
     classes.push('ant-pro-fixed-header')
+
+  if (layout.value)
+    classes.push('ant-pro-fixed-header-action')
 
   return classes
 })
@@ -38,13 +47,14 @@ const needFixed = computed(() =>
     }"
   />
   <a-layout-header :style="headerStyle" :class="cls">
-    <GlobalHeader />
-    <div class="flex-1">
-      <slot name="headerContent" />
-    </div>
-    <a-space align="center">
-      <slot name="headerActions" />
-    </a-space>
+    <GlobalHeader>
+      <template v-if="$slots.headerActions" #headerActions>
+        <slot name="headerActions" />
+      </template>
+      <template v-if="$slots.headerContent" #headerContent>
+        <slot name="headerContent" />
+      </template>
+    </GlobalHeader>
   </a-layout-header>
 </template>
 

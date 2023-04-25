@@ -12,15 +12,11 @@ const appStore = useAppStore()
         暗色
       </a-button>
     </a-space>
-    <div mt-2>
-      <a-space>
-        <a-button @click="appStore.toggleCollapsed(false)">
-          展开
-        </a-button>
-        <a-button @click="appStore.toggleCollapsed(true)">
-          收起
-        </a-button>
-      </a-space>
+    <div class="h-500px w-100% bg-red">
+      red
+    </div>
+    <div class="h-500px w-100% bg-green">
+      green
     </div>
   </div>
 </template>

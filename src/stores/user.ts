@@ -2,6 +2,15 @@ import dynamicRoutes, { rootRoute } from '~@/router/dynamic-routes'
 
 export const useUserStore = defineStore('user', () => {
   const routerData = shallowRef()
+  const userInfo = reactive({
+    avatar: 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png',
+    username: 'admin',
+    nickname: '超级管理员',
+  })
+
+  const avatar = computed(() => userInfo.avatar)
+  const nickname = computed(() => userInfo.nickname ?? userInfo.username)
+
   const generateRoutes = async () => {
     const currentRoute = {
       ...rootRoute,
@@ -19,5 +28,7 @@ export const useUserStore = defineStore('user', () => {
   return {
     routerData,
     generateDynamicRoutes,
+    avatar,
+    nickname,
   }
 })

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { CSSProperties } from 'vue'
 import Header from '../components/header/index.vue'
 import SiderMenu from '../components/sider-menu/index.vue'
 import { proLayoutProps } from './typing'
@@ -16,12 +15,6 @@ const handleCollapsed = (collapsed: boolean) => {
   props?.onCollapsed?.(collapsed)
 }
 
-const siderStyle = computed<CSSProperties>(() => {
-  return {
-    paddingTop: `${props.headerHeight}px`,
-  }
-})
-
 // 依赖注入所有的配置项，对属性进行控制，减少传值
 useLayoutProvider(props, {
   handleCollapsed,
@@ -31,20 +24,16 @@ useLayoutProvider(props, {
 <template>
   <div class="ant-pro-basicLayout" :data-theme="theme">
     <a-layout>
-      <a-layout-sider
-        theme="light"
-        :collapsed="collapsed"
-        :trigger="null"
-        :collapsed-width="collapsedWidth"
-        :width="siderWidth"
-        collapsible
-        class="ant-pro-sider"
-        :style="siderStyle"
-      >
-        <SiderMenu />
-      </a-layout-sider>
+      <SiderMenu />
       <a-layout>
-        <Header />
+        <Header>
+          <template v-if="$slots.headerActions" #headerActions>
+            <slot name="headerActions" />
+          </template>
+          <template v-if="$slots.headerContent" #headerContent>
+            <slot name="headerContent" />
+          </template>
+        </Header>
         <a-layout-content>
           <slot />
         </a-layout-content>

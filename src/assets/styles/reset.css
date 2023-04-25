@@ -1,11 +1,13 @@
 html {
   --text-color: rgba(0,0,0,.85);
   --bg-color: #fff;
+  --hover-color:#252a3d;
 }
 
 html.dark{
   --text-color: rgba(229, 224, 216, 0.85);
   --bg-color: rgb(36, 37, 37);
+  --hover-color:rgb(42, 44, 55);
 }
 
 body{

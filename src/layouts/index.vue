@@ -4,11 +4,14 @@ const appStore = useAppStore()
 </script>
 
 <template>
-  <a-watermark class="h-100%" content="Antdv Admin Pro">
-    <BasicLayout v-model:collapsed="appStore.layoutSetting.collapsed" :theme="appStore.layoutSetting.theme">
-      <RouterView />
-    </BasicLayout>
-  </a-watermark>
+  <!-- <a-watermark class="h-100%" content="Antdv Admin Pro"> -->
+  <BasicLayout v-model:collapsed="appStore.layoutSetting.collapsed" :theme="appStore.layoutSetting.theme">
+    <template #headerActions>
+      <UserAvatar />
+    </template>
+    <RouterView />
+  </BasicLayout>
+  <!-- </a-watermark> -->
 </template>
 
 <style scoped>
