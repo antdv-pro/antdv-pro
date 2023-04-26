@@ -43,8 +43,6 @@ export const useAppStore = defineStore('app', () => {
   }
 
   const toggleDrawerVisible = (visible: boolean) => {
-    console.log(visible)
-
     layoutSetting.drawerVisible = visible
   }
 
