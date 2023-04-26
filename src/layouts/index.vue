@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import BasicLayout from './basic-layout/index.vue'
+import SettingDrawer from './components/setting-drawer/index.vue'
 const appStore = useAppStore()
 </script>
 
@@ -11,6 +12,7 @@ const appStore = useAppStore()
     </template>
     <RouterView />
   </BasicLayout>
+  <SettingDrawer v-model:open="appStore.layoutSetting.drawerVisible" :theme="appStore.layoutSetting.theme" />
   <!-- </a-watermark> -->
 </template>
 

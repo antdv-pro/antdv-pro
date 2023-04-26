@@ -4,12 +4,14 @@ import { theme as antdTheme } from 'ant-design-vue/es'
 export interface LayoutSetting {
   theme: 'light' | 'dark'
   collapsed: boolean
+  drawerVisible: boolean
 }
 
 export const useAppStore = defineStore('app', () => {
   const layoutSetting = reactive<LayoutSetting>({
     theme: 'light',
     collapsed: true,
+    drawerVisible: false,
   })
   const themeConfig = reactive<ThemeConfig>({
     algorithm: antdTheme.defaultAlgorithm,
@@ -40,6 +42,12 @@ export const useAppStore = defineStore('app', () => {
     }
   }
 
+  const toggleDrawerVisible = (visible: boolean) => {
+    console.log(visible)
+
+    layoutSetting.drawerVisible = visible
+  }
+
   // 如果加载进来是暗色模式，就切换到暗色模式
   if (isDark.value)
     toggleTheme('dark')
@@ -53,5 +61,6 @@ export const useAppStore = defineStore('app', () => {
     theme: themeConfig,
     toggleTheme,
     toggleCollapsed,
+    toggleDrawerVisible,
   }
 })

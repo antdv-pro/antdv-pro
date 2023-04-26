@@ -12,11 +12,5 @@ const appStore = useAppStore()
         暗色
       </a-button>
     </a-space>
-    <div class="h-500px w-100% bg-red">
-      red
-    </div>
-    <div class="h-500px w-100% bg-green">
-      green
-    </div>
   </div>
 </template>
