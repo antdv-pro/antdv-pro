@@ -9,7 +9,7 @@ const prefixCls = shallowRef('ant-pro-sider')
 
 const siderStyle = computed<CSSProperties>(() => {
   return {
-    paddingTop: `${(layout.value !== 'side' && !isMobile) ? headerHeight.value : 0}px`,
+    paddingTop: `${(layout.value !== 'side' && !isMobile.value) ? headerHeight.value : 0}px`,
     transition: 'background-color 0.3s ease 0s, min-width 0.3s ease 0s, max-width 0.3s cubic-bezier(0.645, 0.045, 0.355, 1) 0s',
     overflow: 'hidden',
   }
