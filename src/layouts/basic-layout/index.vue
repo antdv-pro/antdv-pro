@@ -26,7 +26,7 @@ useLayoutProvider(props, {
 <template>
   <div class="ant-pro-basicLayout" :data-theme="theme">
     <a-layout>
-      <SiderMenu v-if="layout !== 'top'" />
+      <SiderMenu v-if="layout !== 'top' && !isMobile" />
       <a-layout>
         <Header>
           <template v-if="$slots.headerActions" #headerActions>

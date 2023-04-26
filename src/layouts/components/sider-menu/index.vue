@@ -22,7 +22,7 @@ const cls = computed(() => ({
 }))
 
 const showLogo = computed(() => {
-  return layout.value === 'side' || isMobile.value
+  return (layout.value === 'side' || isMobile.value) && layout.value !== 'mix'
 })
 </script>
 
