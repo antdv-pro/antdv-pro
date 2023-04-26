@@ -16,6 +16,14 @@ const layoutStateFunc = (props: ProLayoutProps, methods: ProLayoutProviderMethod
   const collapsed = computed(() => props.collapsed)
   const theme = computed(() => props.theme)
   const headerHeight = computed(() => props.headerHeight)
+  /**
+   * 移动端的处理方式
+   */
+  const isMobile = computed(() => props.isMobile)
+  const mobileCollapsed = shallowRef(false)
+  const handleMobileCollapsed = () => {
+    mobileCollapsed.value = !mobileCollapsed.value
+  }
 
   return {
     logo,
@@ -29,6 +37,9 @@ const layoutStateFunc = (props: ProLayoutProps, methods: ProLayoutProviderMethod
     fixedSider,
     headerHeight,
     theme,
+    isMobile,
+    mobileCollapsed,
+    handleMobileCollapsed,
     ...methods,
   }
 }

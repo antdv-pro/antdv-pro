@@ -29,6 +29,7 @@ export const proLayoutProps = {
   collapsed: booleanType<boolean>(false),
   theme: stringType<ThemeType>('light'),
   onCollapsed: eventType<(collapsed: boolean) => void>(),
+  isMobile: booleanType(true),
 }
 
 export type ProLayoutProps = Partial<ExtractPropTypes<typeof proLayoutProps>>

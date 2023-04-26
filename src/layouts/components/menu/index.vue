@@ -2,14 +2,14 @@
 import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons-vue'
 import { useLayoutState } from '../../basic-layout/context'
 
-const { theme, collapsed, layout } = useLayoutState()
+const { theme, collapsed, layout, isMobile } = useLayoutState()
 const selectedKeys = ref<string[]>([])
 </script>
 
 <template>
   <a-menu
     v-model:selectedKeys="selectedKeys"
-    :mode="layout === 'top' ? 'horizontal' : 'inline'"
+    :mode="(layout === 'top' && !isMobile) ? 'horizontal' : 'inline'"
     :theme="theme"
     :collapsed="collapsed"
     class="ant-pro-sider-menu"

@@ -1,14 +1,18 @@
 <script setup lang="ts">
 import { useLayoutState } from '../../basic-layout/context'
 
-const { logo, title, layout } = useLayoutState()
+const { logo, title, layout, isMobile } = useLayoutState()
+const cls = computed(() => ({
+  'ant-pro-global-header-logo': layout.value === 'mix' || isMobile.value,
+  'ant-pro-top-nav-header-logo': layout.value === 'top' && !isMobile.value,
+}))
 </script>
 
 <template>
-  <div :class="layout === 'mix' ? 'ant-pro-global-header-logo' : 'ant-pro-top-nav-header-logo'">
+  <div :class="cls">
     <a>
       <img :src="logo">
-      <h1>{{ title }}</h1>
+      <h1 v-if="!isMobile">{{ title }}</h1>
     </a>
   </div>
 </template>

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Header from '../components/header/index.vue'
 import SiderMenu from '../components/sider-menu/index.vue'
+import DrawerMenu from '../components/drawer-menu/index.vue'
 import Menu from '../components/menu/index.vue'
 import { proLayoutProps } from './typing'
 import { useLayoutProvider } from './context'
@@ -33,7 +34,7 @@ useLayoutProvider(props, {
           </template>
           <template v-if="$slots.headerContent || layout === 'top'" #headerContent>
             <slot name="headerContent">
-              <Menu />
+              <Menu v-if="!isMobile" />
             </slot>
           </template>
         </Header>
@@ -42,6 +43,7 @@ useLayoutProvider(props, {
         </a-layout-content>
       </a-layout>
     </a-layout>
+    <DrawerMenu />
   </div>
 </template>
 
