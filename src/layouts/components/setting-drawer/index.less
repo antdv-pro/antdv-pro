@@ -23,3 +23,113 @@
     color: #e5e0d8
   }
 }
+
+
+.ant-pro-drawer-setting-block-checkbox{
+  display: flex;
+  min-height: 42px;
+
+
+  &-selectIcon{
+    position: absolute;
+    right: 6px;
+    bottom: 4px;
+    font-weight: 700;
+    font-size: 14px;
+    pointer-events: none
+  }
+
+  &-item{
+    position: relative;
+    width: 44px;
+    height: 36px;
+    margin-right: 16px;
+    overflow: hidden;
+    background-color: #f0f2f5;
+    border-radius: 4px;
+    box-shadow: 0 1px 2.5px 0 rgba(0,0,0,.18);
+    cursor: pointer;
+
+    &::before{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 33%;
+      height: 100%;
+      background-color: #fff;
+      content: "";
+    }
+
+    &::after{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 25%;
+      background-color: #fff;
+      content: ""
+    }
+
+    &-dark{
+      background-color: rgba(0,21,41,.85);
+
+      &::before{
+        background-color: rgba(0,21,41,.65);
+        content: "";
+      }
+
+      &::after{
+        background-color: rgba(0,21,41,.85);
+      }
+    }
+
+    &-light{
+      &::before{
+        background-color: #fff;
+        content: "";
+      }
+
+      &::after{
+        background-color: #fff
+      }
+    }
+
+    &-inverted::before,&-side::before{
+      z-index: 1;
+      background-color: #001529;
+      content: ""
+    }
+
+    &-inverted::after,&-side::after{
+      background-color: #fff
+    }
+
+  }
+
+  &-theme-item{
+    background: rgb(42, 44, 44);
+    box-shadow: rgba(13, 13, 13, 0.18) 0px 1px 2.5px 0px;
+
+    &-light{
+      &::before,&::after{
+        background-color: rgb(36, 37, 37);
+      }
+    }
+
+    &-dark{
+      &::before,&::after{
+       background-color: rgba(15, 28, 41, 0.65);
+      }
+    }
+
+    &-side::before,&-inverted::before{
+      background-color: rgb(15, 28, 41); 
+    }
+
+    &-side::after,&-inverted::after{
+      background-color: rgb(36, 37, 37);
+    }
+
+
+  }
+}

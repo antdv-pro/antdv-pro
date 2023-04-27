@@ -14,7 +14,7 @@ export interface MenuDataItem {
 
 export type LayoutType = 'mix' | 'side' | 'top'
 
-export type ThemeType = 'light' | 'dark'
+export type ThemeType = 'light' | 'dark' | 'inverted'
 
 export const proLayoutProps = {
   layout: stringType<LayoutType>('mix'),

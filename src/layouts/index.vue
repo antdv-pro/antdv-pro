@@ -12,7 +12,7 @@ const appStore = useAppStore()
     </template>
     <RouterView />
   </BasicLayout>
-  <SettingDrawer v-model:open="appStore.layoutSetting.drawerVisible" :theme="appStore.layoutSetting.theme" />
+  <SettingDrawer v-model:open="appStore.layoutSetting.drawerVisible" :theme="appStore.layoutSetting.theme" @setting-change="appStore.changeSettingLayout" />
   <!-- </a-watermark> -->
 </template>
 
