@@ -1,13 +1,16 @@
 <script setup lang="ts">
 import { CloseOutlined, SettingOutlined } from '@ant-design/icons-vue'
 import { useConfigContextInject } from 'ant-design-vue/es/config-provider/context'
-import type { ThemeType } from '../../basic-layout/typing'
+import type { LayoutType, ThemeType } from '../../basic-layout/typing'
 import Body from './body.vue'
 import BlockCheckbox from './block-checkbox.vue'
+import ThemeColor from './theme-color.vue'
 const props = withDefaults(defineProps<{
   open?: boolean
   theme?: ThemeType
+  colorPrimary?: string
   colorList?: ({ key: string; color: string })[]
+  layout?: LayoutType
 }>(), {
   theme: 'light',
   colorList: () => [
@@ -32,6 +35,13 @@ const changeTheme = (theme: ThemeType) => {
   emit('settingChange', 'theme', theme)
 }
 
+const changeColor = (color: string) => {
+  emit('settingChange', 'colorPrimary', color)
+}
+
+const changeLayout = (layout: string) => {
+  emit('settingChange', 'layout', layout)
+}
 const { theme } = useConfigContextInject()
 </script>
 
@@ -74,15 +84,18 @@ const { theme } = useConfigContextInject()
       <Body title="整体风格设计">
         <div :class="`${prefixCls}-block-checkbox`">
           <BlockCheckbox :checked="props.theme === 'light'" theme="light" :is-dark="props.theme === 'dark'" @click="changeTheme('light')" />
-          <BlockCheckbox :checked="props.theme === 'inverted'" theme="inverted" :is-dark="props.theme === 'dark'" @click="changeTheme('inverted')" />
+          <BlockCheckbox v-if="layout !== 'mix'" :checked="props.theme === 'inverted'" theme="inverted" :is-dark="props.theme === 'dark'" @click="changeTheme('inverted')" />
           <BlockCheckbox :checked="props.theme === 'dark'" theme="dark" :is-dark="props.theme === 'dark'" @click="changeTheme('dark')" />
         </div>
       </Body>
       <Body title="主题色">
-        <div class="theme-color">
-          <div class="theme-color-content">
-            <!--  -->
-          </div>
+        <ThemeColor :color-list="colorList" :color="colorPrimary" @change="changeColor" />
+      </Body>
+      <Body title="导航模式">
+        <div :class="`${prefixCls}-block-checkbox`">
+          <BlockCheckbox theme="side" :checked="layout === 'side'" :is-dark="props.theme === 'dark'" @click="changeLayout('side')" />
+          <BlockCheckbox theme="top" :checked="layout === 'top'" :is-dark="props.theme === 'dark'" @click="changeLayout('top')" />
+          <BlockCheckbox theme="mix" :checked="layout === 'mix'" :is-dark="props.theme === 'dark'" @click="changeLayout('mix')" />
         </div>
       </Body>
     </div>

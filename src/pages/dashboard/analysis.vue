@@ -5,7 +5,7 @@ const appStore = useAppStore()
 <template>
   <div p-2>
     <a-space>
-      <a-button @click="appStore.toggleTheme('light')">
+      <a-button type="primary" @click="appStore.toggleTheme('light')">
         亮色
       </a-button>
       <a-button @click="appStore.toggleTheme('dark')">

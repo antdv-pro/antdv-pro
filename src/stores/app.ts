@@ -1,12 +1,13 @@
 import type { ThemeConfig } from 'ant-design-vue/es/config-provider/context'
 import { theme as antdTheme } from 'ant-design-vue/es'
-import type { ThemeType } from '~@/layouts/basic-layout/typing'
+import type { LayoutType, ThemeType } from '~@/layouts/basic-layout/typing'
 
 export interface LayoutSetting {
   theme: ThemeType
   collapsed: boolean
   drawerVisible: boolean
   colorPrimary?: string
+  layout?: LayoutType
 }
 
 export const useAppStore = defineStore('app', () => {
@@ -14,14 +15,16 @@ export const useAppStore = defineStore('app', () => {
     theme: 'light',
     collapsed: true,
     drawerVisible: false,
-    colorPrimary: undefined,
+    colorPrimary: '#1677FF',
+    layout: 'mix',
   })
   const themeConfig = reactive<ThemeConfig>({
     algorithm: antdTheme.defaultAlgorithm,
     token: {
       colorBgContainer: 'var(--bg-color-container)',
+      colorPrimary: layoutSetting.colorPrimary,
     },
-    components: { },
+    components: {},
   })
   const toggleTheme = (theme: ThemeType) => {
     if (layoutSetting.theme === theme)
@@ -42,6 +45,12 @@ export const useAppStore = defineStore('app', () => {
     layoutSetting.drawerVisible = visible
   }
 
+  const toggleColorPrimary = (color: string) => {
+    layoutSetting.colorPrimary = color
+    if (themeConfig.token)
+      themeConfig.token.colorPrimary = color
+  }
+
   // 如果加载进来是暗色模式，就切换到暗色模式
   if (isDark.value)
     toggleTheme('dark')
@@ -50,9 +59,17 @@ export const useAppStore = defineStore('app', () => {
     layoutSetting.collapsed = collapsed
   }
 
+  const toggleLayout = (layout: LayoutType) => {
+    layoutSetting.layout = layout
+  }
+
   const changeSettingLayout = (key: keyof LayoutSetting, value: string) => {
     if (key === 'theme')
       toggleTheme(value as ThemeType)
+    else if (key === 'colorPrimary')
+      toggleColorPrimary(value)
+    else if (key === 'layout')
+      toggleLayout(value as LayoutType)
   }
 
   return {
@@ -62,5 +79,6 @@ export const useAppStore = defineStore('app', () => {
     toggleCollapsed,
     toggleDrawerVisible,
     changeSettingLayout,
+    toggleColorPrimary,
   }
 })

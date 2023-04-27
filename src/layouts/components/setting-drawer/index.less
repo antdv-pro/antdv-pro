@@ -104,6 +104,24 @@
       background-color: #fff
     }
 
+    &-top::before{
+      background-color: transparent;
+      content: ""
+    }
+
+    &-top::after{
+      background-color: #001529;
+    }
+
+    &-mix::before{
+      background-color: #fff;
+      content: ""
+    }
+
+    &-mix::after{
+      background-color: #001529;
+    }
+
   }
 
   &-theme-item{
@@ -130,6 +148,31 @@
       background-color: rgb(36, 37, 37);
     }
 
+    &-mix::before{
+      background-color: rgb(36, 37, 37);
+    }
 
   }
+}
+
+
+.ant-pro-drawer-setting-theme-color{
+  margin-top: 16px;
+  overflow: hidden;
+
+  &-block{
+    float: left;
+    width: 20px;
+    height: 20px;
+    margin-top: 8px;
+    margin-right: 8px;
+    font-weight: 700;
+    display: flex;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    cursor: pointer
+  }
+
 }

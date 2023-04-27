@@ -6,13 +6,23 @@ const appStore = useAppStore()
 
 <template>
   <!-- <a-watermark class="h-100%" content="Antdv Admin Pro"> -->
-  <BasicLayout v-model:collapsed="appStore.layoutSetting.collapsed" :theme="appStore.layoutSetting.theme">
+  <BasicLayout
+    v-model:collapsed="appStore.layoutSetting.collapsed"
+    :theme="appStore.layoutSetting.theme"
+    :layout="appStore.layoutSetting.layout"
+  >
     <template #headerActions>
       <UserAvatar />
     </template>
     <RouterView />
   </BasicLayout>
-  <SettingDrawer v-model:open="appStore.layoutSetting.drawerVisible" :theme="appStore.layoutSetting.theme" @setting-change="appStore.changeSettingLayout" />
+  <SettingDrawer
+    v-model:open="appStore.layoutSetting.drawerVisible"
+    :theme="appStore.layoutSetting.theme"
+    :layout="appStore.layoutSetting.layout"
+    :color-primary="appStore.layoutSetting.colorPrimary"
+    @setting-change="appStore.changeSettingLayout"
+  />
   <!-- </a-watermark> -->
 </template>
 
