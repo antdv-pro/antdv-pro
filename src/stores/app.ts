@@ -28,7 +28,7 @@ export const useAppStore = defineStore('app', () => {
       return
 
     layoutSetting.theme = theme
-    if (theme === 'light') {
+    if (theme === 'light' || theme === 'inverted') {
       themeConfig.algorithm = antdTheme.defaultAlgorithm
       toggleDark(false)
     }
