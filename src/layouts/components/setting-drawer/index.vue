@@ -91,6 +91,7 @@ const { theme } = useConfigContextInject()
       <Body title="主题色">
         <ThemeColor :color-list="colorList" :color="colorPrimary" @change="changeColor" />
       </Body>
+      <a-divider />
       <Body title="导航模式">
         <div :class="`${prefixCls}-block-checkbox`">
           <BlockCheckbox theme="side" :checked="layout === 'side'" :is-dark="props.theme === 'dark'" @click="changeLayout('side')" />

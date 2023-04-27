@@ -21,7 +21,7 @@ export const useAppStore = defineStore('app', () => {
   const themeConfig = reactive<ThemeConfig>({
     algorithm: antdTheme.defaultAlgorithm,
     token: {
-      colorBgContainer: 'var(--bg-color-container)',
+      colorBgContainer: '#fff',
       colorPrimary: layoutSetting.colorPrimary,
     },
     components: {},
@@ -32,11 +32,16 @@ export const useAppStore = defineStore('app', () => {
 
     layoutSetting.theme = theme
     if (theme === 'light' || theme === 'inverted') {
+      if (themeConfig.token)
+        themeConfig.token.colorBgContainer = '#fff'
       themeConfig.algorithm = antdTheme.defaultAlgorithm
+
       toggleDark(false)
     }
     else if (theme === 'dark') {
       toggleDark(true)
+      if (themeConfig.token)
+        themeConfig.token.colorBgContainer = 'rgb(36, 37, 37)'
       themeConfig.algorithm = antdTheme.darkAlgorithm
     }
   }
