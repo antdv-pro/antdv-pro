@@ -2,11 +2,12 @@
 import { MenuFoldOutlined } from '@ant-design/icons-vue'
 import { useLayoutState } from '../../basic-layout/context'
 import GlobalHeaderLogo from './global-header-logo.vue'
-const { layout, isMobile, handleMobileCollapsed } = useLayoutState()
+const { layout, isMobile, handleMobileCollapsed, theme } = useLayoutState()
 const prefixCls = shallowRef('ant-pro-global-header')
 const cls = computed(() => ({
   [prefixCls.value]: true,
   [`${prefixCls.value}-layout-${layout.value}`]: !!layout.value,
+  [`${prefixCls.value}-inverted`]: theme.value === 'inverted' && layout.value === 'top',
 }))
 </script>
 

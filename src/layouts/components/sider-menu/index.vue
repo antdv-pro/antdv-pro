@@ -3,7 +3,7 @@ import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons-vue'
 import type { CSSProperties } from 'vue'
 import { useLayoutState } from '../../basic-layout/context'
 import Menu from '../menu/index.vue'
-const { collapsed, handleCollapsed, layout, logo, title, collapsedWidth, siderWidth, headerHeight, fixedSider, isMobile } = useLayoutState()
+const { collapsed, handleCollapsed, layout, logo, theme, title, collapsedWidth, siderWidth, headerHeight, fixedSider, isMobile } = useLayoutState()
 
 const prefixCls = shallowRef('ant-pro-sider')
 
@@ -36,7 +36,7 @@ const showLogo = computed(() => {
     }"
   />
   <a-layout-sider
-    theme="light"
+    :theme="theme === 'inverted' ? 'dark' : 'light'"
     :collapsed="collapsed && !isMobile"
     :trigger="null"
     :collapsed-width="collapsedWidth"
@@ -54,10 +54,11 @@ const showLogo = computed(() => {
     <div class="flex-1 of-x-hidden of-y-auto">
       <Menu />
     </div>
-    <div v-if="!isMobile" class="w-100% flex-shrink-0 ant-pro-sider-collapsed-button">
+    <div v-if="!isMobile" class="w-100% flex-shrink-0 ant-pro-sider-collapsed-button" :class="theme === 'inverted' ? 'ant-pro-sider-collapsed-button-inverted' : ''">
       <a-menu
         class="ant-pro-sider-menu"
         mode="inline"
+        :theme="theme === 'inverted' ? 'dark' : 'light'"
         :selectable="false"
         @click="handleCollapsed?.(!collapsed)"
       >

@@ -33,6 +33,9 @@ const cls = computed(() => {
   if (layout.value)
     classes.push('ant-pro-fixed-header-action')
 
+  if (layout.value === 'mix')
+    classes.push('ant-pro-fixed-header-inverted')
+
   return classes
 })
 const needFixed = computed(() =>
@@ -48,7 +51,9 @@ const needFixed = computed(() =>
       background: 'transparent',
     }"
   />
-  <a-layout-header :style="headerStyle" :class="cls">
+  <a-layout-header
+    :style="headerStyle" :class="cls"
+  >
     <GlobalHeader>
       <template v-if="$slots.headerActions" #headerActions>
         <slot name="headerActions" />

@@ -60,6 +60,9 @@ export const useAppStore = defineStore('app', () => {
   }
 
   const toggleLayout = (layout: LayoutType) => {
+    if (layoutSetting.theme === 'inverted' && layout === 'mix')
+      layoutSetting.theme = 'light'
+
     layoutSetting.layout = layout
   }
 
