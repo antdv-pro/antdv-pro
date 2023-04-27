@@ -11,6 +11,7 @@ const appStore = useAppStore()
       <a-button @click="appStore.toggleTheme('dark')">
         暗色
       </a-button>
+      <a-checkbox />
     </a-space>
   </div>
 </template>

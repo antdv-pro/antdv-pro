@@ -5,7 +5,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import Unocss from 'unocss/vite'
-import AntdvResolver from './plugins/antdv'
+import AntdvResolver from 'antdv-component-resolver'
 const baseSrc = fileURLToPath(new URL('./src', import.meta.url))
 
 // https://vitejs.dev/config/
