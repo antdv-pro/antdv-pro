@@ -26,13 +26,18 @@ export const proLayoutProps = {
   siderWidth: numberType(234),
   headerHeight: numberType(48),
   menuData: arrayType<MenuData>(),
-  fixedHeader: booleanType(false),
-  fixedSider: booleanType(true),
+  fixedHeader: booleanType<boolean>(false),
+  fixedSider: booleanType<boolean>(true),
+  splitMenus: booleanType(),
   collapsed: booleanType<boolean>(false),
   theme: stringType<ThemeType>('light'),
   onCollapsed: eventType<(collapsed: boolean) => void>(),
   isMobile: booleanType(),
   contentWidth: stringType<'ContentWidth'>(),
+  header: booleanType<boolean>(true),
+  footer: booleanType<boolean>(true),
+  menu: booleanType<boolean>(true),
+  menuHeader: booleanType<boolean>(true),
 }
 
 export type ProLayoutProps = Partial<ExtractPropTypes<typeof proLayoutProps>>

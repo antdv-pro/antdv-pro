@@ -9,6 +9,14 @@ export interface LayoutSetting {
   colorPrimary?: string
   layout?: LayoutType
   contentWidth?: ContentWidth
+  fixedHeader?: boolean
+  fixedSider?: boolean
+  splitMenus?: boolean
+  header?: boolean
+  footer?: boolean
+  menu?: boolean
+  menuHeader?: boolean
+  colorWeak?: boolean
 }
 
 export const useAppStore = defineStore('app', () => {
@@ -19,6 +27,14 @@ export const useAppStore = defineStore('app', () => {
     colorPrimary: '#1677FF',
     layout: 'mix',
     contentWidth: 'Fluid',
+    fixedHeader: false,
+    fixedSider: true,
+    splitMenus: false,
+    header: true,
+    menu: true,
+    menuHeader: true,
+    footer: true,
+    colorWeak: false,
   })
   const themeConfig = reactive<ThemeConfig>({
     algorithm: antdTheme.defaultAlgorithm,
@@ -70,18 +86,23 @@ export const useAppStore = defineStore('app', () => {
     if (layoutSetting.theme === 'inverted' && layout === 'mix')
       layoutSetting.theme = 'light'
 
+    if (layout !== 'mix')
+      layoutSetting.splitMenus = false
+
     layoutSetting.layout = layout
   }
 
-  const changeSettingLayout = (key: keyof LayoutSetting, value: string) => {
+  const changeSettingLayout = (key: keyof LayoutSetting, value: any) => {
     if (key === 'theme')
       toggleTheme(value as ThemeType)
     else if (key === 'colorPrimary')
       toggleColorPrimary(value)
     else if (key === 'layout')
       toggleLayout(value as LayoutType)
-    else if (key === 'contentWidth')
-      layoutSetting.contentWidth = value as ContentWidth
+    else if (key in layoutSetting)
+      (layoutSetting as any)[key] = value
+
+    console.log('dsadas')
   }
 
   return {

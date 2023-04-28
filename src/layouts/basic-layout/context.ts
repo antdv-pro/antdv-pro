@@ -26,6 +26,11 @@ const layoutStateFunc = (props: ProLayoutProps, methods: ProLayoutProviderMethod
     mobileCollapsed.value = !mobileCollapsed.value
   }
 
+  const header = computed(() => props.header)
+  const menu = computed(() => props.menu)
+  const footer = computed(() => props.footer)
+  const menuHeader = computed(() => props.menuHeader)
+
   return {
     logo,
     title,
@@ -42,6 +47,10 @@ const layoutStateFunc = (props: ProLayoutProps, methods: ProLayoutProviderMethod
     mobileCollapsed,
     contentWidth,
     handleMobileCollapsed,
+    header,
+    menu,
+    footer,
+    menuHeader,
     ...methods,
   }
 }

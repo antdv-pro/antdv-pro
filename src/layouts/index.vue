@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { pick } from '@v-c/utils'
 import BasicLayout from './basic-layout/index.vue'
 import SettingDrawer from './components/setting-drawer/index.vue'
 const appStore = useAppStore()
@@ -9,6 +10,7 @@ watch(isPad, (val) => {
   else
     appStore.toggleCollapsed(false)
 })
+const layoutProps = computed(() => pick(appStore.layoutSetting, ['fixedHeader', 'fixedSider', 'splitMenus', 'menuHeader', 'header', 'menu', 'layout', 'footer']))
 </script>
 
 <template>
@@ -16,7 +18,7 @@ watch(isPad, (val) => {
   <BasicLayout
     :collapsed="appStore.layoutSetting.collapsed"
     :theme="appStore.layoutSetting.theme"
-    :layout="appStore.layoutSetting.layout"
+    v-bind="layoutProps"
     :is-mobile="isMobile"
     @update:collapsed="appStore.toggleCollapsed"
   >
@@ -28,9 +30,9 @@ watch(isPad, (val) => {
   <SettingDrawer
     v-model:open="appStore.layoutSetting.drawerVisible"
     :theme="appStore.layoutSetting.theme"
-    :layout="appStore.layoutSetting.layout"
     :color-primary="appStore.layoutSetting.colorPrimary"
-    :content-width="appStore.layoutSetting.contentWidth"
+    :color-weak="appStore.layoutSetting.colorWeak"
+    v-bind="layoutProps"
     @setting-change="appStore.changeSettingLayout"
   />
   <!-- </a-watermark> -->

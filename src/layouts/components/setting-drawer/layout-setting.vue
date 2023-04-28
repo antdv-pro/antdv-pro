@@ -4,6 +4,9 @@ import type { ContentWidth, LayoutType } from '../../basic-layout/typing'
 const props = defineProps<{
   contentWidth?: ContentWidth
   layout?: LayoutType
+  fixedHeader?: boolean
+  fixedSider?: boolean
+  splitMenus?: boolean
 }>()
 
 const emit = defineEmits(['changeSetting'])
@@ -29,7 +32,7 @@ const list = computed(() => ([
   {
     title: '自动分割菜单',
     key: 'splitMenus',
-    disabled: false,
+    disabled: props.layout !== 'mix',
     disabledReason: '',
   },
 ]))
@@ -45,7 +48,7 @@ const handleChangeSetting = (key: string, value: any) => {
         <a-list-item>
           <template #actions>
             <template v-if="item.key === 'contentWidth'">
-              <a-select :value="contentWidth || 'Fluid'" @update:value="(e:string) => handleChangeSetting('contentWidth', e)">
+              <a-select size="small" :disabled="item.disabled" :value="contentWidth || 'Fluid'" @update:value="(e:string) => handleChangeSetting('contentWidth', e)">
                 <a-select-option v-if="layout !== 'side'" value="Fixed">
                   Fixed
                 </a-select-option>
@@ -53,6 +56,15 @@ const handleChangeSetting = (key: string, value: any) => {
                   Fluid
                 </a-select-option>
               </a-select>
+            </template>
+            <template v-if="item.key === 'fixedHeader'">
+              <a-switch size="small" :checked="fixedHeader" :disabled="item.disabled" @update:checked="(e:boolean) => handleChangeSetting('fixedHeader', e)" />
+            </template>
+            <template v-if="item.key === 'fixSiderbar'">
+              <a-switch size="small" :checked="fixedSider" :disabled="item.disabled" @update:checked="(e:boolean) => handleChangeSetting('fixedSider', e)" />
+            </template>
+            <template v-if="item.key === 'splitMenus'">
+              <a-switch size="small" :checked="splitMenus" :disabled="item.disabled" @update:checked="(e:boolean) => handleChangeSetting('splitMenus', e)" />
             </template>
           </template>
           <span :style="{ opacity: item.disabled ? '0.5' : '1' }">

@@ -6,6 +6,8 @@ import Body from './body.vue'
 import BlockCheckbox from './block-checkbox.vue'
 import ThemeColor from './theme-color.vue'
 import LayoutSetting from './layout-setting.vue'
+import RegionalSetting from './regional-setting.vue'
+import OtherSetting from './other-setting.vue'
 const props = withDefaults(defineProps<{
   open?: boolean
   theme?: ThemeType
@@ -13,6 +15,14 @@ const props = withDefaults(defineProps<{
   colorList?: ({ key: string; color: string })[]
   layout?: LayoutType
   contentWidth?: ContentWidth
+  fixedHeader?: boolean
+  fixedSider?: boolean
+  splitMenus?: boolean
+  header?: boolean
+  footer?: boolean
+  menu?: boolean
+  menuHeader?: boolean
+  colorWeak?: boolean
 }>(), {
   theme: 'light',
   colorList: () => [
@@ -104,7 +114,32 @@ const { theme } = useConfigContextInject()
           <BlockCheckbox theme="mix" :checked="layout === 'mix'" :is-dark="props.theme === 'dark'" @click="changeLayout('mix')" />
         </div>
       </Body>
-      <LayoutSetting :layout="layout" :content-width="contentWidth" @change-setting="changeSettingLayout" />
+      <LayoutSetting
+        :layout="layout"
+        :content-width="contentWidth"
+        :fixed-header="fixedHeader"
+        :fixed-sider="fixedSider"
+        :split-menus="splitMenus"
+        @change-setting="changeSettingLayout"
+      />
+      <a-divider />
+      <Body title="内容区域">
+        <RegionalSetting
+          :layout="layout"
+          :header="header"
+          :menu-header="menuHeader"
+          :footer="footer"
+          :menu="menu"
+          @change-setting="changeSettingLayout"
+        />
+      </Body>
+      <a-divider />
+      <Body title="其他设置">
+        <OtherSetting
+          :color-weak="colorWeak"
+          @change-setting="changeSettingLayout"
+        />
+      </Body>
     </div>
   </a-drawer>
 </template>
