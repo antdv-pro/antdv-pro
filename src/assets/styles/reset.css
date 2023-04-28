@@ -2,14 +2,14 @@ html {
   --text-color: rgba(0,0,0,.85);
   --bg-color: #fff;
   --hover-color:rgba(0,0,0,.025);
-  --bg-color-container: #fff;
+  --bg-color-container: #f0f2f5;
 }
 
 html.dark{
   --text-color: rgba(229, 224, 216, 0.85);
   --bg-color: rgb(36, 37, 37);
   --hover-color:rgb(42, 44, 55);
-  --bg-color-container: rgb(36, 37, 37);
+  --bg-color-container: rgb(42, 44, 44);
 }
 
 body{
