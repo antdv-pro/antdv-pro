@@ -16,6 +16,8 @@ export type LayoutType = 'mix' | 'side' | 'top'
 
 export type ThemeType = 'light' | 'dark' | 'inverted'
 
+export type ContentWidth = 'Fluid' | 'Fixed'
+
 export const proLayoutProps = {
   layout: stringType<LayoutType>('mix'),
   logo: stringType('https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg'),
@@ -30,6 +32,7 @@ export const proLayoutProps = {
   theme: stringType<ThemeType>('light'),
   onCollapsed: eventType<(collapsed: boolean) => void>(),
   isMobile: booleanType(),
+  contentWidth: stringType<'ContentWidth'>(),
 }
 
 export type ProLayoutProps = Partial<ExtractPropTypes<typeof proLayoutProps>>

@@ -1,16 +1,18 @@
 <script setup lang="ts">
 import { CloseOutlined, SettingOutlined } from '@ant-design/icons-vue'
 import { useConfigContextInject } from 'ant-design-vue/es/config-provider/context'
-import type { LayoutType, ThemeType } from '../../basic-layout/typing'
+import type { ContentWidth, LayoutType, ThemeType } from '../../basic-layout/typing'
 import Body from './body.vue'
 import BlockCheckbox from './block-checkbox.vue'
 import ThemeColor from './theme-color.vue'
+import LayoutSetting from './layout-setting.vue'
 const props = withDefaults(defineProps<{
   open?: boolean
   theme?: ThemeType
   colorPrimary?: string
   colorList?: ({ key: string; color: string })[]
   layout?: LayoutType
+  contentWidth?: ContentWidth
 }>(), {
   theme: 'light',
   colorList: () => [
@@ -41,6 +43,9 @@ const changeColor = (color: string) => {
 
 const changeLayout = (layout: string) => {
   emit('settingChange', 'layout', layout)
+}
+const changeSettingLayout = (key: string, value: any) => {
+  emit('settingChange', key, value)
 }
 const { theme } = useConfigContextInject()
 </script>
@@ -99,6 +104,7 @@ const { theme } = useConfigContextInject()
           <BlockCheckbox theme="mix" :checked="layout === 'mix'" :is-dark="props.theme === 'dark'" @click="changeLayout('mix')" />
         </div>
       </Body>
+      <LayoutSetting :layout="layout" :content-width="contentWidth" @change-setting="changeSettingLayout" />
     </div>
   </a-drawer>
 </template>

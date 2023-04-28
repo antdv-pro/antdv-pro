@@ -1,6 +1,6 @@
 import type { ThemeConfig } from 'ant-design-vue/es/config-provider/context'
 import { theme as antdTheme } from 'ant-design-vue/es'
-import type { LayoutType, ThemeType } from '~@/layouts/basic-layout/typing'
+import type { ContentWidth, LayoutType, ThemeType } from '~@/layouts/basic-layout/typing'
 
 export interface LayoutSetting {
   theme: ThemeType
@@ -8,6 +8,7 @@ export interface LayoutSetting {
   drawerVisible: boolean
   colorPrimary?: string
   layout?: LayoutType
+  contentWidth?: ContentWidth
 }
 
 export const useAppStore = defineStore('app', () => {
@@ -17,6 +18,7 @@ export const useAppStore = defineStore('app', () => {
     drawerVisible: false,
     colorPrimary: '#1677FF',
     layout: 'mix',
+    contentWidth: 'Fluid',
   })
   const themeConfig = reactive<ThemeConfig>({
     algorithm: antdTheme.defaultAlgorithm,
@@ -78,6 +80,8 @@ export const useAppStore = defineStore('app', () => {
       toggleColorPrimary(value)
     else if (key === 'layout')
       toggleLayout(value as LayoutType)
+    else if (key === 'contentWidth')
+      layoutSetting.contentWidth = value as ContentWidth
   }
 
   return {

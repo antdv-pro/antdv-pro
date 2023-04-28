@@ -16,6 +16,7 @@ const layoutStateFunc = (props: ProLayoutProps, methods: ProLayoutProviderMethod
   const collapsed = computed(() => props.collapsed)
   const theme = computed(() => props.theme)
   const headerHeight = computed(() => props.headerHeight)
+  const contentWidth = computed(() => props.collapsedWidth)
   /**
    * 移动端的处理方式
    */
@@ -39,6 +40,7 @@ const layoutStateFunc = (props: ProLayoutProps, methods: ProLayoutProviderMethod
     theme,
     isMobile,
     mobileCollapsed,
+    contentWidth,
     handleMobileCollapsed,
     ...methods,
   }

@@ -30,6 +30,7 @@ watch(isPad, (val) => {
     :theme="appStore.layoutSetting.theme"
     :layout="appStore.layoutSetting.layout"
     :color-primary="appStore.layoutSetting.colorPrimary"
+    :content-width="appStore.layoutSetting.contentWidth"
     @setting-change="appStore.changeSettingLayout"
   />
   <!-- </a-watermark> -->
