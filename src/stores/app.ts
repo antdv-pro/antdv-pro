@@ -101,8 +101,6 @@ export const useAppStore = defineStore('app', () => {
       toggleLayout(value as LayoutType)
     else if (key in layoutSetting)
       (layoutSetting as any)[key] = value
-
-    console.log('dsadas')
   }
 
   return {
