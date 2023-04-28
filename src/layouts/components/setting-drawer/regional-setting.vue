@@ -7,7 +7,6 @@ const props = defineProps<{
   footer?: boolean
   menu?: boolean
   menuHeader?: boolean
-
 }>()
 
 const emit = defineEmits(['changeSetting'])
@@ -33,7 +32,7 @@ const list = computed(() => ([
   {
     title: '菜单头',
     key: 'menuHeader',
-    disabled: props.layout !== 'mix',
+    disabled: false,
     disabledReason: '',
   },
 ]))

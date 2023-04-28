@@ -26,24 +26,28 @@ useLayoutProvider(props, {
 <template>
   <div class="ant-pro-basicLayout" :data-theme="theme">
     <a-layout>
-      <SiderMenu v-if="layout !== 'top' && !isMobile" />
+      <template v-if="menu">
+        <SiderMenu v-if="layout !== 'top' && !isMobile" />
+      </template>
       <a-layout>
-        <Header>
-          <template v-if="$slots.headerActions" #headerActions>
-            <slot name="headerActions" />
-          </template>
-          <template v-if="$slots.headerContent || layout === 'top'" #headerContent>
-            <slot name="headerContent">
-              <Menu v-if="!isMobile" />
-            </slot>
-          </template>
-        </Header>
+        <template v-if="header">
+          <Header>
+            <template v-if="$slots.headerActions" #headerActions>
+              <slot name="headerActions" />
+            </template>
+            <template v-if="$slots.headerContent || layout === 'top'" #headerContent>
+              <slot name="headerContent">
+                <Menu v-if="!isMobile" />
+              </slot>
+            </template>
+          </Header>
+        </template>
         <a-layout-content>
           <slot />
         </a-layout-content>
       </a-layout>
     </a-layout>
-    <DrawerMenu />
+    <DrawerMenu v-if="menu" />
   </div>
 </template>
 
