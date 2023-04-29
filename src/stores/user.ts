@@ -1,7 +1,10 @@
+import type { MenuData } from '~@/layouts/basic-layout/typing'
 import dynamicRoutes, { rootRoute } from '~@/router/dynamic-routes'
+import { genRoutes } from '~@/router/generate-route'
 
 export const useUserStore = defineStore('user', () => {
   const routerData = shallowRef()
+  const menuData = shallowRef<MenuData>([])
   const userInfo = reactive({
     avatar: 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png',
     username: 'admin',
@@ -16,6 +19,7 @@ export const useUserStore = defineStore('user', () => {
       ...rootRoute,
       children: dynamicRoutes,
     }
+    menuData.value = genRoutes(dynamicRoutes)
     return currentRoute
   }
 
@@ -27,6 +31,7 @@ export const useUserStore = defineStore('user', () => {
 
   return {
     routerData,
+    menuData,
     generateDynamicRoutes,
     avatar,
     nickname,

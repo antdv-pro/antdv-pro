@@ -4,12 +4,24 @@ import { arrayType, booleanType, eventType, numberType, stringType } from '@v-c/
 export type MenuData = MenuDataItem[]
 
 export interface MenuDataItem {
+  // 标题
   title: string | (() => VNodeChild)
-  icon?: string
+  // 图标
+  icon?: string | (() => VNodeChild)
+  // 地址
   path: string
+  // 子集菜单
   children?: MenuDataItem[]
+  // 是否隐藏当前菜单
   hideInMenu?: boolean
+  // 如果使用了隐藏，那么点击当前菜单的时候，可以使用父级的key
   parentKeys?: string[]
+  // 是否套用iframe
+  isIframe?: boolean
+  // 是否存在面包屑
+  hideInBreadcrumb?: boolean
+  // 是否保活
+  keepAlive?: boolean
 }
 
 export type LayoutType = 'mix' | 'side' | 'top'

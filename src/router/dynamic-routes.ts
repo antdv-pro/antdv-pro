@@ -16,6 +16,7 @@ export default [
     name: 'Dashboard',
     meta: {
       title: '仪表盘',
+      icon: 'DashboardOutlined',
     },
     children: [
       {
@@ -34,6 +35,7 @@ export default [
     name: 'Form',
     meta: {
       title: '表单页',
+      icon: 'FormOutlined',
     },
     children: [
       {
@@ -52,6 +54,7 @@ export default [
     name: 'Menu',
     meta: {
       title: '菜单',
+      icon: 'BarsOutlined',
     },
     children: [
       {

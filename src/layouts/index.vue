@@ -3,6 +3,7 @@ import { pick } from '@v-c/utils'
 import BasicLayout from './basic-layout/index.vue'
 import SettingDrawer from './components/setting-drawer/index.vue'
 const appStore = useAppStore()
+const userStore = useUserStore()
 const { isMobile, isPad } = useQueryBreakpoints()
 watch(isPad, (val) => {
   if (val)
@@ -18,6 +19,7 @@ const layoutProps = computed(() => pick(appStore.layoutSetting, ['fixedHeader', 
   <BasicLayout
     :collapsed="appStore.layoutSetting.collapsed"
     :theme="appStore.layoutSetting.theme"
+    :menu-data="userStore.menuData"
     v-bind="layoutProps"
     :is-mobile="isMobile"
     @update:collapsed="appStore.toggleCollapsed"
