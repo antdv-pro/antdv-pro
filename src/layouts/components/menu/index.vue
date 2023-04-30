@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons-vue'
 import { useLayoutState } from '../../basic-layout/context'
+import SubMenu from './sub-menu.vue'
 
-const { theme, collapsed, layout, isMobile } = useLayoutState()
+const { theme, collapsed, layout, isMobile, menuData } = useLayoutState()
 const selectedKeys = ref<string[]>([])
 const menuTheme = computed(() => {
-  if (layout.value === 'side' && theme.value === 'inverted')
+  if (theme.value === 'inverted')
     return 'dark'
 
-  if (layout.value === 'mix' && theme.value === 'light')
-    return 'light'
+  // if (layout.value === 'mix' && theme.value === 'light')
+  //   return 'light'
 
-  if (layout.value === 'top' && theme.value === 'dark')
-    return 'light'
+  // if (layout.value === 'top' && theme.value === 'dark')
+  //   return 'light'
 
   return theme.value
 })
@@ -26,17 +26,8 @@ const menuTheme = computed(() => {
     :collapsed="collapsed"
     class="ant-pro-sider-menu"
   >
-    <a-menu-item key="1">
-      <UserOutlined />
-      <span>nav 1</span>
-    </a-menu-item>
-    <a-menu-item key="2">
-      <VideoCameraOutlined />
-      <span>nav 2</span>
-    </a-menu-item>
-    <a-menu-item key="3">
-      <UploadOutlined />
-      <span>nav 3</span>
-    </a-menu-item>
+    <template v-for="item in menuData" :key="item.path">
+      <SubMenu :item="item" />
+    </template>
   </a-menu>
 </template>

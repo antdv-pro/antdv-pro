@@ -58,7 +58,7 @@ export default [
     },
     children: [
       {
-        path: '/menu/menu11',
+        path: '/menu/menu1',
         name: 'MenuMenu11',
         component: () => import('~/pages/menu/menu1.vue'),
         meta: {
@@ -66,7 +66,7 @@ export default [
         },
       },
       {
-        path: '/menu/menu12',
+        path: '/menu/menu2',
         name: 'MenuMenu12',
         component: () => import('~/pages/menu/menu2.vue'),
         meta: {
@@ -74,25 +74,25 @@ export default [
         },
       },
       {
-        path: '/menu/menu1-1',
-        redirect: '/menu/menu1-1/menu1',
+        path: '/menu/menu3',
+        redirect: '/menu/menu3/menu1',
         name: 'MenuMenu1-1',
         meta: {
           title: '菜单1-1',
         },
         children: [
           {
-            path: '/menu/menu11',
-            name: 'MenuMenu11',
-            component: () => import('~/pages/menu/menu-1/menu-1-1/menu1.vue'),
+            path: '/menu/menu3/menu1',
+            name: 'MenuMenu111',
+            component: () => import('~/pages/menu/menu-1-1/menu1.vue'),
             meta: {
               title: '菜单1-1-1',
             },
           },
           {
-            path: '/menu/menu12',
-            name: 'MenuMenu12',
-            component: () => import('~/pages/menu/menu-1/menu-1-1/menu2.vue'),
+            path: '/menu/menu3/menu2',
+            name: 'MenuMenu112',
+            component: () => import('~/pages/menu/menu-1-1/menu2.vue'),
             meta: {
               title: '菜单1-1-2',
             },

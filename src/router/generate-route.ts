@@ -21,6 +21,7 @@ export const genRoutes = (routes: RouteRecordRaw[]) => {
     }
     if (route.children && route.children.length)
       item.children = genRoutes(route.children)
+    if (item.children?.length === 0) delete item.children
     menuData.push(item)
   })
   return menuData

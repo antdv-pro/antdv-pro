@@ -52,6 +52,9 @@ export const useAppStore = defineStore('app', () => {
     if (theme === 'light' || theme === 'inverted') {
       if (themeConfig.token)
         themeConfig.token.colorBgContainer = '#fff'
+      if (themeConfig.components?.Menu)
+        delete themeConfig.components.Menu
+
       themeConfig.algorithm = antdTheme.defaultAlgorithm
 
       toggleDark(false)
@@ -60,6 +63,16 @@ export const useAppStore = defineStore('app', () => {
       toggleDark(true)
       if (themeConfig.token)
         themeConfig.token.colorBgContainer = 'rgb(36, 37, 37)'
+      if (themeConfig.components) {
+        themeConfig.components = {
+          ...themeConfig.components,
+          Menu: {
+            colorItemBg: 'rgb(36, 37, 37)',
+            colorSubItemBg: 'rgb(36, 37, 37)',
+            menuSubMenuBg: 'rgb(36, 37, 37)',
+          } as any,
+        }
+      }
       themeConfig.algorithm = antdTheme.darkAlgorithm
     }
   }
