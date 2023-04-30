@@ -7,13 +7,6 @@ const selectedKeys = ref<string[]>([])
 const menuTheme = computed(() => {
   if (theme.value === 'inverted')
     return 'dark'
-
-  // if (layout.value === 'mix' && theme.value === 'light')
-  //   return 'light'
-
-  // if (layout.value === 'top' && theme.value === 'dark')
-  //   return 'light'
-
   return theme.value
 })
 </script>
