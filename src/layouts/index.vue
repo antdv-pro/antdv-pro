@@ -4,6 +4,8 @@ import BasicLayout from './basic-layout/index.vue'
 import SettingDrawer from './components/setting-drawer/index.vue'
 const appStore = useAppStore()
 const userStore = useUserStore()
+const layoutMenu = useLayoutMenu()
+const { selectedKeys, openKeys } = storeToRefs(layoutMenu)
 const { isMobile, isPad } = useQueryBreakpoints()
 watch(isPad, (val) => {
   if (val)
@@ -15,19 +17,24 @@ const layoutProps = computed(() => pick(appStore.layoutSetting, ['fixedHeader', 
 </script>
 
 <template>
-  <!-- <a-watermark class="h-100%" content="Antdv Admin Pro"> -->
   <BasicLayout
     :collapsed="appStore.layoutSetting.collapsed"
     :theme="appStore.layoutSetting.theme"
     :menu-data="userStore.menuData"
     v-bind="layoutProps"
+    :selected-keys="selectedKeys"
+    :open-keys="openKeys"
     :is-mobile="isMobile"
+    @update:open-keys="layoutMenu.handleOpenKeys"
+    @update:selected-keys="layoutMenu.handleSelectedKeys"
     @update:collapsed="appStore.toggleCollapsed"
   >
     <template #headerActions>
       <UserAvatar />
     </template>
-    <RouterView />
+    <a-watermark class="h-100%" content="Antdv Admin Pro">
+      <RouterView />
+    </a-watermark>
   </BasicLayout>
   <SettingDrawer
     v-model:open="appStore.layoutSetting.drawerVisible"
@@ -37,7 +44,6 @@ const layoutProps = computed(() => pick(appStore.layoutSetting, ['fixedHeader', 
     v-bind="layoutProps"
     @setting-change="appStore.changeSettingLayout"
   />
-  <!-- </a-watermark> -->
 </template>
 
 <style scoped>

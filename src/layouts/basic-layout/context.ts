@@ -1,4 +1,5 @@
-import type { ProLayoutProps } from './typing'
+import { runEvent } from '@v-c/utils'
+import type { MenuSelectEvent, ProLayoutProps } from './typing'
 
 export interface ProLayoutProviderMethods {
   handleCollapsed?: (collapsed: boolean) => void
@@ -31,6 +32,22 @@ const layoutStateFunc = (props: ProLayoutProps, methods: ProLayoutProviderMethod
   const footer = computed(() => props.footer)
   const menuHeader = computed(() => props.menuHeader)
 
+  /**
+   * 菜单选中处理
+   */
+  const openKeys = computed(() => props.openKeys)
+  const selectedKeys = computed(() => props.selectedKeys)
+  const handleOpenKeys = (val: string[]) => {
+    runEvent(props['onUpdate:OpenKeys'], val)
+  }
+
+  const handleSelectedKeys = (val: string[]) => {
+    runEvent(props['onUpdate:selectedKeys'], val)
+  }
+
+  const handleMenuSelect = (data: MenuSelectEvent) => {
+    runEvent(props.onMenuSelect, data)
+  }
   return {
     logo,
     title,
@@ -50,6 +67,11 @@ const layoutStateFunc = (props: ProLayoutProps, methods: ProLayoutProviderMethod
     header,
     menu,
     footer,
+    openKeys,
+    handleOpenKeys,
+    selectedKeys,
+    handleSelectedKeys,
+    handleMenuSelect,
     menuHeader,
     ...methods,
   }

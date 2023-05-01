@@ -49,7 +49,7 @@ const handleChangeSetting = (key: string, value: any) => {
           <template #actions>
             <template v-if="item.key === 'contentWidth'">
               <a-select size="small" :disabled="item.disabled" :value="contentWidth || 'Fluid'" @update:value="(e:string) => handleChangeSetting('contentWidth', e)">
-                <a-select-option v-if="layout !== 'side'" value="Fixed">
+                <a-select-option v-if="layout === 'top'" value="Fixed">
                   Fixed
                 </a-select-option>
                 <a-select-option value="Fluid">

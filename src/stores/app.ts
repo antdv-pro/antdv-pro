@@ -22,7 +22,7 @@ export interface LayoutSetting {
 export const useAppStore = defineStore('app', () => {
   const layoutSetting = reactive<LayoutSetting>({
     theme: 'light',
-    collapsed: true,
+    collapsed: false,
     drawerVisible: false,
     colorPrimary: '#1677FF',
     layout: 'mix',

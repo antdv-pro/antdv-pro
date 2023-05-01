@@ -8,6 +8,7 @@ declare module 'vue-router'{
     parentKeys?: string[]
     isIframe?: boolean
     hideInBreadcrumb?: boolean
+    hideChildrenInMenu?: boolean
     keepAlive?: boolean
     target?: '_blank' | '_self' | '_parent'
   }

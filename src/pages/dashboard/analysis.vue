@@ -1,10 +1,20 @@
 <script setup lang="ts">
+import { notification } from 'ant-design-vue/es'
+const openNotification = () => {
+  notification.info({
+    message: '测试',
+    description: '测试的内容',
+    placement: 'topLeft',
+    duration: 0,
+  })
+}
 </script>
 
 <template>
   <div p-2>
-    <!-- <div h-500px bg-red class="w-100%" /> -->
-    <!-- <div h-500px bg-green class="w-100%" /> -->
     Analysis
+    <a-button @click="openNotification">
+      notification
+    </a-button>
   </div>
 </template>
