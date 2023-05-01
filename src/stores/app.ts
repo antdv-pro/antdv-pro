@@ -1,8 +1,11 @@
 import type { ThemeConfig } from 'ant-design-vue/es/config-provider/context'
 import { theme as antdTheme } from 'ant-design-vue/es'
 import type { ContentWidth, LayoutType, ThemeType } from '~@/layouts/basic-layout/typing'
+import defaultSetting from '~@/config/default-setting'
 
 export interface LayoutSetting {
+  title?: string
+  logo?: string
   theme: ThemeType
   collapsed: boolean
   drawerVisible: boolean
@@ -20,22 +23,7 @@ export interface LayoutSetting {
 }
 
 export const useAppStore = defineStore('app', () => {
-  const layoutSetting = reactive<LayoutSetting>({
-    theme: 'light',
-    collapsed: false,
-    drawerVisible: false,
-    colorPrimary: '#1677FF',
-    layout: 'mix',
-    contentWidth: 'Fluid',
-    fixedHeader: false,
-    fixedSider: true,
-    splitMenus: false,
-    header: true,
-    menu: true,
-    menuHeader: true,
-    footer: true,
-    colorWeak: false,
-  })
+  const layoutSetting = reactive<LayoutSetting>(defaultSetting)
   const themeConfig = reactive<ThemeConfig>({
     algorithm: antdTheme.defaultAlgorithm,
     token: {

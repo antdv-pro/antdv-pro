@@ -25,6 +25,8 @@ const layoutProps = computed(() => pick(appStore.layoutSetting, ['fixedHeader', 
     :selected-keys="selectedKeys"
     :open-keys="openKeys"
     :is-mobile="isMobile"
+    :logo="appStore.layoutSetting.logo"
+    :title="appStore.layoutSetting.title"
     @update:open-keys="layoutMenu.handleOpenKeys"
     @update:selected-keys="layoutMenu.handleSelectedKeys"
     @update:collapsed="appStore.toggleCollapsed"

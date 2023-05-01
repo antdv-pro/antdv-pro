@@ -48,8 +48,8 @@ const proLayoutEvents = {
 
 export const proLayoutProps = {
   layout: stringType<LayoutType>('mix'),
-  logo: stringType('https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg'),
-  title: stringType('Antdv Admin Pro'),
+  logo: stringType(),
+  title: stringType(),
   collapsedWidth: numberType(48),
   siderWidth: numberType(234),
   headerHeight: numberType(48),
