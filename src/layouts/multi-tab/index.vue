@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import type { CSSProperties } from 'vue'
 import { CloseOutlined, ReloadOutlined } from '@ant-design/icons-vue'
-
-const { list, activeKey } = storeToRefs(useMultiTab())
+const multiTabStore = useMultiTab()
+const { list, activeKey } = storeToRefs(multiTabStore)
 const { layoutSetting } = storeToRefs(useAppStore())
 const tabStyle = computed<CSSProperties>(() => {
   const style: CSSProperties = {}
@@ -21,20 +21,21 @@ const { height } = useElementSize(tabsRef)
   <div v-if="layoutSetting.multiTabFixed" :style="{ height: `${height + 10}px` }" />
   <a-tabs
     ref="tabsRef"
-    v-model:activeKey="activeKey"
+    :active-key="activeKey"
     :style="tabStyle"
     class="bg-white dark:bg-#242525 w-100%"
     pt-10px
     type="card"
     :tab-bar-gutter="5"
+    @update:active-key="multiTabStore.switchTab"
   >
     <a-tab-pane v-for="item in list" :key="item.fullPath">
       <template #tab>
         {{ item.title }}
-        <button class="ant-tabs-tab-remove" style="margin: 0;">
+        <button class="ant-tabs-tab-remove" style="margin: 0;" @click="multiTabStore.refresh(item.fullPath)">
           <ReloadOutlined :spin="item.loading" />
         </button>
-        <button v-if="!item.affix && list.length > 1" class="ant-tabs-tab-remove" style="margin: 0;">
+        <button v-if="!item.affix && list.length > 1" class="ant-tabs-tab-remove" style="margin: 0;" @click="multiTabStore.close(item.fullPath)">
           <CloseOutlined />
         </button>
       </template>

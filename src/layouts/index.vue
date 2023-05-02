@@ -25,7 +25,7 @@ const layoutProps = computed(() => pick(appStore.layoutSetting, ['fixedHeader', 
     :menu-data="userStore.menuData"
     v-bind="layoutProps"
     :selected-keys="selectedKeys"
-    :open-keys="openKeys"
+    :open-keys=" layoutSetting.layout === 'top' ? [] : openKeys"
     :is-mobile="isMobile"
     :logo="layoutSetting.logo"
     :title="layoutSetting.title"

@@ -41,7 +41,7 @@ export type ContentWidth = 'Fluid' | 'Fixed'
 export interface MenuSelectEvent { item: any; key: string; selectedKeys: string[] }
 
 const proLayoutEvents = {
-  'onUpdate:OpenKeys': eventType<(val: string[]) => void>(),
+  'onUpdate:openKeys': eventType<(val: string[]) => void>(),
   'onUpdate:selectedKeys': eventType<(val: string[]) => void>(),
   'onMenuSelect': eventType<(data: MenuSelectEvent) => void>(),
 }

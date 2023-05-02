@@ -38,7 +38,7 @@ const layoutStateFunc = (props: ProLayoutProps, methods: ProLayoutProviderMethod
   const openKeys = computed(() => props.openKeys)
   const selectedKeys = computed(() => props.selectedKeys)
   const handleOpenKeys = (val: string[]) => {
-    runEvent(props['onUpdate:OpenKeys'], val)
+    runEvent(props['onUpdate:openKeys'], val)
   }
 
   const handleSelectedKeys = (val: string[]) => {

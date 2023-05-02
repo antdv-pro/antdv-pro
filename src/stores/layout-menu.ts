@@ -1,4 +1,5 @@
 import type { MenuData, MenuDataItem } from '~@/layouts/basic-layout/typing'
+import router from '~@/router'
 
 const toMapMenuData = (menuData: MenuData, menuDataMap: Map<string, MenuDataItem>, matched: MenuDataItem[] = []) => {
   menuData.forEach((v) => {
@@ -10,16 +11,14 @@ const toMapMenuData = (menuData: MenuData, menuDataMap: Map<string, MenuDataItem
 
 export const useLayoutMenu = defineStore('layout-menu', () => {
   const useStore = useUserStore()
-  const appStore = useAppStore()
   const menuDataMap = reactive(new Map<string, MenuDataItem>())
-  const route = useRoute()
   const selectedKeys = ref<string[]>([])
   const openKeys = ref<string[]>([])
-  const proxyOpenKeys = shallowRef<string[]>()
   const changeMenu = () => {
+    const route = router.currentRoute.value
     if (menuDataMap.has(route.path)) {
       const menu = menuDataMap.get(route.path)
-      openKeys.value = []
+      // openKeys.value = []
       selectedKeys.value = []
       if (menu) {
         if (menu.parentKeys && menu.parentKeys.length)
@@ -28,8 +27,10 @@ export const useLayoutMenu = defineStore('layout-menu', () => {
           selectedKeys.value = [menu.path]
       }
       // 设置openkeys
-      if (menu?.matched)
-        openKeys.value = menu.matched.map(v => v.path)
+      if (menu?.matched) {
+        const newOpenKeys = menu.matched.map(v => v.path)
+        openKeys.value = [...new Set([...openKeys.value, ...newOpenKeys])]
+      }
     }
   }
   watch(() => useStore.menuData, (val) => {
@@ -45,13 +46,15 @@ export const useLayoutMenu = defineStore('layout-menu', () => {
     openKeys.value = val
   }
 
-  watch(() => appStore.layoutSetting.layout, (layout) => {
-    proxyOpenKeys.value = layout === 'top' ? [] : openKeys.value
-  }, { immediate: true, flush: 'post' })
+  watch(router.currentRoute, (route) => {
+    // 路由发生变化
+    if (route.path === selectedKeys.value[0]) return
+    changeMenu()
+  })
 
   return {
     selectedKeys,
-    openKeys: proxyOpenKeys,
+    openKeys,
     handleSelectedKeys,
     handleOpenKeys,
     changeMenu,
