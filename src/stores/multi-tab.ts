@@ -23,8 +23,13 @@ export const useMultiTab = defineStore('multi-tab', () => {
     if (route.path.startsWith('/redirect')) return
     // 设置当前的loading为false
     if (refreshItem.value) {
-      refreshItem.value.loading = false
-      refreshItem.value = null
+      // 增加一个取消的延迟
+      setTimeout(() => {
+        if (refreshItem.value) {
+          refreshItem.value.loading = false
+          refreshItem.value = null
+        }
+      }, 800)
     }
     if (list.value.some(item => item.fullPath === route.fullPath)) return
     const item: MultiTabItem = {
