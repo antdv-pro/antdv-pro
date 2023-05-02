@@ -71,6 +71,14 @@ export default [
           title: 'AntDesign',
           url: 'https://ant.design/',
         },
+      }, {
+        path: '/link/antdv',
+        name: 'LinkAntdv',
+        component: basicRouteMap.Iframe,
+        meta: {
+          title: 'AntDesignVue',
+          url: 'https://antdv.com/',
+        },
       },
       {
         path: 'https://www.baidu.com',

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const route = useRoute()
-const url = route?.meta?.url
+const url = computed(() => route?.meta?.url)
 </script>
 
 <template>
