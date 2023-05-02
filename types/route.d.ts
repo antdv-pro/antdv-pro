@@ -11,5 +11,6 @@ declare module 'vue-router'{
     hideChildrenInMenu?: boolean
     keepAlive?: boolean
     target?: '_blank' | '_self' | '_parent'
+    affix?: boolean
   }
 }

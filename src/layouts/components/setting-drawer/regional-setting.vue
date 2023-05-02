@@ -7,6 +7,8 @@ const props = defineProps<{
   footer?: boolean
   menu?: boolean
   menuHeader?: boolean
+  multiTab?: boolean
+  multiTabFixed?: boolean
 }>()
 
 const emit = defineEmits(['changeSetting'])
@@ -34,6 +36,18 @@ const list = computed(() => ([
     key: 'menuHeader',
     disabled: false,
     disabledReason: '',
+  },
+  {
+    title: '多页签',
+    key: 'multiTab',
+    disabled: false,
+    disabledReason: '',
+  },
+  {
+    title: '固定多页签',
+    key: 'multiTabFixed',
+    disabled: false,
+    disabledReason: '多页签开启后功能正常使用',
   },
 ]))
 const handleChangeSetting = (key: string, value: any) => {

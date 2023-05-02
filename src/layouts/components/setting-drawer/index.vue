@@ -23,6 +23,8 @@ const props = withDefaults(defineProps<{
   menu?: boolean
   menuHeader?: boolean
   colorWeak?: boolean
+  multiTab?: boolean
+  multiTabFixed?: boolean
 }>(), {
   theme: 'light',
   colorList: () => [
@@ -129,6 +131,8 @@ const { theme } = useConfigContextInject()
           :header="header"
           :menu-header="menuHeader"
           :footer="footer"
+          :multi-tab="multiTab"
+          :multi-tab-fixed="multiTabFixed"
           :menu="menu"
           @change-setting="changeSettingLayout"
         />

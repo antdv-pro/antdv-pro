@@ -30,6 +30,8 @@ declare module '@vue/runtime-core' {
     ASpace: typeof import('ant-design-vue/es')['Space']
     ASubMenu: typeof import('ant-design-vue/es')['SubMenu']
     ASwitch: typeof import('ant-design-vue/es')['Switch']
+    ATabPane: typeof import('ant-design-vue/es')['TabPane']
+    ATabs: typeof import('ant-design-vue/es')['Tabs']
     ATooltip: typeof import('ant-design-vue/es')['Tooltip']
     AWatermark: typeof import('ant-design-vue/es')['Watermark']
     HelloWorld: typeof import('./../src/components/HelloWorld.vue')['default']

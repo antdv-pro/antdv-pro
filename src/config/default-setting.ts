@@ -17,4 +17,7 @@ export default {
   menuHeader: true,
   footer: true,
   colorWeak: false,
+  multiTab: true,
+  multiTabFixed: true,
+  headerHeight: 48,
 } as LayoutSetting
