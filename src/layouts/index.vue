@@ -47,7 +47,7 @@ const layoutProps = computed(() => pick(appStore.layoutSetting, ['fixedHeader', 
     <a-watermark class="h-100%" content="Antdv Admin Pro">
       <RouterView>
         <template #default="{ Component }">
-          <Transition name="fade-slide" appear>
+          <Transition name="fade" appear>
             <component :is="Component" />
           </Transition>
         </template>
