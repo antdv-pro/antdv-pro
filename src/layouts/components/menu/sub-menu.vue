@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { isUrl } from '@v-c/utils'
 import AsyncIcon from './async-icon.vue'
 import type { MenuDataItem } from '~@/layouts/basic-layout/typing'
 defineProps<{ item: MenuDataItem }>()
@@ -23,9 +24,16 @@ defineProps<{ item: MenuDataItem }>()
               <template v-if="menu.icon" #icon>
                 <AsyncIcon :icon="menu.icon" />
               </template>
-              <RouterLink :to="menu.path">
-                {{ menu.title }}
-              </RouterLink>
+              <template v-if="!isUrl(menu.path)">
+                <RouterLink :to="menu.path">
+                  {{ menu.title }}
+                </RouterLink>
+              </template>
+              <template v-else>
+                <a :href="menu.path" :target="menu.target ?? '_blank'">
+                  {{ menu.title }}
+                </a>
+              </template>
             </a-menu-item>
           </template>
         </template>
@@ -37,7 +45,16 @@ defineProps<{ item: MenuDataItem }>()
       <template v-if="item.icon" #icon>
         <AsyncIcon :icon="item.icon" />
       </template>
-      {{ item.title }}
+      <template v-if="!isUrl(item.path)">
+        <RouterLink :to="item.path">
+          {{ item.title }}
+        </RouterLink>
+      </template>
+      <template v-else>
+        <a :href="item.path" :target="item.target ?? '_blank'">
+          {{ item.title }}
+        </a>
+      </template>
     </a-menu-item>
   </template>
 </template>

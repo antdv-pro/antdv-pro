@@ -1,6 +1,12 @@
 import type { RouteRecordRaw } from 'vue-router'
 export const ROOT_ROUTE_REDIRECT_PATH = '/dashboard'
 const Layout = () => import('~/layouts/index.vue')
+const basicRouteMap = {
+  // iframe模式下使用
+  Iframe: () => import('~/pages/common/iframe.vue'),
+  // 一般用于存在子集的页面
+  RouterView: () => import('~/pages/common/view-route.vue'),
+}
 export const rootRoute: RouteRecordRaw = {
   path: '/',
   name: 'rootPath',
@@ -44,6 +50,34 @@ export default [
         component: () => import('~/pages/form/basic.vue'),
         meta: {
           title: '基础表单',
+        },
+      },
+    ],
+  },
+  {
+    path: '/link',
+    redirect: '/link/iframe',
+    name: 'Link',
+    meta: {
+      title: '链接',
+      icon: 'LinkOutlined',
+    },
+    children: [
+      {
+        path: '/link/iframe',
+        name: 'LinkIframe',
+        component: basicRouteMap.Iframe,
+        meta: {
+          title: 'AntDesign',
+          url: 'https://ant.design/',
+        },
+      },
+      {
+        path: 'https://www.baidu.com',
+        name: 'LinkExternal',
+        meta: {
+          title: '跳转百度',
+          // target: '_self',
         },
       },
     ],

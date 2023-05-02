@@ -20,6 +20,8 @@ export interface MenuDataItem {
   parentKeys?: string[]
   // 是否套用iframe
   isIframe?: boolean
+  // 如果当前是iframe的模式，需要有一个跳转的url支撑，其不能和path重复，path还是为路由
+  url?: string
   // 是否存在面包屑
   hideInBreadcrumb?: boolean
   // 是否需要显示所有的子菜单

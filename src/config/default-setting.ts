@@ -15,7 +15,7 @@ export default {
   header: true,
   menu: true,
   menuHeader: true,
-  footer: true,
+  footer: false,
   colorWeak: false,
   multiTab: true,
   multiTabFixed: false,

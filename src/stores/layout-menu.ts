@@ -1,3 +1,4 @@
+import { isUrl } from '@v-c/utils'
 import type { MenuData, MenuDataItem } from '~@/layouts/basic-layout/typing'
 import router from '~@/router'
 
@@ -39,7 +40,10 @@ export const useLayoutMenu = defineStore('layout-menu', () => {
   }, { immediate: true, flush: 'post' })
 
   const handleSelectedKeys = (val: string[]) => {
-    selectedKeys.value = val
+    // 如果点击的是外部的菜单，那么我们就不需要设置成为激活的状态
+    const path = val[0]
+    if (!isUrl(path))
+      selectedKeys.value = val
   }
 
   const handleOpenKeys = (val: string[]) => {
