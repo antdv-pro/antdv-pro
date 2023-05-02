@@ -20,4 +20,5 @@ export default {
   multiTab: true,
   multiTabFixed: false,
   headerHeight: 48,
+  copyright: '爱吧烟雨2023',
 } as LayoutSetting

@@ -70,6 +70,7 @@ export const proLayoutProps = {
   openKeys: arrayType<string[]>(),
   // 选中菜单
   selectedKeys: arrayType<string[]>(),
+  copyright: stringType(),
   ...proLayoutEvents,
 }
 

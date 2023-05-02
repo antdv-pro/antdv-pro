@@ -16,16 +16,6 @@ watch(isPad, (val) => {
     appStore.toggleCollapsed(false)
 })
 const layoutProps = computed(() => pick(appStore.layoutSetting, ['fixedHeader', 'fixedSider', 'splitMenus', 'menuHeader', 'header', 'menu', 'layout', 'footer', 'contentWidth']))
-const contentCls = computed(() => {
-  const cls: string[] = []
-  if (layoutSetting.value.contentWidth === 'Fluid')
-    cls.push('w-100%')
-
-  else if (layoutSetting.value.contentWidth === 'Fixed')
-    cls.push(...['max-w-1200px', 'mx-auto'])
-
-  return cls
-})
 </script>
 
 <template>
@@ -36,6 +26,7 @@ const contentCls = computed(() => {
     v-bind="layoutProps"
     :selected-keys="selectedKeys"
     :open-keys=" layoutSetting.layout === 'top' ? [] : openKeys"
+    :copyright="layoutSetting.copyright"
     :is-mobile="isMobile"
     :logo="layoutSetting.logo"
     :title="layoutSetting.title"
@@ -46,12 +37,22 @@ const contentCls = computed(() => {
     <template #headerActions>
       <UserAvatar />
     </template>
-    <!-- <a-watermark class="h-100%" content="Antdv Admin Pro"> -->
-    <MultiTab v-if="layoutSetting.multiTab" />
-    <div :class="contentCls">
-      <RouterView />
-    </div>
-    <!-- </a-watermark> -->
+    <template #contentPrefix>
+      <MultiTab v-if="layoutSetting.multiTab" />
+    </template>
+
+    <template #renderFooterLinks>
+      <!-- TODO -->
+    </template>
+    <a-watermark class="h-100%" content="Antdv Admin Pro">
+      <RouterView>
+        <template #default="{ Component }">
+          <Transition name="fade-slide" appear>
+            <component :is="Component" />
+          </Transition>
+        </template>
+      </RouterView>
+    </a-watermark>
   </BasicLayout>
   <SettingDrawer
     v-model:open="layoutSetting.drawerVisible"

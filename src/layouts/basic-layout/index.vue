@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import { GithubOutlined } from '@ant-design/icons-vue'
 import Header from '../components/header/index.vue'
 import SiderMenu from '../components/sider-menu/index.vue'
 import DrawerMenu from '../components/drawer-menu/index.vue'
 import Menu from '../components/menu/index.vue'
+import GlobalFooter from '../components/global-footer/index.vue'
 import { proLayoutProps } from './typing'
 import { useLayoutProvider } from './context'
 const props = defineProps(proLayoutProps)
@@ -20,6 +22,20 @@ const handleCollapsed = (collapsed: boolean) => {
 // 依赖注入所有的配置项，对属性进行控制，减少传值
 useLayoutProvider(props, {
   handleCollapsed,
+})
+
+// 自定义容器的宽高
+const contentCls = computed(() => {
+  const cls: string[] = [
+    'h-100%',
+  ]
+  if (props.contentWidth === 'Fluid')
+    cls.push('w-100%')
+
+  else if (props.contentWidth === 'Fixed')
+    cls.push(...['max-w-1200px', 'mx-auto'])
+
+  return cls
 })
 </script>
 
@@ -42,9 +58,25 @@ useLayoutProvider(props, {
             </template>
           </Header>
         </template>
-        <a-layout-content>
-          <slot />
+        <slot name="contentPrefix" />
+        <a-layout-content class="ant-pro-basicLayout-content">
+          <div :class="contentCls">
+            <slot />
+          </div>
         </a-layout-content>
+        <a-layout-footer v-if="footer" style="background-color: transparent;">
+          <slot name="footerRender">
+            <GlobalFooter>
+              <template v-if="$slots.renderFooterLinks" #renderFooterLinks>
+                <a>Antdv Admin Pro</a>
+                <a>
+                  <GithubOutlined />
+                </a>
+                <a>Ant Design Vue</a>
+              </template>
+            </GlobalFooter>
+          </slot>
+        </a-layout-footer>
       </a-layout>
     </a-layout>
     <DrawerMenu v-if="menu" />

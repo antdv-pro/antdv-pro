@@ -1,0 +1,44 @@
+.ant-pro-global-footer{
+    // margin: 48px 0 24px;
+    padding: 0 16px;
+    text-align: center;
+
+    &-links{
+      margin-bottom: 8px;
+
+      a{
+        color: rgba(0,0,0,.45);
+        transition: all .3s;
+
+        &:not(:last-child){
+          margin-right: 40px;
+        }
+
+        &:hover {
+          color: rgba(0,0,0,.85);
+        }
+      }
+    }
+
+    &-copyright{
+      color: rgba(0,0,0,.45);
+      font-size: 14px
+    }
+}
+
+
+[data-theme='dark'] .ant-pro-global-footer{
+  &-links{
+    a{
+      color:rgba(229, 224, 216, 0.45);
+
+      &:hover{
+        color: rgba(229, 224, 216, 0.85);
+      }
+    }
+  }
+
+  &-copyright{
+    color: rgba(229, 224, 216, 0.45);
+  }
+}
