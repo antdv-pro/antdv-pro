@@ -18,6 +18,6 @@ export default {
   footer: true,
   colorWeak: false,
   multiTab: true,
-  multiTabFixed: true,
+  multiTabFixed: false,
   headerHeight: 48,
 } as LayoutSetting

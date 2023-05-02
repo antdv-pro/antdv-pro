@@ -93,6 +93,11 @@ export const useAppStore = defineStore('app', () => {
     if (layout !== 'mix')
       layoutSetting.splitMenus = false
 
+    if (layout === 'top')
+      layoutSetting.contentWidth = 'Fixed'
+    else
+      layoutSetting.contentWidth = 'Fluid'
+
     layoutSetting.layout = layout
   }
 

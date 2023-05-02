@@ -15,7 +15,17 @@ watch(isPad, (val) => {
   else
     appStore.toggleCollapsed(false)
 })
-const layoutProps = computed(() => pick(appStore.layoutSetting, ['fixedHeader', 'fixedSider', 'splitMenus', 'menuHeader', 'header', 'menu', 'layout', 'footer']))
+const layoutProps = computed(() => pick(appStore.layoutSetting, ['fixedHeader', 'fixedSider', 'splitMenus', 'menuHeader', 'header', 'menu', 'layout', 'footer', 'contentWidth']))
+const contentCls = computed(() => {
+  const cls: string[] = []
+  if (layoutSetting.value.contentWidth === 'Fluid')
+    cls.push('w-100%')
+
+  else if (layoutSetting.value.contentWidth === 'Fixed')
+    cls.push(...['max-w-1200px', 'mx-auto'])
+
+  return cls
+})
 </script>
 
 <template>
@@ -38,7 +48,9 @@ const layoutProps = computed(() => pick(appStore.layoutSetting, ['fixedHeader', 
     </template>
     <!-- <a-watermark class="h-100%" content="Antdv Admin Pro"> -->
     <MultiTab v-if="layoutSetting.multiTab" />
-    <RouterView />
+    <div :class="contentCls">
+      <RouterView />
+    </div>
     <!-- </a-watermark> -->
   </BasicLayout>
   <SettingDrawer
