@@ -32,10 +32,10 @@ const { height } = useElementSize(tabsRef)
     <a-tab-pane v-for="item in list" :key="item.fullPath">
       <template #tab>
         {{ item.title }}
-        <button class="ant-tabs-tab-remove" style="margin: 0;" @click="multiTabStore.refresh(item.fullPath)">
+        <button v-if="activeKey === item.fullPath" class="ant-tabs-tab-remove" style="margin: 0;" @click.stop="multiTabStore.refresh(item.fullPath)">
           <ReloadOutlined :spin="item.loading" />
         </button>
-        <button v-if="!item.affix && list.length > 1" class="ant-tabs-tab-remove" style="margin: 0;" @click="multiTabStore.close(item.fullPath)">
+        <button v-if="!item.affix && list.length > 1" class="ant-tabs-tab-remove" style="margin: 0;" @click.stop="multiTabStore.close(item.fullPath)">
           <CloseOutlined />
         </button>
       </template>
