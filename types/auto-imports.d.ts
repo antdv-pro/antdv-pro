@@ -120,6 +120,7 @@ declare global {
   const until: typeof import('@vueuse/core')['until']
   const useActiveElement: typeof import('@vueuse/core')['useActiveElement']
   const useAnimate: typeof import('@vueuse/core')['useAnimate']
+  const useAntdToken: typeof import('../src/composables/antd-token')['useAntdToken']
   const useAppStore: typeof import('../src/stores/app')['useAppStore']
   const useArrayDifference: typeof import('@vueuse/core')['useArrayDifference']
   const useArrayEvery: typeof import('@vueuse/core')['useArrayEvery']

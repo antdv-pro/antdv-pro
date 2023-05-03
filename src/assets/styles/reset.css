@@ -1,6 +1,8 @@
 @import "./motion.css";
 html {
   --text-color: rgba(0,0,0,.85);
+  --text-color-1: rgba(0,0,0,.45);
+  --text-color-2: rgba(0,0,0,.2);
   --bg-color: #fff;
   --hover-color:rgba(0,0,0,.025);
   --bg-color-container: #f0f2f5;
@@ -8,6 +10,8 @@ html {
 
 html.dark{
   --text-color: rgba(229, 224, 216, 0.85);
+  --text-color-1: rgba(229, 224, 216, 0.45);
+  --text-color-2: rgba(229, 224, 216, 0.45);
   --bg-color: rgb(36, 37, 37);
   --hover-color:rgb(42, 44, 55);
   --bg-color-container: rgb(42, 44, 44);
