@@ -10,7 +10,7 @@ export default [
     },
   },
   {
-    path: '',
+    path: '/common',
     name: 'LayouBasicRedirect',
     component: Layout,
     redirect: '/redirect',
