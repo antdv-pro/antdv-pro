@@ -32,10 +32,51 @@ export default defineConfig({
     Unocss(),
   ],
   resolve: {
-    alias: {
-      '~@': baseSrc,
-      '~': baseSrc,
-      '@': baseSrc,
+    alias: [
+      {
+        find: /^ant-design-vue\/es$/,
+        replacement: 'ant-design-vue/es',
+      },
+      {
+        find: /^ant-design-vue\/dist$/,
+        replacement: 'ant-design-vue/dist',
+      },
+      {
+        find: /^ant-design-vue\/lib$/,
+        replacement: 'ant-design-vue/es',
+      },
+      {
+        find: /^ant-design-vue$/,
+        replacement: 'ant-design-vue/es',
+      },
+      {
+        find: 'lodash',
+        replacement: 'lodash-es',
+      },
+      {
+        find: '~@',
+        replacement: baseSrc,
+      },
+      {
+        find: '~',
+        replacement: baseSrc,
+      },
+      {
+        find: '@',
+        replacement: baseSrc,
+      },
+    ],
+  },
+  build: {
+    chunkSizeWarningLimit: 2048,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vue: ['vue', 'vue-router', 'pinia', '@vueuse/core'],
+          antd: ['ant-design-vue', '@ant-design/icons-vue'],
+          lodash: ['loadsh-es'],
+        },
+      },
     },
   },
   server: {

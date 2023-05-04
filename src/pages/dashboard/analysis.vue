@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { notification } from 'ant-design-vue/es'
+import { notification } from 'ant-design-vue'
 const openNotification = () => {
   notification.info({
     message: '测试',

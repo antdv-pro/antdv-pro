@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { CheckOutlined } from '@ant-design/icons-vue'
-import { useConfigContextInject } from 'ant-design-vue/es/config-provider/context'
 
 const props = defineProps<{
   theme?: 'light' | 'dark' | 'inverted' | 'top' | 'side' | 'mix'
@@ -17,11 +16,11 @@ const cls = computed(() => {
   }
 })
 
-const { theme } = useConfigContextInject()
+const token = useAntdToken()
 </script>
 
 <template>
   <div :class="cls">
-    <CheckOutlined v-show="checked" :style="{ color: theme?.token?.colorPrimary }" :class="`${prefixCls}-selectIcon`" />
+    <CheckOutlined v-show="checked" :style="{ color: token?.colorPrimary }" :class="`${prefixCls}-selectIcon`" />
   </div>
 </template>

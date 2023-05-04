@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { CloseOutlined, SettingOutlined } from '@ant-design/icons-vue'
-import { useConfigContextInject } from 'ant-design-vue/es/config-provider/context'
 import type { ContentWidth, LayoutType, ThemeType } from '../../basic-layout/typing'
 import Body from './body.vue'
 import BlockCheckbox from './block-checkbox.vue'
@@ -59,16 +58,17 @@ const changeLayout = (layout: string) => {
 const changeSettingLayout = (key: string, value: any) => {
   emit('settingChange', key, value)
 }
-const { theme } = useConfigContextInject()
+
+const token = useAntdToken()
 </script>
 
 <template>
   <div
     :class="`${prefixCls}-handle`"
     :style="{
-      backgroundColor: theme.token?.colorPrimary,
-      borderEndStartRadius: `${theme.token?.borderRadius}px`,
-      borderStartStartRadius: `${theme.token?.borderRadius}px`,
+      backgroundColor: token?.colorPrimary,
+      borderEndStartRadius: `${token?.borderRadius}px`,
+      borderStartStartRadius: `${token?.borderRadius}px`,
     }" @click="handleVisible(!open)"
   >
     <CloseOutlined v-if="open" :class="`${prefixCls}-handle-icon${theme === 'light' ? '' : '-dark'}`" style="font-size: 20px;" />
@@ -88,9 +88,9 @@ const { theme } = useConfigContextInject()
           position: 'absolute',
           top: '240px',
           right: '300px',
-          backgroundColor: theme.token?.colorPrimary,
-          borderEndStartRadius: `${theme.token?.borderRadius}px`,
-          borderStartStartRadius: `${theme.token?.borderRadius}px`,
+          backgroundColor: token?.colorPrimary,
+          borderEndStartRadius: `${token?.borderRadius}px`,
+          borderStartStartRadius: `${token?.borderRadius}px`,
         }" @click="handleVisible(!open)"
       >
         <CloseOutlined v-if="open" :class="`${prefixCls}-handle-icon${props.theme === 'light' ? '' : '-dark'}`" style="font-size: 20px;" />
