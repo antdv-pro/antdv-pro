@@ -2,6 +2,7 @@
   "name": "antd-admin-pro",
   "type": "module",
   "private": true,
+  "packageManager": "pnpm@8.4.0",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
@@ -13,7 +14,7 @@
     "@ctrl/tinycolor": "^3.6.0",
     "@v-c/utils": "^0.0.23",
     "@vueuse/core": "^10.1.0",
-    "ant-design-vue": "4.0.0-alpha.6",
+    "ant-design-vue": "4.0.0-beta.1",
     "axios": "^1.4.0",
     "pinia": "^2.0.35",
     "vue": "^3.2.47",
