@@ -48,13 +48,13 @@ const submit = async () => {
   submitLoading.value = true
   try {
     await formRef.value?.validate()
-    router.push('/')
+    setTimeout(() => {
+      submitLoading.value = false
+      router.push('/')
+    }, 1000)
   }
   catch (e) {
-    // TODO
     console.warn(e)
-  }
-  finally {
     submitLoading.value = false
   }
 }
