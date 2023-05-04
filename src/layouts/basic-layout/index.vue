@@ -59,7 +59,7 @@ const contentCls = computed(() => {
         </template>
         <slot name="contentPrefix" />
         <a-layout-content class="ant-pro-basicLayout-content">
-          <div :class="contentCls">
+          <div :class="contentCls" absolute>
             <slot />
           </div>
         </a-layout-content>
