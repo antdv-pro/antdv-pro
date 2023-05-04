@@ -5,7 +5,7 @@ const basicRouteMap = {
   // iframe模式下使用
   Iframe: () => import('~/pages/common/iframe.vue'),
   // 一般用于存在子集的页面
-  RouterView: () => import('~/pages/common/view-route.vue'),
+  RouteView: () => import('~/pages/common/route-view.vue'),
 }
 export const rootRoute: RouteRecordRaw = {
   path: '/',
@@ -24,6 +24,7 @@ export default [
       title: '仪表盘',
       icon: 'DashboardOutlined',
     },
+    component: basicRouteMap.RouteView,
     children: [
       {
         path: '/dashboard/analysis',
@@ -43,6 +44,7 @@ export default [
       title: '表单页',
       icon: 'FormOutlined',
     },
+    component: basicRouteMap.RouteView,
     children: [
       {
         path: '/form/basic',
@@ -62,6 +64,7 @@ export default [
       title: '链接',
       icon: 'LinkOutlined',
     },
+    component: basicRouteMap.RouteView,
     children: [
       {
         path: '/link/iframe',
@@ -98,6 +101,7 @@ export default [
       title: '菜单',
       icon: 'BarsOutlined',
     },
+    component: basicRouteMap.RouteView,
     children: [
       {
         path: '/menu/menu1',
