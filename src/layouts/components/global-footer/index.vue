@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import './index.less'
 import { CopyrightCircleOutlined } from '@ant-design/icons-vue'
-import { useLayoutState } from '~@/layouts/basic-layout/context'
+defineProps<{
+  copyright?: string
+}>()
 
 const prefixCls = shallowRef('ant-pro-global-footer')
-const { copyright } = useLayoutState()
 </script>
 
 <template>

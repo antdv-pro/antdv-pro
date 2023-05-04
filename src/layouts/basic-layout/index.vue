@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { GithubOutlined } from '@ant-design/icons-vue'
 import Header from '../components/header/index.vue'
 import SiderMenu from '../components/sider-menu/index.vue'
 import DrawerMenu from '../components/drawer-menu/index.vue'
@@ -66,13 +65,9 @@ const contentCls = computed(() => {
         </a-layout-content>
         <a-layout-footer v-if="footer" style="background-color: transparent;">
           <slot name="footerRender">
-            <GlobalFooter>
+            <GlobalFooter :copyright="copyright">
               <template v-if="$slots.renderFooterLinks" #renderFooterLinks>
-                <a>Antdv Admin Pro</a>
-                <a>
-                  <GithubOutlined />
-                </a>
-                <a>Ant Design Vue</a>
+                <footer-links />
               </template>
             </GlobalFooter>
           </slot>

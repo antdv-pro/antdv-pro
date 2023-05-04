@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { AlipayCircleFilled, LockOutlined, MobileOutlined, TaobaoCircleFilled, UserOutlined, WeiboCircleFilled } from '@ant-design/icons-vue'
+import GlobalLayoutFooter from '~/layouts/components/global-footer/index.vue'
 const appStore = useAppStore()
 const { layoutSetting } = storeToRefs(appStore)
+const router = useRouter()
 const loginModel = reactive({
   username: undefined,
   password: undefined,
@@ -10,12 +12,13 @@ const loginModel = reactive({
   type: 'account',
   remember: true,
 })
-
+const formRef = shallowRef()
 const codeLoading = shallowRef(false)
 const antdToken = useAntdToken()
 const resetCounter = 60
+const submitLoading = shallowRef(false)
 
-const { counter, pause, resume, isActive } = useInterval(1000, {
+const { counter, pause, reset, resume, isActive } = useInterval(1000, {
   controls: true,
   immediate: false,
   callback(count) {
@@ -25,12 +28,35 @@ const { counter, pause, resume, isActive } = useInterval(1000, {
     }
   },
 })
-const getCode = () => {
+const getCode = async () => {
   codeLoading.value = true
-  setTimeout(() => {
-    resume()
+  try {
+    await formRef.value.validate(['mobile'])
+    setTimeout(() => {
+      reset()
+      resume()
+      codeLoading.value = false
+    }, 3000)
+  }
+  catch (error) {
+    // TODO
     codeLoading.value = false
-  }, 3000)
+  }
+}
+
+const submit = async () => {
+  submitLoading.value = true
+  try {
+    await formRef.value?.validate()
+    router.push('/')
+  }
+  catch (e) {
+    // TODO
+    console.warn(e)
+  }
+  finally {
+    submitLoading.value = false
+  }
 }
 </script>
 
@@ -63,20 +89,20 @@ const getCode = () => {
           </div>
         </div>
         <div class="ant-pro-form-login-main" w-328px>
-          <a-form :model="loginModel">
+          <a-form ref="formRef" :model="loginModel">
             <a-tabs v-model:activeKey="loginModel.type" centered>
               <a-tab-pane key="account" tab="账户密码登录" />
               <a-tab-pane key="mobile" tab="手机号登录" />
             </a-tabs>
             <template v-if="loginModel.type === 'account'">
-              <a-form-item name="username">
+              <a-form-item name="username" :rules="[{ required: true, message: '用户名不能为空' }]">
                 <a-input v-model:value="loginModel.username" allow-clear placeholder="用户名：admin or user">
                   <template #prefix>
                     <UserOutlined />
                   </template>
                 </a-input>
               </a-form-item>
-              <a-form-item name="password">
+              <a-form-item name="password" :rules="[{ required: true, message: '密码不能为空' }]">
                 <a-input-password v-model:value="loginModel.password" allow-clear placeholder="密码：admin">
                   <template #prefix>
                     <LockOutlined />
@@ -85,14 +111,14 @@ const getCode = () => {
               </a-form-item>
             </template>
             <template v-if="loginModel.type === 'mobile'">
-              <a-form-item name="mobile">
+              <a-form-item name="mobile" :rules="[{ required: true, message: '手机号不能为空' }]">
                 <a-input v-model:value="loginModel.mobile" allow-clear placeholder="请输入手机号！">
                   <template #prefix>
                     <MobileOutlined />
                   </template>
                 </a-input>
               </a-form-item>
-              <a-form-item name="code">
+              <a-form-item name="code" :rules="[{ required: true, message: '验证码不能为空' }]">
                 <div flex items-center>
                   <a-input v-model:value="loginModel.code" style="flex: 1 1 0%; transition: width 0.3s ease 0s; margin-right: 8px;" allow-clear placeholder="请输入验证码！">
                     <template #prefix>
@@ -116,7 +142,7 @@ const getCode = () => {
               </a-checkbox>
               <a>忘记密码 ?</a>
             </div>
-            <a-button type="primary" block>
+            <a-button type="primary" block :loading="submitLoading" @click="submit">
               登录
             </a-button>
           </a-form>
@@ -128,6 +154,13 @@ const getCode = () => {
           </div>
         </div>
       </div>
+    </div>
+    <div py-24px px-50px :data-theme="layoutSetting.theme" text-14px>
+      <GlobalLayoutFooter :copyright="layoutSetting.copyright">
+        <template #renderFooterLinks>
+          <footer-links />
+        </template>
+      </GlobalLayoutFooter>
     </div>
   </div>
 </template>
