@@ -96,14 +96,14 @@ const submit = async () => {
             </a-tabs>
             <template v-if="loginModel.type === 'account'">
               <a-form-item name="username" :rules="[{ required: true, message: '用户名不能为空' }]">
-                <a-input v-model:value="loginModel.username" allow-clear placeholder="用户名：admin or user">
+                <a-input v-model:value="loginModel.username" allow-clear placeholder="用户名：admin or user" @pressEnter="submit">
                   <template #prefix>
                     <UserOutlined />
                   </template>
                 </a-input>
               </a-form-item>
               <a-form-item name="password" :rules="[{ required: true, message: '密码不能为空' }]">
-                <a-input-password v-model:value="loginModel.password" allow-clear placeholder="密码：admin">
+                <a-input-password v-model:value="loginModel.password" allow-clear placeholder="密码：admin" @pressEnter="submit">
                   <template #prefix>
                     <LockOutlined />
                   </template>
@@ -112,7 +112,7 @@ const submit = async () => {
             </template>
             <template v-if="loginModel.type === 'mobile'">
               <a-form-item name="mobile" :rules="[{ required: true, message: '手机号不能为空' }]">
-                <a-input v-model:value="loginModel.mobile" allow-clear placeholder="请输入手机号！">
+                <a-input v-model:value="loginModel.mobile" allow-clear placeholder="请输入手机号！" @pressEnter="submit">
                   <template #prefix>
                     <MobileOutlined />
                   </template>
@@ -120,7 +120,7 @@ const submit = async () => {
               </a-form-item>
               <a-form-item name="code" :rules="[{ required: true, message: '验证码不能为空' }]">
                 <div flex items-center>
-                  <a-input v-model:value="loginModel.code" style="flex: 1 1 0%; transition: width 0.3s ease 0s; margin-right: 8px;" allow-clear placeholder="请输入验证码！">
+                  <a-input v-model:value="loginModel.code" style="flex: 1 1 0%; transition: width 0.3s ease 0s; margin-right: 8px;" allow-clear placeholder="请输入验证码！" @pressEnter="submit">
                     <template #prefix>
                       <LockOutlined />
                     </template>
