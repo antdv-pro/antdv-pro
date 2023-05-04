@@ -74,7 +74,7 @@ export default defineConfig({
         manualChunks: {
           vue: ['vue', 'vue-router', 'pinia', '@vueuse/core'],
           antd: ['ant-design-vue', '@ant-design/icons-vue'],
-          lodash: ['loadsh-es'],
+          // lodash: ['loadsh-es'],
         },
       },
     },
