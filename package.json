@@ -16,7 +16,7 @@
     "@ctrl/tinycolor": "^3.6.0",
     "@v-c/utils": "^0.0.23",
     "@vueuse/core": "^10.1.2",
-    "ant-design-vue": "4.0.0-beta.1",
+    "ant-design-vue": "4.0.0-beta.2",
     "axios": "^1.4.0",
     "lodash-es": "^4.17.21",
     "pinia": "^2.0.35",
