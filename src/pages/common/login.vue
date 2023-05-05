@@ -88,7 +88,7 @@ const submit = async () => {
             Ant Design 是西湖区最具影响力的 Web 设计规范
           </div>
         </div>
-        <div class="ant-pro-form-login-main" w-328px>
+        <div class="ant-pro-form-login-main" w-335px>
           <a-form ref="formRef" :model="loginModel">
             <a-tabs v-model:activeKey="loginModel.type" centered>
               <a-tab-pane key="account" tab="账户密码登录" />
@@ -96,14 +96,14 @@ const submit = async () => {
             </a-tabs>
             <template v-if="loginModel.type === 'account'">
               <a-form-item name="username" :rules="[{ required: true, message: '用户名不能为空' }]">
-                <a-input v-model:value="loginModel.username" allow-clear placeholder="用户名：admin or user" @pressEnter="submit">
+                <a-input v-model:value="loginModel.username" allow-clear placeholder="用户名：admin or user" @pressEnter="submit" size="large">
                   <template #prefix>
                     <UserOutlined />
                   </template>
                 </a-input>
               </a-form-item>
               <a-form-item name="password" :rules="[{ required: true, message: '密码不能为空' }]">
-                <a-input-password v-model:value="loginModel.password" allow-clear placeholder="密码：admin" @pressEnter="submit">
+                <a-input-password v-model:value="loginModel.password" allow-clear placeholder="密码：admin" @pressEnter="submit" size="large">
                   <template #prefix>
                     <LockOutlined />
                   </template>
@@ -112,7 +112,7 @@ const submit = async () => {
             </template>
             <template v-if="loginModel.type === 'mobile'">
               <a-form-item name="mobile" :rules="[{ required: true, message: '手机号不能为空' }]">
-                <a-input v-model:value="loginModel.mobile" allow-clear placeholder="请输入手机号！" @pressEnter="submit">
+                <a-input v-model:value="loginModel.mobile" allow-clear placeholder="请输入手机号！" @pressEnter="submit" size="large">
                   <template #prefix>
                     <MobileOutlined />
                   </template>
@@ -120,12 +120,13 @@ const submit = async () => {
               </a-form-item>
               <a-form-item name="code" :rules="[{ required: true, message: '验证码不能为空' }]">
                 <div flex items-center>
-                  <a-input v-model:value="loginModel.code" style="flex: 1 1 0%; transition: width 0.3s ease 0s; margin-right: 8px;" allow-clear placeholder="请输入验证码！" @pressEnter="submit">
+                  <a-input v-model:value="loginModel.code" style="flex: 1 1 0%; transition: width 0.3s ease 0s; margin-right: 8px;" 
+                  allow-clear placeholder="请输入验证码！" @pressEnter="submit" size="large">
                     <template #prefix>
                       <LockOutlined />
                     </template>
                   </a-input>
-                  <a-button :loading="codeLoading" :disabled="isActive" @click="getCode">
+                  <a-button :loading="codeLoading" :disabled="isActive" @click="getCode" size="large">
                     <template v-if="!isActive">
                       获取验证码
                     </template>
@@ -142,7 +143,7 @@ const submit = async () => {
               </a-checkbox>
               <a>忘记密码 ?</a>
             </div>
-            <a-button type="primary" block :loading="submitLoading" @click="submit">
+            <a-button type="primary" block :loading="submitLoading" @click="submit" size="large">
               登录
             </a-button>
           </a-form>

@@ -26,10 +26,10 @@ useLayoutProvider(props, {
 // 自定义容器的宽高
 const contentCls = computed(() => {
   const cls: string[] = [
-    'h-100%',
+    'h-full flex flex-col flex-1',
   ]
   if (props.contentWidth === 'Fluid')
-    cls.push('w-100%')
+    cls.push('w-full')
 
   else if (props.contentWidth === 'Fixed')
     cls.push(...['max-w-1200px', 'mx-auto'])
@@ -58,7 +58,7 @@ const contentCls = computed(() => {
           </Header>
         </template>
         <slot name="contentPrefix" />
-        <a-layout-content class="ant-pro-basicLayout-content">
+        <a-layout-content class="ant-pro-basicLayout-content" flex flex-col>
           <div :class="contentCls">
             <slot />
           </div>
