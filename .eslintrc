@@ -1,3 +1,6 @@
 {
-  "extends":"@mistjs/eslint-config-vue"
+  "extends":"@mistjs/eslint-config-vue",
+  "rules": {
+    "no-console":"off"
+  }
 }

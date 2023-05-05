@@ -9,6 +9,7 @@ const tabStyle = computed<CSSProperties>(() => {
   if (layoutSetting.value.multiTabFixed) {
     style.position = 'fixed'
     style.top = `${layoutSetting.value.headerHeight}px`
+    style.zIndex = 1
   }
 
   return style

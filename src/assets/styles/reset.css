@@ -20,9 +20,17 @@ html.dark{
 body{
   color: var(--text-color);
   background-color: var(--bg-color);
+  text-rendering: optimizeLegibility;
+  overflow: hidden;
+}
+
+#app, body, html{
+  height: 100%;
 }
 
 #app{
-  width: 100%;
-  height: 100%;
+  overflow-x: hidden;
+}
+*, :after, :before{
+  box-sizing: border-box;
 }
