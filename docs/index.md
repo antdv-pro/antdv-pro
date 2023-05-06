@@ -12,10 +12,10 @@ hero:
   actions:
     - theme: brand
       text: 开始使用
-      link: /markdown-examples
+      link: /guide/getting-started
     - theme: alt
       text: 介绍
-      link: /api-examples
+      link: /guide/introduction
     - theme: alt
       text: View on GitHub
       link: https://github.com/antd-tiny-vue/antdv-admin-pro
