@@ -4,7 +4,12 @@ const url = computed(() => route?.meta?.url)
 </script>
 
 <template>
-  <div :key="url" class="bg-[var(--bg-color)] w-100% h-100%" b-rd-8px of-hidden>
-    <iframe class=" w-100% h-100%" :src="url" style="border: none" />
+  <div 
+    :key="url" 
+    class="bg-[var(--bg-color)]" 
+    w-full h-full b-rd-8px of-hidden
+    flex flex-col flex-1
+  >
+    <iframe w-full h-full flex flex-col flex-1 :src="url" style="border: none" />
   </div>
 </template>
