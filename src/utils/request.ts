@@ -43,7 +43,7 @@ const errorHandler = (error: AxiosError): Promise<any> => {
        */
       token.value = null
       router
-        .replace({
+        .push({
           path: '/login',
           query: {
             redirect: router.currentRoute.value.path,

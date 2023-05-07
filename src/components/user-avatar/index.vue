@@ -1,6 +1,24 @@
 <script setup lang="ts">
 import { LogoutOutlined, ProfileOutlined, UserOutlined } from '@ant-design/icons-vue'
-const { avatar, nickname } = storeToRefs(useUserStore())
+import { message } from 'ant-design-vue'
+const userStore = useUserStore()
+const router = useRouter()
+const { avatar, nickname } = storeToRefs(userStore)
+const handleClick = async ({ key }: any) => {
+  if (key === 'logout') {
+    const hide = message.loading('退出登录...', 0)
+    try {
+      await userStore.logout()
+    }
+    finally {
+      hide()
+      message.success('退出登录成功', 3)
+      router.push({
+        path: '/login',
+      })
+    }
+  }
+}
 </script>
 
 <template>
@@ -10,7 +28,7 @@ const { avatar, nickname } = storeToRefs(useUserStore())
       <span class="anticon">{{ nickname }}</span>
     </span>
     <template #overlay>
-      <a-menu>
+      <a-menu @click="handleClick">
         <a-menu-item key="0">
           <template #icon>
             <UserOutlined />
@@ -28,7 +46,7 @@ const { avatar, nickname } = storeToRefs(useUserStore())
           </a>
         </a-menu-item>
         <a-menu-divider />
-        <a-menu-item key="3">
+        <a-menu-item key="logout">
           <template #icon>
             <LogoutOutlined />
           </template>

@@ -6,6 +6,7 @@ export default eventHandler(() => {
       id: 1,
       username: 'admin',
       nickname: '超级管理员',
+      avatar: 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png',
     },
   }
 })

@@ -2,6 +2,8 @@ import type { RouteLocationNormalizedLoaded } from 'vue-router'
 import { message } from 'ant-design-vue/es'
 import router from '~@/router'
 
+const allowList = ['/login', '/404', '/403']
+
 export interface MultiTabItem {
   path: string
   fullPath: string
@@ -21,6 +23,7 @@ export const useMultiTab = defineStore('multi-tab', () => {
     if (!route) return
     // 判断是不是重定向的地址，如果是，那么久不进行处理
     if (route.path.startsWith('/redirect')) return
+    if (allowList.includes(route.path)) return
     // 设置当前的loading为false
     if (refreshItem.value) {
       // 增加一个取消的延迟
