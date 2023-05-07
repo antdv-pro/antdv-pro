@@ -1,0 +1,12 @@
+{
+  "name": "servers",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env PORT=8899 npx nitropack dev",
+    "build": "npx nitropack build",
+    "preview": "node .output/server/index.mjs"
+  },
+  "dependencies": {
+    "nitropack": "latest"
+  }
+}

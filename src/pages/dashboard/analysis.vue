@@ -1,20 +1,21 @@
 <script setup lang="ts">
-import { notification } from 'ant-design-vue'
-const openNotification = () => {
-  notification.info({
-    message: '测试',
-    description: '测试的内容',
-    placement: 'topLeft',
-    duration: 0,
+import { loginApi } from '~/api/common/login'
+
+const handleLogin = async () => {
+  const { data } = await loginApi({
+    username: 'admin',
+    password: 'admin',
   })
+
+  console.log(data)
 }
 </script>
 
 <template>
   <div p-2>
     Analysis
-    <a-button @click="openNotification">
-      notification
+    <a-button @click="handleLogin">
+      登录
     </a-button>
   </div>
 </template>
