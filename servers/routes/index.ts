@@ -1,3 +1,3 @@
 export default eventHandler(() => {
-  return { nitro: 'Is Awesome!' }
+  return { nitro: 'Hello Antdv Admin Pro' }
 })
