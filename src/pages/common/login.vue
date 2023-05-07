@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { AlipayCircleFilled, LockOutlined, MobileOutlined, TaobaoCircleFilled, UserOutlined, WeiboCircleFilled } from '@ant-design/icons-vue'
 import GlobalLayoutFooter from '~/layouts/components/global-footer/index.vue'
-import { loginApi } from '~/api/common/login'
+// import { loginApi } from '~/api/common/login'
 const appStore = useAppStore()
 const { layoutSetting } = storeToRefs(appStore)
 const router = useRouter()
@@ -49,11 +49,11 @@ const submit = async () => {
   submitLoading.value = true
   try {
     await formRef.value?.validate()
-    const { data } = await loginApi({
-      username: 'admin',
-      password: 'admin',
-    })
-    console.log(data?.token)
+    // const { data } = await loginApi({
+    //   username: 'admin',
+    //   password: 'admin',
+    // })
+    // console.log(data?.token)
 
     setTimeout(() => {
       submitLoading.value = false
