@@ -28,7 +28,6 @@ const responseHandler = (response: any): ResponseBody<any> | AxiosResponse<any> 
 }
 
 const errorHandler = (error: AxiosError): Promise<any> => {
-  // const { notification } = useGlobalConfig()
   const token = useAuthorization()
 
   if (error.response) {
@@ -37,7 +36,7 @@ const errorHandler = (error: AxiosError): Promise<any> => {
       notification?.error({
         message: '401',
         description: data?.msg || statusText,
-        duration: 3000,
+        duration: 3,
       })
       /**
        * 这里处理清空用户信息和token的逻辑，后续扩展
@@ -53,25 +52,25 @@ const errorHandler = (error: AxiosError): Promise<any> => {
         .then(() => {})
     }
     else if (status === 403) {
-      // notification?.error({
-      //   title: i18n.global.t('global.request.error.403'),
-      //   content: data?.msg || statusText,
-      //   duration: 3000
-      // })
+      notification?.error({
+        message: '403',
+        description: data?.msg || statusText,
+        duration: 3,
+      })
     }
     else if (status === 500) {
-      // notification?.error({
-      //   title: i18n.global.t('global.request.error.500'),
-      //   content: data?.msg || statusText,
-      //   duration: 3000
-      // })
+      notification?.error({
+        message: '500',
+        description: data?.msg || statusText,
+        duration: 3,
+      })
     }
     else {
-      // notification?.error({
-      //   title: i18n.global.t('global.request.error.other'),
-      //   content: data?.msg || statusText,
-      //   duration: 3000
-      // })
+      notification?.error({
+        message: '服务错误',
+        description: data?.msg || statusText,
+        duration: 3,
+      })
     }
   }
   return Promise.reject(error)
