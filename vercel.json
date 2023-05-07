@@ -1,6 +1,14 @@
 {
   "rewrites": [
     {
+      "source": "/api",
+      "destination": "https://api.antdv-pro.com"
+    },
+    {
+      "source": "/api/",
+      "destination": "https://api.antdv-pro.com/"
+    },
+    {
       "source": "/api/:match*",
       "destination": "https://api.antdv-pro.com/:match*"
     },
