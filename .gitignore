@@ -26,3 +26,8 @@ dist-ssr
 # Vitepress
 docs/.vitepress/dist
 docs/.vitepress/cache
+
+servers/.nitro
+servers/.output
+servers/node_modules
+servers/dist
