@@ -32,6 +32,10 @@ export const getRouterModule = (path?: string): any => {
     path = path.slice(1)
   // 组装数据格式
   const fullPath = `/src/pages/${path}.vue`
+  const fullPathIndex = `/src/pages/${path}/index.vue`
+  if (fullPathIndex in routerModules)
+    return routerModules[fullPathIndex]
+
   // 返回插件信息
   return routerModules[fullPath]
 }
