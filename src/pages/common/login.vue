@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { AlipayCircleFilled, LockOutlined, MobileOutlined, TaobaoCircleFilled, UserOutlined, WeiboCircleFilled } from '@ant-design/icons-vue'
 import { message, notification } from 'ant-design-vue'
+import { AxiosError } from 'axios'
 import GlobalLayoutFooter from '~/layouts/components/global-footer/index.vue'
 import { loginApi } from '~/api/common/login'
 import type { LoginMobileParams, LoginParams } from '~@/api/common/login'
@@ -21,6 +22,7 @@ const codeLoading = shallowRef(false)
 const antdToken = useAntdToken()
 const resetCounter = 60
 const submitLoading = shallowRef(false)
+const errorAlert = shallowRef(false)
 
 const { counter, pause, reset, resume, isActive } = useInterval(1000, {
   controls: true,
@@ -81,7 +83,9 @@ const submit = async () => {
     })
   }
   catch (e) {
-    console.warn(e)
+    if (e instanceof AxiosError)
+      errorAlert.value = true
+
     submitLoading.value = false
   }
 }
@@ -121,6 +125,8 @@ const submit = async () => {
               <a-tab-pane key="account" tab="账户密码登录" />
               <a-tab-pane key="mobile" tab="手机号登录" />
             </a-tabs>
+            <!-- 判断是否存在error -->
+            <a-alert v-if="errorAlert" mb-24px message="错误的用户名和密码(admin/admin)" type="error" show-icon />
             <template v-if="loginModel.type === 'account'">
               <a-form-item name="username" :rules="[{ required: true, message: '用户名不能为空' }]">
                 <a-input v-model:value="loginModel.username" allow-clear placeholder="用户名：admin or user" size="large" @pressEnter="submit">
