@@ -13,5 +13,7 @@ declare module 'vue-router'{
     keepAlive?: boolean
     target?: '_blank' | '_self' | '_parent'
     affix?: boolean
+    id?: string | number
+    parentId?: string | number | null
   }
 }

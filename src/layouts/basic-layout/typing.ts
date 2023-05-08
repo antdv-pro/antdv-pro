@@ -4,14 +4,24 @@ import { arrayType, booleanType, eventType, numberType, stringType } from '@v-c/
 export type MenuData = MenuDataItem[]
 
 export interface MenuDataItem {
+  // 唯一id
+  id?: string | number
   // 标题
   title: string | (() => VNodeChild)
   // 图标
   icon?: string | (() => VNodeChild)
   // 地址
   path: string
+  // 绑定的哪个组件
+  component?: string
   // 子集菜单
   children?: MenuDataItem[]
+  // 重定向地址
+  redirect?: string
+  // 哪些是固定页签
+  affix?: boolean
+  // 父级菜单的id
+  parentId?: string | number | null
   // 同路由中的name，主要是用于保活的左右
   name?: string
   // 是否隐藏当前菜单

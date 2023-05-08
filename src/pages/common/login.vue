@@ -108,11 +108,11 @@ const submit = async () => {
               <img src="/logo.svg">
             </span>
             <span class="ant-pro-form-login-title">
-              Ant Design
+              Antdv Pro
             </span>
           </div>
           <div class="ant-pro-form-login-desc">
-            Ant Design 是西湖区最具影响力的 Web 设计规范
+            Antdv Pro 是一个基于Ant Design Vue的通用中台管理系统
           </div>
         </div>
         <div class="ant-pro-form-login-main" w-335px>

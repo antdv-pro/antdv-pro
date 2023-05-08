@@ -1,9 +1,10 @@
 import { logoutApi } from '~@/api/common/login'
+import { getRouteMenusApi } from '~@/api/common/menu'
 import type { UserInfo } from '~@/api/common/user'
 import { getUserInfoApi } from '~@/api/common/user'
 import type { MenuData } from '~@/layouts/basic-layout/typing'
-import dynamicRoutes, { rootRoute } from '~@/router/dynamic-routes'
-import { genRoutes } from '~@/router/generate-route'
+import { rootRoute } from '~@/router/dynamic-routes'
+import { generateTreeRoutes } from '~@/router/generate-route'
 
 export const useUserStore = defineStore('user', () => {
   const routerData = shallowRef()
@@ -14,19 +15,19 @@ export const useUserStore = defineStore('user', () => {
   const avatar = computed(() => userInfo.value?.avatar)
   const nickname = computed(() => userInfo.value?.nickname ?? userInfo.value?.username)
 
-  const generateRoutes = async () => {
-    const currentRoute = {
-      ...rootRoute,
-      children: dynamicRoutes,
-    }
-    menuData.value = genRoutes(dynamicRoutes)
-    return currentRoute
+  const getMenuRoutes = async () => {
+    const { data } = await getRouteMenusApi()
+    return generateTreeRoutes(data ?? [])
   }
 
   const generateDynamicRoutes = async () => {
-    const routerDatas = await generateRoutes()
-    routerData.value = routerDatas
-    return routerDatas
+    const { menuData: treeMenuData, routeData } = await getMenuRoutes()
+    menuData.value = treeMenuData
+    routerData.value = {
+      ...rootRoute,
+      children: routeData,
+    }
+    return routerData.value
   }
 
   // 获取用户信息

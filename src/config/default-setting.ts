@@ -1,9 +1,9 @@
 import type { LayoutSetting } from '~@/stores/app'
 
 export default {
-  title: 'Antdv Admin Pro',
+  title: 'Antdv Pro',
   theme: 'light',
-  logo: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
+  logo: '/logo.svg',
   collapsed: false,
   drawerVisible: false,
   colorPrimary: '#1677FF',
