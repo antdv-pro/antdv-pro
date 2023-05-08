@@ -10,6 +10,14 @@ export default [
     },
   },
   {
+    path: '/401',
+    name: 'Error401',
+    component: () => import('~/pages/exception/401.vue'),
+    meta: {
+      title: '授权已过期',
+    },
+  },
+  {
     path: '/common',
     name: 'LayouBasicRedirect',
     component: Layout,
@@ -22,9 +30,11 @@ export default [
       },
     ],
   },
-
   {
     path: '/:pathMatch(.*)',
+    meta: {
+      title: '找不到页面',
+    },
     component: () => import('~/pages/exception/error.vue'),
   },
 ] as RouteRecordRaw[]

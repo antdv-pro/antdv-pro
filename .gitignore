@@ -26,3 +26,8 @@ dist-ssr
 # Vitepress
 docs/.vitepress/dist
 docs/.vitepress/cache
+
+*.log*
+.nitro
+.cache
+.output

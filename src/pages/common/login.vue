@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import { AlipayCircleFilled, LockOutlined, MobileOutlined, TaobaoCircleFilled, UserOutlined, WeiboCircleFilled } from '@ant-design/icons-vue'
+import { message, notification } from 'ant-design-vue'
 import GlobalLayoutFooter from '~/layouts/components/global-footer/index.vue'
+import { loginApi } from '~/api/common/login'
+import type { LoginMobileParams, LoginParams } from '~@/api/common/login'
 const appStore = useAppStore()
 const { layoutSetting } = storeToRefs(appStore)
 const router = useRouter()
+const token = useAuthorization()
 const loginModel = reactive({
   username: undefined,
   password: undefined,
@@ -36,6 +40,7 @@ const getCode = async () => {
       reset()
       resume()
       codeLoading.value = false
+      message.success('验证码是：123456')
     }, 3000)
   }
   catch (error) {
@@ -48,10 +53,32 @@ const submit = async () => {
   submitLoading.value = true
   try {
     await formRef.value?.validate()
-    setTimeout(() => {
-      submitLoading.value = false
-      router.push('/')
-    }, 1000)
+    let params: LoginParams | LoginMobileParams
+
+    if (loginModel.type === 'account') {
+      params = {
+        username: loginModel.username,
+        password: loginModel.password,
+      } as unknown as LoginParams
+    }
+    else {
+      params = {
+        mobile: loginModel.mobile,
+        code: loginModel.code,
+        type: 'mobile',
+      } as unknown as LoginMobileParams
+    }
+    const { data } = await loginApi(params)
+    token.value = data?.token
+    notification.success({
+      message: '登录成功',
+      description: '欢迎回来！',
+      duration: 3,
+    })
+    router.push({
+      path: '/',
+      replace: true,
+    })
   }
   catch (e) {
     console.warn(e)
@@ -96,14 +123,14 @@ const submit = async () => {
             </a-tabs>
             <template v-if="loginModel.type === 'account'">
               <a-form-item name="username" :rules="[{ required: true, message: '用户名不能为空' }]">
-                <a-input v-model:value="loginModel.username" allow-clear placeholder="用户名：admin or user" @pressEnter="submit" size="large">
+                <a-input v-model:value="loginModel.username" allow-clear placeholder="用户名：admin or user" size="large" @pressEnter="submit">
                   <template #prefix>
                     <UserOutlined />
                   </template>
                 </a-input>
               </a-form-item>
               <a-form-item name="password" :rules="[{ required: true, message: '密码不能为空' }]">
-                <a-input-password v-model:value="loginModel.password" allow-clear placeholder="密码：admin" @pressEnter="submit" size="large">
+                <a-input-password v-model:value="loginModel.password" allow-clear placeholder="密码：admin" size="large" @pressEnter="submit">
                   <template #prefix>
                     <LockOutlined />
                   </template>
@@ -112,7 +139,7 @@ const submit = async () => {
             </template>
             <template v-if="loginModel.type === 'mobile'">
               <a-form-item name="mobile" :rules="[{ required: true, message: '手机号不能为空' }]">
-                <a-input v-model:value="loginModel.mobile" allow-clear placeholder="请输入手机号！" @pressEnter="submit" size="large">
+                <a-input v-model:value="loginModel.mobile" allow-clear placeholder="请输入手机号！" size="large" @pressEnter="submit">
                   <template #prefix>
                     <MobileOutlined />
                   </template>
@@ -120,13 +147,15 @@ const submit = async () => {
               </a-form-item>
               <a-form-item name="code" :rules="[{ required: true, message: '验证码不能为空' }]">
                 <div flex items-center>
-                  <a-input v-model:value="loginModel.code" style="flex: 1 1 0%; transition: width 0.3s ease 0s; margin-right: 8px;" 
-                  allow-clear placeholder="请输入验证码！" @pressEnter="submit" size="large">
+                  <a-input
+                    v-model:value="loginModel.code" style="flex: 1 1 0%; transition: width 0.3s ease 0s; margin-right: 8px;"
+                    allow-clear placeholder="请输入验证码！" size="large" @pressEnter="submit"
+                  >
                     <template #prefix>
                       <LockOutlined />
                     </template>
                   </a-input>
-                  <a-button :loading="codeLoading" :disabled="isActive" @click="getCode" size="large">
+                  <a-button :loading="codeLoading" :disabled="isActive" size="large" @click="getCode">
                     <template v-if="!isActive">
                       获取验证码
                     </template>
@@ -143,7 +172,7 @@ const submit = async () => {
               </a-checkbox>
               <a>忘记密码 ?</a>
             </div>
-            <a-button type="primary" block :loading="submitLoading" @click="submit" size="large">
+            <a-button type="primary" block :loading="submitLoading" size="large" @click="submit">
               登录
             </a-button>
           </a-form>
