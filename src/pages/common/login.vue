@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { AlipayCircleFilled, LockOutlined, MobileOutlined, TaobaoCircleFilled, UserOutlined, WeiboCircleFilled } from '@ant-design/icons-vue'
-import { message } from 'ant-design-vue'
+import { message, notification } from 'ant-design-vue'
 import GlobalLayoutFooter from '~/layouts/components/global-footer/index.vue'
 import { loginApi } from '~/api/common/login'
 import type { LoginMobileParams, LoginParams } from '~@/api/common/login'
@@ -70,6 +70,11 @@ const submit = async () => {
     }
     const { data } = await loginApi(params)
     token.value = data?.token
+    notification.success({
+      message: '登录成功',
+      description: '欢迎回来！',
+      duration: 3,
+    })
     router.push({
       path: '/',
       replace: true,
