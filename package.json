@@ -5,7 +5,7 @@
   "packageManager": "pnpm@8.4.0",
   "scripts": {
     "dev:admin": "vite",
-    "dev":"run-p dev:admin dev:mock",
+    "dev": "run-p dev:admin dev:mock",
     "dev:mock": "pnpm -F servers dev",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
