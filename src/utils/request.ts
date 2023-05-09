@@ -83,7 +83,7 @@ instance.interceptors.response.use(responseHandler, errorHandler)
 
 export default instance
 
-export const useGet = <T = any, R = any>(url: string, params?: T, config?: AxiosRequestConfig): Promise<ResponseBody<R>> => {
+export const useGet = <R = any, T = any>(url: string, params?: T, config?: AxiosRequestConfig): Promise<ResponseBody<R>> => {
   return instance.request({
     url,
     params,
@@ -92,7 +92,7 @@ export const useGet = <T = any, R = any>(url: string, params?: T, config?: Axios
   })
 }
 
-export const usePost = <T = any, R = any>(url: string, data?: T, config?: AxiosRequestConfig): Promise<ResponseBody<R>> => {
+export const usePost = < R = any, T = any>(url: string, data?: T, config?: AxiosRequestConfig): Promise<ResponseBody<R>> => {
   return instance.request({
     url,
     data,
@@ -101,7 +101,7 @@ export const usePost = <T = any, R = any>(url: string, data?: T, config?: AxiosR
   })
 }
 
-export const usePut = <T = any, R = any>(url: string, data?: T, config?: AxiosRequestConfig): Promise<ResponseBody<R>> => {
+export const usePut = < R = any, T = any>(url: string, data?: T, config?: AxiosRequestConfig): Promise<ResponseBody<R>> => {
   return instance.request({
     url,
     data,
@@ -110,7 +110,7 @@ export const usePut = <T = any, R = any>(url: string, data?: T, config?: AxiosRe
   })
 }
 
-export const useDelete = <T = any, R = any>(url: string, data?: T, config?: AxiosRequestConfig): Promise<ResponseBody<R>> => {
+export const useDelete = < R = any, T = any>(url: string, data?: T, config?: AxiosRequestConfig): Promise<ResponseBody<R>> => {
   return instance.request({
     url,
     data,

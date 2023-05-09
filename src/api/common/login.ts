@@ -8,5 +8,5 @@ export interface LoginResultModel {
 }
 
 export const loginApi = (params: LoginParams) => {
-  return usePost<LoginParams, LoginResultModel>('/login', params)
+  return usePost<LoginResultModel, LoginParams>('/login', params)
 }
