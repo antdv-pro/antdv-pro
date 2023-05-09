@@ -1,6 +1,6 @@
 # Antdv Pro
 
-基于ant-design-vue@4.x版本的后台管理系统模板
+基于ant-design-vue@4.x版本的中后台企业级模板
 
 
 ## 启动项目
