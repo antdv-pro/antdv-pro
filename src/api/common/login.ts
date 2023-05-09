@@ -15,7 +15,7 @@ export interface LoginResultModel {
 }
 
 export const loginApi = (params: LoginParams | LoginMobileParams) => {
-  return usePost<LoginParams | LoginMobileParams, LoginResultModel>('/login', params)
+  return usePost<LoginResultModel, LoginParams | LoginMobileParams>('/login', params)
 }
 
 export const logoutApi = () => {

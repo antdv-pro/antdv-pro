@@ -6,5 +6,5 @@ export interface UserInfo {
 }
 
 export const getUserInfoApi = () => {
-  return useGet<any, UserInfo>('/user/info')
+  return useGet<UserInfo>('/user/info')
 }
