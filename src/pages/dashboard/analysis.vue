@@ -1,9 +1,19 @@
 <script setup lang="ts">
 import { test200, test401, test500, testDelete, testPost, testPut } from '~/api/test'
+const { locale, setLocale } = useI18nLocale()
 </script>
 
 <template>
   <div p-2>
+    <a-radio-group :value="locale" @update:value="setLocale">
+      <a-radio-button key="en-US" value="en-US">
+        English
+      </a-radio-button>
+      <a-radio-button key="zh-CN" value="zh-CN">
+        中文
+      </a-radio-button>
+    </a-radio-group>
+
     <a-space wrap>
       <a-button @click="test200">
         200请求测试
@@ -24,5 +34,10 @@ import { test200, test401, test500, testDelete, testPost, testPut } from '~/api/
         delete请求测试
       </a-button>
     </a-space>
+
+    <a-date-picker />
+    <a-time-picker />
+    <a-range-picker style="width: 200px" />
+    <a-table />
   </div>
 </template>

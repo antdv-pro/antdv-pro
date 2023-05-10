@@ -190,6 +190,7 @@ declare global {
   const useGeolocation: typeof import('@vueuse/core')['useGeolocation']
   const useGet: typeof import('../src/composables/api')['useGet']
   const useI18n: typeof import('vue-i18n')['useI18n']
+  const useI18nLocale: typeof import('../src/composables/i18n-locale')['useI18nLocale']
   const useIdle: typeof import('@vueuse/core')['useIdle']
   const useImage: typeof import('@vueuse/core')['useImage']
   const useInfiniteScroll: typeof import('@vueuse/core')['useInfiniteScroll']

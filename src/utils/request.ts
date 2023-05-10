@@ -20,6 +20,9 @@ const requestHandler = async (config: InternalAxiosRequestConfig): Promise<Inter
   if (token.value)
     config.headers.set(STORAGE_AUTHORIZE_KEY, token.value)
 
+  // 增加多语言的配置
+  const { locale } = useI18nLocale()
+  config.headers.set('Accept-Language', locale.value ?? 'zh-CN')
   return config
 }
 

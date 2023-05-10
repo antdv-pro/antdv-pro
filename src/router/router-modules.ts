@@ -5,6 +5,7 @@ const routerModules = import.meta.glob([
   '!~/pages/**/components',
   '!~/pages/**/composables',
   '!~/pages/**/hooks',
+  '!~/pages/**/locales',
   '!~/pages/**/modules',
   '!~/pages/**/plugins',
   '!~/pages/**/tests',
