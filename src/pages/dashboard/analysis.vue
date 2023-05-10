@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { test200, test401, test500, testDelete, testPost, testPut } from '~/api/test'
-const { locale, setLocale } = useI18nLocale()
+const { locale, setLocale, t } = useI18nLocale()
 </script>
 
 <template>
@@ -13,7 +13,7 @@ const { locale, setLocale } = useI18nLocale()
         中文
       </a-radio-button>
     </a-radio-group>
-
+    {{ t("pages.login.accountLogin.tab111", "测试") }}
     <a-space wrap>
       <a-button @click="test200">
         200请求测试

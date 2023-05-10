@@ -42,13 +42,12 @@ export const useI18nLocale = createSharedComposable(() => {
   })
 
   // 切换多语言功能
-  const t = (key: string, defaultMessage: string) => {
-    // TODO
-    const isExist = i18n.global.te(key, locale.value as any)
-    if (isExist)
+  const t = (key: string, defaultMessage?: string) => {
+    const message = i18n.global.t(key)
+    if (message !== key)
       return i18n.global.t(key)
     else
-      return defaultMessage
+      return defaultMessage ?? key
   }
   return {
     locale,
