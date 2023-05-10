@@ -59,7 +59,7 @@ const changeSettingLayout = (key: string, value: any) => {
   emit('settingChange', key, value)
 }
 
-const token = useAntdToken()
+const { token } = useAntdToken()
 </script>
 
 <template>

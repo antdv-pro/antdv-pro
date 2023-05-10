@@ -16,7 +16,7 @@ const cls = computed(() => {
   }
 })
 
-const token = useAntdToken()
+const { token } = useAntdToken()
 </script>
 
 <template>

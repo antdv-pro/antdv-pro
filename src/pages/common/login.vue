@@ -19,7 +19,7 @@ const loginModel = reactive({
 })
 const formRef = shallowRef()
 const codeLoading = shallowRef(false)
-const antdToken = useAntdToken()
+const { token: antdToken } = useAntdToken()
 const resetCounter = 60
 const submitLoading = shallowRef(false)
 const errorAlert = shallowRef(false)

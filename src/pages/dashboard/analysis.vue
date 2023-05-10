@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { test200, test401, test500, testDelete, testPost, testPut } from '~/api/test'
 const { locale, setLocale, t } = useI18nLocale()
+const { token } = useAntdToken()
 </script>
 
 <template>
   <div p-2>
+    {{ token.colorPrimary }}
     <a-radio-group :value="locale" @update:value="setLocale">
       <a-radio-button key="en-US" value="en-US">
         English
