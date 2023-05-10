@@ -15,7 +15,7 @@ const { token } = useAntdToken()
         中文
       </a-radio-button>
     </a-radio-group>
-    {{ t("pages.login.accountLogin.tab111", "测试") }}
+    {{ t("pages.login.accountLogin.tab") }}
     <a-space wrap>
       <a-button @click="test200">
         200请求测试

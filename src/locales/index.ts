@@ -6,8 +6,11 @@ export const defaultLocale = 'zh-CN'
 const i18n = createI18n({
   legacy: false,
   locale: defaultLocale,
+  // 是否显示错误警告
   missingWarn: false,
   fallbackLocale: defaultLocale,
+  // 是否显示fallback警告
+  fallbackWarn: false,
   messages: {
     'zh-CN': zhCN,
   },
