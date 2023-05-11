@@ -32,7 +32,7 @@ const contentCls = computed(() => {
     cls.push('w-full')
 
   else if (props.contentWidth === 'Fixed')
-    cls.push(...['max-w-1200px', 'mx-auto'])
+    cls.push(...['max-w-1200px w-1200px', 'mx-auto'])
 
   return cls
 })
