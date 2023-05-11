@@ -17,6 +17,7 @@ const loginModel = reactive({
   type: 'account',
   remember: true,
 })
+const { t } = useI18nLocale()
 const formRef = shallowRef()
 const codeLoading = shallowRef(false)
 const { token: antdToken } = useAntdToken()
@@ -116,27 +117,28 @@ const submit = async () => {
             </span>
           </div>
           <div class="ant-pro-form-login-desc">
-            Antdv Pro 是一个基于Ant Design Vue的通用中台管理系统
+            {{ t("pages.layouts.userLayout.title") }}
           </div>
         </div>
         <div class="ant-pro-form-login-main" w-335px>
           <a-form ref="formRef" :model="loginModel">
             <a-tabs v-model:activeKey="loginModel.type" centered>
-              <a-tab-pane key="account" tab="账户密码登录" />
-              <a-tab-pane key="mobile" tab="手机号登录" />
+              <a-tab-pane key="account" :tab="t('pages.login.accountLogin.tab')" />
+              <a-tab-pane key="mobile" :tab="t('pages.login.phoneLogin.tab')" />
             </a-tabs>
             <!-- 判断是否存在error -->
-            <a-alert v-if="errorAlert" mb-24px message="错误的用户名和密码(admin/admin)" type="error" show-icon />
+            <a-alert v-if="errorAlert && loginModel.type === 'account'" mb-24px :message="t('pages.login.accountLogin.errorMessage')" type="error" show-icon />
+            <a-alert v-if="errorAlert && loginModel.type === 'mobile'" mb-24px :message="t('pages.login.phoneLogin.errorMessage')" type="error" show-icon />
             <template v-if="loginModel.type === 'account'">
-              <a-form-item name="username" :rules="[{ required: true, message: '用户名不能为空' }]">
-                <a-input v-model:value="loginModel.username" allow-clear placeholder="用户名：admin or user" size="large" @pressEnter="submit">
+              <a-form-item name="username" :rules="[{ required: true, message: t('pages.login.username.required') }]">
+                <a-input v-model:value="loginModel.username" allow-clear :placeholder="t('pages.login.username.placeholder')" size="large" @pressEnter="submit">
                   <template #prefix>
                     <UserOutlined />
                   </template>
                 </a-input>
               </a-form-item>
-              <a-form-item name="password" :rules="[{ required: true, message: '密码不能为空' }]">
-                <a-input-password v-model:value="loginModel.password" allow-clear placeholder="密码：admin" size="large" @pressEnter="submit">
+              <a-form-item name="password" :rules="[{ required: true, message: t('pages.login.password.required') }]">
+                <a-input-password v-model:value="loginModel.password" allow-clear :placeholder="t('pages.login.password.placeholder')" size="large" @pressEnter="submit">
                   <template #prefix>
                     <LockOutlined />
                   </template>
@@ -144,18 +146,26 @@ const submit = async () => {
               </a-form-item>
             </template>
             <template v-if="loginModel.type === 'mobile'">
-              <a-form-item name="mobile" :rules="[{ required: true, message: '手机号不能为空' }]">
-                <a-input v-model:value="loginModel.mobile" allow-clear placeholder="请输入手机号！" size="large" @pressEnter="submit">
+              <a-form-item
+                name="mobile" :rules="[
+                  { required: true, message: t('pages.login.phoneNumber.required') },
+                  {
+                    pattern: /^(86)?1([38][0-9]|4[579]|5[0-35-9]|6[6]|7[0135678]|9[89])[0-9]{8}$/,
+                    message: t('pages.login.phoneNumber.invalid'),
+                  },
+                ]"
+              >
+                <a-input v-model:value="loginModel.mobile" allow-clear :placeholder="t('pages.login.phoneNumber.placeholder')" size="large" @pressEnter="submit">
                   <template #prefix>
                     <MobileOutlined />
                   </template>
                 </a-input>
               </a-form-item>
-              <a-form-item name="code" :rules="[{ required: true, message: '验证码不能为空' }]">
+              <a-form-item name="code" :rules="[{ required: true, message: t('pages.login.captcha.required') }]">
                 <div flex items-center>
                   <a-input
                     v-model:value="loginModel.code" style="flex: 1 1 0%; transition: width 0.3s ease 0s; margin-right: 8px;"
-                    allow-clear placeholder="请输入验证码！" size="large" @pressEnter="submit"
+                    allow-clear :placeholder="t('pages.login.captcha.placeholder')" size="large" @pressEnter="submit"
                   >
                     <template #prefix>
                       <LockOutlined />
@@ -163,10 +173,10 @@ const submit = async () => {
                   </a-input>
                   <a-button :loading="codeLoading" :disabled="isActive" size="large" @click="getCode">
                     <template v-if="!isActive">
-                      获取验证码
+                      {{ t('pages.login.phoneLogin.getVerificationCode') }}
                     </template>
                     <template v-else>
-                      {{ resetCounter - counter }} 秒后重新获取
+                      {{ resetCounter - counter }} {{ t('pages.getCaptchaSecondText') }}
                     </template>
                   </a-button>
                 </div>
@@ -174,16 +184,16 @@ const submit = async () => {
             </template>
             <div class="mb-24px" flex items-center justify-between>
               <a-checkbox v-model:checked="loginModel.remember">
-                自动登录
+                {{ t('pages.login.rememberMe') }}
               </a-checkbox>
-              <a>忘记密码 ?</a>
+              <a>{{ t('pages.login.forgotPassword') }}</a>
             </div>
             <a-button type="primary" block :loading="submitLoading" size="large" @click="submit">
-              登录
+              {{ t('pages.login.submit') }}
             </a-button>
           </a-form>
           <div class="ant-pro-form-login-other" text-14px>
-            其他登录方式:
+            {{ t('pages.login.loginWith') }}
             <AlipayCircleFilled class="icon" />
             <TaobaoCircleFilled class="icon" />
             <WeiboCircleFilled class="icon" />
