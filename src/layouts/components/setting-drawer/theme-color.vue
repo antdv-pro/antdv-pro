@@ -5,6 +5,8 @@ defineProps<{
   colorList: ({ key: string; color: string })[]
   color?: string
   onChange?: (color: string) => void
+  t?: (key: string, ...args: any[]) => string
+
 }>()
 
 const prefixCls = shallowRef('ant-pro-drawer-setting-theme-color')
@@ -13,15 +15,21 @@ const prefixCls = shallowRef('ant-pro-drawer-setting-theme-color')
 <template>
   <div :class="`${prefixCls}`">
     <div :class="`${prefixCls}-content`">
-      <div
+      <a-tooltip
         v-for="item in colorList"
         :key="item.color"
-        :class="`${prefixCls}-block`"
-        :style="{ backgroundColor: item.color }"
-        @click="onChange?.(item.color)"
       >
-        <CheckOutlined v-show="color === item.color" />
-      </div>
+        <template #title>
+          {{ t?.(`app.setting.themecolor.${item.key}`) }}
+        </template>
+        <div
+          :class="`${prefixCls}-block`"
+          :style="{ backgroundColor: item.color }"
+          @click="onChange?.(item.color)"
+        >
+          <CheckOutlined v-show="color === item.color" />
+        </div>
+      </a-tooltip>
     </div>
   </div>
 </template>

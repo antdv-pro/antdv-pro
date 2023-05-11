@@ -24,6 +24,7 @@ const props = withDefaults(defineProps<{
   colorWeak?: boolean
   multiTab?: boolean
   multiTabFixed?: boolean
+  t?: (key: string, ...args: any[]) => string
 }>(), {
   theme: 'light',
   colorList: () => [
@@ -98,22 +99,22 @@ const { token } = useAntdToken()
       </div>
     </template>
     <div :class="`${prefixCls}-content`">
-      <Body title="整体风格设计">
+      <Body :title="t?.('app.setting.pagestyle') ?? '整体风格设计'">
         <div :class="`${prefixCls}-block-checkbox`">
-          <BlockCheckbox :checked="props.theme === 'light'" theme="light" :is-dark="props.theme === 'dark'" @click="changeTheme('light')" />
-          <BlockCheckbox v-if="layout !== 'mix'" :checked="props.theme === 'inverted'" theme="inverted" :is-dark="props.theme === 'dark'" @click="changeTheme('inverted')" />
-          <BlockCheckbox :checked="props.theme === 'dark'" theme="dark" :is-dark="props.theme === 'dark'" @click="changeTheme('dark')" />
+          <BlockCheckbox :t="t" :checked="props.theme === 'light'" theme="light" :is-dark="props.theme === 'dark'" @click="changeTheme('light')" />
+          <BlockCheckbox v-if="layout !== 'mix'" :t="t" :checked="props.theme === 'inverted'" theme="inverted" :is-dark="props.theme === 'dark'" @click="changeTheme('inverted')" />
+          <BlockCheckbox :t="t" :checked="props.theme === 'dark'" theme="dark" :is-dark="props.theme === 'dark'" @click="changeTheme('dark')" />
         </div>
       </Body>
-      <Body title="主题色">
-        <ThemeColor :color-list="colorList" :color="colorPrimary" @change="changeColor" />
+      <Body :title="t?.('app.setting.themecolor') ?? '主题色'">
+        <ThemeColor :t="t" :color-list="colorList" :color="colorPrimary" @change="changeColor" />
       </Body>
       <a-divider />
-      <Body title="导航模式">
+      <Body :title="t?.('app.setting.pagestyle.mode') ?? '导航模式'">
         <div :class="`${prefixCls}-block-checkbox`">
-          <BlockCheckbox theme="side" :checked="layout === 'side'" :is-dark="props.theme === 'dark'" @click="changeLayout('side')" />
-          <BlockCheckbox theme="top" :checked="layout === 'top'" :is-dark="props.theme === 'dark'" @click="changeLayout('top')" />
-          <BlockCheckbox theme="mix" :checked="layout === 'mix'" :is-dark="props.theme === 'dark'" @click="changeLayout('mix')" />
+          <BlockCheckbox :t="t" theme="side" :checked="layout === 'side'" :is-dark="props.theme === 'dark'" @click="changeLayout('side')" />
+          <BlockCheckbox :t="t" theme="top" :checked="layout === 'top'" :is-dark="props.theme === 'dark'" @click="changeLayout('top')" />
+          <BlockCheckbox :t="t" theme="mix" :checked="layout === 'mix'" :is-dark="props.theme === 'dark'" @click="changeLayout('mix')" />
         </div>
       </Body>
       <LayoutSetting

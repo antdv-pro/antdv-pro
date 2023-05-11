@@ -7,6 +7,7 @@ const appStore = useAppStore()
 const { layoutSetting } = storeToRefs(appStore)
 const userStore = useUserStore()
 const layoutMenu = useLayoutMenu()
+const { t } = useI18nLocale()
 const { selectedKeys, openKeys } = storeToRefs(layoutMenu)
 const { isMobile, isPad } = useQueryBreakpoints()
 watch(isPad, (val) => {
@@ -54,6 +55,7 @@ const layoutProps = computed(() => pick(appStore.layoutSetting, ['fixedHeader', 
   </BasicLayout>
   <SettingDrawer
     v-model:open="layoutSetting.drawerVisible"
+    :t="t"
     :theme="layoutSetting.theme"
     :color-primary="layoutSetting.colorPrimary"
     :color-weak="layoutSetting.colorWeak"
