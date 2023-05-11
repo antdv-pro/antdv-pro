@@ -11,8 +11,6 @@ const baseSrc = fileURLToPath(new URL('./src', import.meta.url))
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd())
-  console.log(mode)
-
   return {
     plugins: [
       vue(),
@@ -37,6 +35,18 @@ export default defineConfig(({ mode }) => {
     ],
     resolve: {
       alias: [
+        {
+          find: 'dayjs',
+          replacement: 'dayjs/esm',
+        },
+        {
+          find: /^dayjs\/locale/,
+          replacement: 'dayjs/esm/locale',
+        },
+        {
+          find: /^dayjs\/plugin/,
+          replacement: 'dayjs/esm/plugin',
+        },
         {
           find: 'vue-i18n',
           replacement: mode === 'development' ? 'vue-i18n/dist/vue-i18n.esm-browser.js' : 'vue-i18n/dist/vue-i18n.esm-bundler.js',
@@ -81,7 +91,7 @@ export default defineConfig(({ mode }) => {
         output: {
           manualChunks: {
             vue: ['vue', 'vue-router', 'pinia', 'vue-i18n', '@vueuse/core'],
-            antd: ['ant-design-vue', '@ant-design/icons-vue'],
+            antd: ['ant-design-vue', '@ant-design/icons-vue', 'dayjs'],
             // lodash: ['loadsh-es'],
           },
         },

@@ -5,6 +5,8 @@ const props = defineProps<{
   theme?: 'light' | 'dark' | 'inverted' | 'top' | 'side' | 'mix'
   isDark?: boolean
   checked?: boolean
+  t?: (key: string, ...args: any[]) => string
+
 }>()
 const prefixCls = shallowRef('ant-pro-drawer-setting-block-checkbox')
 const cls = computed(() => {
@@ -16,11 +18,16 @@ const cls = computed(() => {
   }
 })
 
-const token = useAntdToken()
+const { token } = useAntdToken()
 </script>
 
 <template>
-  <div :class="cls">
-    <CheckOutlined v-show="checked" :style="{ color: token?.colorPrimary }" :class="`${prefixCls}-selectIcon`" />
-  </div>
+  <a-tooltip>
+    <template #title>
+      {{ t?.(`app.setting.pagestyle.${theme}` ?? '') }}
+    </template>
+    <div :class="cls">
+      <CheckOutlined v-show="checked" :style="{ color: token?.colorPrimary }" :class="`${prefixCls}-selectIcon`" />
+    </div>
+  </a-tooltip>
 </template>
