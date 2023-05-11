@@ -131,14 +131,14 @@ const submit = async () => {
             <a-alert v-if="errorAlert && loginModel.type === 'mobile'" mb-24px :message="t('pages.login.phoneLogin.errorMessage')" type="error" show-icon />
             <template v-if="loginModel.type === 'account'">
               <a-form-item name="username" :rules="[{ required: true, message: t('pages.login.username.required') }]">
-                <a-input v-model:value="loginModel.username" allow-clear :placeholder="t('pages.login.username.placeholder')" size="large" @pressEnter="submit">
+                <a-input v-model:value="loginModel.username" allow-clear :placeholder="t('pages.login.username.placeholder')" size="large" @press-enter="submit">
                   <template #prefix>
                     <UserOutlined />
                   </template>
                 </a-input>
               </a-form-item>
               <a-form-item name="password" :rules="[{ required: true, message: t('pages.login.password.required') }]">
-                <a-input-password v-model:value="loginModel.password" allow-clear :placeholder="t('pages.login.password.placeholder')" size="large" @pressEnter="submit">
+                <a-input-password v-model:value="loginModel.password" allow-clear :placeholder="t('pages.login.password.placeholder')" size="large" @press-enter="submit">
                   <template #prefix>
                     <LockOutlined />
                   </template>
@@ -155,7 +155,7 @@ const submit = async () => {
                   },
                 ]"
               >
-                <a-input v-model:value="loginModel.mobile" allow-clear :placeholder="t('pages.login.phoneNumber.placeholder')" size="large" @pressEnter="submit">
+                <a-input v-model:value="loginModel.mobile" allow-clear :placeholder="t('pages.login.phoneNumber.placeholder')" size="large" @press-enter="submit">
                   <template #prefix>
                     <MobileOutlined />
                   </template>
@@ -165,7 +165,7 @@ const submit = async () => {
                 <div flex items-center>
                   <a-input
                     v-model:value="loginModel.code" style="flex: 1 1 0%; transition: width 0.3s ease 0s; margin-right: 8px;"
-                    allow-clear :placeholder="t('pages.login.captcha.placeholder')" size="large" @pressEnter="submit"
+                    allow-clear :placeholder="t('pages.login.captcha.placeholder')" size="large" @press-enter="submit"
                   >
                     <template #prefix>
                       <LockOutlined />
