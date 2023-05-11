@@ -9,6 +9,7 @@ const props = defineProps<{
   menuHeader?: boolean
   multiTab?: boolean
   multiTabFixed?: boolean
+  t?: (key: string, ...args: any[]) => string
 }>()
 
 const emit = defineEmits(['changeSetting'])
@@ -69,7 +70,7 @@ const handleChangeSetting = (key: string, value: any) => {
             />
           </template>
           <span :style="{ opacity: item.disabled ? '0.5' : '1' }">
-            {{ item.title }}
+            {{ t?.(`app.setting.content-area.${item.key}`, item.title) ?? item.title }}
           </span>
         </a-list-item>
       </a-tooltip>

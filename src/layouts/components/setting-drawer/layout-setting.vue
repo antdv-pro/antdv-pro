@@ -7,6 +7,7 @@ const props = defineProps<{
   fixedHeader?: boolean
   fixedSider?: boolean
   splitMenus?: boolean
+  t?: (key: string, ...args: any[]) => string
 }>()
 
 const emit = defineEmits(['changeSetting'])
@@ -50,10 +51,10 @@ const handleChangeSetting = (key: string, value: any) => {
             <template v-if="item.key === 'contentWidth'">
               <a-select size="small" :disabled="item.disabled" :value="contentWidth || 'Fluid'" @update:value="(e:string) => handleChangeSetting('contentWidth', e)">
                 <a-select-option v-if="layout === 'top'" value="Fixed">
-                  Fixed
+                  {{ t?.("app.setting.content-width.fixed") ?? 'Fixed' }}
                 </a-select-option>
                 <a-select-option value="Fluid">
-                  Fluid
+                  {{ t?.("app.setting.content-width.fluid") ?? 'Fluid' }}
                 </a-select-option>
               </a-select>
             </template>
@@ -68,7 +69,7 @@ const handleChangeSetting = (key: string, value: any) => {
             </template>
           </template>
           <span :style="{ opacity: item.disabled ? '0.5' : '1' }">
-            {{ item.title }}
+            {{ t?.(`app.setting.content-width.${item.key}`, item.title) ?? item.title }}
           </span>
         </a-list-item>
       </a-tooltip>

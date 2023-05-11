@@ -119,6 +119,7 @@ const { token } = useAntdToken()
       </Body>
       <LayoutSetting
         :layout="layout"
+        :t="t"
         :content-width="contentWidth"
         :fixed-header="fixedHeader"
         :fixed-sider="fixedSider"
@@ -126,8 +127,9 @@ const { token } = useAntdToken()
         @change-setting="changeSettingLayout"
       />
       <a-divider />
-      <Body title="内容区域">
+      <Body :title="t?.('app.setting.content-area.title') ?? '内容区域'">
         <RegionalSetting
+          :t="t"
           :layout="layout"
           :header="header"
           :menu-header="menuHeader"
@@ -139,8 +141,9 @@ const { token } = useAntdToken()
         />
       </Body>
       <a-divider />
-      <Body title="其他设置">
+      <Body :title="t?.('app.setting.othersettings') ?? '其他设置'">
         <OtherSetting
+          :t="t"
           :color-weak="colorWeak"
           @change-setting="changeSettingLayout"
         />

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 defineProps<{
   colorWeak?: boolean
+  t?: (key: string, ...args: any[]) => string
 }>()
 const emit = defineEmits(['changeSetting'])
 const list = computed(() => ([
@@ -41,7 +42,7 @@ const handleChangeWeak = (value: boolean) => {
           />
         </template>
         <span :style="{ opacity: item.disabled ? '0.5' : '1' }">
-          {{ item.title }}
+          {{ t?.("app.setting.weakmode", item.title) ?? item.title }}
         </span>
       </a-list-item>
     </template>
