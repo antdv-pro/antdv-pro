@@ -8,11 +8,12 @@ import {
   transformerDirectives,
   transformerVariantGroup,
 } from 'unocss'
+import antdUnoTheme from './antd-uno-theme.json'
 
 export default defineConfig({
   safelist: [],
   theme: {
-
+    ...antdUnoTheme,
   },
   presets: [
     presetUno(),
