@@ -20,7 +20,6 @@ const loginModel = reactive({
 const { t } = useI18nLocale()
 const formRef = shallowRef()
 const codeLoading = shallowRef(false)
-const { token: antdToken } = useAntdToken()
 const resetCounter = 60
 const submitLoading = shallowRef(false)
 const errorAlert = shallowRef(false)
@@ -308,7 +307,7 @@ const submit = async () => {
     transition: color .3s;
 
     &:hover{
-      color: v-bind('antdToken.colorPrimary');
+      color: var(--pro-ant-color-primary);
     }
   }
 }

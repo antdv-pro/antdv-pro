@@ -11,6 +11,9 @@ import {
 
 export default defineConfig({
   safelist: [],
+  theme: {
+
+  },
   presets: [
     presetUno(),
     presetAttributify(),
