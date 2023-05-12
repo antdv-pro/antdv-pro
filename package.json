@@ -12,7 +12,8 @@
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint src --fix",
-    "dir-tree": "esno ./scripts/dir-tree"
+    "dir-tree": "esno ./scripts/dir-tree",
+    "gen:uno":"esno ./scripts/gen-unocss"
   },
   "dependencies": {
     "@ant-design/icons-vue": "^6.1.0",
