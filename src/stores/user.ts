@@ -4,14 +4,13 @@ import type { UserInfo } from '~@/api/common/user'
 import { getUserInfoApi } from '~@/api/common/user'
 import type { MenuData } from '~@/layouts/basic-layout/typing'
 import { rootRoute } from '~@/router/dynamic-routes'
-import { generateTreeRoutes } from '~@/router/generate-route'
+import { generateFlatRoutes, generateTreeRoutes } from '~@/router/generate-route'
 
 export const useUserStore = defineStore('user', () => {
   const routerData = shallowRef()
   const menuData = shallowRef<MenuData>([])
   const userInfo = shallowRef<UserInfo>()
   const token = useAuthorization()
-
   const avatar = computed(() => userInfo.value?.avatar)
   const nickname = computed(() => userInfo.value?.nickname ?? userInfo.value?.username)
 
@@ -25,7 +24,7 @@ export const useUserStore = defineStore('user', () => {
     menuData.value = treeMenuData
     routerData.value = {
       ...rootRoute,
-      children: routeData,
+      children: generateFlatRoutes(routeData),
     }
     return routerData.value
   }

@@ -1,6 +1,7 @@
 
 import { isUrl } from '@v-c/utils'
 import type { RouteRecordRaw } from 'vue-router'
+import { omit } from 'lodash'
 import { getRouterModule } from './router-modules'
 import type { MenuData, MenuDataItem } from '~@/layouts/basic-layout/typing'
 import dynamicRoutes from '~@/router/dynamic-routes'
@@ -131,4 +132,26 @@ export const generateRoutes = async () => {
     menuData,
     routeData: dynamicRoutes,
   }
+}
+
+// 路由拉平处理
+const flatRoutes = (routes: RouteRecordRaw[]) => {
+  const flatRouteData: RouteRecordRaw[] = []
+  for (const route of routes) {
+    flatRouteData.push(omit(route, ['chidlren']) as RouteRecordRaw)
+    if (route.children && route.children.length)
+      flatRouteData.push(...flatRoutes(route.children))
+  }
+  return flatRouteData
+}
+
+export const generateFlatRoutes = (routes: RouteRecordRaw[]) => {
+  const flatRouets = flatRoutes(routes)
+  // 拿到拉平后的路由，然后统一添加一个父级的路由,通过这层路由实现保活的功能
+  const parentRoute: RouteRecordRaw = {
+    path: '',
+    component: getRouterModule('RouteView'),
+    children: flatRouets,
+  }
+  return [parentRoute]
 }
