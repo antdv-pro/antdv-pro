@@ -4,7 +4,7 @@ import type { RouteRecordRaw } from 'vue-router'
 import { omit } from 'lodash'
 import { getRouterModule } from './router-modules'
 import type { MenuData, MenuDataItem } from '~@/layouts/basic-layout/typing'
-import dynamicRoutes from '~@/router/dynamic-routes'
+import dynamicRoutes, { ROOT_ROUTE_REDIRECT_PATH } from '~@/router/dynamic-routes'
 
 let cache_key = 1
 
@@ -149,7 +149,9 @@ export const generateFlatRoutes = (routes: RouteRecordRaw[]) => {
   const flatRouets = flatRoutes(routes)
   // 拿到拉平后的路由，然后统一添加一个父级的路由,通过这层路由实现保活的功能
   const parentRoute: RouteRecordRaw = {
-    path: '',
+    path: '/',
+    redirect: ROOT_ROUTE_REDIRECT_PATH,
+    name: 'ROOT_EMPTY_PATH',
     component: getRouterModule('RouteView'),
     children: flatRouets,
   }

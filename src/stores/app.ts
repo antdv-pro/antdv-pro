@@ -24,6 +24,7 @@ export interface LayoutSetting {
   multiTabFixed?: boolean
   headerHeight?: number
   copyright?: string
+  keepAlive?: boolean
 }
 
 export const useAppStore = defineStore('app', () => {

@@ -1,5 +1,5 @@
 import type { RouteLocationNormalizedLoaded } from 'vue-router'
-import { message } from 'ant-design-vue/es'
+import { message } from 'ant-design-vue'
 import router from '~@/router'
 
 const allowList = ['/login', '/404', '/403']
@@ -19,6 +19,8 @@ export const useMultiTab = defineStore('multi-tab', () => {
   const list = ref<MultiTabItem[]>([])
   const activeKey = shallowRef()
   const refreshItem = ref<MultiTabItem | null>(null)
+  const appStore = useAppStore()
+  const cacheList = ref<string[]>([])
   const addItem = (route: RouteLocationNormalizedLoaded) => {
     if (!route) return
     // 判断是不是重定向的地址，如果是，那么久不进行处理
@@ -43,6 +45,13 @@ export const useMultiTab = defineStore('multi-tab', () => {
       icon: route.meta.icon,
       affix: route.meta.affix,
     }
+    if (!cacheList.value.includes(item?.name as string) && appStore.layoutSetting.keepAlive) {
+      if (route.meta.keepAlive && route.name)
+        cacheList.value.push(route.name as string)
+    }
+    // 保活测试
+    console.log(cacheList)
+
     list.value.push(item)
   }
 
@@ -88,6 +97,7 @@ export const useMultiTab = defineStore('multi-tab', () => {
   return {
     list,
     activeKey,
+    cacheList,
     close,
     refresh,
     switchTab,
