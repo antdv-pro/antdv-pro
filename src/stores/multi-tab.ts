@@ -25,6 +25,7 @@ export const useMultiTab = defineStore('multi-tab', () => {
     if (!route) return
     // 判断是不是重定向的地址，如果是，那么久不进行处理
     if (route.path.startsWith('/redirect')) return
+    if (route.path === '/') return
     if (allowList.includes(route.path)) return
     // 设置当前的loading为false
     if (refreshItem.value) {
@@ -36,7 +37,13 @@ export const useMultiTab = defineStore('multi-tab', () => {
         }
       }, 800)
     }
-    if (list.value.some(item => item.fullPath === route.fullPath)) return
+    if (list.value.some(item => item.fullPath === route.fullPath)) {
+      if (!cacheList.value.includes(route?.name as string) && appStore.layoutSetting.keepAlive) {
+        if (route.meta.keepAlive && route.name)
+          cacheList.value.push(route.name as string)
+      }
+      return
+    }
     const item: MultiTabItem = {
       path: route.path,
       fullPath: route.fullPath,
@@ -45,13 +52,10 @@ export const useMultiTab = defineStore('multi-tab', () => {
       icon: route.meta.icon,
       affix: route.meta.affix,
     }
-    //  添加保活不生效！！！
     if (!cacheList.value.includes(item?.name as string) && appStore.layoutSetting.keepAlive) {
       if (route.meta.keepAlive && route.name)
         cacheList.value.push(route.name as string)
     }
-    // 保活测试
-    console.log(cacheList)
 
     list.value.push(item)
   }
@@ -74,12 +78,17 @@ export const useMultiTab = defineStore('multi-tab', () => {
       activeKey.value = newItem.fullPath
       router.push(newItem.fullPath)
     }
+    // 去除缓存
+    if (appStore.layoutSetting.keepAlive && item.name)
+      cacheList.value = cacheList.value.filter(name => name !== item.name)
+
     list.value = list.value.filter(item => item.fullPath !== key)
   }
 
   const refresh = (key: string) => {
     const item = list.value.find(item => item.fullPath === key)
     if (item) {
+      cacheList.value = cacheList.value.filter(name => name !== item.name)
       item.loading = true
       refreshItem.value = item
       router.replace(`/redirect/${encodeURIComponent(item.fullPath)}`)

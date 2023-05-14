@@ -1,4 +1,7 @@
 <script setup lang="ts">
+defineOptions({
+  name: 'MenuMenu12',
+})
 </script>
 
 <template>

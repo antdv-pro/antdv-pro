@@ -24,10 +24,19 @@ export default [
     redirect: '/redirect',
     children: [
       {
-        path: '/redirect/:path(.*)',
-        name: 'redirect',
-        component: () => import('~/pages/common/redirect.vue'),
+        path: '/',
+        component: () => import('~/pages/common/route-view.vue'),
+        name: 'CommonRedirect',
+        redirect: '/redirect',
+        children: [
+          {
+            path: '/redirect/:path(.*)',
+            name: 'redirect',
+            component: () => import('~/pages/common/redirect.vue'),
+          },
+        ],
       },
+
     ],
   },
   {
