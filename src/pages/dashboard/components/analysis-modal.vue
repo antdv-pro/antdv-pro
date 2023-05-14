@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { message } from 'ant-design-vue'
 import type { AnalysisModalProps } from './interface'
 import type { CreateListParams } from '~/api/dashboard/analysis'
 import { createListApi, editListApi } from '~/api/dashboard/analysis'
@@ -36,6 +37,7 @@ const handleUpdateOpen = (open: boolean) => {
 const handleSubmit = async () => {
   if (loading.value) return
   loading.value = true
+  const close = message.loading(props.type === 'edit' ? '编辑中...' : '创建中...')
   try {
     let res
     if (props.type === 'edit')
@@ -43,14 +45,17 @@ const handleSubmit = async () => {
     else
       res = await createListApi(formModel)
 
-    if (res.code === 200)
+    if (res.code === 200) {
+      message.success(props.type === 'edit' ? '编辑成功' : '创建成功')
       handleUpdateOpen(false)
+    }
   }
   catch (e) {
     console.log('e', e)
   }
   finally {
     loading.value = false
+    close()
   }
 }
 
