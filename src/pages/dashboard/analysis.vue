@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import { message } from 'ant-design-vue'
 import AnalysisModal from './components/analysis-modal.vue'
 import type { AnalysisModalProps } from './components/interface'
 import type { ListResultModel, ListResultParams } from '~@/api/dashboard/analysis'
-import { getListApi } from '~@/api/dashboard/analysis'
+import { delListApi, getListApi } from '~@/api/dashboard/analysis'
 const columns = shallowRef([
   {
     title: '#',
@@ -83,6 +84,26 @@ const hanldeAction = (type: AnalysisModalProps['type'], record?: ListResultModel
   modalState.open = true
 }
 
+/**
+ * 删除数据
+ * @param record 数据
+ */
+const handleDel = async (record?: ListResultModel) => {
+  const close = message.loading('删除中...')
+  try {
+    const res = await delListApi(record!.id)
+    if (res.code === 200)
+      await init()
+    message.success('删除成功')
+  }
+  catch (e) {
+    console.log(e)
+  }
+  finally {
+    close()
+  }
+}
+
 onMounted(() => {
   init()
 })
@@ -134,7 +155,9 @@ onMounted(() => {
               <a @click="hanldeAction('edit', record)">
                 编辑
               </a>
-              <a>
+              <a
+                c-error @click="handleDel(record)"
+              >
                 删除
               </a>
             </div>

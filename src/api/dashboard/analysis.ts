@@ -20,3 +20,7 @@ export const createListApi = async (params: CreateListParams) => {
 export const editListApi = async (params: ListResultModel) => {
   return usePut('/list', params)
 }
+
+export const delListApi = async (id: string | number) => {
+  return useDelete(`/list/${id}`)
+}
