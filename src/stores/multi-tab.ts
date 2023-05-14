@@ -45,6 +45,7 @@ export const useMultiTab = defineStore('multi-tab', () => {
       icon: route.meta.icon,
       affix: route.meta.affix,
     }
+    //  添加保活不生效！！！
     if (!cacheList.value.includes(item?.name as string) && appStore.layoutSetting.keepAlive) {
       if (route.meta.keepAlive && route.name)
         cacheList.value.push(route.name as string)
