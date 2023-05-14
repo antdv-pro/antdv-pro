@@ -5,6 +5,18 @@ export interface ListResultModel {
   password: string
 }
 
-export const getListApi = async () => {
-  return useGet<ListResultModel[]>('/list')
+export type ListResultParams = Partial<Omit<ListResultModel, 'id' | 'password'>>
+
+export const getListApi = async (params?: ListResultParams) => {
+  return usePost<ListResultModel[]>('/list', params)
+}
+
+export type CreateListParams = Partial<Omit<ListResultModel, 'id'>>
+
+export const createListApi = async (params: CreateListParams) => {
+  return usePost('/list/create', params)
+}
+
+export const editListApi = async (params: ListResultModel) => {
+  return usePut('/list', params)
 }
