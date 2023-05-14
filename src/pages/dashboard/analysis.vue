@@ -1,43 +1,68 @@
 <script setup lang="ts">
-import { test200, test401, test500, testDelete, testPost, testPut } from '~/api/test'
-const { locale, setLocale, t } = useI18nLocale()
+import type { ListResultModel } from '~@/api/dashboard/analysis'
+import { getListApi } from '~@/api/dashboard/analysis'
+
+const columns = shallowRef([
+  {
+    title: '#',
+    dataIndex: 'id',
+  },
+  {
+    title: 'Name',
+    dataIndex: 'title',
+  },
+  {
+    title: '账号',
+    dataIndex: 'username',
+  },
+  {
+    title: '密码',
+    dataIndex: 'password',
+  },
+  {
+    title: '操作',
+    dataIndex: 'action',
+    width: 200,
+  },
+])
+const loading = shallowRef(false)
+const dataSource = shallowRef<ListResultModel[]>([])
+
+const init = async () => {
+  if (loading.value) return
+  loading.value = true
+  try {
+    const { data } = await getListApi()
+    dataSource.value = data ?? []
+  }
+  catch (e) {
+    console.log(e)
+  }
+  finally {
+    loading.value = false
+  }
+}
+
+onMounted(() => {
+  init()
+})
 </script>
 
 <template>
   <div p-2>
-    <a-radio-group :value="locale" @update:value="setLocale">
-      <a-radio-button key="en-US" value="en-US">
-        English
-      </a-radio-button>
-      <a-radio-button key="zh-CN" value="zh-CN">
-        中文
-      </a-radio-button>
-    </a-radio-group>
-    {{ t("pages.login.accountLogin.tab") }}
-    <a-space wrap>
-      <a-button @click="test200">
-        200请求测试
-      </a-button>
-      <a-button @click="test401">
-        401请求测试
-      </a-button>
-      <a-button @click="test500">
-        500请求测试
-      </a-button>
-      <a-button @click="testPut">
-        put请求测试
-      </a-button>
-      <a-button @click="testPost">
-        post请求测试
-      </a-button>
-      <a-button @click="testDelete">
-        delete请求测试
-      </a-button>
-    </a-space>
-
-    <a-date-picker />
-    <a-time-picker />
-    <a-range-picker style="width: 200px" />
-    <a-table />
+    <a-table :loading="loading" :columns="columns" :data-source="dataSource">
+      <template #bodyCell="{ column }">
+        <template v-if="column.dataIndex === 'action'">
+          <div flex gap-2>
+            <a>
+              编辑
+            </a>
+            <a>
+              删除
+            </a>
+          </div>
+        </template>
+      </template>
+    </a-table>
   </div>
 </template>
