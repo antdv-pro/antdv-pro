@@ -19,12 +19,12 @@ export default [
   },
   {
     path: '/common',
-    name: 'LayouBasicRedirect',
+    name: 'LayoutBasicRedirect',
     component: Layout,
-    redirect: '/redirect',
+    redirect: '/common/redirect',
     children: [
       {
-        path: '/',
+        path: '/common/redirect',
         component: () => import('~/pages/common/route-view.vue'),
         name: 'CommonRedirect',
         redirect: '/redirect',

@@ -24,7 +24,7 @@ export const useMultiTab = defineStore('multi-tab', () => {
   const addItem = (route: RouteLocationNormalizedLoaded) => {
     if (!route) return
     // 判断是不是重定向的地址，如果是，那么久不进行处理
-    if (route.path.startsWith('/redirect')) return
+    if (route.path.startsWith('/redirect') || route.path.startsWith('/common')) return
     if (route.path === '/') return
     if (allowList.includes(route.path)) return
     // 设置当前的loading为false
