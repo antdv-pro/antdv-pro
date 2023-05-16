@@ -31,7 +31,7 @@ export default [
         children: [
           {
             path: '/redirect/:path(.*)',
-            name: 'redirect',
+            name: 'RedirectPath',
             component: () => import('~/pages/common/redirect.vue'),
           },
         ],
