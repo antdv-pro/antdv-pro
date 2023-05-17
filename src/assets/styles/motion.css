@@ -15,7 +15,10 @@
 
 .slide-fadein-right-enter-active,
 .slide-fadein-right-leave-active {
-  transition: opacity 0.3s, transform 0.4s, -webkit-transform 0.4s;
+  transition: opacity 0.3s, transform 0.3s, -webkit-transform 0.3s;
+}
+.slide-fadein-right-enter-active{
+  transition-delay: .3s;
 }
 
 .slide-fadein-right-enter-from {

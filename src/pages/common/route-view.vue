@@ -8,12 +8,12 @@ const { cacheList } = storeToRefs(multiTabStore)
 <template>
   <RouterView>
     <template #default="{ Component, route }">
-      <!--      <Transition appear name="slide-fadein-right"> -->
-      <KeepAlive v-if="layoutSetting.keepAlive" :include="cacheList">
-        <component :is="Component" :key="route.fullPath" />
-      </KeepAlive>
-      <component :is="Component" v-else :key="route.fullPath" />
-      <!--      </Transition> -->
+      <Transition appear name="slide-fadein-right">
+        <KeepAlive v-if="layoutSetting.keepAlive" :include="cacheList">
+          <component :is="Component" :key="route.fullPath" />
+        </KeepAlive>
+        <component :is="Component" v-else :key="route.fullPath" />
+      </Transition>
     </template>
   </RouterView>
 </template>
