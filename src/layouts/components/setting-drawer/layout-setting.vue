@@ -7,6 +7,7 @@ const props = defineProps<{
   fixedHeader?: boolean
   fixedSider?: boolean
   splitMenus?: boolean
+  keepAlive?: boolean
   t?: (key: string, ...args: any[]) => string
 }>()
 
@@ -34,6 +35,12 @@ const list = computed(() => ([
     title: '自动分割菜单',
     key: 'splitMenus',
     disabled: props.layout !== 'mix',
+    disabledReason: '',
+  },
+  {
+    title: '缓存功能',
+    key: 'keepAlive',
+    disabled: false,
     disabledReason: '',
   },
 ]))
@@ -66,6 +73,9 @@ const handleChangeSetting = (key: string, value: any) => {
             </template>
             <template v-if="item.key === 'splitMenus'">
               <a-switch size="small" :checked="splitMenus" :disabled="item.disabled" @update:checked="(e:boolean) => handleChangeSetting('splitMenus', e)" />
+            </template>
+            <template v-if="item.key === 'keepAlive'">
+              <a-switch size="small" :checked="keepAlive" :disabled="item.disabled" @update:checked="(e:boolean) => handleChangeSetting('keepAlive', e)" />
             </template>
           </template>
           <span :style="{ opacity: item.disabled ? '0.5' : '1' }">

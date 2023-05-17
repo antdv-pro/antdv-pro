@@ -61,6 +61,7 @@ const layoutProps = computed(() => pick(appStore.layoutSetting, ['fixedHeader', 
     :color-weak="layoutSetting.colorWeak"
     :multi-tab="layoutSetting.multiTab"
     :multi-tab-fixed="layoutSetting.multiTabFixed"
+    :keep-alive="layoutSetting.keepAlive"
     v-bind="layoutProps"
     @setting-change="appStore.changeSettingLayout"
   />
