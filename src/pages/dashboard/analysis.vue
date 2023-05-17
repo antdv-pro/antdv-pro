@@ -165,6 +165,6 @@ onMounted(() => {
         </template>
       </a-table>
     </a-card>
+    <AnalysisModal ref="actionModalRef" v-model:open="modalState.open" :type="modalState.type" :title="modalState.title" />
   </div>
-  <AnalysisModal ref="actionModalRef" v-model:open="modalState.open" :type="modalState.type" :title="modalState.title" />
 </template>
