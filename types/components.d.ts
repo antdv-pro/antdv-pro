@@ -58,6 +58,7 @@ declare module '@vue/runtime-core' {
     AUpload: typeof import('ant-design-vue/es')['Upload']
     AUploadDragger: typeof import('ant-design-vue/es')['UploadDragger']
     AWatermark: typeof import('ant-design-vue/es')['Watermark']
+    CarbonLanguage: typeof import('./../src/components/icons/carbon-language.vue')['default']
     CarbonMoon: typeof import('./../src/components/icons/carbon-moon.vue')['default']
     CarbonSun: typeof import('./../src/components/icons/carbon-sun.vue')['default']
     FooterLinks: typeof import('./../src/components/footer-links.vue')['default']

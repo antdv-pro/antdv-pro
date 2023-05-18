@@ -102,6 +102,7 @@ const submit = async () => {
         <template v-else>
           <carbon-sun />
         </template>
+        <SelectLang />
       </span>
     </div>
     <div class="login-content">
