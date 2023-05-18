@@ -4,6 +4,7 @@
   "version": "0.0.3",
   "packageManager": "pnpm@8.4.0",
   "repository": "antdv-pro/antdv-pro",
+  "author": "aibayanyu aibayanyu@qq.com",
   "scripts": {
     "dev:admin": "vite",
     "dev": "run-p dev:admin dev:mock",
