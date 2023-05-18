@@ -1,7 +1,7 @@
 {
   "name": "antd-admin-pro",
   "type": "module",
-  "version": true,
+  "version": "0.0.2",
   "packageManager": "pnpm@8.4.0",
   "scripts": {
     "dev:admin": "vite",
@@ -12,9 +12,9 @@
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint src --fix",
-    "bump:patch": "changelogen --bump --output CHANGELOG.md -r --patch",
-    "bump:minor": "changelogen --bump --output CHANGELOG.md -r --minor",
-    "bump:major": "changelogen --bump --output CHANGELOG.md -r --major",
+    "bump:patch": "changelogen --bump --output CHANGELOG.md --release --patch",
+    "bump:minor": "changelogen --bump --output CHANGELOG.md --release --minor",
+    "bump:major": "changelogen --bump --output CHANGELOG.md --release --major",
     "dir-tree": "esno ./scripts/dir-tree",
     "gen:uno": "esno ./scripts/gen-unocss"
   },
