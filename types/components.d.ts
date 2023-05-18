@@ -63,6 +63,7 @@ declare module '@vue/runtime-core' {
     FooterLinks: typeof import('./../src/components/footer-links.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SelectLang: typeof import('./../src/components/select-lang/index.vue')['default']
     TokenProvider: typeof import('./../src/components/token-provider/index.vue')['default']
     UserAvatar: typeof import('./../src/components/user-avatar/index.vue')['default']
   }
