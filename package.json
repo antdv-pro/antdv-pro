@@ -1,7 +1,7 @@
 {
   "name": "antd-admin-pro",
   "type": "module",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "packageManager": "pnpm@8.4.0",
   "author": "aibayanyu <aibayanyu@qq.com>",
   "repository": "antdv-pro/antdv-pro",
