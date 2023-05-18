@@ -1,6 +1,34 @@
 # Changelog
 
 
+## v0.0.3
+
+[compare changes](https://undefined/undefined/compare/v0.0.2...v0.0.3)
+
+
+### 🚀 Enhancements
+
+  - Add keepalive config (0021ed4)
+
+### 🩹 Fixes
+
+  - Remove transition (6e1b836)
+  - Transition error (25bed59)
+  - Analysis is not take effect (ef0e5ec)
+
+### 🏡 Chore
+
+  - Change version (03787ae)
+  - Change version (5e161ce)
+
+### 🤖 CI
+
+  - Add workflow (438b594)
+
+### ❤️  Contributors
+
+- Aibayanyu ([@mist-design](http://github.com/mist-design))
+
 ## vtrue
 
 [compare changes](https://undefined/undefined/compare/v0.0.2...vtrue)
