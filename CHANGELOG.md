@@ -1,6 +1,21 @@
 # Changelog
 
 
+## v0.0.4
+
+[compare changes](https://undefined/undefined/compare/v0.0.3...v0.0.4)
+
+
+### 🏡 Chore
+
+  - Change pkg (65d4d49)
+  - Change (45b44fb)
+  - Change (7608a96)
+
+### ❤️  Contributors
+
+- Aibayanyu ([@mist-design](http://github.com/mist-design))
+
 ## v0.0.3
 
 [compare changes](https://undefined/undefined/compare/v0.0.2...v0.0.3)

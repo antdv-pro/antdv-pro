@@ -37,6 +37,7 @@ const layoutProps = computed(() => pick(appStore.layoutSetting, ['fixedHeader', 
   >
     <template #headerActions>
       <UserAvatar />
+      <SelectLang />
     </template>
     <template #contentPrefix>
       <MultiTab v-if="layoutSetting.multiTab" />
