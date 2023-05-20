@@ -17,8 +17,8 @@ importers:
         specifier: ^10.1.2
         version: 10.1.2(vue@3.3.4)
       ant-design-vue:
-        specifier: 4.0.0-rc.1
-        version: 4.0.0-rc.1(vue@3.3.4)
+        specifier: 4.0.0-rc.3
+        version: 4.0.0-rc.3(vue@3.3.4)
       axios:
         specifier: ^1.4.0
         version: 1.4.0
@@ -1792,8 +1792,8 @@ packages:
     dependencies:
       color-convert: 2.0.1
 
-  /ant-design-vue@4.0.0-rc.1(vue@3.3.4):
-    resolution: {integrity: sha512-zXnrpYKE7rK+lzOXoFA1ThJ5RpSXWOzBIydlB8mr54nuGTDGQVPfBifWTcw/xilkmxN8iSHd8B1mRKYEM6JL9Q==}
+  /ant-design-vue@4.0.0-rc.3(vue@3.3.4):
+    resolution: {integrity: sha512-8ItchAq0Ior3X+TvD1uDLx24qtROFKQoqdKo/f2PnLMcv2qt37pOBLAdG3pgzImYBNcpygIEzmByn+LU8Fb4Sw==}
     engines: {node: '>=12.22.0'}
     peerDependencies:
       vue: '>=3.2.0'
