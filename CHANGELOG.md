@@ -1,6 +1,20 @@
 # Changelog
 
 
+## v0.0.6
+
+[compare changes](https://undefined/undefined/compare/v0.0.5...v0.0.6)
+
+
+### 🏡 Chore
+
+  - Migrate ant-design-vue (0d02def)
+  - Migrate version (946b304)
+
+### ❤️  Contributors
+
+- Aibayanyu <aibayanyu@qq.com>
+
 ## v0.0.5
 
 [compare changes](https://undefined/undefined/compare/v0.0.4...v0.0.5)
