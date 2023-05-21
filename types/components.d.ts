@@ -11,6 +11,8 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AAlert: typeof import('ant-design-vue/es')['Alert']
     AAvatar: typeof import('ant-design-vue/es')['Avatar']
+    ABreadcrumb: typeof import('ant-design-vue/es')['Breadcrumb']
+    ABreadcrumbItem: typeof import('ant-design-vue/es')['BreadcrumbItem']
     AButton: typeof import('ant-design-vue/es')['Button']
     ACard: typeof import('ant-design-vue/es')['Card']
     ACheckbox: typeof import('ant-design-vue/es')['Checkbox']
@@ -62,6 +64,7 @@ declare module '@vue/runtime-core' {
     CarbonMoon: typeof import('./../src/components/icons/carbon-moon.vue')['default']
     CarbonSun: typeof import('./../src/components/icons/carbon-sun.vue')['default']
     FooterLinks: typeof import('./../src/components/footer-links.vue')['default']
+    PageContainer: typeof import('./../src/components/page-container/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SelectLang: typeof import('./../src/components/select-lang/index.vue')['default']

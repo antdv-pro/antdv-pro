@@ -6,6 +6,7 @@ export interface ProLayoutProviderMethods {
 }
 
 const layoutStateFunc = (props: ProLayoutProps, methods: ProLayoutProviderMethods = {}) => {
+  const hasPageContainer = shallowRef(false)
   const logo = computed(() => props.logo)
   const title = computed(() => props.title)
   const layout = computed(() => props.layout)
@@ -17,7 +18,7 @@ const layoutStateFunc = (props: ProLayoutProps, methods: ProLayoutProviderMethod
   const collapsed = computed(() => props.collapsed)
   const theme = computed(() => props.theme)
   const headerHeight = computed(() => props.headerHeight)
-  const contentWidth = computed(() => props.collapsedWidth)
+  const contentWidth = computed(() => props.contentWidth)
   const copyright = computed(() => props.copyright)
   /**
    * 移动端的处理方式
@@ -65,6 +66,7 @@ const layoutStateFunc = (props: ProLayoutProps, methods: ProLayoutProviderMethod
     mobileCollapsed,
     contentWidth,
     copyright,
+    hasPageContainer,
     handleMobileCollapsed,
     header,
     menu,
