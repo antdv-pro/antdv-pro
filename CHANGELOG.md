@@ -1,6 +1,23 @@
 # Changelog
 
 
+## v0.0.8
+
+[compare changes](https://undefined/undefined/compare/v0.0.7...v0.0.8)
+
+
+### 🚀 Enhancements
+
+  - Add pagecontainer (f3ecd48)
+
+### 🩹 Fixes
+
+  - Color primary (661f7b3)
+
+### ❤️  Contributors
+
+- Aibayanyu <aibayanyu@qq.com>
+
 ## v0.0.7
 
 [compare changes](https://undefined/undefined/compare/v0.0.6...v0.0.7)
