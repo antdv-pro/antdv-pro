@@ -1,6 +1,28 @@
 # Changelog
 
 
+## v0.0.7
+
+[compare changes](https://undefined/undefined/compare/v0.0.6...v0.0.7)
+
+
+### 🩹 Fixes
+
+  - Import error (1ba59d5)
+  - Rename (9362480)
+
+### 🏡 Chore
+
+  - Migrate version (1eebf00)
+
+### 🤖 CI
+
+  - Change (5a12b81)
+
+### ❤️  Contributors
+
+- Aibayanyu <aibayanyu@qq.com>
+
 ## v0.0.6
 
 [compare changes](https://undefined/undefined/compare/v0.0.5...v0.0.6)
