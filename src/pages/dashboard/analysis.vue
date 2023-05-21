@@ -152,7 +152,7 @@ onMounted(() => {
         <template #bodyCell="{ column, record }">
           <template v-if="column.dataIndex === 'action'">
             <div flex gap-2>
-              <a @click="hanldeAction('edit', record)">
+              <a c-primary @click="hanldeAction('edit', record)">
                 编辑
               </a>
               <a
