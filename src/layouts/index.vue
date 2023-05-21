@@ -46,7 +46,7 @@ const layoutProps = computed(() => pick(appStore.layoutSetting, ['fixedHeader', 
     <template #renderFooterLinks>
       <!-- TODO -->
     </template>
-    <a-watermark h-full flex flex-col flex-1 content="Antdv Admin Pro">
+    <a-watermark h-full flex flex-col flex-1 :content="layoutSetting.title ?? 'Antdv Pro'">
       <RouterView>
         <template #default="{ Component }">
           <component :is="Component" />
