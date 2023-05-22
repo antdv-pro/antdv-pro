@@ -39,7 +39,7 @@ onDeactivated(async () => {
 })
 const contentCls = computed(() => {
   const cls: string[] = [
-    'h-full flex flex-col flex-1',
+    'flex flex-col flex-1',
   ]
   if (contentWidth.value === 'Fluid')
     cls.push('w-full')
