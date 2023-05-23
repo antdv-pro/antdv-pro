@@ -18,26 +18,34 @@ const tabsRef = shallowRef()
 const { height } = useElementSize(tabsRef)
 
 const handleSwitch = ({ key }: any) => {
-  // TODO
-  console.log(key)
-  if (key === 'closeCurrent') {
-    // multiTabStore.close(activeKey.value)
-  }
-  else if (key === 'closeLeft') {
-    // multiTabStore.closeLeft(activeKey.value)
-  }
-  else if (key === 'closeRight') {
-    // multiTabStore.closeRight(activeKey.value)
-  }
-  else if (key === 'closeOther') {
-    // multiTabStore.closeOther(activeKey.value)
-  }
-  else if (key === 'refresh') {
+  if (key === 'closeCurrent')
+    multiTabStore.close(activeKey.value)
+  else if (key === 'closeLeft')
+    multiTabStore.closeLeft()
+  else if (key === 'closeRight')
+    multiTabStore.closeRight()
+  else if (key === 'closeOther')
+    multiTabStore.closeOther()
+  else if (key === 'refresh')
     multiTabStore.refresh(activeKey.value)
-  }
 }
 
 const isCurrentDisabled = computed(() => {
+  return list.value.length === 1 || (list.value.filter(v => !v.affix).length <= 1)
+})
+
+const leftDisabled = computed(() => {
+  // 判断左侧是否还有可关闭的
+  const index = list.value.findIndex(v => v.fullPath === activeKey.value)
+  return index === 0 || (list.value.filter(v => !v.affix).length <= 1)
+})
+
+const rightDisabled = computed(() => {
+  // 判断右侧是否还有可关闭的
+  const index = list.value.findIndex(v => v.fullPath === activeKey.value)
+  return index === list.value.length - 1 || (list.value.filter(v => !v.affix).length <= 1)
+})
+const otherDisabled = computed(() => {
   return list.value.length === 1 || (list.value.filter(v => !v.affix).length <= 1)
 })
 </script>
@@ -69,16 +77,16 @@ const isCurrentDisabled = computed(() => {
           </div>
           <template #overlay>
             <a-menu @click="handleSwitch">
-              <a-menu-item key="closeCurrent" :disabled="isCurrentDisabled">
+              <a-menu-item key="closeCurrent" :disabled="isCurrentDisabled || activeKey !== item.fullPath">
                 关闭当前
               </a-menu-item>
-              <a-menu-item key="closeLeft" :disabled="isCurrentDisabled">
+              <a-menu-item key="closeLeft" :disabled="isCurrentDisabled || leftDisabled">
                 关闭左侧
               </a-menu-item>
-              <a-menu-item key="closeRight" :disabled="isCurrentDisabled">
+              <a-menu-item key="closeRight" :disabled="isCurrentDisabled || rightDisabled">
                 关闭右侧
               </a-menu-item>
-              <a-menu-item key="closeOther" :disabled="isCurrentDisabled">
+              <a-menu-item key="closeOther" :disabled="isCurrentDisabled || otherDisabled">
                 关闭其他
               </a-menu-item>
               <a-menu-item key="refresh">
@@ -98,7 +106,7 @@ const isCurrentDisabled = computed(() => {
           <MoreOutlined class="text-16px" />
           <template #overlay>
             <a-menu @click="handleSwitch">
-              <a-menu-item key="closeOther">
+              <a-menu-item key="closeOther" :disabled="isCurrentDisabled || otherDisabled">
                 关闭其他
               </a-menu-item>
               <a-menu-item key="refresh">

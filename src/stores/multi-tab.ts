@@ -99,6 +99,32 @@ export const useMultiTab = defineStore('multi-tab', () => {
     router.push(key)
   }
 
+  const closeOther = () => {
+    list.value.forEach((item) => {
+      if (item.affix) return
+      if (item.fullPath === activeKey.value) return
+      close(item.fullPath)
+    })
+  }
+
+  const closeLeft = () => {
+    const index = list.value.findIndex(item => item.fullPath === activeKey.value)
+    const leftList = list.value.slice(0, index)
+    leftList.forEach((item) => {
+      if (item.affix) return
+      close(item.fullPath)
+    })
+  }
+
+  const closeRight = () => {
+    const index = list.value.findIndex(item => item.fullPath === activeKey.value)
+    const rightList = list.value.slice(index + 1)
+    rightList.forEach((item) => {
+      if (item.affix) return
+      close(item.fullPath)
+    })
+  }
+
   watch(router.currentRoute, (route) => {
     if (route.fullPath === activeKey.value) return
     activeKey.value = route.fullPath
@@ -109,6 +135,9 @@ export const useMultiTab = defineStore('multi-tab', () => {
     activeKey,
     cacheList,
     close,
+    closeLeft,
+    closeRight,
+    closeOther,
     refresh,
     switchTab,
   }
