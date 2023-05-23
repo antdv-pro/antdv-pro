@@ -51,6 +51,7 @@ const isCurrentDisabled = computed(() => {
     class="bg-white dark:bg-#242525 w-100%"
     pt-10px
     type="card"
+    size="small"
     :tab-bar-gutter="5"
     @update:active-key="multiTabStore.switchTab"
   >
