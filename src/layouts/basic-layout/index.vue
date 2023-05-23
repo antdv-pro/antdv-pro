@@ -19,7 +19,7 @@ const handleCollapsed = (collapsed: boolean) => {
 }
 
 // 依赖注入所有的配置项，对属性进行控制，减少传值
-useLayoutProvider(props, {
+const { hasPageContainer } = useLayoutProvider(props, {
   handleCollapsed,
 })
 
@@ -28,10 +28,10 @@ const contentCls = computed(() => {
   const cls: string[] = [
     'h-full flex flex-col flex-1',
   ]
-  if (props.contentWidth === 'Fluid')
+  if (props.contentWidth === 'Fluid' || hasPageContainer.value)
     cls.push('w-full')
 
-  else if (props.contentWidth === 'Fixed')
+  else if (props.contentWidth === 'Fixed' && !hasPageContainer.value)
     cls.push(...['max-w-1200px w-1200px', 'mx-auto'])
 
   return cls

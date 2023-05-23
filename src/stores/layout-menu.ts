@@ -59,6 +59,7 @@ export const useLayoutMenu = defineStore('layout-menu', () => {
   return {
     selectedKeys,
     openKeys,
+    menuDataMap,
     handleSelectedKeys,
     handleOpenKeys,
     changeMenu,

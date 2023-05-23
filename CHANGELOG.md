@@ -1,6 +1,59 @@
 # Changelog
 
 
+## v0.0.7
+
+[compare changes](https://undefined/undefined/compare/v0.0.6...v0.0.7)
+
+
+### 🩹 Fixes
+
+  - Import error (1ba59d5)
+  - Rename (9362480)
+
+### 🏡 Chore
+
+  - Migrate version (1eebf00)
+
+### 🤖 CI
+
+  - Change (5a12b81)
+
+### ❤️  Contributors
+
+- Aibayanyu <aibayanyu@qq.com>
+
+## v0.0.6
+
+[compare changes](https://undefined/undefined/compare/v0.0.5...v0.0.6)
+
+
+### 🏡 Chore
+
+  - Migrate ant-design-vue (0d02def)
+  - Migrate version (946b304)
+
+### ❤️  Contributors
+
+- Aibayanyu <aibayanyu@qq.com>
+
+## v0.0.5
+
+[compare changes](https://undefined/undefined/compare/v0.0.4...v0.0.5)
+
+
+### 🚀 Enhancements
+
+  - Add select lang (0bc02ae)
+
+### 🏡 Chore
+
+  - Change (68464cb)
+
+### ❤️  Contributors
+
+- Aibayanyu <aibayanyu@qq.com>
+
 ## v0.0.4
 
 [compare changes](https://undefined/undefined/compare/v0.0.3...v0.0.4)

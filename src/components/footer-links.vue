@@ -3,7 +3,7 @@ import { GithubOutlined } from '@ant-design/icons-vue'
 </script>
 
 <template>
-  <a decoration-none href="https://antdv-pro.com" target="_blank">Antdv Admin Pro</a>
+  <a decoration-none href="https://antdv-pro.com" target="_blank">Antdv Pro</a>
   <a decoration-none href="https://github.com/antdv-pro/antdv-admin-pro" target="_blank">
     <GithubOutlined />
   </a>

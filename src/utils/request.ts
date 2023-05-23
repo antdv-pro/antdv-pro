@@ -1,6 +1,6 @@
 import type { AxiosError, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios'
 import axios from 'axios'
-import { notification } from 'ant-design-vue/es'
+import { notification } from 'ant-design-vue'
 import { STORAGE_AUTHORIZE_KEY, useAuthorization } from '~/composables/authorization'
 import router from '~/router'
 
