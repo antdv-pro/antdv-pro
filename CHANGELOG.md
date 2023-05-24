@@ -1,6 +1,19 @@
 # Changelog
 
 
+## v0.0.10
+
+[compare changes](https://undefined/undefined/compare/v0.0.9...v0.0.10)
+
+
+### 🩹 Fixes
+
+  - Fix close left and right error (eea8854)
+
+### ❤️  Contributors
+
+- Aibayanyu <aibayanyu@qq.com>
+
 ## v0.0.9
 
 [compare changes](https://undefined/undefined/compare/v0.0.8...v0.0.9)
