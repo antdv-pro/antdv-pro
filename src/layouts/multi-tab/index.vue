@@ -17,15 +17,15 @@ const tabStyle = computed<CSSProperties>(() => {
 const tabsRef = shallowRef()
 const { height } = useElementSize(tabsRef)
 
-const handleSwitch = ({ key }: any) => {
+const handleSwitch = ({ key }: any, current: string) => {
   if (key === 'closeCurrent')
     multiTabStore.close(activeKey.value)
   else if (key === 'closeLeft')
-    multiTabStore.closeLeft()
+    multiTabStore.closeLeft(current)
   else if (key === 'closeRight')
-    multiTabStore.closeRight()
+    multiTabStore.closeRight(current)
   else if (key === 'closeOther')
-    multiTabStore.closeOther()
+    multiTabStore.closeOther(current)
   else if (key === 'refresh')
     multiTabStore.refresh(activeKey.value)
 }
@@ -34,17 +34,17 @@ const isCurrentDisabled = computed(() => {
   return list.value.length === 1 || (list.value.filter(v => !v.affix).length <= 1)
 })
 
-const leftDisabled = computed(() => {
+const leftDisabled = (key: string) => {
   // 判断左侧是否还有可关闭的
-  const index = list.value.findIndex(v => v.fullPath === activeKey.value)
+  const index = list.value.findIndex(v => v.fullPath === key)
   return index === 0 || (list.value.filter(v => !v.affix).length <= 1)
-})
+}
 
-const rightDisabled = computed(() => {
+const rightDisabled = (key: string) => {
   // 判断右侧是否还有可关闭的
-  const index = list.value.findIndex(v => v.fullPath === activeKey.value)
+  const index = list.value.findIndex(v => v.fullPath === key)
   return index === list.value.length - 1 || (list.value.filter(v => !v.affix).length <= 1)
-})
+}
 const otherDisabled = computed(() => {
   return list.value.length === 1 || (list.value.filter(v => !v.affix).length <= 1)
 })
@@ -76,14 +76,14 @@ const otherDisabled = computed(() => {
             </button>
           </div>
           <template #overlay>
-            <a-menu @click="handleSwitch">
+            <a-menu @click="handleSwitch($event, item.fullPath)">
               <a-menu-item key="closeCurrent" :disabled="isCurrentDisabled || activeKey !== item.fullPath">
                 关闭当前
               </a-menu-item>
-              <a-menu-item key="closeLeft" :disabled="isCurrentDisabled || leftDisabled">
+              <a-menu-item key="closeLeft" :disabled="isCurrentDisabled || leftDisabled(item.fullPath)">
                 关闭左侧
               </a-menu-item>
-              <a-menu-item key="closeRight" :disabled="isCurrentDisabled || rightDisabled">
+              <a-menu-item key="closeRight" :disabled="isCurrentDisabled || rightDisabled(item.fullPath)">
                 关闭右侧
               </a-menu-item>
               <a-menu-item key="closeOther" :disabled="isCurrentDisabled || otherDisabled">
@@ -105,7 +105,7 @@ const otherDisabled = computed(() => {
         <a-dropdown :trigger="['hover']">
           <MoreOutlined class="text-16px" />
           <template #overlay>
-            <a-menu @click="handleSwitch">
+            <a-menu @click="handleSwitch($event, activeKey)">
               <a-menu-item key="closeOther" :disabled="isCurrentDisabled || otherDisabled">
                 关闭其他
               </a-menu-item>
