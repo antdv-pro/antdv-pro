@@ -25,7 +25,7 @@
     "@ctrl/tinycolor": "^3.6.0",
     "@v-c/utils": "^0.0.23",
     "@vueuse/core": "^10.1.2",
-    "ant-design-vue": "4.0.0-rc.3",
+    "ant-design-vue": "4.0.0-rc.5",
     "axios": "^1.4.0",
     "dayjs": "^1.11.7",
     "lodash-es": "^4.17.21",
@@ -37,9 +37,9 @@
   "devDependencies": {
     "@mistjs/eslint-config-vue": "^0.0.5",
     "@types/fs-extra": "^11.0.1",
-    "@types/lodash": "^4.14.194",
+    "@types/lodash": "^4.14.195",
     "@types/lodash-es": "^4.17.7",
-    "@types/node": "^18.16.13",
+    "@types/node": "^18.16.16",
     "@types/treeify": "^1.0.0",
     "@vitejs/plugin-vue": "^4.2.3",
     "@vitejs/plugin-vue-jsx": "^3.0.1",
@@ -59,7 +59,7 @@
     "unocss": "^0.51.13",
     "unplugin-auto-import": "^0.15.3",
     "unplugin-vue-components": "^0.24.1",
-    "vite": "^4.3.8",
+    "vite": "^4.3.9",
     "vue-tsc": "^1.6.5"
   }
 }
