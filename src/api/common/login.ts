@@ -16,10 +16,8 @@ export interface LoginResultModel {
 
 export const loginApi = (params: LoginParams | LoginMobileParams) => {
   return usePost<LoginResultModel, LoginParams | LoginMobileParams>('/login', params, {
+    // 设置为false的时候不会携带token
     token: false,
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
   })
 }
 
