@@ -10,14 +10,19 @@ export interface ResponseBody<T = any> {
   msg: string
 }
 
+export interface ResquestConfigExtra {
+  token?: boolean
+}
+
 const instance = axios.create({
   baseURL: import.meta.env.VITE_APP_BASE_API ?? '/',
   timeout: 60000,
 })
 
-const requestHandler = async (config: InternalAxiosRequestConfig): Promise<InternalAxiosRequestConfig> => {
+const requestHandler = async (config: InternalAxiosRequestConfig & ResquestConfigExtra): Promise<InternalAxiosRequestConfig> => {
   const token = useAuthorization()
-  if (token.value)
+
+  if (token.value && config.token !== false)
     config.headers.set(STORAGE_AUTHORIZE_KEY, token.value)
 
   // 增加多语言的配置
@@ -85,7 +90,7 @@ instance.interceptors.response.use(responseHandler, errorHandler)
 
 export default instance
 
-export const useGet = <R = any, T = any>(url: string, params?: T, config?: AxiosRequestConfig): Promise<ResponseBody<R>> => {
+export const useGet = <R = any, T = any>(url: string, params?: T, config?: AxiosRequestConfig & ResquestConfigExtra): Promise<ResponseBody<R>> => {
   return instance.request({
     url,
     params,
@@ -94,7 +99,7 @@ export const useGet = <R = any, T = any>(url: string, params?: T, config?: Axios
   })
 }
 
-export const usePost = < R = any, T = any>(url: string, data?: T, config?: AxiosRequestConfig): Promise<ResponseBody<R>> => {
+export const usePost = < R = any, T = any>(url: string, data?: T, config?: AxiosRequestConfig & ResquestConfigExtra): Promise<ResponseBody<R>> => {
   return instance.request({
     url,
     data,
@@ -103,7 +108,7 @@ export const usePost = < R = any, T = any>(url: string, data?: T, config?: Axios
   })
 }
 
-export const usePut = < R = any, T = any>(url: string, data?: T, config?: AxiosRequestConfig): Promise<ResponseBody<R>> => {
+export const usePut = < R = any, T = any>(url: string, data?: T, config?: AxiosRequestConfig & ResquestConfigExtra): Promise<ResponseBody<R>> => {
   return instance.request({
     url,
     data,
@@ -112,7 +117,7 @@ export const usePut = < R = any, T = any>(url: string, data?: T, config?: AxiosR
   })
 }
 
-export const useDelete = < R = any, T = any>(url: string, data?: T, config?: AxiosRequestConfig): Promise<ResponseBody<R>> => {
+export const useDelete = < R = any, T = any>(url: string, data?: T, config?: AxiosRequestConfig & ResquestConfigExtra): Promise<ResponseBody<R>> => {
   return instance.request({
     url,
     data,

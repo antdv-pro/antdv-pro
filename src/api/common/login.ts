@@ -15,7 +15,12 @@ export interface LoginResultModel {
 }
 
 export const loginApi = (params: LoginParams | LoginMobileParams) => {
-  return usePost<LoginResultModel, LoginParams | LoginMobileParams>('/login', params)
+  return usePost<LoginResultModel, LoginParams | LoginMobileParams>('/login', params, {
+    token: false,
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+  })
 }
 
 export const logoutApi = () => {
