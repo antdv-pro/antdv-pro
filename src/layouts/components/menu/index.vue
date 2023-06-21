@@ -18,8 +18,8 @@ const menuTheme = computed(() => {
     :theme="menuTheme"
     :collapsed="collapsed"
     class="ant-pro-sider-menu"
-    @update:openKeys="handleOpenKeys"
-    @update:selectedKeys="handleSelectedKeys"
+    @update:open-keys="handleOpenKeys"
+    @update:selected-keys="handleSelectedKeys"
     @select="handleMenuSelect"
   >
     <template v-for="item in menuData" :key="item.path">
