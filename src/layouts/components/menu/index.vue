@@ -21,8 +21,8 @@ const layoutMenu = useLayoutMenu()
     :theme="menuTheme"
     :collapsed="collapsed"
     class="ant-pro-sider-menu"
-    @update:openKeys="handleOpenKeys"
-    @update:selectedKeys="handleSelectedKeys"
+    @update:open-keys="handleOpenKeys"
+    @update:selected-keys="handleSelectedKeys"
     @openChange="layoutMenu.handleAccordionMode"
     @select="handleMenuSelect"
   >
