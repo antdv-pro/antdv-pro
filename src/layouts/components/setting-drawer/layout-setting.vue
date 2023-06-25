@@ -8,6 +8,7 @@ const props = defineProps<{
   fixedSider?: boolean
   splitMenus?: boolean
   keepAlive?: boolean
+  accordionMode?: boolean
   t?: (key: string, ...args: any[]) => string
 }>()
 
@@ -40,6 +41,12 @@ const list = computed(() => ([
   {
     title: '缓存功能',
     key: 'keepAlive',
+    disabled: false,
+    disabledReason: '',
+  },
+  {
+    title: '菜单手风琴模式',
+    key: 'accordionMode',
     disabled: false,
     disabledReason: '',
   },
@@ -76,6 +83,9 @@ const handleChangeSetting = (key: string, value: any) => {
             </template>
             <template v-if="item.key === 'keepAlive'">
               <a-switch size="small" :checked="keepAlive" :disabled="item.disabled" @update:checked="(e:boolean) => handleChangeSetting('keepAlive', e)" />
+            </template>
+            <template v-if="item.key === 'accordionMode'">
+              <a-switch size="small" :checked="accordionMode" :disabled="item.disabled" @update:checked="(e:boolean) => handleChangeSetting('accordionMode', e)"/>
             </template>
           </template>
           <span :style="{ opacity: item.disabled ? '0.5' : '1' }">

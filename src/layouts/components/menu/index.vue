@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useLayoutState } from '../../basic-layout/context'
 import SubMenu from './sub-menu.vue'
+import { useLayoutMenu } from '~/stores/layout-menu.ts'
 
 const { theme, collapsed, layout, isMobile, menuData, selectedKeys, openKeys, handleOpenKeys, handleSelectedKeys, handleMenuSelect } = useLayoutState()
 const menuTheme = computed(() => {
@@ -8,6 +9,8 @@ const menuTheme = computed(() => {
     return 'dark'
   return theme.value
 })
+
+const layoutMenu = useLayoutMenu()
 </script>
 
 <template>
@@ -20,6 +23,7 @@ const menuTheme = computed(() => {
     class="ant-pro-sider-menu"
     @update:openKeys="handleOpenKeys"
     @update:selectedKeys="handleSelectedKeys"
+    @openChange="layoutMenu.handleAccordionMode"
     @select="handleMenuSelect"
   >
     <template v-for="item in menuData" :key="item.path">

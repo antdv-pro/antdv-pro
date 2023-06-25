@@ -39,6 +39,28 @@ export const useLayoutMenu = defineStore('layout-menu', () => {
     changeMenu()
   }, { immediate: true, flush: 'post' })
 
+  const appStore = useAppStore()
+  const userStore = useUserStore()
+  const { layoutSetting } = storeToRefs(appStore)
+  const { menuData } = storeToRefs(userStore)
+  const handleAccordionMode = (innerOpenKeys: string[]) => {
+    if (!layoutSetting.value.accordionMode) return
+    const rootSubmenuKeys: string[] | undefined = menuData.value?.map((item) => {
+      return item.path
+    })
+
+    const latestOpenKey = openKeys.value[openKeys.value.length - 1]
+    if (rootSubmenuKeys?.includes(latestOpenKey!)) {
+      openKeys.value = latestOpenKey ? [latestOpenKey] : []
+    }
+    else {
+      if (rootSubmenuKeys.filter(value => openKeys.value.includes(value)).length === 0)
+        openKeys.value = []
+      else
+        openKeys.value = innerOpenKeys
+    }
+  }
+
   const handleSelectedKeys = (val: string[]) => {
     // 如果点击的是外部的菜单，那么我们就不需要设置成为激活的状态
     const path = val[0]
@@ -63,5 +85,6 @@ export const useLayoutMenu = defineStore('layout-menu', () => {
     handleSelectedKeys,
     handleOpenKeys,
     changeMenu,
+    handleAccordionMode,
   }
 })

@@ -18,6 +18,7 @@ const props = withDefaults(defineProps<{
   fixedSider?: boolean
   splitMenus?: boolean
   keepAlive?: boolean
+  accordionMode?: boolean
   header?: boolean
   footer?: boolean
   menu?: boolean
@@ -126,6 +127,7 @@ const { token } = useAntdToken()
         :fixed-sider="fixedSider"
         :split-menus="splitMenus"
         :keep-alive="keepAlive"
+        :accordion-mode="accordionMode"
         @change-setting="changeSettingLayout"
       />
       <a-divider />
