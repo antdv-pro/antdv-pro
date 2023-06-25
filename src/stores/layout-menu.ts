@@ -2,6 +2,10 @@ import { isUrl } from '@v-c/utils'
 import type { MenuData, MenuDataItem } from '~@/layouts/basic-layout/typing'
 import router from '~@/router'
 
+const appStore = useAppStore()
+const userStore = useUserStore()
+const { layoutSetting } = storeToRefs(appStore)
+
 const toMapMenuData = (menuData: MenuData, menuDataMap: Map<string, MenuDataItem>, matched: MenuDataItem[] = []) => {
   menuData.forEach((v) => {
     menuDataMap.set(v.path, { ...v, matched })
@@ -30,7 +34,10 @@ export const useLayoutMenu = defineStore('layout-menu', () => {
       // 设置openkeys
       if (menu?.matched) {
         const newOpenKeys = menu.matched.map(v => v.path)
-        openKeys.value = [...new Set([...openKeys.value, ...newOpenKeys])]
+        if (!layoutSetting.value.accordionMode)
+          openKeys.value = [...new Set([...openKeys.value, ...newOpenKeys])]
+        else
+          openKeys.value = newOpenKeys
       }
     }
   }
@@ -39,9 +46,6 @@ export const useLayoutMenu = defineStore('layout-menu', () => {
     changeMenu()
   }, { immediate: true, flush: 'post' })
 
-  const appStore = useAppStore()
-  const userStore = useUserStore()
-  const { layoutSetting } = storeToRefs(appStore)
   const { menuData } = storeToRefs(userStore)
   const handleAccordionMode = (innerOpenKeys: string[]) => {
     if (!layoutSetting.value.accordionMode) return
