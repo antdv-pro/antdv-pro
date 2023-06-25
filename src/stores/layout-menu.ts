@@ -48,20 +48,31 @@ export const useLayoutMenu = defineStore('layout-menu', () => {
 
   const { menuData } = storeToRefs(userStore)
   const handleAccordionMode = (innerOpenKeys: string[]) => {
-    if (!layoutSetting.value.accordionMode) return
     const rootSubmenuKeys: string[] | undefined = menuData.value?.map((item) => {
       return item.path
     })
+    const intersection = innerOpenKeys.filter(value => openKeys.value?.includes(value))
+    const currentClickKey = innerOpenKeys.concat(openKeys.value).filter(value => !intersection.includes(value))[0]
 
-    const latestOpenKey = openKeys.value[openKeys.value.length - 1]
-    if (rootSubmenuKeys?.includes(latestOpenKey!)) {
-      openKeys.value = latestOpenKey ? [latestOpenKey] : []
+    if (rootSubmenuKeys?.includes(currentClickKey)) {
+      switch (innerOpenKeys.includes(currentClickKey)) {
+        case true:
+          openKeys.value = [currentClickKey]
+          break
+        case false:
+          openKeys.value = []
+          break
+      }
     }
     else {
-      if (rootSubmenuKeys.filter(value => openKeys.value.includes(value)).length === 0)
-        openKeys.value = []
-      else
-        openKeys.value = innerOpenKeys
+      switch (innerOpenKeys.includes(currentClickKey)) {
+        case true:
+          openKeys.value = innerOpenKeys
+          break
+        case false:
+          openKeys.value = innerOpenKeys.slice(0, openKeys.value.indexOf(currentClickKey))
+          break
+      }
     }
   }
 
@@ -73,7 +84,10 @@ export const useLayoutMenu = defineStore('layout-menu', () => {
   }
 
   const handleOpenKeys = (val: string[]) => {
-    openKeys.value = val
+    if (layoutSetting.value.accordionMode)
+      handleAccordionMode(val)
+    else
+      openKeys.value = val
   }
 
   watch(router.currentRoute, (route) => {
