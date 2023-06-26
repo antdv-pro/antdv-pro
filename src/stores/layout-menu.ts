@@ -2,10 +2,6 @@ import { isUrl } from '@v-c/utils'
 import type { MenuData, MenuDataItem } from '~@/layouts/basic-layout/typing'
 import router from '~@/router'
 
-const appStore = useAppStore()
-const userStore = useUserStore()
-const { layoutSetting } = storeToRefs(appStore)
-
 const toMapMenuData = (menuData: MenuData, menuDataMap: Map<string, MenuDataItem>, matched: MenuDataItem[] = []) => {
   menuData.forEach((v) => {
     menuDataMap.set(v.path, { ...v, matched })
@@ -15,7 +11,9 @@ const toMapMenuData = (menuData: MenuData, menuDataMap: Map<string, MenuDataItem
 }
 
 export const useLayoutMenu = defineStore('layout-menu', () => {
-  const useStore = useUserStore()
+  const userStore = useUserStore()
+  const appStore = useAppStore()
+  const { layoutSetting } = storeToRefs(appStore)
   const menuDataMap = reactive(new Map<string, MenuDataItem>())
   const selectedKeys = ref<string[]>([])
   const openKeys = ref<string[]>([])
@@ -41,7 +39,7 @@ export const useLayoutMenu = defineStore('layout-menu', () => {
       }
     }
   }
-  watch(() => useStore.menuData, (val) => {
+  watch(() => userStore.menuData, (val) => {
     toMapMenuData(val, menuDataMap)
     changeMenu()
   }, { immediate: true, flush: 'post' })
