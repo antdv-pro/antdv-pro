@@ -10,10 +10,6 @@
 
   - Add request control token (43bc593)
   - Add request control token (f71c2e4)
-  - 新增手风琴模式 (ea3f5c6)
-  - 同步落后修改 (4f2a94c)
-  - 新增手风琴模式切换多页签的时候左侧菜单的联动 (1f9ed69)
-  - 整体修改手风琴逻辑 (71d2abd)
   - Support accordion mode (6d9c8df)
 
 ### 🩹 Fixes
