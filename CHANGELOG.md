@@ -1,6 +1,46 @@
 # Changelog
 
 
+## v0.0.11
+
+[compare changes](https://undefined/undefined/compare/v0.0.10...v0.0.11)
+
+
+### 🚀 Enhancements
+
+  - Add request control token (43bc593)
+  - Add request control token (f71c2e4)
+  - 新增手风琴模式 (ea3f5c6)
+  - 同步落后修改 (4f2a94c)
+  - 新增手风琴模式切换多页签的时候左侧菜单的联动 (1f9ed69)
+  - 整体修改手风琴逻辑 (71d2abd)
+  - Support accordion mode (6d9c8df)
+
+### 🩹 Fixes
+
+  - Typo (96f8220)
+  - Store state error (aa6c605)
+
+### 🏡 Chore
+
+  - Migrate package version (6486f57)
+  - Change (a1ee980)
+  - Update version (6863493)
+  - Update version (69e8b1f)
+  - Change vue-i18n (7923e2b)
+  - Update version (5d74cd6)
+
+### 🤖 CI
+
+  - Add issue  close workflow (5278a99)
+
+### ❤️  Contributors
+
+- Zev Zhu 
+- Aibayanyu <aibayanyu@qq.com>
+- 杜天宇 <17862705909@163.com>
+- Aibayanyu20 <aibayanyu@qq.com>
+
 ## v0.0.10
 
 [compare changes](https://undefined/undefined/compare/v0.0.9...v0.0.10)
