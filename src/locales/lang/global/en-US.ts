@@ -24,6 +24,7 @@ export default {
   'app.setting.content-width.fixSiderbar': 'Fixed Siderbar',
   'app.setting.content-width.splitMenus': 'Auto Split Menus',
   'app.setting.content-width.keepAlive': 'KeepAlive',
+  'app.setting.content-width.accordionMode': 'Menu Accordion Mode',
   'app.setting.content-area.title': 'Content Area',
   'app.setting.content-area.header': 'Header',
   'app.setting.content-area.footer': 'Footer',

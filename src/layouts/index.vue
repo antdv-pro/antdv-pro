@@ -31,6 +31,7 @@ const layoutProps = computed(() => pick(appStore.layoutSetting, ['fixedHeader', 
     :is-mobile="isMobile"
     :logo="layoutSetting.logo"
     :title="layoutSetting.title"
+    :accordion-mode="layoutSetting.accordionMode"
     @update:open-keys="layoutMenu.handleOpenKeys"
     @update:selected-keys="layoutMenu.handleSelectedKeys"
     @update:collapsed="appStore.toggleCollapsed"
@@ -63,6 +64,7 @@ const layoutProps = computed(() => pick(appStore.layoutSetting, ['fixedHeader', 
     :multi-tab="layoutSetting.multiTab"
     :multi-tab-fixed="layoutSetting.multiTabFixed"
     :keep-alive="layoutSetting.keepAlive"
+    :accordion-mode="layoutSetting.accordionMode"
     v-bind="layoutProps"
     @setting-change="appStore.changeSettingLayout"
   />

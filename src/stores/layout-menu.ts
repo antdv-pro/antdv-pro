@@ -11,7 +11,9 @@ const toMapMenuData = (menuData: MenuData, menuDataMap: Map<string, MenuDataItem
 }
 
 export const useLayoutMenu = defineStore('layout-menu', () => {
-  const useStore = useUserStore()
+  const userStore = useUserStore()
+  const appStore = useAppStore()
+  const { layoutSetting } = storeToRefs(appStore)
   const menuDataMap = reactive(new Map<string, MenuDataItem>())
   const selectedKeys = ref<string[]>([])
   const openKeys = ref<string[]>([])
@@ -30,14 +32,47 @@ export const useLayoutMenu = defineStore('layout-menu', () => {
       // 设置openkeys
       if (menu?.matched) {
         const newOpenKeys = menu.matched.map(v => v.path)
-        openKeys.value = [...new Set([...openKeys.value, ...newOpenKeys])]
+        if (!layoutSetting.value.accordionMode)
+          openKeys.value = [...new Set([...openKeys.value, ...newOpenKeys])]
+        else
+          openKeys.value = newOpenKeys
       }
     }
   }
-  watch(() => useStore.menuData, (val) => {
+  watch(() => userStore.menuData, (val) => {
     toMapMenuData(val, menuDataMap)
     changeMenu()
   }, { immediate: true, flush: 'post' })
+
+  const { menuData } = storeToRefs(userStore)
+  const handleAccordionMode = (innerOpenKeys: string[]) => {
+    const rootSubmenuKeys: string[] | undefined = menuData.value?.map((item) => {
+      return item.path
+    })
+    const intersection = innerOpenKeys.filter(value => openKeys.value?.includes(value))
+    const currentClickKey = innerOpenKeys.concat(openKeys.value).filter(value => !intersection.includes(value))[0]
+
+    if (rootSubmenuKeys?.includes(currentClickKey)) {
+      switch (innerOpenKeys.includes(currentClickKey)) {
+        case true:
+          openKeys.value = [currentClickKey]
+          break
+        case false:
+          openKeys.value = []
+          break
+      }
+    }
+    else {
+      switch (innerOpenKeys.includes(currentClickKey)) {
+        case true:
+          openKeys.value = innerOpenKeys
+          break
+        case false:
+          openKeys.value = innerOpenKeys.slice(0, openKeys.value.indexOf(currentClickKey))
+          break
+      }
+    }
+  }
 
   const handleSelectedKeys = (val: string[]) => {
     // 如果点击的是外部的菜单，那么我们就不需要设置成为激活的状态
@@ -47,7 +82,10 @@ export const useLayoutMenu = defineStore('layout-menu', () => {
   }
 
   const handleOpenKeys = (val: string[]) => {
-    openKeys.value = val
+    if (layoutSetting.value.accordionMode)
+      handleAccordionMode(val)
+    else
+      openKeys.value = val
   }
 
   watch(router.currentRoute, (route) => {
@@ -63,5 +101,6 @@ export const useLayoutMenu = defineStore('layout-menu', () => {
     handleSelectedKeys,
     handleOpenKeys,
     changeMenu,
+    handleAccordionMode,
   }
 })

@@ -25,6 +25,7 @@ export interface LayoutSetting {
   headerHeight?: number
   copyright?: string
   keepAlive?: boolean
+  accordionMode?: boolean
 }
 
 export const useAppStore = defineStore('app', () => {

@@ -24,6 +24,7 @@ export default {
   'app.setting.content-width.fixSiderbar': '固定侧边栏菜单',
   'app.setting.content-width.splitMenus': '自动分割菜单',
   'app.setting.content-width.keepAlive': '缓存功能',
+  'app.setting.content-width.accordionMode': '菜单手风琴模式',
   'app.setting.content-area.title': '内容区域',
   'app.setting.content-area.header': '顶栏',
   'app.setting.content-area.footer': '页脚',
