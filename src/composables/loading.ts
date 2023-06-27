@@ -1,11 +1,9 @@
 export const useLoadingCheck = () => {
-  onMounted(() => {
+  const loading = document.querySelector('#loading-app')
+  if (loading) {
     const body = document.querySelector('body')
-    const loading = document.querySelector('#loading-app')
-    if (loading) {
-      setTimeout(() => {
-        body?.removeChild(loading)
-      }, 500)
-    }
-  })
+    setTimeout(() => {
+      body?.removeChild(loading)
+    }, 500)
+  }
 }

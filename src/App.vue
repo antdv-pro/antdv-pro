@@ -2,7 +2,6 @@
 const appStore = useAppStore()
 const { theme } = storeToRefs(appStore)
 const { antd } = useI18nLocale()
-useLoadingCheck()
 </script>
 
 <template>

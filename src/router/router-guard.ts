@@ -60,4 +60,5 @@ router.afterEach((to) => {
   const title = to.meta?.title
   if (title)
     document.title = title as string
+  useLoadingCheck()
 })
