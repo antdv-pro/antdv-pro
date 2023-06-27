@@ -3,18 +3,27 @@
  * 解决首次加载时白屏的问题
  */
 (function () {
-  const _root = document.querySelector('#app');
-  if (_root && _root.innerHTML === '') {
-    _root.innerHTML = `
+  const div = document.createElement("div")
+  const body = document.querySelector("body");
+  body.appendChild(div)
+  div.setAttribute("id","loading-app")
+  if (div && div.innerHTML === '') {
+    div.innerHTML = `
       <style>
         html,
         body,
-        #app {
+        #loading-app {
           height: 100%;
           margin: 0;
           padding: 0;
         }
-        #app {
+        #loading-app {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          z-index: 9999;
           background-repeat: no-repeat;
           background-size: 100% auto;
         }
