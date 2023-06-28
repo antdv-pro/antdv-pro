@@ -89,7 +89,7 @@ const otherDisabled = computed(() => {
               <a-menu-item key="closeOther" :disabled="isCurrentDisabled || otherDisabled">
                 关闭其他
               </a-menu-item>
-              <a-menu-item key="refresh">
+              <a-menu-item key="refresh" :disabled="!isCurrentDisabled">
                 刷新当前
               </a-menu-item>
             </a-menu>
