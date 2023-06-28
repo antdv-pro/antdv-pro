@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { CheckedType } from '~@/layouts/basic-layout/typing'
+
 defineProps<{
   colorWeak?: boolean
   t?: (key: string, ...args: any[]) => string
@@ -12,7 +14,7 @@ const list = computed(() => ([
     disabledReason: '',
   },
 ]))
-const handleChangeWeak = (value: boolean) => {
+const handleChangeWeak = (value: CheckedType) => {
   emit('changeSetting', 'colorWeak', value)
 
   const dom = document.querySelector('body')

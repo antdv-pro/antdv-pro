@@ -72,7 +72,7 @@ const onReset = async () => {
  * @param type 弹框类型
  * @param record 弹框数据，仅编辑
  */
-const hanldeAction = (type: AnalysisModalProps['type'], record?: ListResultModel) => {
+const handleAction = (type: AnalysisModalProps['type'], record?: ListResultModel) => {
   if (type === 'edit') {
     actionModalRef.value.updateModelValue(record)
     modalState.title = '编辑数据'
@@ -143,7 +143,7 @@ onMounted(() => {
     <a-card title="查询表格">
       <template #extra>
         <a-space>
-          <a-button type="primary" @click="hanldeAction('create')">
+          <a-button type="primary" @click="handleAction('create')">
             创建
           </a-button>
         </a-space>
@@ -152,11 +152,11 @@ onMounted(() => {
         <template #bodyCell="{ column, record }">
           <template v-if="column.dataIndex === 'action'">
             <div flex gap-2>
-              <a c-primary @click="hanldeAction('edit', record)">
+              <a c-primary @click="handleAction('edit', record as any)">
                 编辑
               </a>
               <a
-                c-error @click="handleDel(record)"
+                c-error @click="handleDel(record as any)"
               >
                 删除
               </a>
