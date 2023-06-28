@@ -15,5 +15,6 @@ declare module 'vue-router'{
     affix?: boolean
     id?: string | number
     parentId?: string | number | null
+    access?: (string | number)[]
   }
 }

@@ -9,6 +9,7 @@ export default eventHandler(async (event) => {
     msg: '登录成功',
   }
   if (type !== 'mobile') {
+    success.data.token = Buffer.from(body.username).toString('base64')
     // 判断用户名密码是否正确
     if (body.username === 'admin' && body.password === 'admin')
       return success

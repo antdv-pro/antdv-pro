@@ -3,6 +3,7 @@ export interface UserInfo {
   username: string
   nickname: string
   avatar: string
+  roles?: (string | number)[]
 }
 
 export const getUserInfoApi = () => {

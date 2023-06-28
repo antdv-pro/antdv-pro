@@ -129,13 +129,53 @@ const menuData = [
     title: '菜单1-1-2',
     keepAlive: true,
   },
+  {
+    id: 15,
+    path: '/access',
+    component: 'RouteView',
+    redirect: '/access/common',
+    title: '权限模块',
+    name: 'Access',
+    parentId: null,
+    icon: 'ClusterOutlined',
+  },
+  {
+    id: 16,
+    parentId: 15,
+    path: '/access/common',
+    title: '通用权限',
+    name: 'AccessCommon',
+    component: '/access/common',
+  },
+  {
+    id: 17,
+    parentId: 15,
+    path: '/access/user',
+    title: '普通用户',
+    name: 'AccessUser',
+    component: '/access/user',
+  },
+
 ]
 
-export default eventHandler(() => {
-  // TODO
+export const accessMenuData = [
+  {
+    id: 18,
+    parentId: 15,
+    path: '/access/admin',
+    title: '管理员',
+    name: 'AccessAdmin',
+    component: '/access/admin',
+  },
+
+]
+
+export default eventHandler((event) => {
+  const token = getHeader(event, 'Authorization')
+  const username = Buffer.from(token, 'base64').toString('utf-8')
   return {
     code: 200,
     msg: '获取成功',
-    data: menuData,
+    data: [...menuData, ...(username === 'admin' ? accessMenuData : [])],
   }
 })
