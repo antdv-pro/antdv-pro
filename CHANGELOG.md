@@ -1,6 +1,38 @@
 # Changelog
 
 
+## v0.0.12
+
+[compare changes](https://undefined/undefined/compare/v0.0.11...v0.0.12)
+
+
+### 🚀 Enhancements
+
+  - Add access mode (e89acfe)
+
+### 🩹 Fixes
+
+  - Loading experience optimization (136aa7b)
+  - Change loading in router guard (8479d60)
+  - Typo (29430fa)
+  - Typo (6358062)
+  - Loading delay (c842062)
+  - Query dom (46cfb14)
+  - Logout cache (1e18c85)
+
+### 🏡 Chore
+
+  - Bump version (b20d4b1)
+  - Change version (afe7e7f)
+  - Fix auto import components ts types (a68d41c)
+  - Change plugin version (32edfae)
+
+### ❤️  Contributors
+
+- Aibayanyu <aibayanyu@qq.com>
+- Aibayanyu20 <aibayanyu@qq.com>
+- Kai <kaienyeo225@gmail.com>
+
 ## v0.0.11
 
 [compare changes](https://undefined/undefined/compare/v0.0.10...v0.0.11)
