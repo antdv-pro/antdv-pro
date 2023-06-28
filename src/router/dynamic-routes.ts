@@ -1,5 +1,6 @@
 import type { RouteRecordRaw } from 'vue-router'
 import { basicRouteMap } from './router-modules'
+import { AccessEnum } from '~@/utils/constant'
 export const ROOT_ROUTE_REDIRECT_PATH = '/dashboard'
 const Layout = () => import('~/layouts/index.vue')
 
@@ -140,6 +141,43 @@ export default [
             },
           },
         ],
+      },
+    ],
+  },
+  {
+    path: '/access',
+    redirect: '/access/common',
+    name: 'Access',
+    meta: {
+      title: '权限模块',
+      icon: 'ClusterOutlined',
+    },
+    children: [
+      {
+        path: '/access/common',
+        name: 'AccessCommon',
+        component: () => import('~/pages/access/common.vue'),
+        meta: {
+          title: '通用权限',
+        },
+      },
+      {
+        path: '/access/user',
+        name: 'AccessUser',
+        component: () => import('~/pages/access/user.vue'),
+        meta: {
+          title: '普通用户',
+          access: [AccessEnum.USER, AccessEnum.ADMIN],
+        },
+      },
+      {
+        path: '/access/admin',
+        name: 'AccessAdmin',
+        component: () => import('~/pages/access/admin.vue'),
+        meta: {
+          title: '管理员',
+          access: [AccessEnum.ADMIN],
+        },
       },
     ],
   },
