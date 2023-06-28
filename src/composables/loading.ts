@@ -4,6 +4,6 @@ export const useLoadingCheck = () => {
     const body = document.querySelector('body')
     setTimeout(() => {
       body?.removeChild(loading)
-    }, 500)
+    }, 100)
   }
 }
