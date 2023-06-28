@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { LayoutType } from '../../basic-layout/typing'
+import type { CheckedType, LayoutType } from '../../basic-layout/typing'
 
 const props = defineProps<{
   layout?: LayoutType
@@ -66,7 +66,7 @@ const handleChangeSetting = (key: string, value: any) => {
               size="small"
               :checked="(props as any)[item.key]"
               :disabled="item.disabled"
-              @update:checked="(e:boolean) => handleChangeSetting(item.key, e)"
+              @update:checked="(e:CheckedType) => handleChangeSetting(item.key, e)"
             />
           </template>
           <span :style="{ opacity: item.disabled ? '0.5' : '1' }">

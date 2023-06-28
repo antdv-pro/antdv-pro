@@ -1,5 +1,6 @@
 import { runEvent } from '@v-c/utils'
-import type { MenuSelectEvent, ProLayoutProps } from './typing'
+import type { SelectEventHandler } from 'ant-design-vue/es/menu/src/interface'
+import type { Key, ProLayoutProps } from './typing'
 
 export interface ProLayoutProviderMethods {
   handleCollapsed?: (collapsed: boolean) => void
@@ -39,15 +40,15 @@ const layoutStateFunc = (props: ProLayoutProps, methods: ProLayoutProviderMethod
    */
   const openKeys = computed(() => props.openKeys)
   const selectedKeys = computed(() => props.selectedKeys)
-  const handleOpenKeys = (val: string[]) => {
+  const handleOpenKeys = (val: Key[]) => {
     runEvent(props['onUpdate:openKeys'], val)
   }
 
-  const handleSelectedKeys = (val: string[]) => {
+  const handleSelectedKeys = (val: Key[]) => {
     runEvent(props['onUpdate:selectedKeys'], val)
   }
 
-  const handleMenuSelect = (data: MenuSelectEvent) => {
+  const handleMenuSelect: SelectEventHandler = (data) => {
     runEvent(props.onMenuSelect, data)
   }
   return {
