@@ -94,6 +94,11 @@ export const useLayoutMenu = defineStore('layout-menu', () => {
     changeMenu()
   })
 
+  const clear = () => {
+    openKeys.value = []
+    selectedKeys.value = []
+  }
+
   return {
     selectedKeys,
     openKeys,
@@ -102,5 +107,6 @@ export const useLayoutMenu = defineStore('layout-menu', () => {
     handleOpenKeys,
     changeMenu,
     handleAccordionMode,
+    clear,
   }
 })

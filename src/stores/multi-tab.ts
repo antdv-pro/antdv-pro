@@ -131,6 +131,13 @@ export const useMultiTab = defineStore('multi-tab', () => {
     })
   }
 
+  const clear = () => {
+    list.value = []
+    cacheList.value = []
+    activeKey.value = undefined
+    refreshItem.value = null
+  }
+
   watch(router.currentRoute, (route) => {
     if (route.fullPath === activeKey.value) return
     activeKey.value = route.fullPath
@@ -141,6 +148,7 @@ export const useMultiTab = defineStore('multi-tab', () => {
     activeKey,
     cacheList,
     close,
+    clear,
     closeLeft,
     closeRight,
     closeOther,

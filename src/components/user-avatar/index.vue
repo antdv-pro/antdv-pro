@@ -2,6 +2,8 @@
 import { LogoutOutlined, ProfileOutlined, UserOutlined } from '@ant-design/icons-vue'
 import { message } from 'ant-design-vue'
 const userStore = useUserStore()
+const multiTabStore = useMultiTab()
+const layoutMenuStore = useLayoutMenu()
 const router = useRouter()
 const { avatar, nickname } = storeToRefs(userStore)
 const handleClick = async ({ key }: any) => {
@@ -15,6 +17,9 @@ const handleClick = async ({ key }: any) => {
       message.success('退出登录成功', 3)
       router.push({
         path: '/login',
+      }).then(() => {
+        multiTabStore.clear()
+        layoutMenuStore.clear()
       })
     }
   }
