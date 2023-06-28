@@ -1,6 +1,24 @@
 # Changelog
 
 
+## v0.0.13
+
+[compare changes](https://undefined/undefined/compare/v0.0.12...v0.0.13)
+
+
+### 🚀 Enhancements
+
+  - Support dynamic routes (2164119)
+  - Support dynamic load way in env (5dd538d)
+
+### 🏡 Chore
+
+  - Add readme (5d048e3)
+
+### ❤️  Contributors
+
+- Aibayanyu <aibayanyu@qq.com>
+
 ## v0.0.12
 
 [compare changes](https://undefined/undefined/compare/v0.0.11...v0.0.12)
