@@ -56,7 +56,7 @@ const otherDisabled = computed(() => {
     ref="tabsRef"
     :active-key="activeKey"
     :style="tabStyle"
-    class="bg-white dark:bg-#242525 w-100%"
+    class="bg-white dark:bg-#242525 w-100% pro-ant-multi-tab"
     pt-10px
     type="card"
     size="small"
@@ -106,7 +106,7 @@ const otherDisabled = computed(() => {
       <div class="w-24px" />
     </template>
     <template #rightExtra>
-      <div class="w-48px">
+      <div class="w-48px flex item-center justify-center">
         <a-dropdown :trigger="['hover']">
           <MoreOutlined class="text-16px" />
           <template #overlay>
@@ -126,3 +126,11 @@ const otherDisabled = computed(() => {
     </template>
   </a-tabs>
 </template>
+
+<style>
+.pro-ant-multi-tab{
+  .ant-tabs-nav-operations{
+    display: none !important;
+  }
+}
+</style>
