@@ -32,6 +32,7 @@ const layoutProps = computed(() => pick(appStore.layoutSetting, ['fixedHeader', 
     :logo="layoutSetting.logo"
     :title="layoutSetting.title"
     :accordion-mode="layoutSetting.accordionMode"
+    :header-height="layoutSetting.headerHeight"
     @update:open-keys="layoutMenu.handleOpenKeys"
     @update:selected-keys="layoutMenu.handleSelectedKeys"
     @update:collapsed="appStore.toggleCollapsed"

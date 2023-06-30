@@ -66,7 +66,7 @@ export const proLayoutProps = {
   title: stringType(),
   collapsedWidth: numberType(48),
   siderWidth: numberType(234),
-  headerHeight: numberType(48),
+  headerHeight: numberType<number>(48),
   menuData: arrayType<MenuData>(),
   fixedHeader: booleanType<boolean>(false),
   fixedSider: booleanType<boolean>(true),
