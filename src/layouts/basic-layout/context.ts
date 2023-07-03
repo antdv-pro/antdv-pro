@@ -1,6 +1,6 @@
 import { runEvent } from '@v-c/utils'
 import type { SelectEventHandler } from 'ant-design-vue/es/menu/src/interface'
-import type { Key, MenuDataItem, ProLayoutProps } from './typing'
+import type { Key, MenuData, MenuDataItem, ProLayoutProps } from './typing'
 
 export interface ProLayoutProviderMethods {
   handleCollapsed?: (collapsed: boolean) => void
@@ -80,11 +80,24 @@ const layoutStateFunc = (props: ProLayoutProps, methods: ProLayoutProviderMethod
     runEvent(props.onMenuSelect, data)
   }
 
-  watch(openKeys, () => {
+  const findSelected = (key: Key, menuData: MenuData, pItem?: MenuDataItem): MenuDataItem | undefined => {
+    for (const item of menuData ?? []) {
+      if (item.path === key) return pItem ?? item
+      if (item.children && item.children.length) {
+        const find = findSelected(key, item.children, pItem ?? item)
+        if (find) return find
+      }
+    }
+  }
+
+  watch(selectedKeys, () => {
     if (splitMenus.value) {
-      for (const openKey of (openKeys.value ?? [])) {
-        if (menuDataMap.has(openKey))
-          splitState.selectedKeys = [openKey]
+      const key = selectedKeys.value?.[0]
+
+      if (key) {
+        const find = findSelected(key, menuData.value ?? [])
+        if (find)
+          splitState.selectedKeys = [find.path]
       }
     }
   }, {
