@@ -8,6 +8,7 @@ const menuData = [
     redirect: '/dashboard/analysis',
     path: '/dashboard',
     name: 'Dashboard',
+    locale: 'menu.dashboard.title',
   },
   {
     id: 2,
@@ -17,6 +18,7 @@ const menuData = [
     path: '/dashboard/analysis',
     name: 'DashboardAnalysis',
     keepAlive: true,
+    locale: 'menu.dashboard.analysis.title',
   },
   {
     id: 3,
@@ -27,6 +29,8 @@ const menuData = [
     redirect: '/form/basic',
     path: '/form',
     name: 'Form',
+    locale: 'menu.form.title',
+
   },
   {
     id: 4,
@@ -36,6 +40,8 @@ const menuData = [
     path: '/form/basic',
     name: 'FormBasic',
     keepAlive: true,
+    locale: 'menu.form.basic.title',
+
   },
   {
     id: 5,
@@ -46,6 +52,8 @@ const menuData = [
     redirect: '/link/iframe',
     path: '/link',
     name: 'Link',
+    locale: 'menu.link.title',
+
   },
   {
     id: 6,
@@ -56,6 +64,7 @@ const menuData = [
     path: '/link/iframe',
     name: 'LinkIframe',
     keepAlive: true,
+    locale: 'menu.link.iframe.title',
   },
   {
     id: 7,

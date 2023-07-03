@@ -44,6 +44,8 @@ export interface MenuDataItem {
   matched?: MenuDataItem[]
   // 全连接跳转模式
   target?: '_blank' | '_self' | '_parent'
+  // 多语言配置
+  locale?: string
 }
 
 export type LayoutType = 'mix' | 'side' | 'top'

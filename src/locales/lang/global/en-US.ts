@@ -56,6 +56,13 @@ export default {
   'app.setting.copyinfo': 'copy success，please replace defaultSettings in src/models/setting.js',
   'app.setting.production.hint':
     'Setting panel shows in development environment only, please manually modify',
+  'app.multiTab.title': 'Multi Tab',
+  'app.multiTab.closeCurrent': 'Close Current',
+  'app.multiTab.closeOther': 'Close Other',
+  'app.multiTab.closeAll': 'Close All',
+  'app.multiTab.refresh': 'Refresh',
+  'app.multiTab.closeRight': 'Close Right',
+  'app.multiTab.closeLeft': 'Close Left',
 
   // Menu
   'menu.welcome': 'Welcome',

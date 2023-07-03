@@ -16,5 +16,6 @@ declare module 'vue-router'{
     id?: string | number
     parentId?: string | number | null
     access?: (string | number)[]
+    locale?: string
   }
 }

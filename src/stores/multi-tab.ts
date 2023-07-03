@@ -10,6 +10,7 @@ export interface MultiTabItem {
   title: string
   name?: string
   icon?: string
+  locale?: string
   // 判断当前是不是一个固定的标签
   affix?: boolean
   loading?: boolean
@@ -51,6 +52,7 @@ export const useMultiTab = defineStore('multi-tab', () => {
       name: route.name as string,
       icon: route.meta.icon,
       affix: route.meta.affix,
+      locale: route.meta.locale,
     }
     if (!cacheList.value.includes(item?.name as string) && appStore.layoutSetting.keepAlive) {
       if (route.meta.keepAlive && route.name)

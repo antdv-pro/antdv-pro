@@ -5,22 +5,30 @@ import { omit } from 'lodash'
 import { getRouterModule } from './router-modules'
 import type { MenuData, MenuDataItem } from '~@/layouts/basic-layout/typing'
 import dynamicRoutes, { ROOT_ROUTE_REDIRECT_PATH } from '~@/router/dynamic-routes'
+import i18n from '~@/locales'
 
 let cache_key = 1
 
 const getCacheKey = () => `Cache_Key_${cache_key++}`
 
+const renderTitle = (route: RouteRecordRaw) => {
+  const { title, locale } = route.meta || {}
+  if (!title) return ''
+  return locale ? i18n.global.t(locale) : title
+}
+
 const formatMenu = (route: RouteRecordRaw, path?: string) => {
   return {
     id: route.meta?.id,
     parentId: route.meta?.parentId,
-    title: route.meta?.title || '',
+    title: renderTitle(route),
     icon: route.meta?.icon || '',
     path: path ?? route.path,
     hideInMenu: route.meta?.hideInMenu || false,
     parentKeys: route.meta?.parentKeys || [],
     hideInBreadcrumb: route.meta?.hideInBreadcrumb || false,
     hideChildrenInMenu: route.meta?.hideChildrenInMenu || false,
+    locale: route.meta?.locale,
     keepAlive: route.meta?.keepAlive || false,
     name: route.name as string,
     url: route.meta?.url || '',
@@ -84,6 +92,7 @@ export const generateTreeRoutes = (menus: MenuData) => {
         hideChildrenInMenu: menuItem?.hideChildrenInMenu,
         hideInBreadcrumb: menuItem?.hideInBreadcrumb,
         target: menuItem?.target,
+        locale: menuItem?.locale,
       },
     } as RouteRecordRaw
     const menu = formatMenu(route)
@@ -143,7 +152,7 @@ export const generateRoutes = async () => {
 const flatRoutes = (routes: RouteRecordRaw[]) => {
   const flatRouteData: RouteRecordRaw[] = []
   for (const route of routes) {
-    flatRouteData.push(omit(route, ['chidlren']) as RouteRecordRaw)
+    flatRouteData.push(omit(route, ['children']) as RouteRecordRaw)
     if (route.children && route.children.length)
       flatRouteData.push(...flatRoutes(route.children))
   }
@@ -151,14 +160,14 @@ const flatRoutes = (routes: RouteRecordRaw[]) => {
 }
 
 export const generateFlatRoutes = (routes: RouteRecordRaw[]) => {
-  const flatRouets = flatRoutes(routes)
+  const flatRoutesList = flatRoutes(routes)
   // 拿到拉平后的路由，然后统一添加一个父级的路由,通过这层路由实现保活的功能
   const parentRoute: RouteRecordRaw = {
     path: '/',
     redirect: ROOT_ROUTE_REDIRECT_PATH,
     name: 'ROOT_EMPTY_PATH',
     component: getRouterModule('RouteView'),
-    children: flatRouets,
+    children: flatRoutesList,
   }
   return [parentRoute]
 }
