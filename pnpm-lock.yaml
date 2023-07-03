@@ -70,8 +70,8 @@ importers:
         specifier: ^3.0.1
         version: 3.0.1(vite@4.3.9)(vue@3.3.4)
       antdv-component-resolver:
-        specifier: 0.0.1-alpha.1
-        version: 0.0.1-alpha.1(unplugin-vue-components@0.25.1)
+        specifier: 0.0.1-alpha.2
+        version: 0.0.1-alpha.2(unplugin-vue-components@0.25.1)
       changelogen:
         specifier: ^0.5.3
         version: 0.5.3
@@ -106,7 +106,7 @@ importers:
         specifier: ^10.9.1
         version: 10.9.1(@types/node@18.16.18)(typescript@5.1.3)
       typescript:
-        specifier: 5.1.3
+        specifier: ^5.1.3
         version: 5.1.3
       unocss:
         specifier: ^0.51.13
@@ -2056,10 +2056,10 @@ packages:
       warning: 4.0.3
     dev: false
 
-  /antdv-component-resolver@0.0.1-alpha.1(unplugin-vue-components@0.25.1):
-    resolution: {integrity: sha512-WL8GHYjrPFhuA1ojHASLltGE5WO3X9U0SCS013BFXtKvsd6/tCPoNsfBcyPdrCwxW6vasmKoWqZfk/y/NcWwVQ==}
+  /antdv-component-resolver@0.0.1-alpha.2(unplugin-vue-components@0.25.1):
+    resolution: {integrity: sha512-i9b4b6VbIwGsL2vtLSBodDF0dzsNKkKIg+L/3poUhqEvun0Ih2JjJDElG8wadAuJFQIeqgMORVfSIiegWWuGZA==}
     peerDependencies:
-      unplugin-vue-components: ^0.24.1
+      unplugin-vue-components: ^0.25.1
     dependencies:
       unplugin-vue-components: 0.25.1(vue@3.3.4)
     dev: true

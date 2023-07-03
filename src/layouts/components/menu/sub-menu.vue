@@ -1,8 +1,17 @@
 <script setup lang="ts">
-import { isUrl } from '@v-c/utils'
+import { isFunction, isUrl } from '@v-c/utils'
+import type { VNodeChild } from 'vue'
 import AsyncIcon from './async-icon.vue'
 import type { MenuDataItem } from '~@/layouts/basic-layout/typing'
-defineProps<{ item: MenuDataItem }>()
+withDefaults(defineProps<{ item: MenuDataItem; link?: boolean }>(), {
+  link: true,
+})
+const renderTitle = (title: VNodeChild | (() => VNodeChild)) => {
+  if (isFunction(title))
+    return title()
+
+  return title
+}
 </script>
 
 <template>
@@ -12,7 +21,7 @@ defineProps<{ item: MenuDataItem }>()
         <AsyncIcon :icon="item.icon" />
       </template>
       <template #title>
-        {{ item.title }}
+        {{ renderTitle(item.title) }}
       </template>
       <template v-for="menu in item.children">
         <template v-if="!menu.hideInMenu">
@@ -25,13 +34,16 @@ defineProps<{ item: MenuDataItem }>()
                 <AsyncIcon :icon="menu.icon" />
               </template>
               <template v-if="!isUrl(menu.path)">
-                <RouterLink :to="menu.path">
-                  {{ menu.title }}
+                <RouterLink v-if="link" :to="menu.path">
+                  {{ renderTitle(item.title) }}
                 </RouterLink>
+                <template v-else>
+                  {{ renderTitle(item.title) }}
+                </template>
               </template>
               <template v-else>
                 <a :href="menu.path" :target="menu.target ?? '_blank'">
-                  {{ menu.title }}
+                  {{ renderTitle(item.title) }}
                 </a>
               </template>
             </a-menu-item>
@@ -46,13 +58,16 @@ defineProps<{ item: MenuDataItem }>()
         <AsyncIcon :icon="item.icon" />
       </template>
       <template v-if="!isUrl(item.path)">
-        <RouterLink :to="item.path">
-          {{ item.title }}
+        <RouterLink v-if="link" :to="item.path">
+          {{ renderTitle(item.title) }}
         </RouterLink>
+        <template v-else>
+          {{ renderTitle(item.title) }}
+        </template>
       </template>
       <template v-else>
         <a :href="item.path" :target="item.target ?? '_blank'">
-          {{ item.title }}
+          {{ renderTitle(item.title) }}
         </a>
       </template>
     </a-menu-item>

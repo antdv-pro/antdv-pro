@@ -11,7 +11,7 @@ export default {
   contentWidth: 'Fluid',
   fixedHeader: false,
   fixedSider: true,
-  splitMenus: false,
+  splitMenus: true,
   header: true,
   menu: true,
   menuHeader: true,

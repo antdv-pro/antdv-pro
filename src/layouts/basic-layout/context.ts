@@ -1,6 +1,6 @@
 import { runEvent } from '@v-c/utils'
 import type { SelectEventHandler } from 'ant-design-vue/es/menu/src/interface'
-import type { Key, ProLayoutProps } from './typing'
+import type { Key, MenuDataItem, ProLayoutProps } from './typing'
 
 export interface ProLayoutProviderMethods {
   handleCollapsed?: (collapsed: boolean) => void
@@ -14,6 +14,7 @@ const layoutStateFunc = (props: ProLayoutProps, methods: ProLayoutProviderMethod
   const collapsedWidth = computed(() => props.collapsedWidth)
   const siderWidth = computed(() => props.siderWidth)
   const menuData = computed(() => props.menuData)
+  const splitMenus = computed(() => props.splitMenus)
   const fixedHeader = computed(() => props.fixedHeader)
   const fixedSider = computed(() => props.fixedSider)
   const collapsed = computed(() => props.collapsed)
@@ -35,6 +36,33 @@ const layoutStateFunc = (props: ProLayoutProps, methods: ProLayoutProviderMethod
   const footer = computed(() => props.footer)
   const menuHeader = computed(() => props.menuHeader)
 
+  const menuDataMap = reactive(new Map<Key, MenuDataItem>())
+  const splitState = reactive<{
+    selectedKeys: Key[]
+  }>({
+    selectedKeys: [],
+  })
+  watch(menuData, () => {
+    menuDataMap.clear()
+    menuData.value?.forEach((item) => {
+      menuDataMap.set(item.path, item)
+    })
+  }, {
+    immediate: true,
+  })
+  const selectedMenus = computed(() => {
+    if (isMobile.value || layout.value !== 'mix' || !splitMenus.value) return menuData.value
+    const key = splitState.selectedKeys?.[0]
+    if (!key)
+      return []
+
+    return menuDataMap.get(key)?.children ?? []
+  })
+
+  const handleSplitSelectedKeys = (val: Key[]) => {
+    splitState.selectedKeys = val
+    // runEvent(props['onUpdate:openKeys'], val)
+  }
   /**
    * 菜单选中处理
    */
@@ -51,6 +79,23 @@ const layoutStateFunc = (props: ProLayoutProps, methods: ProLayoutProviderMethod
   const handleMenuSelect: SelectEventHandler = (data) => {
     runEvent(props.onMenuSelect, data)
   }
+
+  watch(openKeys, () => {
+    if (splitMenus.value) {
+      for (const openKey of (openKeys.value ?? [])) {
+        if (menuDataMap.has(openKey))
+          splitState.selectedKeys = [openKey]
+      }
+    }
+  }, {
+    immediate: true,
+  })
+  watch(splitMenus, () => {
+    if (!splitMenus.value)
+      splitState.selectedKeys = []
+    else
+      splitState.selectedKeys = [openKeys.value?.[0] ?? '']
+  })
   return {
     logo,
     title,
@@ -68,6 +113,10 @@ const layoutStateFunc = (props: ProLayoutProps, methods: ProLayoutProviderMethod
     contentWidth,
     copyright,
     hasPageContainer,
+    splitMenus,
+    splitState,
+    menuDataMap,
+    selectedMenus,
     handleMobileCollapsed,
     header,
     menu,
@@ -77,6 +126,7 @@ const layoutStateFunc = (props: ProLayoutProps, methods: ProLayoutProviderMethod
     selectedKeys,
     handleSelectedKeys,
     handleMenuSelect,
+    handleSplitSelectedKeys,
     menuHeader,
     ...methods,
   }

@@ -2,7 +2,7 @@
 import { useLayoutState } from '../../basic-layout/context'
 import SubMenu from './sub-menu.vue'
 
-const { theme, collapsed, layout, isMobile, menuData, selectedKeys, openKeys, handleOpenKeys, handleSelectedKeys, handleMenuSelect } = useLayoutState()
+const { theme, collapsed, layout, isMobile, selectedMenus, selectedKeys, openKeys, handleOpenKeys, handleSelectedKeys, handleMenuSelect } = useLayoutState()
 const menuTheme = computed(() => {
   if (theme.value === 'inverted')
     return 'dark'
@@ -22,7 +22,7 @@ const menuTheme = computed(() => {
     @update:selected-keys="handleSelectedKeys"
     @select="handleMenuSelect"
   >
-    <template v-for="item in menuData" :key="item.path">
+    <template v-for="item in selectedMenus" :key="item.path">
       <template v-if="!item.hideInMenu">
         <SubMenu :item="item" />
       </template>

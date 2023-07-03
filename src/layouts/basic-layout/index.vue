@@ -3,6 +3,7 @@ import Header from '../components/header/index.vue'
 import SiderMenu from '../components/sider-menu/index.vue'
 import DrawerMenu from '../components/drawer-menu/index.vue'
 import Menu from '../components/menu/index.vue'
+import SplitMenu from '../components/menu/split-menu.vue'
 import GlobalFooter from '../components/global-footer/index.vue'
 import { proLayoutProps } from './typing'
 import { useLayoutProvider } from './context'
@@ -50,9 +51,11 @@ const contentCls = computed(() => {
             <template v-if="$slots.headerActions" #headerActions>
               <slot name="headerActions" />
             </template>
-            <template v-if="$slots.headerContent || layout === 'top'" #headerContent>
+            <template v-if="$slots.headerContent || layout === 'top' || layout === 'mix'" #headerContent>
               <slot name="headerContent">
-                <Menu v-if="!isMobile" />
+                <Menu v-if="!isMobile && layout === 'top'" />
+                <!-- 分割菜单的模式 -->
+                <SplitMenu v-if="!isMobile && layout === 'mix' && props.splitMenus" />
               </slot>
             </template>
           </Header>
