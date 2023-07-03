@@ -35,15 +35,15 @@ const renderTitle = (title: VNodeChild | (() => VNodeChild)) => {
               </template>
               <template v-if="!isUrl(menu.path)">
                 <RouterLink v-if="link" :to="menu.path">
-                  {{ renderTitle(item.title) }}
+                  {{ renderTitle(menu.title) }}
                 </RouterLink>
                 <template v-else>
-                  {{ renderTitle(item.title) }}
+                  {{ renderTitle(menu.title) }}
                 </template>
               </template>
               <template v-else>
                 <a :href="menu.path" :target="menu.target ?? '_blank'">
-                  {{ renderTitle(item.title) }}
+                  {{ renderTitle(menu.title) }}
                 </a>
               </template>
             </a-menu-item>
