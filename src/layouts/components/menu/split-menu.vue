@@ -24,7 +24,7 @@ const menuDataList = computed(() => menuData.value?.map(v => omit(v, ['children'
   </a-menu>
 </template>
 
-<style>
+<style lang="less">
 .ant-pro-sider-menu-header{
   margin-left: 14px;
 }
