@@ -21,7 +21,7 @@ const formatMenu = (route: RouteRecordRaw, path?: string) => {
   return {
     id: route.meta?.id,
     parentId: route.meta?.parentId,
-    title: renderTitle(route),
+    title: () => renderTitle(route),
     icon: route.meta?.icon || '',
     path: path ?? route.path,
     hideInMenu: route.meta?.hideInMenu || false,

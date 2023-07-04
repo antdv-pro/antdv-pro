@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { delayTimer } from '@v-c/utils'
+import { delayTimer, isFunction } from '@v-c/utils'
+import type { VNodeChild } from 'vue'
 import { useLayoutState } from '~/layouts/basic-layout/context'
 defineProps<{
   title?: string
@@ -49,6 +50,12 @@ const contentCls = computed(() => {
 
   return cls
 })
+const renderTitle = (title: VNodeChild | (() => VNodeChild)) => {
+  if (isFunction(title))
+    return title()
+
+  return title
+}
 </script>
 
 <template>
@@ -57,17 +64,17 @@ const contentCls = computed(() => {
       <a-breadcrumb v-if="!currentItem.hideInBreadcrumb">
         <template v-if="currentItem.matched?.length">
           <a-breadcrumb-item v-for="item in currentItem.matched" :key="item.path">
-            {{ item.title }}
+            {{ renderTitle(item.title) }}
           </a-breadcrumb-item>
         </template>
         <a-breadcrumb-item>
-          {{ currentItem.title }}
+          {{ renderTitle(currentItem.title) }}
         </a-breadcrumb-item>
       </a-breadcrumb>
       <div flex mt-8px justify-between>
         <div flex items-center my-4px of-hidden>
           <slot name="title">
-            <span text-20px line-height-32px mr-12px mb-0 truncate font-600>{{ title ?? currentItem.title }}</span>
+            <span text-20px line-height-32px mr-12px mb-0 truncate font-600>{{ renderTitle(title ?? currentItem.title) }}</span>
           </slot>
         </div>
         <div>
