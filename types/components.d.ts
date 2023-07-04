@@ -64,7 +64,6 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SelectLang: typeof import('./../src/components/select-lang/index.vue')['default']
-    SubMenu: typeof import('ant-design-vue/es')['SubMenu']
     TokenProvider: typeof import('./../src/components/token-provider/index.vue')['default']
     UserAvatar: typeof import('./../src/components/user-avatar/index.vue')['default']
   }
