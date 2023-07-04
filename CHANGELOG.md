@@ -1,6 +1,31 @@
 # Changelog
 
 
+## v0.0.15
+
+[compare changes](https://undefined/undefined/compare/v0.0.14...v0.0.15)
+
+
+### 🚀 Enhancements
+
+  - Add locale (7adbce1)
+  - Menu support i18n (74baf00)
+  - Title support title (aea9fd9)
+
+### 🩹 Fixes
+
+  - Fix split menu change error (da34522)
+  - Menu title error (a13462e)
+  - Menu title error (5a70263)
+
+### 🏡 Chore
+
+  - Change version (f327491)
+
+### ❤️  Contributors
+
+- Aibayanyu20 <aibayanyu@qq.com>
+
 ## v0.0.14
 
 [compare changes](https://undefined/undefined/compare/v0.0.13...v0.0.14)
