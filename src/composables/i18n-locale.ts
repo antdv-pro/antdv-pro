@@ -1,6 +1,8 @@
 import dayjs from 'dayjs'
 import i18n, { loadLanguageAsync } from '~@/locales'
 import 'dayjs/locale/zh-cn'
+import router from '~@/router'
+import { useMetaTitle } from '~/composables/meta-title'
 
 export const useI18nLocale = createSharedComposable(() => {
   // 加载多语言的loading状态
@@ -37,6 +39,8 @@ export const useI18nLocale = createSharedComposable(() => {
 
   watch(locale, () => {
     dayjs.locale(antd.value.locale)
+    const route = router.currentRoute.value
+    useMetaTitle(route)
   }, {
     immediate: true,
   })

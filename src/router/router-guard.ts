@@ -1,5 +1,6 @@
 import { AxiosError } from 'axios'
 import router from '~/router'
+import { useMetaTitle } from '~/composables/meta-title'
 const allowList = ['/login', '/error', '/401', '/404', '/403']
 const loginPath = '/login'
 
@@ -56,9 +57,6 @@ router.beforeEach(async (to, _, next) => {
 })
 
 router.afterEach((to) => {
-  // TODO
-  const title = to.meta?.title
-  if (title)
-    document.title = title as string
+  useMetaTitle(to)
   useLoadingCheck()
 })
