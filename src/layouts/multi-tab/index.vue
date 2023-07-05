@@ -127,7 +127,7 @@ const otherDisabled = computed(() => {
   </a-tabs>
 </template>
 
-<style>
+<style lang="less">
 .pro-ant-multi-tab{
   .ant-tabs-nav-operations{
     display: none !important;
