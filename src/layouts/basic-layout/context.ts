@@ -104,10 +104,15 @@ const layoutStateFunc = (props: ProLayoutProps, methods: ProLayoutProviderMethod
     immediate: true,
   })
   watch(splitMenus, () => {
-    if (!splitMenus.value)
-      splitState.selectedKeys = []
-    else
-      splitState.selectedKeys = [openKeys.value?.[0] ?? '']
+    if (!splitMenus.value) { splitState.selectedKeys = [] }
+    else {
+      const key = selectedKeys.value?.[0] ?? openKeys.value?.[0] ?? ''
+      const find = findSelected(key, menuData.value ?? [])
+      if (find)
+        splitState.selectedKeys = [find?.path]
+      else
+        splitState.selectedKeys = []
+    }
   })
   return {
     logo,
