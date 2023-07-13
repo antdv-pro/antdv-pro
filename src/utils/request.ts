@@ -10,7 +10,7 @@ export interface ResponseBody<T = any> {
   msg: string
 }
 
-export interface ResquestConfigExtra {
+export interface RequestConfigExtra {
   token?: boolean
 }
 
@@ -19,7 +19,7 @@ const instance = axios.create({
   timeout: 60000,
 })
 
-const requestHandler = async (config: InternalAxiosRequestConfig & ResquestConfigExtra): Promise<InternalAxiosRequestConfig> => {
+const requestHandler = async (config: InternalAxiosRequestConfig & RequestConfigExtra): Promise<InternalAxiosRequestConfig> => {
   const token = useAuthorization()
 
   if (token.value && config.token !== false)
