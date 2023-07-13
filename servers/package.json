@@ -10,6 +10,6 @@
     "nitropack": "latest"
   },
   "devDependencies": {
-    "h3": "^1.7.0"
+    "h3": "^1.7.1"
   }
 }
