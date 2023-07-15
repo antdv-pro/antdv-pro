@@ -1,6 +1,30 @@
 # Changelog
 
 
+## v0.0.16
+
+[compare changes](https://undefined/undefined/compare/v0.0.15...v0.0.16)
+
+### 🚀 Enhancements
+
+- Update version (2d7162d)
+
+### 🩹 Fixes
+
+- Remove tab more (4b4b092)
+- Style warning (f6a863c)
+- Fix split error (ad77483)
+
+### 🏡 Chore
+
+- Update version (e231627)
+- Change version (4223747)
+
+### ❤️  Contributors
+
+- Aibayanyu <aibayanyu@qq.com>
+- Aibayanyu20 <aibayanyu@qq.com>
+
 ## v0.0.15
 
 [compare changes](https://undefined/undefined/compare/v0.0.14...v0.0.15)
