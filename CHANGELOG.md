@@ -1,6 +1,24 @@
 # Changelog
 
 
+## v0.0.17
+
+[compare changes](https://undefined/undefined/compare/v0.0.16...v0.0.17)
+
+### 🚀 Enhancements
+
+- Add useMessage && useModal && useNotifaction replace message && modal && notifaction (d0c031a)
+- Replace request config (4be8824)
+
+### 🩹 Fixes
+
+- Typo (14c93ef)
+- Typo (ca14d96)
+
+### ❤️  Contributors
+
+- Aibayanyu20 <aibayanyu@qq.com>
+
 ## v0.0.16
 
 [compare changes](https://undefined/undefined/compare/v0.0.15...v0.0.16)
