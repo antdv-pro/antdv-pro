@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { message } from 'ant-design-vue'
 import AnalysisModal from './components/analysis-modal.vue'
 import type { AnalysisModalProps } from './components/interface'
 import type { ListResultModel, ListResultParams } from '~@/api/dashboard/analysis'
 import { delListApi, getListApi } from '~@/api/dashboard/analysis'
+const message = useMessage()
 const columns = shallowRef([
   {
     title: '#',

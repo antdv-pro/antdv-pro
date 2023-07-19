@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { message } from 'ant-design-vue'
 import type { AnalysisModalProps } from './interface'
 import type { CreateListParams } from '~/api/dashboard/analysis'
 import { createListApi, editListApi } from '~/api/dashboard/analysis'
@@ -9,7 +8,7 @@ const props = withDefaults(defineProps<AnalysisModalProps>(), {
 const emit = defineEmits<{
   'update:open': [boolean]
 }>()
-
+const message = useMessage()
 const loading = shallowRef(false)
 
 defineOptions({

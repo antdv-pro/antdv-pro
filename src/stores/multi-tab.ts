@@ -1,5 +1,4 @@
 import type { RouteLocationNormalizedLoaded } from 'vue-router'
-import { message } from 'ant-design-vue'
 import router from '~@/router'
 
 const allowList = ['/login', '/404', '/403']
@@ -22,6 +21,7 @@ export const useMultiTab = defineStore('multi-tab', () => {
   const refreshItem = ref<MultiTabItem | null>(null)
   const appStore = useAppStore()
   const cacheList = ref<string[]>([])
+  const message = useMessage()
   const addItem = (route: RouteLocationNormalizedLoaded) => {
     if (!route) return
     // 判断是不是重定向的地址，如果是，那么久不进行处理
