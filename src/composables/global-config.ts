@@ -16,7 +16,7 @@ interface GlobalConfigIntl {
 const globalConfig = reactive<GlobalConfigIntl>({})
 
 export const useGlobalConfig = () => {
-
+  return globalConfig
 }
 export const useSetGlobalConfig = (config: GlobalConfigIntl) => {
   globalConfig.message = config.message
