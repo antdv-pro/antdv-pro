@@ -36,7 +36,7 @@ export const useMultiTab = defineStore('multi-tab', () => {
           refreshItem.value.loading = false
           refreshItem.value = null
         }
-      }, 800)
+      }, 500)
     }
     if (list.value.some(item => item.fullPath === route.fullPath)) {
       if (!cacheList.value.includes(route?.name as string) && appStore.layoutSetting.keepAlive) {
@@ -141,7 +141,10 @@ export const useMultiTab = defineStore('multi-tab', () => {
   }
 
   watch(router.currentRoute, (route) => {
-    if (route.fullPath === activeKey.value) return
+    if (route.fullPath.startsWith('/redirect')) return
+    const item = list.value.find(item => item.fullPath === route.fullPath)
+
+    if (route.fullPath === activeKey.value && !item?.loading) return
     activeKey.value = route.fullPath
     addItem(route)
   }, { immediate: true })
