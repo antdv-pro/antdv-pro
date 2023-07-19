@@ -1,6 +1,5 @@
 import type { AxiosError, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios'
 import axios from 'axios'
-import { notification } from 'ant-design-vue'
 import { STORAGE_AUTHORIZE_KEY, useAuthorization } from '~/composables/authorization'
 import router from '~/router'
 
@@ -37,6 +36,7 @@ const responseHandler = (response: any): ResponseBody<any> | AxiosResponse<any> 
 
 const errorHandler = (error: AxiosError): Promise<any> => {
   const token = useAuthorization()
+  const notification = useNotification()
 
   if (error.response) {
     const { data, status, statusText } = error.response as AxiosResponse<ResponseBody>
