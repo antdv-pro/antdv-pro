@@ -6,6 +6,7 @@ const { setToken } = useAntdToken()
 const [messageInst, MessageHolder] = message.useMessage()
 const [modalInst, ModalHolder] = Modal.useModal()
 const [notificationInst, NotificationHolder] = notification.useNotification()
+
 useSetGlobalConfig({
   message: messageInst as any,
   modal: modalInst as any,

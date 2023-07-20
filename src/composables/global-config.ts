@@ -6,10 +6,8 @@ interface GlobalConfigIntl {
     readonly info: ModalFunc
     readonly success: ModalFunc
     readonly error: ModalFunc
-    readonly warn: ModalFunc
     readonly warning: ModalFunc
     readonly confirm: ModalFunc
-    readonly destroyAll: () => void
   }
   notification?: Omit<typeof notification, 'useNotification'>
 }
