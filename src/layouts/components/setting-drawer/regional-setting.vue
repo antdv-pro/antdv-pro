@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { SelectValue } from 'ant-design-vue/es/select'
 import type { CheckedType, LayoutType } from '../../basic-layout/typing'
 
 const props = defineProps<{
@@ -9,11 +10,19 @@ const props = defineProps<{
   menuHeader?: boolean
   multiTab?: boolean
   multiTabFixed?: boolean
+  animationName?: string
+  animationNameList?: any[]
   t?: (key: string, ...args: any[]) => string
 }>()
 
 const emit = defineEmits(['changeSetting'])
 const list = computed(() => ([
+  {
+    title: '动画',
+    key: 'animationName',
+    disabled: false,
+    disabledReason: '',
+  },
   {
     title: '顶栏',
     key: 'header',
@@ -63,10 +72,17 @@ const handleChangeSetting = (key: string, value: any) => {
         <a-list-item>
           <template #actions>
             <a-switch
+              v-if="item.key !== 'animationName'"
               size="small"
               :checked="(props as any)[item.key]"
               :disabled="item.disabled"
               @update:checked="(e:CheckedType) => handleChangeSetting(item.key, e)"
+            />
+            <a-select
+              v-else style="width: 120px;"
+              :value="animationName"
+              :options="animationNameList" size="small"
+              @update:value="(e:SelectValue) => handleChangeSetting(item.key, e)"
             />
           </template>
           <span :style="{ opacity: item.disabled ? '0.5' : '1' }">

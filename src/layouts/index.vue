@@ -3,6 +3,7 @@ import { pick } from '@v-c/utils'
 import BasicLayout from './basic-layout/index.vue'
 import SettingDrawer from './components/setting-drawer/index.vue'
 import MultiTab from './multi-tab/index.vue'
+import { animationNameList } from '~@/config/default-setting'
 const appStore = useAppStore()
 const { layoutSetting } = storeToRefs(appStore)
 const userStore = useUserStore()
@@ -45,9 +46,7 @@ const layoutProps = computed(() => pick(appStore.layoutSetting, ['fixedHeader', 
       <MultiTab v-if="layoutSetting.multiTab" />
     </template>
 
-    <template #renderFooterLinks>
-      <!-- TODO -->
-    </template>
+    <template #renderFooterLinks />
     <a-watermark h-full flex flex-col flex-1 :content="layoutSetting.title ?? 'Antdv Pro'">
       <RouterView>
         <template #default="{ Component }">
@@ -64,6 +63,8 @@ const layoutProps = computed(() => pick(appStore.layoutSetting, ['fixedHeader', 
     :color-weak="layoutSetting.colorWeak"
     :multi-tab="layoutSetting.multiTab"
     :multi-tab-fixed="layoutSetting.multiTabFixed"
+    :animation-name-list="animationNameList"
+    :animation-name="layoutSetting.animationName"
     :keep-alive="layoutSetting.keepAlive"
     :accordion-mode="layoutSetting.accordionMode"
     v-bind="layoutProps"

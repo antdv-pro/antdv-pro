@@ -32,6 +32,7 @@ export default {
   'app.setting.content-area.menuHeader': '菜单头',
   'app.setting.content-area.multiTab': '多页签',
   'app.setting.content-area.multiTabFixed': '固定多页签',
+  'app.setting.content-area.animationName': '动画',
   'app.setting.themecolor': '主题色',
   'app.setting.themecolor.dust': '薄暮',
   'app.setting.themecolor.volcano': '火山',

@@ -26,6 +26,8 @@ const props = withDefaults(defineProps<{
   colorWeak?: boolean
   multiTab?: boolean
   multiTabFixed?: boolean
+  animationName?: string
+  animationNameList?: any[]
   t?: (key: string, ...args: any[]) => string
 }>(), {
   theme: 'light',
@@ -138,6 +140,8 @@ const { token } = useAntdToken()
           :header="header"
           :menu-header="menuHeader"
           :footer="footer"
+          :animation-name="animationName"
+          :animation-name-list="animationNameList"
           :multi-tab="multiTab"
           :multi-tab-fixed="multiTabFixed"
           :menu="menu"

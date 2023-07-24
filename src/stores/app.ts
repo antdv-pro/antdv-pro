@@ -1,6 +1,7 @@
 import type { ThemeConfig } from 'ant-design-vue/es/config-provider/context'
 import { theme as antdTheme } from 'ant-design-vue/es'
 import type { ContentWidth, LayoutType, ThemeType } from '~@/layouts/basic-layout/typing'
+import type { AnimationNameValueType } from '~@/config/default-setting'
 import defaultSetting from '~@/config/default-setting'
 
 export interface LayoutSetting {
@@ -26,6 +27,7 @@ export interface LayoutSetting {
   copyright?: string
   keepAlive?: boolean
   accordionMode?: boolean
+  animationName?: AnimationNameValueType
 }
 
 export const useAppStore = defineStore('app', () => {

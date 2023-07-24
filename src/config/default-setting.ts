@@ -23,4 +23,29 @@ export default {
   accordionMode: false,
   headerHeight: 48,
   copyright: '爱吧烟雨2023',
+  animationName: 'slide-fadein-right',
 } as LayoutSetting
+
+export const animationNameList = [
+  {
+    label: 'None',
+    value: 'none',
+  },
+  {
+    label: 'Fadein Up',
+    value: 'slide-fadein-up',
+  },
+  {
+    label: 'Fadein Right',
+    value: 'slide-fadein-right',
+  },
+  {
+    label: 'Zoom Fadein',
+    value: 'zoom-fadein',
+  },
+  {
+    label: 'Fadein',
+    value: 'fadein',
+  },
+]
+export type AnimationNameValueType = 'none' | 'slide-fadein-up' | 'slide-fadein-right' | 'zoom-fadein' | 'fadein'
