@@ -75,6 +75,12 @@ We are very welcome to have you participate in our open source project.
 4. Push your branch: `git push origin feat-xxxx`
 5. submit`pull request`
 
+Thank you to all the people who already contributed to antdv-pro!
+
+<a href="https://github.com/antdv-pro/antdv-pro/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=antdv-pro/antdv-pro&max=100&columns=15" />
+</a>
+
 ## Support
 
 If you lick our project, you can support us by clicking the "Star" button in the upper right corner. Your support is my motivation. Thank you ~

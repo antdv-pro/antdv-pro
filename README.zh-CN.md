@@ -76,6 +76,12 @@ pnpm dev
 4. 推送您的分支: `git push origin feat-xxxx`
 5. 提交`pull request`
 
+感谢所有为`antdv-pro`做出贡献的小伙伴儿们！
+
+<a href="https://github.com/antdv-pro/antdv-pro/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=antdv-pro/antdv-pro&max=100&columns=15" />
+</a>
+
 
 ## 支持
 
