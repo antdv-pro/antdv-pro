@@ -1,6 +1,36 @@
 # Changelog
 
 
+## v0.0.18
+
+[compare changes](https://undefined/undefined/compare/v0.0.17...v0.0.18)
+
+### 🚀 Enhancements
+
+- Global config (e314b34)
+- Support customDev mode (11c6c06)
+- Add dynamic animation list close #10 (#10)
+- Add Dockerfile (0619785)
+
+### 🩹 Fixes
+
+- Loading error (94efff8)
+- Delete modal typo (0c3f7c3)
+- Header content overflow issue (e7dd087)
+- Change dockerfile (4ba22e5)
+- Change api (059549e)
+
+### 🏡 Chore
+
+- Change version (46b422b)
+- Change version (af2549e)
+- Change readme (4d9221c)
+
+### ❤️  Contributors
+
+- Aibayanyu20 <aibayanyu@qq.com>
+- Kai <kaienyeo225@gmail.com>
+
 ## v0.0.17
 
 [compare changes](https://undefined/undefined/compare/v0.0.16...v0.0.17)

@@ -1,7 +1,7 @@
 {
   "name": "antdv-pro",
   "type": "module",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "packageManager": "pnpm@8.4.0",
   "author": "aibayanyu <aibayanyu@qq.com>",
   "repository": "antdv-pro/antdv-pro",
