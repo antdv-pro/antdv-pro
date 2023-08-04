@@ -39,7 +39,7 @@
     "@types/fs-extra": "^11.0.1",
     "@types/lodash": "^4.14.196",
     "@types/lodash-es": "^4.17.8",
-    "@types/node": "^18.17.1",
+    "@types/node": "^18.17.2",
     "@types/treeify": "^1.0.0",
     "@vitejs/plugin-vue": "^4.2.3",
     "@vitejs/plugin-vue-jsx": "^3.0.1",
@@ -59,7 +59,7 @@
     "unocss": "^0.51.13",
     "unplugin-auto-import": "^0.16.6",
     "unplugin-vue-components": "^0.25.1",
-    "vite": "^4.4.7",
+    "vite": "^4.4.8",
     "vue-tsc": "^1.8.8"
   }
 }
