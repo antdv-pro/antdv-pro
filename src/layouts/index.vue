@@ -68,6 +68,7 @@ const layoutProps = computed(() => pick(appStore.layoutSetting, ['fixedHeader', 
     :keep-alive="layoutSetting.keepAlive"
     :accordion-mode="layoutSetting.accordionMode"
     v-bind="layoutProps"
+    :layout-setting="layoutSetting"
     @setting-change="appStore.changeSettingLayout"
   />
 </template>

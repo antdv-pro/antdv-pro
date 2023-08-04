@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { CloseOutlined, SettingOutlined } from '@ant-design/icons-vue'
+import { CloseOutlined, CopyOutlined, NotificationOutlined, SettingOutlined } from '@ant-design/icons-vue'
+import { useClipboard } from '@v-c/utils'
 import type { ContentWidth, LayoutType, ThemeType } from '../../basic-layout/typing'
 import Body from './body.vue'
 import BlockCheckbox from './block-checkbox.vue'
@@ -28,6 +29,7 @@ const props = withDefaults(defineProps<{
   multiTabFixed?: boolean
   animationName?: string
   animationNameList?: any[]
+  layoutSetting?: Record<string, any>
   t?: (key: string, ...args: any[]) => string
 }>(), {
   theme: 'light',
@@ -44,7 +46,13 @@ const props = withDefaults(defineProps<{
   ],
 })
 const emit = defineEmits(['update:open', 'settingChange'])
+const { copy } = useClipboard()
 const prefixCls = shallowRef('ant-pro-drawer-setting')
+const { message } = useGlobalConfig()
+const copySetting = () => {
+  copy(JSON.stringify(props.layoutSetting ?? {}))
+  message?.success(props?.t?.('app.setting.copyinfo', '拷贝成功，请到 config/default-settings.js 中替换默认配置'))
+}
 const handleVisible = (open: boolean) => {
   emit('update:open', open)
 }
@@ -96,7 +104,8 @@ const { token } = useAntdToken()
           backgroundColor: token?.colorPrimary,
           borderEndStartRadius: `${token?.borderRadius}px`,
           borderStartStartRadius: `${token?.borderRadius}px`,
-        }" @click="handleVisible(!open)"
+        }"
+        @click="handleVisible(!open)"
       >
         <CloseOutlined v-if="open" :class="`${prefixCls}-handle-icon${props.theme === 'light' ? '' : '-dark'}`" style="font-size: 20px;" />
         <SettingOutlined v-else :class="`${prefixCls}-handle-icon${props.theme === 'light' ? '' : '-dark'}`" style="font-size: 20px;" />
@@ -155,6 +164,23 @@ const { token } = useAntdToken()
           :color-weak="colorWeak"
           @change-setting="changeSettingLayout"
         />
+      </Body>
+      <a-divider />
+      <Body>
+        <div flex gap-2 flex-col>
+          <a-alert
+            type="warning"
+            show-icon
+            :message="t?.('app.setting.production.hint') ?? '配置栏只在开发环境用于预览，生产环境不会展现，请拷贝后手动修改配置文件' "
+          >
+            <template #icon>
+              <NotificationOutlined />
+            </template>
+          </a-alert>
+          <a-button @click="copySetting">
+            <CopyOutlined /> {{ t?.('app.setting.copy', '拷贝设置') }}
+          </a-button>
+        </div>
       </Body>
     </div>
   </a-drawer>
