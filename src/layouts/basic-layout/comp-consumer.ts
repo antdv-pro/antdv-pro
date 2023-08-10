@@ -27,6 +27,7 @@ export const CompConsumer = defineComponent((props: CompConsumerProps) => {
         // @ts-expect-error this is obj
         node.type.name = `__${compName}__` + 'CUSTOM_NAME'
       // @ts-expect-error this is VNode
+      // eslint-disable-next-line vue/one-component-per-file
       Comp = defineComponent({
         name: routeName,
         setup() {
@@ -41,6 +42,7 @@ export const CompConsumer = defineComponent((props: CompConsumerProps) => {
       default: () => h(Comp),
     })
   }
+// eslint-disable-next-line vue/one-component-per-file
 }, {
   name: 'CompConsumer', props: ['component'],
 })
