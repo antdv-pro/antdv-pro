@@ -1,6 +1,33 @@
 # Changelog
 
 
+## v0.0.19
+
+[compare changes](https://undefined/undefined/compare/v0.0.18...v0.0.19)
+
+### 🚀 Enhancements
+
+- Add copy setting config (7677dbf)
+- Add LICENSE (97dadb0)
+- Support does not depend on name to keep alive (82394bb)
+- Add github and doc link (d80f78a)
+
+### 🩹 Fixes
+
+- Eslint warning close #13 (#13)
+
+### 🏡 Chore
+
+- Change version (215b0a0)
+- Change version (37b121c)
+- Fix conflict (5b6463b)
+- Change eslint ignore (38cad2c)
+
+### ❤️  Contributors
+
+- Aibayanyu20 <aibayanyu@qq.com>
+- Aibayanyu <aibayanyu@qq.com>
+
 ## v0.0.18
 
 [compare changes](https://undefined/undefined/compare/v0.0.17...v0.0.18)
