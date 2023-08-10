@@ -43,6 +43,10 @@ QQ群: [939791772](https://qm.qq.com/cgi-bin/qm/qr?k=dZMUtNNxv0BLxQwOoZwGQ7nR24G
 
 Discord: [discord](https://discord.gg/tPb4G6gXmm)
 
+### 微信群
+
+<img src="./wx-group.jpg" width="300">
+
 ## 使用
 
 ```bash

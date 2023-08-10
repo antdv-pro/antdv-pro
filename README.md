@@ -42,6 +42,10 @@ Wechat: aibayanyu2022
 
 Discord: [discord](https://discord.gg/tPb4G6gXmm)
 
+### WeChatGroup
+
+<img src="./wx-group.jpg" width="300">
+
 ## Useage
 
 ```bash
