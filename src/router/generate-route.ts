@@ -112,7 +112,6 @@ export const generateTreeRoutes = (menus: MenuData) => {
         routeData.push(currentRoute)
         menuData.push(currentItem)
       }
-      continue
     }
     else {
       const pRoute = routeDataMap.get(menuItem.parentId)

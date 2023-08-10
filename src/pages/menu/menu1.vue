@@ -1,7 +1,5 @@
 <script setup lang="ts">
-defineOptions({
-  name: 'MenuMenu11',
-})
+
 </script>
 
 <template>

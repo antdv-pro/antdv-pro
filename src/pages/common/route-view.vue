@@ -1,17 +1,17 @@
 <script setup lang="ts">
+import { CompConsumer } from '@/layouts/basic-layout/comp-consumer'
 const appStore = useAppStore()
 const { layoutSetting } = storeToRefs(appStore)
-const multiTabStore = useMultiTab()
-const { cacheList } = storeToRefs(multiTabStore)
 </script>
 
 <template>
   <RouterView>
     <template #default="{ Component, route }">
       <Transition appear :name="layoutSetting.animationName" mode="out-in">
-        <KeepAlive v-if="layoutSetting.keepAlive" :include="cacheList">
-          <component :is="Component" :key="route.fullPath" />
-        </KeepAlive>
+        <CompConsumer v-if="layoutSetting.keepAlive" :component="Component" />
+        <!--        <KeepAlive v-if="layoutSetting.keepAlive" :include="cacheList"> -->
+        <!--          <component :is="Component" :key="route.fullPath" /> -->
+        <!--        </KeepAlive> -->
         <component :is="Component" v-else :key="route.fullPath" />
       </Transition>
     </template>
