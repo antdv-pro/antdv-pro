@@ -170,7 +170,44 @@ const menuData = [
     component: '/access/user',
     locale: 'menu.access.user',
   },
-
+  {
+    id: 19,
+    parentId: null,
+    title: '异常页',
+    icon: 'WarningOutlined',
+    component: 'RouteView',
+    redirect: '/exception/403',
+    path: '/exception',
+    name: 'Exception',
+    locale: 'menu.exception',
+  },
+  {
+    id: 20,
+    parentId: 19,
+    path: '/exception/403',
+    title: '403',
+    name: '403',
+    component: '/exception/403',
+    locale: 'menu.exception.not-permission',
+  },
+  {
+    id: 21,
+    parentId: 19,
+    path: '/exception/404',
+    title: '404',
+    name: '404',
+    component: '/exception/404',
+    locale: 'menu.exception.not-find',
+  },
+  {
+    id: 22,
+    parentId: 19,
+    path: '/exception/500',
+    title: '500',
+    name: '500',
+    component: '/exception/500',
+    locale: 'menu.exception.server-error',
+  },
 ]
 
 export const accessMenuData = [

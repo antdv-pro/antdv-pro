@@ -11,7 +11,6 @@ const routerModules = import.meta.glob([
   '!~/pages/**/tests',
   '!~/pages/**/test',
   '!~/pages/common',
-  '!~/pages/exception',
 ])
 export const basicRouteMap = {
   // iframe模式下使用
