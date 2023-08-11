@@ -5,7 +5,6 @@ const url = computed(() => route?.meta?.url)
 
 <template>
   <div
-    :key="url"
     class="bg-[var(--bg-color)]"
     w-full h-full b-rd-8px of-hidden
     flex flex-col flex-1

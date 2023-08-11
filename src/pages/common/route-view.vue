@@ -9,9 +9,6 @@ const { layoutSetting } = storeToRefs(appStore)
     <template #default="{ Component, route }">
       <Transition appear :name="layoutSetting.animationName" mode="out-in">
         <CompConsumer v-if="layoutSetting.keepAlive" :component="Component" />
-        <!--        <KeepAlive v-if="layoutSetting.keepAlive" :include="cacheList"> -->
-        <!--          <component :is="Component" :key="route.fullPath" /> -->
-        <!--        </KeepAlive> -->
         <component :is="Component" v-else :key="route.fullPath" />
       </Transition>
     </template>
