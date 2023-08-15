@@ -45,7 +45,7 @@ Discord: [discord](https://discord.gg/tPb4G6gXmm)
 
 ### 微信群
 
-<img src="./wx-group.jpg" width="300">
+<img src="https://oss.lingyu.org.cn/api/v1/buckets/cdn/objects/download?preview=true&prefix=aW1hZ2VzL3d4LWdyb3VwLmpwZw==&version_id=null" width="300">
 
 ## 使用
 
