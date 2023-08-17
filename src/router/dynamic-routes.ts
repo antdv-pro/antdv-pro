@@ -213,4 +213,26 @@ export default [
       },
     ],
   },
+  {
+    path: '/list',
+    redirect: '/list/card-list',
+    name: 'List',
+    meta: {
+      title: '列表页',
+      icon: 'TableOutlined',
+      locale: 'menu.list',
+    },
+    component: basicRouteMap.RouteView,
+    children: [
+      {
+        path: '/list/card-list',
+        name: 'CardList',
+        component: () => import('~/pages/list/card-list.vue'),
+        meta: {
+          title: '卡片列表',
+          locale: 'menu.list.card-list',
+        },
+      },
+    ],
+  },
 ] as RouteRecordRaw[]
