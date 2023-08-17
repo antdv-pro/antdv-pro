@@ -181,4 +181,33 @@ export default [
       },
     ],
   },
+  // 结果页
+  {
+    path: '/result',
+    redirect: '/result/success',
+    name: 'Result',
+    meta: {
+      title: '结果页',
+      icon: 'CheckCircleOutlined',
+    },
+    component: basicRouteMap.RouteView,
+    children: [
+      {
+        path: '/result/success',
+        name: 'ResultSuccess',
+        component: () => import('~/pages/result/success.vue'),
+        meta: {
+          title: '成功页',
+        },
+      },
+      {
+        path: '/result/fail',
+        name: 'ResultFail',
+        component: () => import('~/pages/result/fail.vue'),
+        meta: {
+          title: '失败页',
+        },
+      },
+    ],
+  },
 ] as RouteRecordRaw[]
