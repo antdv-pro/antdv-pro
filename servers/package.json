@@ -2,14 +2,13 @@
   "name": "servers",
   "private": true,
   "scripts": {
-    "dev": "cross-env PORT=8899 npx nitropack dev",
-    "build": "npx nitropack build",
+    "dev": "cross-env PORT=8899 nitro dev",
+    "build": "nitro build",
     "preview": "node .output/server/index.mjs"
   },
-  "dependencies": {
-    "nitropack": "latest"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "h3": "^1.7.1"
+    "h3": "^1.7.1",
+    "nitropack": "^2.5.2"
   }
 }
