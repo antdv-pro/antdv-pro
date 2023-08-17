@@ -189,6 +189,7 @@ export default [
     meta: {
       title: '结果页',
       icon: 'CheckCircleOutlined',
+      locale: 'menu.result',
     },
     component: basicRouteMap.RouteView,
     children: [
@@ -198,6 +199,7 @@ export default [
         component: () => import('~/pages/result/success.vue'),
         meta: {
           title: '成功页',
+          locale: 'menu.result.success',
         },
       },
       {
@@ -206,6 +208,7 @@ export default [
         component: () => import('~/pages/result/fail.vue'),
         meta: {
           title: '失败页',
+          locale: 'menu.result.fail',
         },
       },
     ],
