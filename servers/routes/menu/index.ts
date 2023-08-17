@@ -208,6 +208,35 @@ const menuData = [
     component: '/exception/500',
     locale: 'menu.exception.server-error',
   },
+  {
+    id: 23,
+    parentId: null,
+    title: '结果页',
+    icon: 'CheckCircleOutlined',
+    component: 'RouteView',
+    redirect: '/result/success',
+    path: '/result',
+    name: 'Result',
+    locale: 'menu.result',
+  },
+  {
+    id: 24,
+    parentId: 23,
+    path: '/result/success',
+    title: '成功页',
+    name: 'ResultSuccess',
+    component: '/result/success',
+    locale: 'menu.result.success',
+  },
+  {
+    id: 25,
+    parentId: 23,
+    path: '/result/fail',
+    title: '失败页',
+    name: 'ResultFail',
+    component: '/result/fail',
+    locale: 'menu.result.fail',
+  },
 ]
 
 export const accessMenuData = [
