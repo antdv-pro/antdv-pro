@@ -5,9 +5,6 @@ const params = route.params
 const path = params?.path ? decodeURIComponent(params.path as string) : ''
 if (path) router.replace(path)
 else router.replace('/')
-defineOptions({
-  name: 'LayouBasicRedirect',
-})
 </script>
 
 <template>

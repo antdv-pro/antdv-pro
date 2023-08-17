@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import './index.less'
 import { CopyrightCircleOutlined } from '@ant-design/icons-vue'
 defineProps<{
   copyright?: string
@@ -18,3 +17,7 @@ const prefixCls = shallowRef('ant-pro-global-footer')
     </div>
   </div>
 </template>
+
+<style lang="less">
+@import "index";
+</style>

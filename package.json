@@ -18,7 +18,8 @@
     "bump:minor": "changelogen --bump --output CHANGELOG.md --release --minor",
     "bump:major": "changelogen --bump --output CHANGELOG.md --release --major",
     "dir-tree": "esno ./scripts/dir-tree",
-    "gen:uno": "esno ./scripts/gen-unocss"
+    "gen:uno": "esno ./scripts/gen-unocss",
+    "toJS": "esno ./scripts/toJS.ts"
   },
   "dependencies": {
     "@ant-design/icons-vue": "^6.1.0",
@@ -31,7 +32,7 @@
     "lodash-es": "^4.17.21",
     "pinia": "^2.1.6",
     "vue": "^3.3.4",
-    "vue-i18n": "9.3.0-beta.24",
+    "vue-i18n": "9.3.0-beta.26",
     "vue-router": "^4.2.4"
   },
   "devDependencies": {
@@ -47,6 +48,7 @@
     "changelogen": "^0.5.4",
     "cross-env": "^7.0.3",
     "directory-tree": "^3.5.1",
+    "esbuild": "^0.19.2",
     "eslint": "^8.47.0",
     "esno": "^0.16.3",
     "fs-extra": "^11.1.1",

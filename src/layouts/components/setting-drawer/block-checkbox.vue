@@ -6,7 +6,6 @@ const props = defineProps<{
   isDark?: boolean
   checked?: boolean
   t?: (key: string, ...args: any[]) => string
-
 }>()
 const prefixCls = shallowRef('ant-pro-drawer-setting-block-checkbox')
 const cls = computed(() => {

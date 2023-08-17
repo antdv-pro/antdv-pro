@@ -6,7 +6,6 @@ defineProps<{
   color?: string
   onChange?: (color: string) => void
   t?: (key: string, ...args: any[]) => string
-
 }>()
 
 const prefixCls = shallowRef('ant-pro-drawer-setting-theme-color')
