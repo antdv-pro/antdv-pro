@@ -9,11 +9,6 @@ const result = computed(() => {
     description: t('result.success.description'),
   }
 })
-
-const directionType = {
-  horizontal: 'horizontal',
-  vertical: 'vertical',
-}
 </script>
 
 <template>
@@ -48,13 +43,13 @@ const directionType = {
             2023-08-12 ~ 2024-08-12
           </a-col>
         </a-row>
-        <a-steps :current="1" :direction="isMobile && directionType.vertical || directionType.horizontal" progress-dot>
+        <a-steps :current="1" :direction="isMobile && 'horizontal' || 'horizontal'" progress-dot>
           <a-step :title="t('result.success.step1-title')">
             <span style="font-size: 14px">{{ t('result.success.step1-title') }}</span>
             <template #description>
               <div style="fontSize: 12px; color: rgba(0, 0, 0, 0.45); position: relative; left: 42px;text-align: left;">
                 <div style="margin: 8px 0 4px">
-                  {{t("result.success.step1-operator")}}
+                  {{ t("result.success.step1-operator") }}
                   <DingdingOutlined class="m-1 text-blue-500" />
                 </div>
                 <div>2023-08-17 12:32</div>
@@ -66,7 +61,7 @@ const directionType = {
             <template #description>
               <div style="fontSize: 12px; color: rgba(0, 0, 0, 0.45); position: relative; left: 42px;text-align: left;">
                 <div style="margin: 8px 0 4px">
-                  {{t("result.success.step2-operator")}}
+                  {{ t("result.success.step2-operator") }}
                   <DingdingOutlined class="m-1 text-blue-500" />
                 </div>
                 <div>2023-08-17 13:32</div>
