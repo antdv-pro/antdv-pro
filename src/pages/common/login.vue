@@ -3,6 +3,7 @@ import { AlipayCircleFilled, LockOutlined, MobileOutlined, TaobaoCircleFilled, U
 import { AxiosError } from 'axios'
 import GlobalLayoutFooter from '~/layouts/components/global-footer/index.vue'
 import { loginApi } from '~/api/common/login'
+import { getQueryParam } from '~/utils/tools'
 import type { LoginMobileParams, LoginParams } from '~@/api/common/login'
 const message = useMessage()
 const notification = useNotification()
@@ -78,8 +79,10 @@ const submit = async () => {
       description: '欢迎回来！',
       duration: 3,
     })
+    // 获取当前是否存在重定向的链接，如果存在就走重定向的地址
+    const redirect = getQueryParam('redirect', '/')
     router.push({
-      path: '/',
+      path: redirect,
       replace: true,
     })
   }

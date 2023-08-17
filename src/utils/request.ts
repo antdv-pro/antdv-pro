@@ -65,7 +65,7 @@ const errorHandler = (error: AxiosError): Promise<any> => {
         .push({
           path: '/login',
           query: {
-            redirect: router.currentRoute.value.path,
+            redirect: router.currentRoute.value.fullPath,
           },
         })
         .then(() => {})
