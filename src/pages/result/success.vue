@@ -54,7 +54,7 @@ const directionType = {
             <template #description>
               <div style="fontSize: 12px; color: rgba(0, 0, 0, 0.45); position: relative; left: 42px;text-align: left;">
                 <div style="margin: 8px 0 4px">
-                  Kirk Lin
+                  {{t("result.success.step1-operator")}}
                   <DingdingOutlined class="m-1 text-blue-500" />
                 </div>
                 <div>2023-08-17 12:32</div>
@@ -66,10 +66,10 @@ const directionType = {
             <template #description>
               <div style="fontSize: 12px; color: rgba(0, 0, 0, 0.45); position: relative; left: 42px;text-align: left;">
                 <div style="margin: 8px 0 4px">
-                  清风不问烟雨
+                  {{t("result.success.step2-operator")}}
                   <DingdingOutlined class="m-1 text-blue-500" />
                 </div>
-                <div><a href="">催一下</a></div>
+                <div>2023-08-17 13:32</div>
               </div>
             </template>
           </a-step>
