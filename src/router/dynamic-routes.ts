@@ -181,6 +181,45 @@ export default [
       },
     ],
   },
+  {
+    path: '/exception',
+    redirect: '/exception/403',
+    name: 'Exception',
+    meta: {
+      title: '异常页',
+      icon: 'WarningOutlined',
+      locale: 'menu.exception',
+    },
+    children: [
+      {
+        path: '/exception/403',
+        name: 'Exception403',
+        component: () => import('~/pages/exception/403.vue'),
+        meta: {
+          title: '403',
+          locale: 'menu.exception.not-permission',
+        },
+      },
+      {
+        path: '/exception/404',
+        name: 'Exception404',
+        component: () => import('~/pages/exception/404.vue'),
+        meta: {
+          title: '404',
+          locale: 'menu.exception.not-find',
+        },
+      },
+      {
+        path: '/exception/500',
+        name: 'Exception500',
+        component: () => import('~/pages/exception/500.vue'),
+        meta: {
+          title: '500',
+          locale: 'menu.exception.server-error',
+        },
+      },
+    ],
+  },
   // 结果页
   {
     path: '/result',

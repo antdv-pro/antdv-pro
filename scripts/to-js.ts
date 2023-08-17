@@ -6,7 +6,7 @@ import { transformSync } from 'esbuild'
 const themeConfig = resolve(process.cwd(), './src/config/default-setting.ts')
 const code = fsExtra.readFileSync(themeConfig, 'utf-8')
 
-const toJS = (code: string) => {
+const toJs = (code: string) => {
   const res = transformSync(code, {
     target: 'esnext',
     loader: 'ts',
@@ -14,4 +14,4 @@ const toJS = (code: string) => {
   console.log(res.code)
 }
 
-toJS(code)
+toJs(code)

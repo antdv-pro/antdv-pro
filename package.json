@@ -18,7 +18,7 @@
     "bump:major": "changelogen --bump --output CHANGELOG.md --release --major",
     "dir-tree": "esno ./scripts/dir-tree",
     "gen:uno": "esno ./scripts/gen-unocss",
-    "toJS": "esno ./scripts/toJS.ts"
+    "toJS": "esno scripts/to-js"
   },
   "dependencies": {
     "@ant-design/icons-vue": "^6.1.0",
