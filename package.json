@@ -7,8 +7,9 @@
   "repository": "antdv-pro/antdv-pro",
   "scripts": {
     "dev:admin": "vite",
-    "dev": "run-p dev:admin dev:mock",
+    "dev": "run-p dev:admin dev:mockServer",
     "dev:mock": "pnpm -F servers dev",
+    "dev:mockServer": "esno ./scripts/mock-server.ts",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "build": "vue-tsc && vite build",
@@ -51,6 +52,7 @@
     "esbuild": "^0.19.2",
     "eslint": "^8.47.0",
     "esno": "^0.16.3",
+    "execa": "^7.2.0",
     "fs-extra": "^11.1.1",
     "less": "^4.2.0",
     "lodash": "^4.17.21",
