@@ -10,7 +10,7 @@ export default {
   'result.success.step1-title': '创建项目',
   'result.success.step1-operator': 'Kirk Lin',
   'result.success.step2-title': '部门初审',
-  'result.success.step2-operator': '周毛毛',
+  'result.success.step2-operator': '清风不问烟雨',
   'result.success.step2-extra': '催一下',
   'result.success.step3-title': '财务复核',
   'result.success.step4-title': '完成',
