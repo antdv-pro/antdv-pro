@@ -254,8 +254,8 @@ const menuData = [
     path: '/list/card-list',
     title: '卡片列表',
     name: 'ListCard',
-    component: '/list/list-card',
-    locale: 'menu.list.list-card',
+    component: '/list/card-list',
+    locale: 'menu.list.card-list',
   },
 ]
 
