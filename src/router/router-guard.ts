@@ -21,15 +21,12 @@ router.beforeEach(async (to, _, next) => {
     }
   }
   else {
-    console.log('Asdasds')
     if (!userStore.userInfo && !allowList.includes(to.path) && !to.path.startsWith('/redirect')) {
-      console.log('ASd')
       try {
         // 获取用户信息
         await userStore.getUserInfo()
         // 获取路由菜单的信息
         const currentRoute = await userStore.generateDynamicRoutes()
-        console.log(to)
         router.addRoute(currentRoute)
         next({
           ...to,
