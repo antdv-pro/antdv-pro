@@ -20,7 +20,7 @@ const data = ref([
   },
   {
     title: 'React',
-    link: '	https://gw.alipayobjects.com/zos/rmsportal/kZzEzemZyKLKFsojXItE.png'
+    link: 'https://gw.alipayobjects.com/zos/rmsportal/kZzEzemZyKLKFsojXItE.png'
   },
   {
     title: 'Antdv Pro',
@@ -28,11 +28,11 @@ const data = ref([
   },
   {
     title: 'Webpack',
-    link: '	https://gw.alipayobjects.com/zos/rmsportal/nxkuOJlFJuAUhzlMTCEe.png'
+    link: 'https://gw.alipayobjects.com/zos/rmsportal/nxkuOJlFJuAUhzlMTCEe.png'
   },
   {
     title: 'Angular',
-    link: '	https://gw.alipayobjects.com/zos/rmsportal/zOsKZmFRdUtvpqCImOVY.png'
+    link: 'https://gw.alipayobjects.com/zos/rmsportal/zOsKZmFRdUtvpqCImOVY.png'
   },
 ])
 </script>
