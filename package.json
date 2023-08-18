@@ -13,9 +13,11 @@
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint src --fix",
+    "typecheck": "vue-tsc --noEmit",
     "bump:patch": "changelogen --bump --output CHANGELOG.md --release --patch",
     "bump:minor": "changelogen --bump --output CHANGELOG.md --release --minor",
     "bump:major": "changelogen --bump --output CHANGELOG.md --release --major",
+    "prepare": "husky install",
     "dir-tree": "esno ./scripts/dir-tree",
     "gen:uno": "esno ./scripts/gen-unocss",
     "toJS": "esno scripts/to-js"
@@ -35,6 +37,8 @@
     "vue-router": "^4.2.4"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.7.1",
+    "@commitlint/config-conventional": "^17.7.0",
     "@mistjs/eslint-config-vue": "^0.0.5",
     "@types/fs-extra": "^11.0.1",
     "@types/lodash": "^4.14.197",
@@ -52,7 +56,9 @@
     "esno": "^0.16.3",
     "execa": "^7.2.0",
     "fs-extra": "^11.1.1",
+    "husky": "^8.0.3",
     "less": "^4.2.0",
+    "lint-staged": "^14.0.0",
     "lodash": "^4.17.21",
     "npm-run-all": "^4.1.5",
     "treeify": "^1.1.0",
@@ -63,5 +69,9 @@
     "unplugin-vue-components": "^0.25.1",
     "vite": "^4.4.9",
     "vue-tsc": "^1.8.8"
+  },
+  "lint-staged": {
+    "**/*": "eslint src --fix",
+    "src/**/*.ts": "vue-tsc --noEmit"
   }
 }
