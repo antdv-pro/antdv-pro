@@ -1,15 +1,10 @@
 import { fileURLToPath } from 'url'
-import { defineConfig, loadEnv } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import vueJsx from '@vitejs/plugin-vue-jsx'
-import AutoImport from 'unplugin-auto-import/vite'
-import Components from 'unplugin-vue-components/vite'
-import Unocss from 'unocss/vite'
-import AntdvResolver from 'antdv-component-resolver'
+import { loadEnv } from 'vite'
+import type { ConfigEnv, UserConfig } from 'vite'
+import { createVitePlugins } from './plugins/index'
 const baseSrc = fileURLToPath(new URL('./src', import.meta.url))
-
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => {
+export default ({ mode }: ConfigEnv): UserConfig => {
   const env = loadEnv(mode, process.cwd())
   const proxyObj = {}
   if (mode === 'development' && env.VITE_APP_BASE_API_DEV && env.VITE_APP_BASE_URL_DEV) {
@@ -20,27 +15,7 @@ export default defineConfig(({ mode }) => {
     }
   }
   return {
-    plugins: [
-      vue(),
-      vueJsx(),
-      AutoImport({
-        imports: [
-          'vue',
-          'vue-router',
-          'vue-i18n',
-          '@vueuse/core',
-          'pinia',
-        ],
-        dts: 'types/auto-imports.d.ts',
-        dirs: ['src/stores', 'src/composables'],
-      }),
-      Components({
-        resolvers: [AntdvResolver()],
-        dts: 'types/components.d.ts',
-        dirs: ['src/components'],
-      }),
-      Unocss(),
-    ],
+    plugins: createVitePlugins(env),
     resolve: {
       alias: [
         {
@@ -117,4 +92,4 @@ export default defineConfig(({ mode }) => {
       },
     },
   }
-})
+}
