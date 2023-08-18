@@ -145,6 +145,28 @@ export default [
     ],
   },
   {
+    path: '/profile',
+    name: 'profile',
+    redirect: '/profile/basic',
+    meta: {
+      title: 'menu.profile',
+      icon: 'profile',
+      locale: 'menu.profile',
+    },
+    component: basicRouteMap.RouteView,
+    children: [
+      {
+        path: '/profile/basic',
+        name: 'ProfileBasic',
+        component: () => import('~/pages/profile/basic/index.vue'),
+        meta: {
+          title: 'menu.profile.basic',
+          locale: 'menu.profile.basic',
+        },
+      },
+    ],
+  },
+  {
     path: '/access',
     redirect: '/access/common',
     name: 'Access',
