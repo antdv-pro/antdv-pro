@@ -257,6 +257,15 @@ const menuData = [
     component: '/list/card-list',
     locale: 'menu.list.card-list',
   },
+  {
+    id: 28,
+    parentId: 26,
+    path: '/list/basic-list',
+    title: '卡片列表',
+    name: 'ListCard',
+    component: '/list/basic-list',
+    locale: 'menu.list.basic-list',
+  },
 ]
 
 export const accessMenuData = [
