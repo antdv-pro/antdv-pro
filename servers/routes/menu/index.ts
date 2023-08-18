@@ -237,6 +237,26 @@ const menuData = [
     component: '/result/fail',
     locale: 'menu.result.fail',
   },
+  {
+    id: 26,
+    parentId: null,
+    title: '列表页',
+    icon: 'TableOutlined',
+    component: 'RouteView',
+    redirect: '/list/card-list',
+    path: '/list',
+    name: 'List',
+    locale: 'menu.list',
+  },
+  {
+    id: 27,
+    parentId: 26,
+    path: '/list/card-list',
+    title: '卡片列表',
+    name: 'ListCard',
+    component: '/list/card-list',
+    locale: 'menu.list.card-list',
+  },
 ]
 
 export const accessMenuData = [
