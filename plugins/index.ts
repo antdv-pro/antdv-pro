@@ -5,7 +5,7 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import Unocss from 'unocss/vite'
 import AntdvResolver from 'antdv-component-resolver'
-import { viteBuildInfo } from './vite-buildInfo'
+import { viteBuildInfo } from './vite-build-info'
 
 export function createVitePlugins(env: Record<string, string>) {
   const vitePluginList: (PluginOption | PluginOption[])[] = [
