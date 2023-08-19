@@ -44,7 +44,7 @@ Discord: [discord](https://discord.gg/tPb4G6gXmm)
 
 ### WeChatGroup
 
-<img src="https://oss.lingyu.org.cn/api/v1/buckets/cdn/objects/download?preview=true&prefix=aW1hZ2VzL3d4LWdyb3VwLmpwZw==&version_id=null" width="300">
+<img src="https://git.lingyu.org.cn/yanyu/images/raw/branch/main/wx-group.jpg" width="300">
 
 ## Useage
 
