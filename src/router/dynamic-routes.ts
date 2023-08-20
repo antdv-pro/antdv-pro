@@ -303,6 +303,45 @@ export default [
           locale: 'menu.list.basic-list',
         },
       },
+      {
+        path: '/list/search-list',
+        name: 'SearchList',
+        component: () => import('~/pages/list/search-list.vue'),
+        meta: {
+          title: '搜索列表',
+          locale: 'menu.list.search-list',
+        },
+        redirect: '/list/search-list/articles',
+        children: [
+          {
+            path: '/list/search-list/articles',
+            name: 'SearchListArticles',
+            component: () => import('~/pages/list/search-list/articles.vue'),
+            meta: {
+              title: '搜索列表（文章）',
+              locale: 'menu.list.search-list.articles',
+            },
+          },
+          {
+            path: '/list/search-list/projects',
+            name: 'SearchListProjects',
+            component: () => import('~/pages/list/search-list/projects.vue'),
+            meta: {
+              title: '搜索列表（项目）',
+              locale: 'menu.list.search-list.projects',
+            },
+          },
+          {
+            path: '/list/search-list/applications',
+            name: 'SearchListApplications',
+            component: () => import('~/pages/list/search-list/applications.vue'),
+            meta: {
+              title: '搜索列表（应用）',
+              locale: 'menu.list.search-list.applications',
+            },
+          },
+        ],
+      },
     ],
   },
 ] as RouteRecordRaw[]
