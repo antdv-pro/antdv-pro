@@ -306,7 +306,7 @@ export default [
       {
         path: '/list/search-list',
         name: 'SearchList',
-        component: () => import('~/pages/list/search-list.vue'),
+        component: () => import('~/pages/list/search-list/index.vue'),
         meta: {
           title: '搜索列表',
           locale: 'menu.list.search-list',
