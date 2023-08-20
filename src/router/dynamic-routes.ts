@@ -294,6 +294,15 @@ export default [
           locale: 'menu.list.card-list',
         },
       },
+      {
+        path: '/list/basic-list',
+        name: 'BasicList',
+        component: () => import('~/pages/list/basic-list.vue'),
+        meta: {
+          title: '标准列表',
+          locale: 'menu.list.basic-list',
+        },
+      },
     ],
   },
 ] as RouteRecordRaw[]
