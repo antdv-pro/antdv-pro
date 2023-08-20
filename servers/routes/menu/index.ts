@@ -1,3 +1,4 @@
+
 const menuData = [
   {
     id: 1,
@@ -259,6 +260,26 @@ const menuData = [
   },
   {
     id: 28,
+    parentId: null,
+    title: '详情页',
+    icon: 'ProfileOutlined',
+    component: 'RouteView',
+    redirect: '/profile/basic',
+    path: '/profile',
+    name: 'Profile',
+    locale: 'menu.profile',
+  },
+  {
+    id: 29,
+    parentId: 28,
+    path: '/profile/basic',
+    title: '基础详情页',
+    name: 'ProfileBasic',
+    component: '/profile/basic/index',
+    locale: 'menu.profile.basic',
+  },
+  {
+    id: 30,
     parentId: 26,
     path: '/list/basic-list',
     title: '标准列表',
@@ -290,3 +311,4 @@ export default eventHandler((event) => {
     data: [...menuData, ...(username === 'admin' ? accessMenuData : [])],
   }
 })
+

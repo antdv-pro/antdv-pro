@@ -87,6 +87,14 @@ export const useAppStore = defineStore('app', () => {
   if (isDark.value)
     toggleTheme('dark')
 
+  // 监听isDark的变化
+  watch(isDark, () => {
+    if (isDark.value)
+      toggleTheme('dark')
+    else
+      toggleTheme('light')
+  })
+
   const toggleCollapsed = (collapsed: boolean) => {
     layoutSetting.collapsed = collapsed
   }
