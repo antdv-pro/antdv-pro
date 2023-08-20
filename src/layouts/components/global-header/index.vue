@@ -19,7 +19,7 @@ const cls = computed(() => ({
     <span v-if="isMobile" class="ant-pro-global-header-collapsed-button" @click="handleMobileCollapsed">
       <MenuFoldOutlined />
     </span>
-    <div class="flex-1 overflow-x-auto">
+    <div class="flex-1 overflow-x-auto" :class="layout === 'top' ? `${prefixCls}-top` : ''">
       <slot name="headerContent" />
     </div>
     <a-space align="center" flex-shrink-0>
