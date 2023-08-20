@@ -1,4 +1,5 @@
 import { cloneDeep } from 'lodash-es'
+import dayjs from 'dayjs'
 
 export default eventHandler(async (event) => {
   const dataList = [
@@ -60,13 +61,16 @@ export default eventHandler(async (event) => {
 
   const data = []
 
+  // 数据复制
   for (let i = 0; i < 5; i++) {
     const arr = cloneDeep(dataList)
     data.push(...arr)
   }
 
+  // 配置任务时间
   for (let i = 0; i < data.length; i++) {
-    data[i].index = i
+    const hour = i * 1
+    data[i].start = dayjs().subtract(hour, 'hour').format('YYYY-MM-DD HH:mm')
   }
 
   return {
