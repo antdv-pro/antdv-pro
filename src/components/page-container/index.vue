@@ -11,6 +11,7 @@ defineSlots<{
   content(props: any): any
   extraContent(props: any): any
   extra(props: any): any
+  footer(props: any): any
 }>()
 const layoutMenuStore = useLayoutMenu()
 const { menuDataMap, selectedKeys } = storeToRefs(layoutMenuStore)
