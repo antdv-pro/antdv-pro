@@ -313,7 +313,7 @@ const menuData = [
     component: '/list/search-list/applications',
     locale: 'menu.list.search-list.applications',
   },
-   {
+  {
     id: 34,
     parentId: 26,
     path: '/list/basic-list',

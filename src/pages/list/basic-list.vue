@@ -1,22 +1,22 @@
 <script setup lang="ts">
-import { getListApi } from '~@/api/list/basic-list'
 import { Modal } from 'ant-design-vue'
 import { ExclamationCircleOutlined } from '@ant-design/icons-vue'
 import { createVNode } from 'vue'
 import dayjs from 'dayjs'
+import { getListApi } from '~@/api/list/basic-list'
 
 const workData = ref([
   {
     title: '我的待办',
-    content: '8个任务'
+    content: '8个任务',
   },
   {
     title: '本周任务平均处理时间',
-    content: '32分钟'
+    content: '32分钟',
   },
   {
     title: '本周完成任务数',
-    content: '24个任务'
+    content: '24个任务',
   },
 ])
 
@@ -25,10 +25,17 @@ const radioValue = ref('a')
 const searchValue = ref()
 
 const onSearch = (value: string) => {
-  console.log('use value', value);
+  console.log('use value', value)
 }
 
 const dataSource = ref<any[]>([])
+
+const pagination = ref({
+  pageSize: 5,
+  pageSizeOptions: ['10', '20', '30', '40', '50'],
+  showQuickJumper: true,
+  total: 0,
+})
 
 /*
   获取数据
@@ -39,13 +46,6 @@ async function getList() {
   pagination.value.total = data.data?.length ?? 0
 }
 
-const pagination = ref({
-  pageSize: 5,
-  pageSizeOptions: ['10', '20', '30', '40', '50'],
-  showQuickJumper: true,
-  total: 0
-})
-
 /*
   处理删除对话框
 */
@@ -55,13 +55,13 @@ const showConfirm = (index: number) => {
     icon: createVNode(ExclamationCircleOutlined),
     content: createVNode('div', { }, '确定要删除该任务吗?'),
     cancelText: '取消',
-    okText: "确认",
+    okText: '确认',
     onOk() {
       dataSource.value.splice(index, 1)
     },
     class: 'test',
-  });
-};
+  })
+}
 
 /*
   处理编辑弹框
@@ -79,7 +79,7 @@ const formState = reactive<FormState>({
   start: '',
   owner: '清风不问烟雨',
   description: '',
-  index: 0
+  index: 0,
 })
 
 const openModalValue = ref(false)
@@ -91,43 +91,61 @@ function openModal(item: any, charge?: boolean) {
   if (charge) {
     isAdd.value = true
     openModalValue.value = true
-  } else {
+  }
+  else {
     isAdd.value = false
-    openModalValue.value = true 
+    openModalValue.value = true
     formState.title = item.title
-    formState.description =  item.content
+    formState.description = item.content
     formState.start = dayjs(item.start)
     formState.index = dataSource.value.indexOf(item)
   }
+}
+
+// 操作成功后操作
+const countDown = () => {
+  let secondsToGo = 2
+  const modal = Modal.success({
+    title: '操作成功',
+    content: `本窗口将在${secondsToGo}后自动关闭`,
+  })
+  const interval = setInterval(() => {
+    secondsToGo -= 1
+    modal.update({
+      content: `本窗口将在${secondsToGo}后自动关闭`,
+    })
+  }, 1000)
+  setTimeout(() => {
+    clearInterval(interval)
+    modal.destroy()
+  }, secondsToGo * 1000)
 }
 
 // 确定 处理编辑或添加
 function handleOk() {
   for (const item in formState) {
     if (item !== 'index') {
-      if ((!(formState as any)[item])) {
+      if ((!(formState as any)[item]))
         return
-      }
     }
   }
-  
+
   const currentIndex = formState.index as number
 
-
   if (isAdd.value) {
-    const  newItem = {
+    const newItem = {
       title: formState.title,
       content: formState.description,
-      start: formState.start.format('YYYY-MM-DD HH:mm')
+      start: formState.start.format('YYYY-MM-DD HH:mm'),
     }
     dataSource.value.splice(0, 0, newItem)
-  } else {
+  }
+  else {
     for (const item in formState) {
-      if (item === 'start') {
+      if (item === 'start')
         dataSource.value[currentIndex][item] = formState.start.format('YYYY-MM-DD HH:mm')
-      } else {
+      else
         dataSource.value[currentIndex][item] = (formState as any)[item]
-      }
     }
   }
 
@@ -147,26 +165,6 @@ function cancelModal() {
   formState.title = ''
 }
 
-// 操作成功后操作
-const countDown = () => {
-  let secondsToGo = 2;
-  const modal = Modal.success({
-    title: '操作成功',
-    content: `本窗口将在${secondsToGo}后自动关闭`,
-  });
-  const interval = setInterval(() => {
-    secondsToGo -= 1;
-    modal.update({
-      content: `本窗口将在${secondsToGo}后自动关闭`,
-    });
-  }, 1000);
-  setTimeout(() => {
-    clearInterval(interval);
-    modal.destroy();
-  }, secondsToGo * 1000);
-}
-  
-
 onMounted(() => {
   getList()
 })
@@ -177,7 +175,7 @@ onMounted(() => {
     <!-- 头部 -->
     <a-card>
       <a-row :gutter="16">
-        <a-col :xs="24" :sm="8" v-for="(item, index) in workData" :key="index">
+        <a-col v-for="(item, index) in workData" :key="index" :xs="24" :sm="8">
           <div class="flex flex-col items-center justify-center">
             <div class="text-zinc-400">
               {{ item.title }}
@@ -239,19 +237,19 @@ onMounted(() => {
               </template>
             </a-list-item-meta>
             <template #actions>
-                <div class="flex text-gray-400">
-                  <div class="flex flex-col items-center">
-                    <div>Owner</div>
-                    <div>清风不问烟雨</div>
-                  </div>
-                  <div class="px-10">
-                    <div>开始时间</div>
-                    <div>{{ item.start }}</div>
-                  </div>
-                  <div class="w-45 flex items-center">
-                    <a-progress :percent="item.percent" :status="item.status" />
-                  </div>
+              <div class="flex text-gray-400">
+                <div class="flex flex-col items-center">
+                  <div>Owner</div>
+                  <div>清风不问烟雨</div>
                 </div>
+                <div class="px-10">
+                  <div>开始时间</div>
+                  <div>{{ item.start }}</div>
+                </div>
+                <div class="w-45 flex items-center">
+                  <a-progress :percent="item.percent" :status="item.status" />
+                </div>
+              </div>
             </template>
             <template #extra>
               <div>
@@ -281,45 +279,49 @@ onMounted(() => {
     </a-card>
 
     <!-- 底部添加按钮 -->
-    <a-button type="dashed" @click="openModal(null, true)">+ 添加</a-button>
+    <a-button type="dashed" @click="openModal(null, true)">
+      + 添加
+    </a-button>
 
     <!-- Modal -->
     <a-modal v-model:open="openModalValue" title="任务编辑" @ok="handleOk" @cancel="cancelModal">
       <a-form
         :model="formState"
         name="basic"
-        :labelCol="{span: 24}"
+        :label-col="{ span: 24 }"
         :wrapper-col="{ span: 24 }"
         autocomplete="off"
       >
         <a-form-item
-            label="任务名称"
-            name="title"
-            :rules="[{ required: true, message: '请输入任务名称' }]"
-          >
-            <a-input v-model:value="formState.title" />
-          </a-form-item>
-          <a-form-item
-            label="开始时间"
-            name="start"
-            :rules="[{ required: true, message: '请选择开始时间' }]"
-          >
-            <a-date-picker class="w-1/1" show-time v-model:value="formState.start" />
-          </a-form-item>
-          <a-form-item
-            label="任务负责人"
-            name="owner"
-            :rules="[{ required: true, message: '请输入任务负责人' }]"
-          >
-            <a-select v-model:value="formState.owner" placeholder="please select your zone">
-              <a-select-option value="owner">清风不问烟雨</a-select-option>
-            </a-select>
-          </a-form-item>
-          <a-form-item
-            label="产品描述"
-            name="description"
-            :rules="[{ required: true, message: '请输入产品描述' }]"
-          >
+          label="任务名称"
+          name="title"
+          :rules="[{ required: true, message: '请输入任务名称' }]"
+        >
+          <a-input v-model:value="formState.title" />
+        </a-form-item>
+        <a-form-item
+          label="开始时间"
+          name="start"
+          :rules="[{ required: true, message: '请选择开始时间' }]"
+        >
+          <a-date-picker v-model:value="formState.start" class="w-1/1" show-time />
+        </a-form-item>
+        <a-form-item
+          label="任务负责人"
+          name="owner"
+          :rules="[{ required: true, message: '请输入任务负责人' }]"
+        >
+          <a-select v-model:value="formState.owner" placeholder="please select your zone">
+            <a-select-option value="owner">
+              清风不问烟雨
+            </a-select-option>
+          </a-select>
+        </a-form-item>
+        <a-form-item
+          label="产品描述"
+          name="description"
+          :rules="[{ required: true, message: '请输入产品描述' }]"
+        >
           <a-textarea v-model:value="formState.description" placeholder="Basic usage" :rows="3" />
         </a-form-item>
       </a-form>
