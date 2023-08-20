@@ -30,6 +30,7 @@ export default {
   'profile.basic.orderDetailTitle': 'Order Details',
   'profile.basic.orderNumber': 'Order Number',
   'profile.basic.orderStatus': 'Order Status',
+  'profile.basic.orderStatusValue': 'Finished',
   'profile.basic.transactionNumber': 'Transaction Number',
   'profile.basic.subOrderNumber': 'Suborder Number',
   'profile.basic.customerInfoTitle': 'Customer Information',

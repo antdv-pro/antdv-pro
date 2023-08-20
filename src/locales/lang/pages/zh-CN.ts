@@ -30,6 +30,7 @@ export default {
   'profile.basic.orderDetailTitle': '订单详情',
   'profile.basic.orderNumber': '订单号',
   'profile.basic.orderStatus': '订单状态',
+  'profile.basic.orderStatusValue': '已完成',
   'profile.basic.transactionNumber': '交易号',
   'profile.basic.subOrderNumber': '子订单号',
   'profile.basic.customerInfoTitle': '客户信息',

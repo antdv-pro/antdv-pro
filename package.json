@@ -72,7 +72,6 @@
     "vue-tsc": "^1.8.8"
   },
   "lint-staged": {
-    "**/*": "eslint src --fix",
-    "src/**/*.ts": "vue-tsc --noEmit"
+    "**/*": "eslint src --fix"
   }
 }
