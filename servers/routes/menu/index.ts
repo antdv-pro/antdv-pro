@@ -322,6 +322,15 @@ const menuData = [
     component: '/list/basic-list',
     locale: 'menu.list.basic-list',
   },
+  {
+    id: 35,
+    parentId: 28,
+    path: '/profile/advanced',
+    title: '高级详细页',
+    name: 'ProfileAdvanced',
+    component: '/profile/advanced/index',
+    locale: 'menu.profile.advanced',
+  },
 ]
 
 export const accessMenuData = [
