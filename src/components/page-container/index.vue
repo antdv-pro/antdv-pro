@@ -91,6 +91,7 @@ const renderTitle = (title: VNodeChild | (() => VNodeChild)) => {
           </div>
         </div>
       </div>
+      <slot name="footer" />
     </div>
     <div :class="contentCls">
       <slot />

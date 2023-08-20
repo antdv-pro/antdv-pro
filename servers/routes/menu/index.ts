@@ -1,4 +1,3 @@
-
 const menuData = [
   {
     id: 1,
@@ -281,6 +280,42 @@ const menuData = [
   {
     id: 30,
     parentId: 26,
+    path: '/list/search-list',
+    title: '搜索列表',
+    name: 'SearchList',
+    component: '/list/search-list',
+    locale: 'menu.list.search-list',
+  },
+  {
+    id: 31,
+    parentId: 30,
+    path: '/list/search-list/articles',
+    title: '搜索列表（文章）',
+    name: 'SearchListArticles',
+    component: '/list/search-list/articles',
+    locale: 'menu.list.search-list.articles',
+  },
+  {
+    id: 32,
+    parentId: 30,
+    path: '/list/search-list/projects',
+    title: '搜索列表（项目）',
+    name: 'SearchListProjects',
+    component: '/list/search-list/projects',
+    locale: 'menu.list.search-list.projects',
+  },
+  {
+    id: 33,
+    parentId: 30,
+    path: '/list/search-list/applications',
+    title: '搜索列表（应用）',
+    name: 'SearchListApplications',
+    component: '/list/search-list/applications',
+    locale: 'menu.list.search-list.applications',
+  },
+   {
+    id: 34,
+    parentId: 26,
     path: '/list/basic-list',
     title: '标准列表',
     name: 'BasicCard',
@@ -311,4 +346,3 @@ export default eventHandler((event) => {
     data: [...menuData, ...(username === 'admin' ? accessMenuData : [])],
   }
 })
-
