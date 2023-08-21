@@ -18,6 +18,7 @@ const bubble: {
 }
 
 export const init = function () {
+  if (!bubble || !bubble.canvas) return
   bubble.width = window.innerWidth
   bubble.height = window.innerHeight
   bubble.canvas = document.getElementById('bubble-canvas') as HTMLCanvasElement
@@ -102,4 +103,9 @@ export function removeListeners() {
   window.removeEventListener('scroll', scrollCheck)
   window.removeEventListener('resize', resize)
   cancelAnimationFrame(bubble.requestId)
+}
+
+export default {
+  init,
+  removeListeners,
 }

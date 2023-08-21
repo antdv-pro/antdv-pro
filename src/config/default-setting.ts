@@ -22,7 +22,7 @@ export default {
   keepAlive: true,
   accordionMode: false,
   headerHeight: 48,
-  copyright: '爱吧烟雨2023',
+  copyright: 'Antdv Pro Team 2023',
   animationName: 'slide-fadein-right',
 } as LayoutSetting
 
