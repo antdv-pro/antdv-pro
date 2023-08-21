@@ -23,4 +23,5 @@ export default {
   'pages.login.submit': 'Login',
   'pages.login.loginWith': 'Login with :',
   'pages.login.registerAccount': 'Register Account',
+  'pages.login.tips': 'welcome to the system',
 }
