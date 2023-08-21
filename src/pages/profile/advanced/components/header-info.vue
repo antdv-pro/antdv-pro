@@ -1,26 +1,26 @@
 <script setup lang="ts">
 const command = ref()
 const activeKey = ref()
+const { t } = useI18n()
 </script>
 
 <template>
   <a-row>
     <a-col :span="19">
-      <span class="text-20px font-medium">单号: 335231129436</span>
+      <span class="text-20px font-medium">
+        {{ t('profile.basic.orderNumber') }}: 335231129436
+      </span>
     </a-col>
     <a-col :span="5">
       <a-radio-group v-model:value="command">
         <a-radio-button value="a">
-          操作一
+          {{ t('profile.advanced.create-do1') }}
         </a-radio-button>
         <a-radio-button value="b">
-          操作二
-        </a-radio-button>
-        <a-radio-button value="c">
-          ...
+          {{ t('profile.advanced.create-do2') }}
         </a-radio-button>
         <a-button type="primary">
-          主操作
+          {{ t('profile.advanced.create-do3') }}
         </a-button>
       </a-radio-group>
     </a-col>
@@ -29,31 +29,43 @@ const activeKey = ref()
     <a-row>
       <a-col :span="8">
         <div>
-          <p>创建人: 曲丽丽</p>
-          <p>创建时间: 2017-12-12</p>
-          <p>生效日期: 2017-0707-2017-08-08</p>
+          <p>
+            {{ t('profile.advanced.creater') }}: windlil
+          </p>
+          <p>
+            {{ t('profile.advanced.create-time') }}: 2020-12-12
+          </p>
+          <p>
+            {{ t('profile.advanced.create-effective-date') }}: 2021-01-01
+          </p>
         </div>
       </a-col>
       <a-col :span="8">
         <div>
-          <p>订购产品: XX服务</p>
-          <p>关联单据 12345</p>
-          <p>备注: 请于两个工作日内确认</p>
+          <p>
+            {{ t('profile.advanced.create-product') }}: XX服务
+          </p>
+          <p>
+            {{ t('profile.advanced.create-id') }}: 12345
+          </p>
+          <p>
+            {{ t('profile.advanced.create-info') }}: 请于两个工作日内确认
+          </p>
         </div>
       </a-col>
       <a-col :span="8" class="pl-45">
         <div class="flex">
           <div class="flex flex-col items-end mr-5">
             <p class="text-gray-400">
-              状态
+              {{ t('profile.advanced.create-status') }}
             </p>
             <p class="text-24px">
-              待审核
+              {{ t('profile.advanced.create-status-finshed') }}
             </p>
           </div>
           <div class="flex flex-col items-end">
             <p class="text-gray-400">
-              订单金额
+              {{ t('profile.advanced.create-price') }}
             </p>
             <p class="text-24px">
               ￥666.66
@@ -64,8 +76,8 @@ const activeKey = ref()
     </a-row>
   </a-card>
   <a-tabs v-model:activeKey="activeKey" class="mb--7">
-    <a-tab-pane key="1" tab="详细" />
-    <a-tab-pane key="2" tab="规则" force-render />
+    <a-tab-pane key="1" :tab="t('profile.advanced.tab1')" />
+    <a-tab-pane key="2" :tab="t('profile.advanced.tab2')" force-render />
   </a-tabs>
 </template>
 
