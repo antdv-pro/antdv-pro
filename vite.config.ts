@@ -66,6 +66,10 @@ export default ({ mode }: ConfigEnv): UserConfig => {
           find: '@',
           replacement: baseSrc,
         },
+        {
+          find: '~#',
+          replacement: fileURLToPath(new URL('./enums', import.meta.url)),
+        },
       ],
     },
     build: {

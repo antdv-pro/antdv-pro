@@ -313,15 +313,27 @@ const menuData = [
     component: '/list/search-list/applications',
     locale: 'menu.list.search-list.applications',
   },
-  {
-    id: 34,
-    parentId: 26,
-    path: '/list/basic-list',
-    title: '标准列表',
-    name: 'BasicCard',
-    component: '/list/basic-list',
-    locale: 'menu.list.basic-list',
-  },
+  // {
+  //   id: 34,
+  //   parentId: null,
+  //   title: '组件',
+  //   icon: 'TableOutlined',
+  //   component: 'RouteView',
+  //   redirect: '/comps/loading',
+  //   path: '/comps',
+  //   name: 'Comps',
+  //   locale: 'menu.list.basic-list',
+  // },
+  // {
+  //   id: 35,
+  //   parentId: 34,
+  //   title: 'loading',
+  //   component: '/comps/loading',
+  //   path: '/comps/loading',
+  //   name: 'BaseLoading',
+  //   keepAlive: true,
+  //   locale: 'menu.list.basic-list',
+  // },
 ]
 
 export const accessMenuData = [
