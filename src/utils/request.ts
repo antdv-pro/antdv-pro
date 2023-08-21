@@ -1,6 +1,8 @@
-import type { AxiosError, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios'
+import type { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios'
 import axios from 'axios'
+import { AxiosLoading } from './loading'
 import { STORAGE_AUTHORIZE_KEY, useAuthorization } from '~/composables/authorization'
+import { ContentTypeEnum, RequestEnum } from '~#/httpEnum'
 import router from '~/router'
 
 export interface ResponseBody<T = any> {
@@ -12,13 +14,14 @@ export interface ResponseBody<T = any> {
 export interface RequestConfigExtra {
   token?: boolean
   customDev?: boolean
+  loading?: boolean
 }
-
-const instance = axios.create({
+const instance: AxiosInstance = axios.create({
   baseURL: import.meta.env.VITE_APP_BASE_API ?? '/',
   timeout: 60000,
+  headers: { 'Content-Type': ContentTypeEnum.JSON },
 })
-
+const axiosLoading = new AxiosLoading()
 const requestHandler = async (config: InternalAxiosRequestConfig & RequestConfigExtra): Promise<InternalAxiosRequestConfig> => {
   // 处理请求前的url
   if (
@@ -38,6 +41,8 @@ const requestHandler = async (config: InternalAxiosRequestConfig & RequestConfig
   // 增加多语言的配置
   const { locale } = useI18nLocale()
   config.headers.set('Accept-Language', locale.value ?? 'zh-CN')
+  if (config.loading)
+    axiosLoading.addLoading()
   return config
 }
 
@@ -94,45 +99,66 @@ const errorHandler = (error: AxiosError): Promise<any> => {
   }
   return Promise.reject(error)
 }
-
+interface AxiosOptions<T> {
+  url: string
+  params?: T
+  data?: T
+}
 instance.interceptors.request.use(requestHandler)
 
 instance.interceptors.response.use(responseHandler, errorHandler)
 
 export default instance
-
-export const useGet = <R = any, T = any>(url: string, params?: T, config?: AxiosRequestConfig & RequestConfigExtra): Promise<ResponseBody<R>> => {
-  return instance.request({
+const instancePromise = <R = any, T = any>(options: AxiosOptions<T> & RequestConfigExtra): Promise<ResponseBody<R>> => {
+  const { loading } = options
+  return new Promise((resolve, reject) => {
+    instance.request(options).then((res) => {
+      resolve(res as any)
+    }).catch((e: Error | AxiosError) => {
+      reject(e)
+    })
+      .finally(() => {
+        if (loading)
+          axiosLoading.closeLoading()
+      })
+  })
+}
+export const useGet = < R=any, T = any> (url: string, params?: T, config?: AxiosRequestConfig & RequestConfigExtra): Promise<ResponseBody<R>> => {
+  const options = {
     url,
     params,
-    method: 'GET',
+    method: RequestEnum.GET,
     ...config,
-  })
+  }
+  return instancePromise< R, T >(options)
 }
 
-export const usePost = < R = any, T = any>(url: string, data?: T, config?: AxiosRequestConfig & RequestConfigExtra): Promise<ResponseBody<R>> => {
-  return instance.request({
+export const usePost = < R=any, T = any>(url: string, data?: T, config?: AxiosRequestConfig & RequestConfigExtra): Promise<ResponseBody<R>> => {
+  const options = {
     url,
     data,
-    method: 'POST',
+    method: RequestEnum.POST,
     ...config,
-  })
+  }
+  return instancePromise< R, T >(options)
 }
 
-export const usePut = < R = any, T = any>(url: string, data?: T, config?: AxiosRequestConfig & RequestConfigExtra): Promise<ResponseBody<R>> => {
-  return instance.request({
+export const usePut = < R=any, T = any>(url: string, data?: T, config?: AxiosRequestConfig & RequestConfigExtra): Promise<ResponseBody<R>> => {
+  const options = {
     url,
     data,
-    method: 'PUT',
+    method: RequestEnum.PUT,
     ...config,
-  })
+  }
+  return instancePromise<R, T>(options)
 }
 
-export const useDelete = < R = any, T = any>(url: string, data?: T, config?: AxiosRequestConfig & RequestConfigExtra): Promise<ResponseBody<R>> => {
-  return instance.request({
+export const useDelete = < R=any, T = any>(url: string, data?: T, config?: AxiosRequestConfig & RequestConfigExtra): Promise<ResponseBody<R>> => {
+  const options = {
     url,
     data,
-    method: 'DELETE',
+    method: RequestEnum.DELETE,
     ...config,
-  })
+  }
+  return instancePromise<R, T>(options)
 }

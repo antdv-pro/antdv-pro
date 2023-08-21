@@ -205,6 +205,7 @@ declare global {
   const useLastChanged: typeof import('@vueuse/core')['useLastChanged']
   const useLayoutMenu: typeof import('../src/stores/layout-menu')['useLayoutMenu']
   const useLink: typeof import('vue-router')['useLink']
+  const useLoading: typeof import('../src/composables/base-loading')['useLoading']
   const useLoadingCheck: typeof import('../src/composables/loading')['useLoadingCheck']
   const useLocalStorage: typeof import('@vueuse/core')['useLocalStorage']
   const useMagicKeys: typeof import('@vueuse/core')['useMagicKeys']
