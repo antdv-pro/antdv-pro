@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { AlipayCircleFilled, LockOutlined, MobileOutlined, TaobaoCircleFilled, UserOutlined, WeiboCircleFilled } from '@ant-design/icons-vue'
+import { delayTimer } from '@v-c/utils'
 import { AxiosError } from 'axios'
 import GlobalLayoutFooter from '~/layouts/components/global-footer/index.vue'
 import { loginApi } from '~/api/common/login'
 import { getQueryParam } from '~/utils/tools'
 import type { LoginMobileParams, LoginParams } from '~@/api/common/login'
-import * as pageBubble from '@/utils/pageBubble'
+import pageBubble from '@/utils/page-bubble'
 const message = useMessage()
 const notification = useNotification()
 const appStore = useAppStore()
@@ -26,7 +27,6 @@ const codeLoading = shallowRef(false)
 const resetCounter = 60
 const submitLoading = shallowRef(false)
 const errorAlert = shallowRef(false)
-let timer: number
 
 const { counter, pause, reset, resume, isActive } = useInterval(1000, {
   controls: true,
@@ -94,14 +94,12 @@ const submit = async () => {
     submitLoading.value = false
   }
 }
-onMounted(() => {
-  timer = window.setTimeout(() => {
-    pageBubble.init()
-  }, 300)
+onMounted(async () => {
+  await delayTimer(300)
+  pageBubble.init()
 })
 
 onBeforeUnmount(() => {
-  clearTimeout(timer)
   pageBubble.removeListeners()
 })
 </script>
@@ -112,10 +110,10 @@ onBeforeUnmount(() => {
       <canvas id="bubble-canvas" class="bubble-canvas" />
     </div>
     <div class="login-content flex-center">
-      <div class="ant-pro-form-login-main shadow-sm shadow-slate-400 dark:shadow-[#424242] rounded">
+      <div class="ant-pro-form-login-main rounded">
         <!-- 登录头部 -->
         <div
-          class="flex-between h-15 px-4 mb-[2px] shadow-sm shadow-slate-400 dark:shadow-[#424242]"
+          class="flex-between h-15 px-4 mb-[2px]"
         >
           <div>
             <span class="ant-pro-form-login-logo">
@@ -144,12 +142,14 @@ onBeforeUnmount(() => {
             <SelectLang />
           </div>
         </div>
+        <a-divider m-0 />
         <!-- 登录主体 -->
         <div class="box-border flex h-[500px]">
           <!-- 登录框左侧 -->
-          <div class="ant-pro-form-login-main-left   flex-center  bg-[#e4efff] dark:bg-[#0a0a0a]">
+          <div class="ant-pro-form-login-main-left flex-center  bg-[var(--bg-color-container)]">
             <img src="@/assets/images/login-left.png" class="h-5/6 w-5/6">
           </div>
+          <a-divider m-0 type="vertical" h-full class="ant-pro-login-divider" />
           <!-- 登录框右侧 -->
           <div class="ant-pro-form-login-main-right px-5 w-[335px]">
             <div class="text-center py-6 text-2xl">
@@ -335,6 +335,10 @@ onBeforeUnmount(() => {
 
 }
 
+.ant-pro-form-login-main{
+  box-shadow: var(--c-shadow);
+}
+
 .icon {
   margin-left: 8px;
   color: var(--text-color-2);
@@ -368,9 +372,16 @@ onBeforeUnmount(() => {
   }
 }
 @media(min-width:768px) and (max-width:991px){
+  .ant-pro-login-divider{
+    display: none;
+  }
   .login-media(400px)
 }
 @media screen and (max-width:767px) {
-  .login-media(350px)
+  .login-media(350px);
+
+  .ant-pro-login-divider{
+    display: none;
+  }
 }
 </style>

@@ -25,9 +25,9 @@
       "~@/*": ["src/*"],
       "~/*": ["src/*"],
       "@/*": ["src/*"],
-      "~#/*": ["enums/*"],
+      "~#/*": ["src/enums/*"],
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "types/**/*.d.ts","enums/**/*.ts"],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "types/**/*.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
