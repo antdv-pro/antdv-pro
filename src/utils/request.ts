@@ -2,7 +2,7 @@ import type { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse, Inte
 import axios from 'axios'
 import { AxiosLoading } from './loading'
 import { STORAGE_AUTHORIZE_KEY, useAuthorization } from '~/composables/authorization'
-import { ContentTypeEnum, RequestEnum } from '~#/httpEnum'
+import { ContentTypeEnum, RequestEnum } from '~#/http-enum'
 import router from '~/router'
 
 export interface ResponseBody<T = any> {
