@@ -9,7 +9,7 @@ const finishLoading = () => {
 
 <template>
   <div
-    class="bg-[var(--bg-color)]"
+    class="bg-[var(--bg-color)] ant-pro-iframe-wrap"
     w-full h-full b-rd-8px of-hidden
     flex flex-col flex-1
   >
@@ -22,9 +22,14 @@ const finishLoading = () => {
   </div>
 </template>
 
-<style scoped>
-:deep(.ant-spin-container){
-  height: 100% !important;
-  width: 100% !important;
+<style>
+.ant-pro-iframe-wrap{
+  .ant-spin-container{
+    height: 100% !important;
+    width: 100% !important;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
 }
 </style>
