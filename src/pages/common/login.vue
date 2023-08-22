@@ -27,7 +27,7 @@ const codeLoading = shallowRef(false)
 const resetCounter = 60
 const submitLoading = shallowRef(false)
 const errorAlert = shallowRef(false)
-
+const bubbleCanvas = ref()
 const { counter, pause, reset, resume, isActive } = useInterval(1000, {
   controls: true,
   immediate: false,
@@ -96,7 +96,7 @@ const submit = async () => {
 }
 onMounted(async () => {
   await delayTimer(300)
-  pageBubble.init()
+  pageBubble.init(unref(bubbleCanvas))
 })
 
 onBeforeUnmount(() => {
@@ -107,7 +107,7 @@ onBeforeUnmount(() => {
 <template>
   <div class="login-container">
     <div h-screen w-screen absolute>
-      <canvas id="bubble-canvas" class="bubble-canvas" />
+      <canvas ref="bubbleCanvas" />
     </div>
     <div class="login-content flex-center">
       <div class="ant-pro-form-login-main rounded">
@@ -126,7 +126,7 @@ onBeforeUnmount(() => {
               {{ t("pages.layouts.userLayout.title") }}
             </span>
           </div>
-          <div class="login-lang" flex="~">
+          <div class="login-lang flex-center">
             <span
               class="flex-center cursor-pointer text-16px"
               @click="appStore.toggleTheme(layoutSetting.theme === 'dark' ? 'light' : 'dark')"
@@ -144,14 +144,14 @@ onBeforeUnmount(() => {
         </div>
         <a-divider m-0 />
         <!-- 登录主体 -->
-        <div class="box-border flex h-[500px]">
+        <div class="box-border flex min-h-[520px]">
           <!-- 登录框左侧 -->
-          <div class="ant-pro-form-login-main-left flex-center  bg-[var(--bg-color-container)]">
+          <div class="ant-pro-form-login-main-left min-h-[520px] flex-center  bg-[var(--bg-color-container)]">
             <img src="@/assets/images/login-left.png" class="h-5/6 w-5/6">
           </div>
-          <a-divider m-0 type="vertical" h-full class="ant-pro-login-divider" />
+          <a-divider m-0 type="vertical" class="ant-pro-login-divider  min-h-[520px]" />
           <!-- 登录框右侧 -->
-          <div class="ant-pro-form-login-main-right px-5 w-[335px]">
+          <div class="ant-pro-form-login-main-right px-5 w-[335px] flex-center flex-col">
             <div class="text-center py-6 text-2xl">
               {{ t('pages.login.tips') }}
             </div>
@@ -328,7 +328,6 @@ onBeforeUnmount(() => {
   }
 
   .ant-pro-form-login-other {
-    margin-top: 24px;
     line-height: 22px;
     text-align: center
   }
@@ -368,7 +367,6 @@ onBeforeUnmount(() => {
 @media (min-width : 992px) {
   .ant-pro-form-login-main-left{
     width: 700px;
-    height: 100%;
   }
 }
 @media(min-width:768px) and (max-width:991px){
