@@ -1,7 +1,8 @@
+import { resolve } from 'path'
 import { fileURLToPath } from 'url'
 import { loadEnv } from 'vite'
 import type { ConfigEnv, UserConfig } from 'vite'
-import { createVitePlugins } from './plugins/index'
+import { createVitePlugins } from './plugins'
 const baseSrc = fileURLToPath(new URL('./src', import.meta.url))
 // https://vitejs.dev/config/
 export default ({ mode }: ConfigEnv): UserConfig => {
@@ -68,7 +69,7 @@ export default ({ mode }: ConfigEnv): UserConfig => {
         },
         {
           find: '~#',
-          replacement: fileURLToPath(new URL('./enums', import.meta.url)),
+          replacement: resolve(baseSrc, './enums'),
         },
       ],
     },

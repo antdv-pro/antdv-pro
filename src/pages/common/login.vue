@@ -113,7 +113,7 @@ onBeforeUnmount(() => {
       <div class="ant-pro-form-login-main rounded">
         <!-- 登录头部 -->
         <div
-          class="flex-between h-15 px-4 mb-[2px] shadow-sm shadow-slate-400 dark:shadow-[#424242]"
+          class="flex-between h-15 px-4 mb-[2px]"
         >
           <div>
             <span class="ant-pro-form-login-logo">
@@ -142,12 +142,14 @@ onBeforeUnmount(() => {
             <SelectLang />
           </div>
         </div>
+        <a-divider m-0 />
         <!-- 登录主体 -->
         <div class="box-border flex h-[500px]">
           <!-- 登录框左侧 -->
-          <div class="ant-pro-form-login-main-left   flex-center  bg-[#e4efff] dark:bg-[#0a0a0a]">
+          <div class="ant-pro-form-login-main-left flex-center  bg-[var(--bg-color-container)]">
             <img src="@/assets/images/login-left.png" class="h-5/6 w-5/6">
           </div>
+          <a-divider m-0 type="vertical" h-full class="ant-pro-login-divider" />
           <!-- 登录框右侧 -->
           <div class="ant-pro-form-login-main-right px-5 w-[335px]">
             <div class="text-center py-6 text-2xl">
@@ -370,9 +372,16 @@ onBeforeUnmount(() => {
   }
 }
 @media(min-width:768px) and (max-width:991px){
+  .ant-pro-login-divider{
+    display: none;
+  }
   .login-media(400px)
 }
 @media screen and (max-width:767px) {
-  .login-media(350px)
+  .login-media(350px);
+
+  .ant-pro-login-divider{
+    display: none;
+  }
 }
 </style>

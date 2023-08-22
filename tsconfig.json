@@ -25,7 +25,7 @@
       "~@/*": ["src/*"],
       "~/*": ["src/*"],
       "@/*": ["src/*"],
-      "~#/*": ["enums/*"],
+      "~#/*": ["src/enums/*"],
     }
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "types/**/*.d.ts","enums/**/*.ts"],
