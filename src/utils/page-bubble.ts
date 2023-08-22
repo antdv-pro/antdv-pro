@@ -17,11 +17,12 @@ const bubble: {
   requestId: null,
 }
 
-export const init = function () {
-  if (!bubble || !bubble.canvas) return
+export const init = function (canvasInstance: HTMLCanvasElement) {
+  if (!bubble || !canvasInstance)
+    throw new Error('no canvasInstance')
   bubble.width = window.innerWidth
   bubble.height = window.innerHeight
-  bubble.canvas = document.getElementById('bubble-canvas') as HTMLCanvasElement
+  bubble.canvas = canvasInstance
   bubble.canvas.width = bubble.width
   bubble.canvas.height = bubble.height
   bubble.ctx = bubble.canvas.getContext('2d') as CanvasRenderingContext2D
