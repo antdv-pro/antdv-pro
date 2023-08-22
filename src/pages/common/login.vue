@@ -27,7 +27,7 @@ const codeLoading = shallowRef(false)
 const resetCounter = 60
 const submitLoading = shallowRef(false)
 const errorAlert = shallowRef(false)
-const bubbleCanvas = ref()
+const bubbleCanvas = ref<HTMLCanvasElement>()
 const { counter, pause, reset, resume, isActive } = useInterval(1000, {
   controls: true,
   immediate: false,
@@ -96,7 +96,7 @@ const submit = async () => {
 }
 onMounted(async () => {
   await delayTimer(300)
-  pageBubble.init(unref(bubbleCanvas))
+  pageBubble.init(unref(bubbleCanvas)!)
 })
 
 onBeforeUnmount(() => {
