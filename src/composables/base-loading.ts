@@ -10,7 +10,15 @@ interface LoadingType {
   minTime?: number
   modal?: boolean
 }
-
+/**
+ * 全局loading配置
+ * @param spin loading样式
+ * @param minTime loading最短时间
+ * @param modal loading遮罩是否开启
+ * @param background loading背景
+ * @param textColor loading文字颜色
+ * @param color loading文字
+ */
 export function useLoading(config: LoadingType = {}) {
   const loadingConstructor = createApp(baseLoading, { ...config })
   let instance: any = null

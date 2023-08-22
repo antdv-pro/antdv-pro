@@ -5,6 +5,10 @@ import { loadingMap } from '~#/loading-enum'
 export default defineComponent({
   name: 'BaseLoading',
   props: {
+    text: {
+      type: String,
+      default: '正在加载中...',
+    },
     textColor: {
       type: String,
       default: '#79bbff',
@@ -33,7 +37,7 @@ export default defineComponent({
     }
 
     return () => {
-      const { background, modal, full } = props
+      const { background, modal, full, text, textColor } = props
       return (
         <div
           style={modal ? { background } : {}}
@@ -42,6 +46,9 @@ export default defineComponent({
           <div class="loading-wrapper">
             {renderBasicLoading() }
           </div>
+          <div class="text" style={{ color: textColor }}>
+              {text}
+            </div>
         </div>
       )
     }
