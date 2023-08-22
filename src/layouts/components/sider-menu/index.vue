@@ -64,8 +64,8 @@ const showLogo = computed(() => {
       >
         <a-menu-item>
           <template #icon>
-            <MenuFoldOutlined v-if="collapsed" />
-            <MenuUnfoldOutlined v-else />
+            <MenuUnfoldOutlined v-if="collapsed" />
+            <MenuFoldOutlined v-else />
           </template>
         </a-menu-item>
       </a-menu>
