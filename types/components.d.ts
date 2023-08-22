@@ -75,6 +75,7 @@ declare module 'vue' {
     DocLink: typeof import('./../src/components/doc-link/index.vue')['default']
     DotSpin: typeof import('./../src/components/base-loading/spin/dot-spin.vue')['default']
     FooterLinks: typeof import('./../src/components/footer-links.vue')['default']
+    GiteeLink: typeof import('./../src/components/gitee-link/index.vue')['default']
     GithubLink: typeof import('./../src/components/github-link/index.vue')['default']
     PageContainer: typeof import('./../src/components/page-container/index.vue')['default']
     PlaneSpin: typeof import('./../src/components/base-loading/spin/plane-spin.vue')['default']

@@ -5,6 +5,10 @@
 
 </div>
 
+![gitee](https://gitee.com/antdv-pro/antdv-pro/badge/star.svg)
+![github](https://img.shields.io/github/stars/antdv-pro/antdv-pro?style=social)
+
+
 [English](./README.md) | **简体中文**
 
 

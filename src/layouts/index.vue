@@ -42,7 +42,10 @@ const layoutProps = computed(() => pick(appStore.layoutSetting, ['fixedHeader', 
       <UserAvatar />
       <SelectLang />
       <GithubLink />
-      <DocLink />
+      <template v-if="!isMobile">
+        <GiteeLink />
+        <DocLink />
+      </template>
     </template>
     <template #contentPrefix>
       <MultiTab v-if="layoutSetting.multiTab" />
