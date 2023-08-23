@@ -110,7 +110,7 @@ const submit = async () => {
       </span>
     </div>
     <div class="login-content">
-      <div class="ant-pro-form-login-cotainer">
+      <div class="ant-pro-form-login-container">
         <div class="ant-pro-form-login-top">
           <div class="ant-pro-form-login-header">
             <span class="ant-pro-form-login-logo">
@@ -234,7 +234,7 @@ const submit = async () => {
   flex: 1 1;
   padding: 32px 0
 }
-.ant-pro-form-login-cotainer{
+.ant-pro-form-login-container{
   display: flex;
   flex: 1 1;
   flex-direction: column;
@@ -289,10 +289,8 @@ const submit = async () => {
 .ant-pro-form-login-main {
   min-width: 328px;
   max-width: 500px;
-  margin: 0 auto
-}
+  margin: 0 auto;
 
-.ant-pro-form-login-main {
   .ant-tabs-nav-list {
     margin: 0 auto;
     font-size: 16px;
@@ -329,7 +327,7 @@ const submit = async () => {
     padding: 32px 0 24px;
   }
 
-  .ant-pro-form-login-cotainer{
+  .ant-pro-form-login-container{
     padding:32px 0 24px;
     background-repeat: no-repeat;
     background-position: center 110px;

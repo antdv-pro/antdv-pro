@@ -107,7 +107,7 @@ onBeforeUnmount(() => {
 <template>
   <div class="login-container">
     <div h-screen w-screen absolute>
-      <canvas ref="bubbleCanvas" />
+      <canvas ref="bubbleCanvas" absolute z-10 />
     </div>
     <div class="login-content flex-center">
       <div class="ant-pro-form-login-main rounded">
@@ -151,7 +151,7 @@ onBeforeUnmount(() => {
           </div>
           <a-divider m-0 type="vertical" class="ant-pro-login-divider  min-h-[520px]" />
           <!-- 登录框右侧 -->
-          <div class="ant-pro-form-login-main-right px-5 w-[335px] flex-center flex-col">
+          <div class="ant-pro-form-login-main-right px-5 w-[335px] flex-center flex-col relative z-11">
             <div class="text-center py-6 text-2xl">
               {{ t('pages.login.tips') }}
             </div>
@@ -286,7 +286,7 @@ onBeforeUnmount(() => {
   bottom: 0;
 }
 
-.ant-pro-form-login-cotainer {
+.ant-pro-form-login-container {
   display: flex;
   flex: 1 1;
   flex-direction: column;
