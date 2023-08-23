@@ -84,4 +84,15 @@ export default {
   'profile.advanced.remove': '删除',
   'profile.advanced.step-title': '流程进度',
   'profile.advanced.step-notice': '催一下',
+
+  // 个人页
+  'account.center.tags': '标签',
+  'account.cneter.team': '团队',
+  'account.center.article': '文章',
+  'account.center.application': '应用',
+  'account.center.project': '项目',
+  'account.center.posted': '发布在',
+  'account.center.activity-user': '活跃用户',
+  'account.center.new-user': '新增用户',
+  'account.center.updated': '几分钟前更新',
 }

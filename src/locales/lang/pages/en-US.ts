@@ -83,4 +83,15 @@ export default {
   'profile.advanced.remove': 'remove',
   'profile.advanced.step-title': 'progress',
   'profile.advanced.step-notice': 'Remind',
+
+  // account page
+  'account.center.tags': 'tags',
+  'account.cneter.team': 'team',
+  'account.center.article': 'article',
+  'account.center.application': 'application',
+  'account.center.project': 'project',
+  'account.center.posted': 'posted on',
+  'account.center.activity-user': 'activity user',
+  'account.center.new-user': 'new user',
+  'account.center.updated': 'Updated a few minutes ago',
 }

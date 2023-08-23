@@ -331,6 +331,35 @@ const menuData = [
     component: '/profile/advanced/index',
     locale: 'menu.profile.advanced',
   },
+  {
+    id: 36,
+    parentId: null,
+    title: '个人页',
+    icon: 'UserOutlined',
+    component: 'RouteView',
+    redirect: '/account/center',
+    path: '/account',
+    name: 'Account',
+    locale: 'menu.account',
+  },
+  {
+    id: 37,
+    parentId: 36,
+    path: '/account/center',
+    title: '个人中心',
+    name: 'AcountCenter',
+    component: '/account/center',
+    locale: 'menu.account.center',
+  },
+  {
+    id: 38,
+    parentId: 36,
+    path: '/account/settings',
+    title: '个人设置',
+    name: 'AcountSettings',
+    component: '/account/settings',
+    locale: 'menu.account.settings',
+  },
 ]
 
 export const accessMenuData = [
