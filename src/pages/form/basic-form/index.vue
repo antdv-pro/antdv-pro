@@ -128,19 +128,19 @@ const { t } = useI18n()
             {{ t('form.basic-form.radio.private') }}
           </a-radio>
         </a-radio-group>
-      <!--        <a-form-item v-show="formState.target === 2"> -->
-      <!--          <a-select mode="multiple"> -->
-      <!--            <a-select-option value="4"> -->
-      <!--              {{ t('form.basic-form.option.A') }} -->
-      <!--            </a-select-option> -->
-      <!--            <a-select-option value="5"> -->
-      <!--              {{ t('form.basic-form.option.B') }} -->
-      <!--            </a-select-option> -->
-      <!--            <a-select-option value="6"> -->
-      <!--              {{ t('form.basic-form.option.C') }} -->
-      <!--            </a-select-option> -->
-      <!--          </a-select> -->
-      <!--        </a-form-item> -->
+        <a-form-item v-show="formState.target === 2">
+          <a-select mode="multiple">
+            <a-select-option value="4">
+              {{ t('form.basic-form.option.A') }}
+            </a-select-option>
+            <a-select-option value="5">
+              {{ t('form.basic-form.option.B') }}
+            </a-select-option>
+            <a-select-option value="6">
+              {{ t('form.basic-form.option.C') }}
+            </a-select-option>
+          </a-select>
+        </a-form-item>
       </a-form-item>
       <a-form-item
         :wrapper-col="{ span: 24 }"
