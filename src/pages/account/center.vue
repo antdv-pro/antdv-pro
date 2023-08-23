@@ -3,6 +3,8 @@ import { ApartmentOutlined, AuditOutlined, HomeOutlined, PlusOutlined } from '@a
 import { nextTick, reactive, ref } from 'vue'
 import rightContent from './components/right-content.vue'
 
+const { t } = useI18n()
+
 const inputRef = ref()
 const state = reactive({
   tags: ['专注', '坚持', '很有想法', '执行力强', '乐观'],
@@ -103,7 +105,9 @@ const teamData = ref<ITeamDataItem[]>([
             </p>
           </div>
           <div>
-            <p>标签</p>
+            <p>
+              {{ t('account.center.tags') }}
+            </p>
             <template v-for="(tag, index) in state.tags" :key="tag">
               <a-tooltip v-if="tag.length > 20" :title="tag">
                 <a-tag :closable="index !== 0" @close="handleClose(tag)">
@@ -129,7 +133,9 @@ const teamData = ref<ITeamDataItem[]>([
             </a-tag>
           </div>
           <div class="mt-10">
-            <p>团队</p>
+            <p>
+              {{ t('account.cneter.team') }}
+            </p>
             <div class="flex flex-wrap justify-between">
               <span v-for="(item, index) in teamData" :key="index" class="flex items-center w-120px mb-5">
                 <a-avatar :size="26" class="mr-2">

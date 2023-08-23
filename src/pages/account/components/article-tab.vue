@@ -8,6 +8,8 @@ interface IDataItem {
 defineProps<{
   dataSource: IDataItem[]
 }>()
+
+const { t } = useI18n()
 </script>
 
 <template>
@@ -39,7 +41,9 @@ defineProps<{
                 张三
               </span>
             </span>
-            <span class="mx-1">发布在</span>
+            <span class="mx-1">
+              {{ t('account.center.posted') }}
+            </span>
             <span>
               <a-button type="link" href="https://www.antdv-pro.com/">
                 https://www.antdv-pro.com/
@@ -47,14 +51,7 @@ defineProps<{
             </span>
           </div>
         </div>
-        <template #actions>
-          123
-        </template>
       </a-list-item>
     </template>
   </a-list>
 </template>
-
-<style scoped lang="less">
-
-</style>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-
+const { t } = useI18n()
 </script>
 
 <template>
@@ -15,7 +15,7 @@
               好好学习, 天天向上
             </div>
             <div class="text-12px mt-2">
-              几分钟前更新
+              {{ t('account.center.updated') }}
             </div>
           </template>
         </a-card-meta>
