@@ -38,17 +38,17 @@ const handleClick = async ({ key }: any) => {
           <template #icon>
             <UserOutlined />
           </template>
-          <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">
+          <RouterLink to="/account/center">
             个人中心
-          </a>
+          </RouterLink>
         </a-menu-item>
         <a-menu-item key="1">
           <template #icon>
             <ProfileOutlined />
           </template>
-          <a target="_blank" rel="noopener noreferrer" href="http://www.taobao.com/">
+          <RouterLink to="/account/settings">
             个人设置
-          </a>
+          </RouterLink>
         </a-menu-item>
         <a-menu-divider />
         <a-menu-item key="logout">

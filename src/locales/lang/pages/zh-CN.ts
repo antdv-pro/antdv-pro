@@ -141,4 +141,14 @@ export default {
   'form.basic-form.confirm-password.placeholder': '确认密码',
   'form.basic-form.phone-number.placeholder': '手机号',
   'form.basic-form.verification-code.placeholder': '验证码',
+  // 个人页
+  'account.center.tags': '标签',
+  'account.cneter.team': '团队',
+  'account.center.article': '文章',
+  'account.center.application': '应用',
+  'account.center.project': '项目',
+  'account.center.posted': '发布在',
+  'account.center.activity-user': '活跃用户',
+  'account.center.new-user': '新增用户',
+  'account.center.updated': '几分钟前更新',
 }
