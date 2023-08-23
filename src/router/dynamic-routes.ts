@@ -44,11 +44,12 @@ export default [
     component: basicRouteMap.RouteView,
     children: [
       {
-        path: '/form/basic',
+        path: '/form/basic-form',
         name: 'FormBasic',
-        component: () => import('~/pages/form/basic.vue'),
+        component: () => import('~/pages/basicForm/index.vue'),
         meta: {
           title: '基础表单',
+          locale: 'menu.form.basic-form',
         },
       },
     ],

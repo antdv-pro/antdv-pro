@@ -32,17 +32,6 @@ const menuData = [
     locale: 'menu.form',
   },
   {
-    id: 4,
-    parentId: 3,
-    title: '基础表单',
-    component: '/form/basic',
-    path: '/form/basic',
-    name: 'FormBasic',
-    keepAlive: false,
-    locale: 'menu.form.basic-form',
-
-  },
-  {
     id: 5,
     parentId: null,
     title: '链接',
@@ -330,6 +319,16 @@ const menuData = [
     name: 'ProfileAdvanced',
     component: '/profile/advanced/index',
     locale: 'menu.profile.advanced',
+  },
+  {
+    id: 4,
+    parentId: 3,
+    title: '基础表单',
+    component: '/form/basicForm/index',
+    path: '/form/basic-form',
+    name: 'FormBasic',
+    keepAlive: false,
+    locale: 'menu.form.basic-form',
   },
 ]
 
