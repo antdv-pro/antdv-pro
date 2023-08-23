@@ -324,7 +324,7 @@ const menuData = [
     id: 4,
     parentId: 3,
     title: '基础表单',
-    component: '/form/basicForm/index',
+    component: '/form/basic-form/index',
     path: '/form/basic-form',
     name: 'FormBasic',
     keepAlive: false,

@@ -46,7 +46,7 @@ export default [
       {
         path: '/form/basic-form',
         name: 'FormBasic',
-        component: () => import('~/pages/form/basicForm/index.vue'),
+        component: () => import('~/pages/form/basic-form/index.vue'),
         meta: {
           title: '基础表单',
           locale: 'menu.form.basic-form',
