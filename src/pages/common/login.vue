@@ -126,7 +126,7 @@ onBeforeUnmount(() => {
               {{ t("pages.layouts.userLayout.title") }}
             </span>
           </div>
-          <div class="login-lang flex-center">
+          <div class="login-lang flex-center relative z-11">
             <span
               class="flex-center cursor-pointer text-16px"
               @click="appStore.toggleTheme(layoutSetting.theme === 'dark' ? 'light' : 'dark')"
