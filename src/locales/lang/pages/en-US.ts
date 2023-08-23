@@ -103,11 +103,11 @@ export default {
   'form.basic-form.client.label': 'Client',
   'form.basic-form.label.tooltip': 'Target service object',
   'form.basic-form.client.placeholder':
-      'Please describe your customer service, internal customers directly  Name / job number',
+      'Please describe your customer service, internal customers directly {\'@\'}Name / job number',
   'form.basic-form.client.required': 'Please describe the customers you serve',
   'form.basic-form.invites.label': 'Inviting critics',
   'form.basic-form.invites.placeholder':
-      'Please direct  Name / job number, you can invite up to 5 people',
+      'Please direct {\'@\'}Name / job number, you can invite up to 5 people',
   'form.basic-form.weight.label': 'Weight',
   'form.basic-form.weight.placeholder': 'Please enter weight',
   'form.basic-form.public.label': 'Target disclosure',
