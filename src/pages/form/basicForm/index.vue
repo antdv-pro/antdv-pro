@@ -140,7 +140,7 @@ const { t } = useI18n()
         :wrapper-col="{ span: 24 }"
         style="text-align: center"
       >
-        <a-button @click="handleSubmit" type="primary">
+        <a-button type="primary" @click="handleSubmit">
           {{ t('form.basic-form.form.submit') }}
         </a-button>
         <a-button style="margin-left: 8px">
