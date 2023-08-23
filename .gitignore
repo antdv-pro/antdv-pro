@@ -31,3 +31,5 @@ docs/.vitepress/cache
 .nitro
 .cache
 .output
+
+types/components.d.ts
