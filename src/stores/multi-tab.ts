@@ -139,15 +139,6 @@ export const useMultiTab = defineStore('multi-tab', () => {
     activeKey.value = undefined
     refreshItem.value = null
   }
-
-  watch(router.currentRoute, (route) => {
-    if (route.fullPath.startsWith('/redirect')) return
-    const item = list.value.find(item => item.fullPath === route.fullPath)
-
-    if (route.fullPath === activeKey.value && !item?.loading) return
-    activeKey.value = route.fullPath
-    addItem(route)
-  }, { immediate: true })
   return {
     list,
     activeKey,
@@ -159,5 +150,6 @@ export const useMultiTab = defineStore('multi-tab', () => {
     closeOther,
     refresh,
     switchTab,
+    addItem,
   }
 })
