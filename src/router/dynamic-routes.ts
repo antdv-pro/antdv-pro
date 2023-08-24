@@ -52,6 +52,15 @@ export default [
           locale: 'menu.form.basic-form',
         },
       },
+      {
+        path: '/form/step-form',
+        name: 'FormStep',
+        component: () => import('~/pages/form/step-form/index.vue'),
+        meta: {
+          title: '分步表单',
+          locale: 'menu.form.step-form',
+        },
+      },
     ],
   },
   {
