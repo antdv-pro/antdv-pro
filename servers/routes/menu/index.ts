@@ -365,7 +365,7 @@ const menuData = [
     title: '分布表单',
     component: '/form/step-form/index',
     path: '/form/step-form',
-    name: 'FormBasic',
+    name: 'StepForm',
     keepAlive: false,
     locale: 'menu.form.step-form',
   },

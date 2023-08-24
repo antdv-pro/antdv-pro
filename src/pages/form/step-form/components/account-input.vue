@@ -46,6 +46,6 @@ export default defineComponent({
       ]"
       @change="onTypeChange"
     />
-    <a-input type="text" :value="value.account" style="width: 68%" @change="onValueChange" />
+    <a-input type="text" allow-clear :value="value.account" style="width: 68%" @change="onValueChange" />
   </span>
 </template>

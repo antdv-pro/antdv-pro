@@ -2,7 +2,7 @@
 import type { Rule } from 'ant-design-vue/es/form'
 import type { UnwrapRef } from 'vue'
 import { reactive, ref } from 'vue'
-import AccountInput from './AccountInput.vue'
+import AccountInput from './account-input.vue'
 import type { FirstFormState } from '~/stores/step-form.ts'
 import { useStepForm } from '~/stores/step-form.ts'
 
@@ -76,8 +76,8 @@ const goNextStep = () => {
     layout="vertical"
     class="step-form"
   >
-    <a-form-item ref="name" label="付款账户" required allow-clear name="paymentAccount">
-      <a-select v-model:value="formState.paymentAccount" placeholder="请选择">
+    <a-form-item ref="name" label="付款账户" required name="paymentAccount">
+      <a-select v-model:value="formState.paymentAccount" allow-clear placeholder="请选择">
         <a-select-option value="antdv@aibayanyu.com">
           antdv@aibayanyu.com
         </a-select-option>
@@ -86,10 +86,10 @@ const goNextStep = () => {
     <a-form-item label="收款账户" name="collectionAccount">
       <AccountInput v-model:value="formState.collectionAccount" />
     </a-form-item>
-    <a-form-item label="收款人姓名" required allow-clear name="payeeName">
-      <a-input v-model:value="formState.payeeName" />
+    <a-form-item label="收款人姓名" required name="payeeName">
+      <a-input v-model:value="formState.payeeName" allow-clear />
     </a-form-item>
-    <a-form-item label="转账金额" allow-clear required name="amount">
+    <a-form-item label="转账金额" required name="amount">
       <a-input-number v-model:value="formState.amount" prefix="￥" style="width: 100%" />
     </a-form-item>
 
