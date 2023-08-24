@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { UnwrapRef } from 'vue'
-import type { Rule } from 'ant-design-vue/es/form'
 import { UploadOutlined } from '@ant-design/icons-vue'
 
 interface FormState {
@@ -11,6 +10,9 @@ interface FormState {
   address: string
   desc: string
 }
+
+const { t } = useI18n()
+
 const formRef = ref()
 const labelCol = { span: 0 }
 const wrapperCol = { span: 13 }
@@ -22,25 +24,29 @@ const formState: UnwrapRef<FormState> = reactive({
   address: '',
   phoneNumber: '',
 })
-const rules: Record<string, Rule[]> = {
-  name: [
-    { required: true, message: '请输入昵称', trigger: 'change' },
-  ],
+const rules: any = computed(() => {
+  return {
+    name: [
+      { required: true, message: t('account.settings.form-rule-name'), trigger: 'change' },
+    ],
 
-  phoneNumber: [
-    { required: true, message: '请输入联系电话', trigger: 'change' },
-  ],
-  address: [
-    { required: true, message: '请输入街道地址', trigger: 'change' },
-  ],
-  region: [
-    { required: true, message: '请选择', trigger: 'change' },
-  ],
-  eamil: [
-    { required: true, message: '请输入邮箱地址', trigger: 'change' },
-  ],
-  desc: [{ required: true, message: '请输入个人简介', trigger: 'blur' }],
-}
+    phoneNumber: [
+      { required: true, message: t('account.settings.form-rule-phoneNumber'), trigger: 'change' },
+    ],
+    address: [
+      { required: true, message: t('account.settings.form-rule-address'), trigger: 'change' },
+    ],
+    region: [
+      { required: true, message: t('account.settings.form-rule-region'), trigger: 'change' },
+    ],
+    eamil: [
+      { required: true, message: t('account.settings.form-rule-email'), trigger: 'change' },
+    ],
+    desc: [
+      { required: true, message: t('account.settings.form-rule-desc'), trigger: 'blur' },
+    ],
+  }
+})
 
 const onSubmit = () => {
   formRef.value
@@ -59,7 +65,7 @@ function handleChange() {
 </script>
 
 <template>
-  <a-card title="基本设置" :bordered="false">
+  <a-card :title="t('account.settings.basic-setting')" :bordered="false">
     <a-row>
       <a-col :span="12">
         <a-form
@@ -69,37 +75,39 @@ function handleChange() {
           :label-col="labelCol"
           :wrapper-col="wrapperCol"
         >
-          <a-form-item ref="eamil" :label-col="{ span: 24 }" label="邮箱" name="eamil">
-            <a-input v-model:value="formState.eamil" placeholder="请输入" style="width: 320px;" />
+          <a-form-item ref="eamil" :label-col="{ span: 24 }" :label="t('account.settings.form-email')" name="eamil">
+            <a-input v-model:value="formState.eamil" :placeholder="t('account.settings.form-input-plac')" style="width: 320px;" />
           </a-form-item>
-          <a-form-item ref="name" :label-col="{ span: 24 }" label="昵称" name="name">
-            <a-input v-model:value="formState.name" placeholder="请输入" style="width: 320px;" />
+          <a-form-item ref="name" :label-col="{ span: 24 }" :label="t('account.settings.form-name')" name="name">
+            <a-input v-model:value="formState.name" :placeholder="t('account.settings.form-input-plac')" style="width: 320px;" />
           </a-form-item>
-          <a-form-item label="国家/地区" :label-col="{ span: 24 }" name="region">
-            <a-select v-model:value="formState.region" placeholder="请选择">
+          <a-form-item :label="t('account.settings.form-region')" :label-col="{ span: 24 }" name="region">
+            <a-select v-model:value="formState.region" :placeholder="t('account.settings.form-select-plac')">
               <a-select-option value="China">
-                中国
+                {{ t('account.settings.form-region-China') }}
               </a-select-option>
             </a-select>
           </a-form-item>
-          <a-form-item ref="address" :label-col="{ span: 24 }" label="街道地址" name="address">
-            <a-input v-model:value="formState.address" placeholder="请输入" style="width: 320px;" />
+          <a-form-item ref="address" :label-col="{ span: 24 }" :label="t('account.settings.form-address')" name="address">
+            <a-input v-model:value="formState.address" :placeholder="t('account.settings.form-input-plac')" style="width: 320px;" />
           </a-form-item>
-          <a-form-item ref="phoneNumber" :label-col="{ span: 24 }" label="联系电话" name="phoneNumber">
-            <a-input v-model:value="formState.phoneNumber" placeholder="请输入" />
+          <a-form-item ref="phoneNumber" :label-col="{ span: 24 }" :label="t('account.settings.form-phoneNumber')" name="phoneNumber">
+            <a-input v-model:value="formState.phoneNumber" :placeholder="t('account.settings.form-input-plac')" />
           </a-form-item>
-          <a-form-item label="个人简介" :label-col="{ span: 24 }" name="desc">
-            <a-textarea v-model:value="formState.desc" placeholder="请输入" />
+          <a-form-item ref="desc" name="desc" :label="t('account.settings.form-desc')" :label-col="{ span: 24 }">
+            <a-textarea v-model:value="formState.desc" :placeholder="t('account.settings.form-input-plac')" />
           </a-form-item>
           <a-form-item>
             <a-button type="primary" @click="onSubmit">
-              提交
+              {{ t('account.settings.form-submit') }}
             </a-button>
           </a-form-item>
         </a-form>
       </a-col>
       <a-col :span="4">
-        <p>头像</p>
+        <p>
+          {{ t('account.settings.basic-avatar') }}
+        </p>
         <div class="flex flex-col items-center">
           <a-avatar :size="100">
             <template #icon>
@@ -113,7 +121,7 @@ function handleChange() {
           >
             <a-button class="mt-4">
               <UploadOutlined />
-              更换头像
+              {{ t('account.settings.basic-avatar.upload') }}
             </a-button>
           </a-upload>
         </div>

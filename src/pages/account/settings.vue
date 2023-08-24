@@ -4,32 +4,45 @@ import securitySetting from './components/security-setting.vue'
 import accountSetting from './components/account-setting.vue'
 import messageSetting from './components/message-setting.vue'
 
+const { t } = useI18n()
 const selectedKeys = ref(['1'])
-const items = ref([
-  {
-    key: '1',
-    label: '基本设置',
-    title: 'Navigation One',
-  },
-  {
-    key: '2',
-    label: '安全设置',
-    title: 'Navigation Two',
-  },
-  {
-    key: '3',
-    label: '账号绑定',
-    title: 'Navigation Two',
-  },
-  {
-    key: '4',
-    label: '新消息通知',
-    title: 'Navigation Two',
-  },
-])
 
-function handleMenuSelected() {
-  console.log(selectedKeys.value)
+const items = computed(() => {
+  return [
+    {
+      key: '1',
+      label: seti18n('1'),
+      title: 'Navigation One',
+    },
+    {
+      key: '2',
+      label: seti18n('2'),
+      title: 'Navigation Two',
+    },
+    {
+      key: '3',
+      label: seti18n('3'),
+      title: 'Navigation Two',
+    },
+    {
+      key: '4',
+      label: seti18n('4'),
+      title: 'Navigation Two',
+    },
+  ]
+})
+
+function seti18n(key: string) {
+  switch (key) {
+    case '1':
+      return t('account.settings.basic-setting')
+    case '2':
+      return t('account.settings.security-setting')
+    case '3':
+      return t('account.settings.account-setting')
+    case '4':
+      return t('account.settings.message-setting')
+  }
 }
 </script>
 
@@ -42,7 +55,6 @@ function handleMenuSelected() {
           style="width: 250px"
           mode="inline"
           :items="items"
-          @click="handleMenuSelected"
         />
       </a-col>
       <a-col :span="20">

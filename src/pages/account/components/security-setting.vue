@@ -3,32 +3,37 @@ interface DataItem {
   title: string
   desc: string
 }
-const data: DataItem[] = [
-  {
-    title: '账户密码',
-    desc: '当前密码强度：强',
-  },
-  {
-    title: '密保手机',
-    desc: '已绑定手机: 131****8888',
-  },
-  {
-    title: '密保问题',
-    desc: '已设置',
-  },
-  {
-    title: '备用邮箱',
-    desc: '已绑定邮箱: ant**.com',
-  },
-  {
-    title: 'MFA 设备',
-    desc: '未绑定 MFA 设备',
-  },
-]
+
+const { t } = useI18n()
+
+const data = computed<DataItem[]>(() => {
+  return [
+    {
+      title: t('account.settings.security.account-password'),
+      desc: t('account.settings.security.account-password-desc'),
+    },
+    {
+      title: t('account.settings.security.phone'),
+      desc: t('account.settings.security.phone-desc'),
+    },
+    {
+      title: t('account.settings.security-problem'),
+      desc: t('account.settings.security-problem-desc'),
+    },
+    {
+      title: t('account.settings.security.email'),
+      desc: t('account.settings.security.email-desc'),
+    },
+    {
+      title: t('account.settings.security.MFA'),
+      desc: t('account.settings.security.MFA-desc'),
+    },
+  ]
+})
 </script>
 
 <template>
-  <a-card title="安全设置" :bordered="false">
+  <a-card :title="t('account.settings.security-setting')" :bordered="false">
     <a-list item-layout="horizontal" :data-source="data">
       <template #renderItem="{ item }">
         <a-list-item>
@@ -41,7 +46,7 @@ const data: DataItem[] = [
           </a-list-item-meta>
           <template #actions>
             <a-button type="link">
-              修改
+              {{ t('account.settings.modify') }}
             </a-button>
           </template>
         </a-list-item>

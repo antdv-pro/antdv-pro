@@ -4,26 +4,30 @@ interface DataItem {
   desc: string
 }
 
+const { t } = useI18n()
+
 const checked = ref(true)
 
-const data: DataItem[] = [
-  {
-    title: '其他消息',
-    desc: '其他用户的消息将以站内信的形式通知',
-  },
-  {
-    title: '系统消息',
-    desc: '系统消息将以站内信的形式通知',
-  },
-  {
-    title: '待办任务',
-    desc: '待办任务将以站内信的形式通知',
-  },
-]
+const data = computed<DataItem[]>(() => {
+  return [
+    {
+      title: t('account.settings.message.title1'),
+      desc: t('account.settings.message.desc1'),
+    },
+    {
+      title: t('account.settings.message.title2'),
+      desc: t('account.settings.message.desc2'),
+    },
+    {
+      title: t('account.settings.message.title3'),
+      desc: t('account.settings.message.desc3'),
+    },
+  ]
+})
 </script>
 
 <template>
-  <a-card title="安全设置" :bordered="false">
+  <a-card :title="t('account.settings.message-setting')" :bordered="false">
     <a-list item-layout="horizontal" :data-source="data">
       <template #renderItem="{ item }">
         <a-list-item>
