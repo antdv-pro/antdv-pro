@@ -359,6 +359,16 @@ const menuData = [
     component: '/account/settings',
     locale: 'menu.account.settings',
   },
+  {
+    id: 39,
+    parentId: 3,
+    title: '分布表单',
+    component: '/form/step-form/index',
+    path: '/form/step-form',
+    name: 'FormBasic',
+    keepAlive: false,
+    locale: 'menu.form.step-form',
+  },
 ]
 
 export const accessMenuData = [
