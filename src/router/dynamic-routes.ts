@@ -1,6 +1,7 @@
 import type { RouteRecordRaw } from 'vue-router'
 import { basicRouteMap } from './router-modules'
 import { AccessEnum } from '~@/utils/constant'
+
 export const ROOT_ROUTE_REDIRECT_PATH = '/dashboard'
 const Layout = () => import('~/layouts/index.vue')
 
@@ -50,6 +51,15 @@ export default [
         meta: {
           title: '基础表单',
           locale: 'menu.form.basic-form',
+        },
+      },
+      {
+        path: '/form/step-form',
+        name: 'FormBasic',
+        component: () => import('~/pages/form/step-form/index.vue'),
+        meta: {
+          title: '分布表单',
+          locale: 'menu.form.step-form',
         },
       },
     ],
