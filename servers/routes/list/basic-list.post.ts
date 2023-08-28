@@ -1,7 +1,7 @@
-import { cloneDeep } from 'lodash-es'
 import dayjs from 'dayjs'
+import { cloneDeep } from 'lodash-es'
 
-export default eventHandler(async (event) => {
+export default eventHandler(async (_event) => {
   const dataList = [
     {
       title: 'Aipay',
@@ -68,14 +68,12 @@ export default eventHandler(async (event) => {
   }
 
   // 配置任务时间
-  for (let i = 0; i < data.length; i++) {
-    const hour = i * 1
-    data[i].start = dayjs().subtract(hour, 'hour').format('YYYY-MM-DD HH:mm')
-  }
+  for (let i = 0; i < data.length; i++)
+    data[i].start = dayjs().subtract(i, 'hour').format('YYYY-MM-DD HH:mm')
 
   return {
     code: 200,
     msg: '获取成功',
-    data: data,
+    data,
   }
 })

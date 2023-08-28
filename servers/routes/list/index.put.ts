@@ -1,6 +1,4 @@
-export default eventHandler(async (event) => {
-  console.log(event)
-  // todo
+export default eventHandler(async (_event) => {
   return {
     code: 200,
     msg: '编辑成功',
