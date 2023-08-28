@@ -10,19 +10,20 @@ defineProps({
 const formRef = ref<FormInstance>()
 async function handleSubmit() {
   try {
-    return await formRef.value?.validateFields()
+    const values = await formRef.value?.validateFields()
+    return values
   }
   catch (errorInfo) {
     console.log('Failed:', errorInfo)
   }
 }
 const formState = reactive<Record<string, any>>({
-  name2: null,
-  url2: null,
-  owner2: null,
-  approver2: null,
-  dateRange2: null,
-  type2: null,
+  name: null,
+  url: null,
+  owner: null,
+  approver: null,
+  dateRange: null,
+  type: null,
 })
 defineExpose({
   handleSubmit,
@@ -34,34 +35,40 @@ defineExpose({
     <a-row class="form-row" :gutter="16">
       <a-col :lg="6" :md="12" :sm="24">
         <a-form-item
-          name="name2"
-          :rules="[{ required: true, message: '请输入任务名称' }]"
-          label="任务名"
+          name="name"
+          :rules="[{ required: true, message: '请输入仓库名称' }]"
+          label="仓库名"
         >
-          <a-input v-model:value="formState.name2" placeholder="请输入任务名称" />
+          <a-input v-model:value="formState.name" placeholder="请输入仓库名称" />
         </a-form-item>
       </a-col>
       <a-col :xl="{ span: 7, offset: 1 }" :lg="{ span: 8 }" :md="{ span: 12 }" :sm="24">
         <a-form-item
-          name="url2"
-          :rules="[{ required: true, message: '请输入任务描述' }]"
-          label="任务描述"
+          name="url"
+          :rules="[{ required: true, message: '请输入仓库地址' }]"
+          label="仓库地址"
         >
-          <a-input v-model:value="formState.url2" placeholder="请输入任务描述" />
+          <a-input v-model:value="formState.url" placeholder="请输入仓库地址" />
         </a-form-item>
       </a-col>
       <a-col :xl="{ span: 9, offset: 1 }" :lg="{ span: 10 }" :md="{ span: 24 }" :sm="24">
         <a-form-item
-          name="owner2"
-          :rules="[{ required: true, message: '请选择执行人' }]"
-          label="执行人"
+          name="owner"
+          :rules="[{ required: true, message: '请选择管理员' }]"
+          label="仓库管理员"
         >
           <a-select
-            v-model:value="formState.owner2"
-            placeholder="请选择执行人"
+            v-model:value="formState.owner"
+            placeholder="请选择管理员"
           >
-            <a-select-option value="KirkLin">
-              Kirk Lin
+            <a-select-option value="林同学">
+              林同学
+            </a-select-option>
+            <a-select-option value="张同学">
+              张同学
+            </a-select-option>
+            <a-select-option value="李同学">
+              李同学
             </a-select-option>
           </a-select>
         </a-form-item>
@@ -70,14 +77,17 @@ defineExpose({
     <a-row class="form-row" :gutter="16">
       <a-col :lg="6" :md="12" :sm="24">
         <a-form-item
-          name="approver2"
-          :rules="[{ required: true, message: '请选择责任人' }]"
-          label="责任人"
+          name="approver"
+          :rules="[{ required: true, message: '请选择审批员' }]"
+          label="审批人"
         >
           <a-select
-            v-model:value="formState.approver2"
-            placeholder="请选择责任人"
+            v-model:value="formState.approver"
+            placeholder="请选择审批员"
           >
+            <a-select-option value="Kirk Lin">
+              Kirk Lin
+            </a-select-option>
             <a-select-option value="Aibayanyu">
               Aibayanyu
             </a-select-option>
@@ -86,31 +96,31 @@ defineExpose({
       </a-col>
       <a-col :xl="{ span: 7, offset: 1 }" :lg="{ span: 8 }" :md="{ span: 12 }" :sm="24">
         <a-form-item
-          name="dateRange2"
-          :rules="[{ required: true, message: '请选择提醒时间' }]"
-          label="提醒时间"
+          name="dateRange"
+          :rules="[{ required: true, message: '请选择生效日期' }]"
+          label="生效日期"
         >
           <a-time-picker
-            v-model:value="formState.dateRange2"
+            v-model:value="formState.dateRange"
             style="width: 100%"
           />
         </a-form-item>
       </a-col>
       <a-col :xl="{ span: 9, offset: 1 }" :lg="{ span: 10 }" :md="{ span: 24 }" :sm="24">
         <a-form-item
-          name="type2"
-          :rules="[{ required: true, message: '请选择任务类型' }]"
-          label="任务类型"
+          name="type"
+          :rules="[{ required: true, message: '请选择仓库类型' }]"
+          label="仓库类型"
         >
           <a-select
-            v-model:value="formState.type2"
-            placeholder="请选择任务类型"
+            v-model:value="formState.type"
+            placeholder="请选择仓库类型"
           >
-            <a-select-option value="定时执行">
-              定时执行
+            <a-select-option value="公开">
+              公开
             </a-select-option>
-            <a-select-option value="周期执行">
-              周期执行
+            <a-select-option value="私密">
+              私密
             </a-select-option>
           </a-select>
         </a-form-item>
