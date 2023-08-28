@@ -2,28 +2,28 @@
 interface DataItem {
   title: string
   desc: string
+  checked: boolean
 }
 
 const { t } = useI18n()
 
-const checked = ref(true)
-
-const data = computed<DataItem[]>(() => {
-  return [
-    {
-      title: t('account.settings.message.title1'),
-      desc: t('account.settings.message.desc1'),
-    },
-    {
-      title: t('account.settings.message.title2'),
-      desc: t('account.settings.message.desc2'),
-    },
-    {
-      title: t('account.settings.message.title3'),
-      desc: t('account.settings.message.desc3'),
-    },
-  ]
-})
+const data = reactive<DataItem[]>([
+  {
+    title: t('account.settings.message.title1'),
+    desc: t('account.settings.message.desc1'),
+    checked: true,
+  },
+  {
+    title: t('account.settings.message.title2'),
+    desc: t('account.settings.message.desc2'),
+    checked: true,
+  },
+  {
+    title: t('account.settings.message.title3'),
+    desc: t('account.settings.message.desc3'),
+    checked: true,
+  },
+])
 </script>
 
 <template>
@@ -39,7 +39,7 @@ const data = computed<DataItem[]>(() => {
             </template>
           </a-list-item-meta>
           <template #actions>
-            <a-switch v-model:checked="checked" />
+            <a-switch v-model:checked="item.checked" />
           </template>
         </a-list-item>
       </template>
