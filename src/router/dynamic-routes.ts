@@ -61,6 +61,15 @@ export default [
           locale: 'menu.form.step-form',
         },
       },
+      {
+        path: '/form/advanced-form',
+        name: 'FormAdvanced',
+        component: () => import('~/pages/form/advanced-form/index.vue'),
+        meta: {
+          title: '高级表单',
+          locale: 'menu.form.advanced-form',
+        },
+      },
     ],
   },
   {
