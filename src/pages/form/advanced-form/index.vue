@@ -90,7 +90,7 @@ const remove = (key: string) => {
       高级表单常见于一次性输入和提交大批量数据的场景。
     </template>
     <a-card :body-style="{ padding: '24px 32px' }" :bordered="false">
-      <a-space direction="vertical" :style="{width: '100%'}">
+      <a-space direction="vertical" :style="{ width: '100%' }">
         <a-card class="card" title="仓库管理" :bordered="false">
           <repository-form ref="repositoryFormRef" :show-submit="false" />
         </a-card>
