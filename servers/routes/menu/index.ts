@@ -369,6 +369,16 @@ const menuData = [
     keepAlive: false,
     locale: 'menu.form.step-form',
   },
+  {
+    id: 40,
+    parentId: 3,
+    title: '高级表单',
+    component: '/form/advanced-form/index',
+    path: '/form/advanced-form',
+    name: 'FormAdvanced',
+    keepAlive: false,
+    locale: 'menu.form.advanced-form',
+  },
 ]
 
 export const accessMenuData = [
