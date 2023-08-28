@@ -90,35 +90,36 @@ const remove = (key: string) => {
       高级表单常见于一次性输入和提交大批量数据的场景。
     </template>
     <a-card :body-style="{ padding: '24px 32px' }" :bordered="false">
-      <a-card class="card" title="仓库管理" :bordered="false">
-        <repository-form ref="repositoryFormRef" :show-submit="false" />
-      </a-card>
-      <a-card class="card" title="任务管理" :bordered="false">
-        <task-form ref="taskFormRef" :show-submit="false" />
-      </a-card>
-    </a-card>
-
-    <a-card>
-      <a-table
-        :columns="state.columns"
-        :data-source="state.data"
-        :pagination="false"
-      >
-        <template #bodyCell="{ column, record }">
-          <template v-if="column.key === 'action'">
-            <a-popconfirm
-              v-if="state.data.length"
-              title="Sure to delete?"
-              @confirm="remove(record.key)"
-            >
-              <a>Delete</a>
-            </a-popconfirm>
-          </template>
-        </template>
-      </a-table>
-      <a-button style="width: 100%; margin-top: 16px; margin-bottom: 8px" type="dashed" @click="handleAdd">
-        新增成员
-      </a-button>
+      <a-space direction="vertical" :style="{width: '100%'}">
+        <a-card class="card" title="仓库管理" :bordered="false">
+          <repository-form ref="repositoryFormRef" :show-submit="false" />
+        </a-card>
+        <a-card class="card" title="任务管理" :bordered="false">
+          <task-form ref="taskFormRef" :show-submit="false" />
+        </a-card>
+        <a-card>
+          <a-table
+            :columns="state.columns"
+            :data-source="state.data"
+            :pagination="false"
+          >
+            <template #bodyCell="{ column, record }">
+              <template v-if="column.key === 'action'">
+                <a-popconfirm
+                  v-if="state.data.length"
+                  title="Sure to delete?"
+                  @confirm="remove(record.key)"
+                >
+                  <a>Delete</a>
+                </a-popconfirm>
+              </template>
+            </template>
+          </a-table>
+          <a-button style="width: 100%; margin-top: 16px; margin-bottom: 8px" type="dashed" @click="handleAdd">
+            新增成员
+          </a-button>
+        </a-card>
+      </a-space>
     </a-card>
     <FooterToolBar>
       <template #right>
