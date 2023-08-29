@@ -1,6 +1,7 @@
 import 'vue-router'
 
 declare module 'vue-router'{
+  import type { RouteRecordRaw } from 'vue-router'
   interface RouteMeta {
     title?: string
     icon?: string
@@ -17,5 +18,6 @@ declare module 'vue-router'{
     parentId?: string | number | null
     access?: (string | number)[]
     locale?: string
+    parentComponents?: RouteRecordRaw['component'][]
   }
 }
