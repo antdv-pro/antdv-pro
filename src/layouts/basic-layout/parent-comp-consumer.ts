@@ -9,6 +9,8 @@ export const ParentCompConsumer = defineComponent({
     return () => {
       const parentName = route.meta?.parentName
       const parentComps = route.meta?.parentComps
+      console.log(parentName, parentComps, route)
+
       if (parentName) {
         // 获取组件的信息
         if (parentMap.has(parentName)) {

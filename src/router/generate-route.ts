@@ -159,20 +159,21 @@ const checkComponent = (component: RouteRecordRaw['component']) => {
 const flatRoutes = (routes: RouteRecordRaw[], parentName?: string, parentComps: RouteRecordRaw['component'][] = []) => {
   const flatRouteData: RouteRecordRaw[] = []
   for (const route of routes) {
+    const parentComponents = [...parentComps]
     const currentRoute = omit(route, ['children']) as RouteRecordRaw
     if (!currentRoute.meta)
       currentRoute.meta = {}
     if (parentName)
       currentRoute.meta.parentName = parentName
-    if (parentComps.length > 0)
-      currentRoute.meta.parentComps = parentComps
+    if (parentComponents.length > 0)
+      currentRoute.meta.parentComps = parentComponents
 
     flatRouteData.push(currentRoute)
     if (route.children && route.children.length) {
       const comp = checkComponent(route.component)
       if (comp)
-        parentComps.push(comp)
-      flatRouteData.push(...flatRoutes(route.children, route.name as string, [...parentComps]))
+        parentComponents.push(comp)
+      flatRouteData.push(...flatRoutes(route.children, route.name as string, [...parentComponents]))
     }
   }
   return flatRouteData
