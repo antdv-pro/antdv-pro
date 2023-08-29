@@ -5,19 +5,38 @@ export const ParentCompConsumer = defineComponent({
   name: 'ParentCompConsumer',
   setup(_, { slots }) {
     const route = useRoute()
+    const parentMap = new Map<string, any>()
     return () => {
-      const components = route.meta?.parentComponents
-      if (components) {
-        let component
-        for (const component1 of [...components].reverse()) {
-          const getComp = isFunction(component1) ? defineAsyncComponent(component1 as any) : component1
-          if (component)
-            component = h(getComp!, null, { default: () => component! })
-          else
-            component = h(getComp!, null, slots)
+      const parentName = route.meta?.parentName
+      const parentComps = route.meta?.parentComps
+      if (parentName) {
+        // 获取组件的信息
+        if (parentMap.has(parentName)) {
+          return parentMap.get(parentName)
         }
-        if (component)
-          return component
+        else {
+          // 不存在判断是否存在parentComps
+          if (parentComps?.length) {
+            // 获取组件的信息
+            let comp: any
+            for (const parentComp of [...parentComps].reverse()) {
+              // 有内到外
+              const comp1: any = isFunction(parentComp) ? defineAsyncComponent(parentComp as any) : parentComp
+              if (comp) {
+                comp = h(comp1, null, {
+                  default: () => comp,
+                })
+              }
+              else {
+                comp = h(comp1, null, slots)
+              }
+            }
+            if (comp) {
+              parentMap.set(parentName, comp)
+              return comp
+            }
+          }
+        }
       }
       return slots?.default?.()
     }

@@ -84,7 +84,7 @@ export const generateTreeRoutes = (menus: MenuData) => {
         icon: menuItem?.icon as string,
         keepAlive: menuItem?.keepAlive,
         id: menuItem?.id,
-        parentId: menuItem?.id,
+        parentId: menuItem?.parentId,
         affix: menuItem?.affix,
         parentKeys: menuItem?.parentKeys,
         url: menuItem?.url,
@@ -147,21 +147,32 @@ export const generateRoutes = async () => {
   }
 }
 
+const checkComponent = (component: RouteRecordRaw['component']) => {
+  for (const componentKey in basicRouteMap) {
+    if (component === (basicRouteMap as any)[componentKey])
+      return undefined
+  }
+  return component
+}
+
 // 路由拉平处理
-const flatRoutes = (routes: RouteRecordRaw[], parentComponents: RouteRecordRaw['component'] [] = []) => {
+const flatRoutes = (routes: RouteRecordRaw[], parentName?: string, parentComps: RouteRecordRaw['component'][] = []) => {
   const flatRouteData: RouteRecordRaw[] = []
   for (const route of routes) {
     const currentRoute = omit(route, ['children']) as RouteRecordRaw
-    if (parentComponents.length > 0) {
-      if (!currentRoute.meta)
-        currentRoute.meta = {}
-      currentRoute.meta.parentComponents = parentComponents
-    }
+    if (!currentRoute.meta)
+      currentRoute.meta = {}
+    if (parentName)
+      currentRoute.meta.parentName = parentName
+    if (parentComps.length > 0)
+      currentRoute.meta.parentComps = parentComps
+
     flatRouteData.push(currentRoute)
     if (route.children && route.children.length) {
-      if (route.component && route.component !== basicRouteMap.RouteView)
-        parentComponents.push(route.component)
-      flatRouteData.push(...flatRoutes(route.children, [...parentComponents]))
+      const comp = checkComponent(route.component)
+      if (comp)
+        parentComps.push(comp)
+      flatRouteData.push(...flatRoutes(route.children, route.name as string, [...parentComps]))
     }
   }
   return flatRouteData
