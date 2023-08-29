@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const command = ref()
+const command = ref('a')
 const activeKey = ref()
 const { t } = useI18n()
 </script>
@@ -12,16 +12,16 @@ const { t } = useI18n()
       </span>
     </a-col>
     <a-col :span="5">
-      <a-radio-group v-model:value="command">
+      <a-radio-group v-model:value="command" button-style="solid">
         <a-radio-button value="a">
           {{ t('profile.advanced.create-do1') }}
         </a-radio-button>
         <a-radio-button value="b">
           {{ t('profile.advanced.create-do2') }}
         </a-radio-button>
-        <a-button type="primary">
+        <a-radio-button value="c">
           {{ t('profile.advanced.create-do3') }}
-        </a-button>
+        </a-radio-button>
       </a-radio-group>
     </a-col>
   </a-row>
