@@ -22,6 +22,7 @@ const barWidth = computed(() => {
       <slot name="right" />
     </div>
   </div>
+  <div class="h-56px" />
 </template>
 
 <style scoped lang="less">
