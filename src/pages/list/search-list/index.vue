@@ -4,7 +4,8 @@ import SearchListContainer from './components/search-list-container.vue'
 
 <template>
   <SearchListContainer>
-    <router-view />
+    <!--    <router-view /> -->
+    <slot />
   </SearchListContainer>
 </template>
 

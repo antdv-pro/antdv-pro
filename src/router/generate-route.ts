@@ -151,11 +151,16 @@ export const generateRoutes = async () => {
 const flatRoutes = (routes: RouteRecordRaw[], parentComponents: RouteRecordRaw['component'] [] = []) => {
   const flatRouteData: RouteRecordRaw[] = []
   for (const route of routes) {
-    flatRouteData.push(omit(route, ['children']) as RouteRecordRaw)
+    const currentRoute = omit(route, ['children']) as RouteRecordRaw
+    if (parentComponents.length > 0) {
+      if (!currentRoute.meta)
+        currentRoute.meta = {}
+      currentRoute.meta.parentComponents = parentComponents
+    }
+    flatRouteData.push(currentRoute)
     if (route.children && route.children.length) {
-      if (route.component)
-        console.log(route.component === basicRouteMap.RouteView, '相等')
-
+      if (route.component && route.component !== basicRouteMap.RouteView)
+        parentComponents.push(route.component)
       flatRouteData.push(...flatRoutes(route.children, [...parentComponents]))
     }
   }
