@@ -67,6 +67,8 @@
     "ts-node": "^10.9.1",
     "typescript": "^5.1.6",
     "unocss": "^0.51.13",
+    "unocss-preset-chinese": "^0.0.7",
+    "unocss-preset-ease": "^0.0.3",
     "unplugin-auto-import": "^0.16.6",
     "unplugin-vue-components": "^0.25.1",
     "vite": "^4.4.9",

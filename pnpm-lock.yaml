@@ -135,6 +135,12 @@ importers:
       unocss:
         specifier: ^0.51.13
         version: 0.51.13(postcss@8.4.27)(vite@4.4.9)
+      unocss-preset-chinese:
+        specifier: ^0.0.7
+        version: 0.0.7(unocss@0.51.13)
+      unocss-preset-ease:
+        specifier: ^0.0.3
+        version: 0.0.3(unocss@0.51.13)
       unplugin-auto-import:
         specifier: ^0.16.6
         version: 0.16.6(@vueuse/core@10.3.0)
@@ -1996,6 +2002,10 @@ packages:
 
   /@unocss/core@0.51.13:
     resolution: {integrity: sha512-SclWkqY2c+p5+PiqrbQkhJNEExPdeo71/aGFye10tpBkgPJWd5xC7dhg5F8M4VPNBtuNCrvBWyqNnunMyuz/WQ==}
+    dev: true
+
+  /@unocss/core@0.55.3:
+    resolution: {integrity: sha512-2hV9QlE/iOM4DHQ7i6L8sMC1t5/OVAz6AfGHjetTXcgbNfDCsHWqE8jhLZ1y2DeUvKwJvj2A09sYbYQ8E27+Gg==}
     dev: true
 
   /@unocss/extractor-arbitrary-variants@0.51.13:
@@ -7225,6 +7235,35 @@ packages:
   /universalify@2.0.0:
     resolution: {integrity: sha512-hAZsKq7Yy11Zu1DE0OzWjw7nnLZmJZYTDZZyEFHZdUhV8FkH5MCfoU1XMaxXovpyW5nq5scPqq0ZDP9Zyl04oQ==}
     engines: {node: '>= 10.0.0'}
+    dev: true
+
+  /unocss-preset-chinese@0.0.7(unocss@0.51.13):
+    resolution: {integrity: sha512-rAMLpel5XlytxzZOvh7x/nRIa5kHUDO2b2H6oOOJJtH7Zr+rTb0G0mn4A95XcL/OtDdd5kFc3rS72/e22/7HPQ==}
+    peerDependencies:
+      '@unocss/nuxt': '*'
+      unocss: '*'
+    peerDependenciesMeta:
+      '@unocss/nuxt':
+        optional: true
+      unocss:
+        optional: true
+    dependencies:
+      '@unocss/core': 0.55.3
+      unocss: 0.51.13(postcss@8.4.27)(vite@4.4.9)
+    dev: true
+
+  /unocss-preset-ease@0.0.3(unocss@0.51.13):
+    resolution: {integrity: sha512-xSJcLZWeEBmeElddjLgKTY/NHP1ycwxSfSW6ldCG2OWPfa4vNNrRl0eL+kuMWNWzewCKGeQS/XIYI66mmd0R0Q==}
+    peerDependencies:
+      '@unocss/nuxt': '*'
+      unocss: '*'
+    peerDependenciesMeta:
+      '@unocss/nuxt':
+        optional: true
+      unocss:
+        optional: true
+    dependencies:
+      unocss: 0.51.13(postcss@8.4.27)(vite@4.4.9)
     dev: true
 
   /unocss@0.51.13(postcss@8.4.27)(vite@4.4.9):
