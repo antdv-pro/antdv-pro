@@ -6,7 +6,7 @@ const { antd } = useI18nLocale()
 
 <template>
   <a-config-provider :theme="theme" :locale="antd">
-    <a-app class="h-full">
+    <a-app class="h-full font-chinese antialiased">
       <TokenProvider>
         <RouterView />
       </TokenProvider>

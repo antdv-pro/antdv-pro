@@ -8,6 +8,8 @@ import {
   transformerDirectives,
   transformerVariantGroup,
 } from 'unocss'
+import presetChinese from 'unocss-preset-chinese'
+import presetEase from 'unocss-preset-ease'
 import antdUnoTheme from './themes/antd-uno-theme.json'
 
 export default defineConfig({
@@ -18,6 +20,8 @@ export default defineConfig({
   presets: [
     presetUno(),
     presetAttributify(),
+    presetChinese(),
+    presetEase(),
     presetTypography(),
     presetIcons({
       scale: 1.2,
