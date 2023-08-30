@@ -2,7 +2,7 @@
 import type { CSSProperties } from 'vue'
 import GlobalHeader from '../global-header/index.vue'
 import { useLayoutState } from '../../basic-layout/context'
-const { headerHeight, fixedHeader, layout, isMobile, collapsed, collapsedWidth, siderWidth } = useLayoutState()
+const { headerHeight, fixedHeader, layout, isMobile, collapsed, collapsedWidth, siderWidth, menu } = useLayoutState()
 
 const headerStyle = computed<CSSProperties>(() => {
   const defaultStyle: CSSProperties = {
@@ -15,7 +15,8 @@ const headerStyle = computed<CSSProperties>(() => {
     defaultStyle.width = '100%'
     defaultStyle.right = 0
   }
-  if (layout.value === 'side') {
+
+  if (layout.value === 'side' && menu.value) {
     if (!isMobile.value && fixedHeader.value) {
       const width = collapsed.value ? collapsedWidth.value : siderWidth.value
       defaultStyle.width = `calc(100% - ${width}px)`
