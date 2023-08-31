@@ -6,9 +6,8 @@
     "build": "nitro build",
     "preview": "node .output/server/index.mjs"
   },
-  "dependencies": {},
   "devDependencies": {
-    "h3": "^1.7.1",
-    "nitropack": "^2.5.2"
+    "h3": "^1.8.1",
+    "nitropack": "^2.6.2"
   }
 }
