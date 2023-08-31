@@ -27,7 +27,7 @@
     "@ctrl/tinycolor": "^3.6.0",
     "@v-c/utils": "^0.0.23",
     "@vueuse/core": "^10.3.0",
-    "ant-design-vue": "^4.0.1",
+    "ant-design-vue": "^4.0.2",
     "axios": "^1.4.0",
     "dayjs": "^1.11.9",
     "lodash-es": "^4.17.21",
