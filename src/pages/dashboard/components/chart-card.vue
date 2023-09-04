@@ -26,11 +26,7 @@ const props = defineProps({
 <template>
   <a-card :bind="props" :body-style="{ padding: '20px 24px 8px 24px' }">
     <div class="chartCard">
-      <!--      这差了一个clsss -->
-      <div>
-        <!--        <div class="avatar"> -->
-        <!--          {{ avatar }} -->
-        <!--        </div> -->
+      <div class="chartTop">
         <div class="metaWrap">
           <div class="meta">
             <span class="title">{{ title }}</span>
@@ -43,13 +39,12 @@ const props = defineProps({
           </div>
         </div>
       </div>
-      <div class="content" :style="{ height: contentHeight || 'auto' }">
-        <div class="contentHeight && styles.contentFixed">
-          <slot name="children" />
+      <div class="content" :style="{ height: `${contentHeight}px` || 'auto' }">
+        <div class="contentFixed">
+          <slot />
         </div>
       </div>
-      <!--      这查了一个class -->
-      <div>
+      <div class="footer">
         <slot name="footer" />
       </div>
     </div>
@@ -84,8 +79,8 @@ const props = defineProps({
   }
   .meta {
     height: 22px;
-    //color: @text-color-secondary;
-    //font-size: @font-size-base;
+    color: rgba(0,0,0,.45);
+    font-size: 14px;
     line-height: 22px;
   }
   .action {
@@ -100,7 +95,7 @@ const props = defineProps({
     margin-top: 4px;
     margin-bottom: 0;
     overflow: hidden;
-    //color: @heading-color;
+    color: rgba(0,0,0,.85);
     font-size: 30px;
     line-height: 38px;
     white-space: nowrap;
@@ -121,7 +116,7 @@ const props = defineProps({
   .footer {
     margin-top: 8px;
     padding-top: 9px;
-    //border-top: 1px solid @border-color-split;
+    border-top: 1px solid #f0f0f0;
     & > * {
       position: relative;
     }

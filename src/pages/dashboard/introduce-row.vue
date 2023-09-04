@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { InfoCircleOutlined } from '@ant-design/icons-vue'
 import ChartCard from '~/pages/dashboard/components/chart-card.vue'
-const props = defineProps({
+import Field from '~/pages/dashboard/components/field.vue'
+import Trend from '~/pages/dashboard/trend.vue'
+defineProps({
   loading: {
     type: Boolean,
     default: false,
@@ -24,18 +26,18 @@ const topColResponsiveProps = {
 
 <template>
   <a-row :gutter="24">
-    <a-col :bind="topColResponsiveProps">
-      <ChartCard :bordered="false" title="总销售额" :loading="loading">
+    <a-col v-bind="{ ...topColResponsiveProps }">
+      <ChartCard :bordered="false" title="总销售额" :loading="loading" :content-height="46">
         <template #action>
           <a-tooltip title="指标说明">
             <InfoCircleOutlined />
           </a-tooltip>
         </template>
         <template #total>
-          <span>{{ convertNumber(126560) }}</span>
+          <span>{{ `¥${convertNumber(126560)}` }}</span>
         </template>
         <template #footer>
-          <Field label="日销售额" value="12,423" />
+          <Field label="日销售额" value="￥12,423" />
         </template>
         <Trend flag="up" :style="{ marginRight: '16px' } ">
           周同比
