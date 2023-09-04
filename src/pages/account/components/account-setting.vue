@@ -38,9 +38,9 @@ const data = computed<DataItem[]>(() => {
               <a href="https://www.antdv.com/">{{ item.title }}</a>
             </template>
             <template #avatar>
-              <TaobaoOutlined v-if="item.avatar === 'TaobaoOutlined' " style="color: #ff4000;" />
-              <AlipayOutlined v-if="item.avatar === 'AlipayOutlined' " style="color: #2eabff" />
-              <DingdingOutlined v-if="item.avatar === 'DingdingOutlined' " style="color: #2eabff" />
+              <TaobaoOutlined v-if="item.avatar === 'TaobaoOutlined' " style="color: #ff4000;" class="account-setting-avatar" />
+              <AlipayOutlined v-if="item.avatar === 'AlipayOutlined' " style="color: #2eabff" class="account-setting-avatar" />
+              <DingdingOutlined v-if="item.avatar === 'DingdingOutlined' " style="color: #fff; background-color: #2eabff" class="account-setting-avatar" />
             </template>
           </a-list-item-meta>
           <template #actions>
@@ -57,5 +57,10 @@ const data = computed<DataItem[]>(() => {
 <style scoped lang="less">
 :deep(.ant-card-body) {
   padding-left: 0 !important;
+}
+.account-setting-avatar {
+  font-size: 48px;
+  line-height: 48px;
+  border-radius: 2px;
 }
 </style>
