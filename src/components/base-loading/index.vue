@@ -45,10 +45,10 @@ export default defineComponent({
         >
           <div class="loading-wrapper">
             {renderBasicLoading() }
-          </div>
-          <div class="text" style={{ color: textColor }}>
+            <div class="text" style={{ color: textColor }}>
               {text}
             </div>
+          </div>
         </div>
       )
     }
