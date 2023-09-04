@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { InfoCircleOutlined } from '@ant-design/icons-vue'
-import { Bullet, Progress, TinyArea, TinyColumn } from '@antv/g2plot'
+import { Progress, TinyArea, TinyColumn } from '@antv/g2plot'
 import ChartCard from '~/pages/dashboard/components/chart-card.vue'
 import Field from '~/pages/dashboard/components/field.vue'
 import Trend from '~/pages/dashboard/trend.vue'
