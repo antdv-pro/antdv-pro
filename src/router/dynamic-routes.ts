@@ -35,7 +35,7 @@ export default [
   },
   {
     path: '/form',
-    redirect: '/form/basic',
+    redirect: '/form/basic-form',
     name: 'Form',
     meta: {
       title: '表单页',
@@ -385,7 +385,7 @@ export default [
       },
       {
         path: '/account/settings',
-        name: 'AccountCenter',
+        name: 'AccountSettings',
         component: () => import('~/pages/account/settings.vue'),
         meta: {
           title: '个人设置',
