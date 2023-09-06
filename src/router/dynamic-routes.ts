@@ -314,6 +314,15 @@ export default [
         },
       },
       {
+        path: '/list/consult-table',
+        name: 'ConsultTable',
+        component: () => import('~/pages/list/consult-table.vue'),
+        meta: {
+          title: '查询表格',
+          locale: 'menu.list.consult-table',
+        },
+      },
+      {
         path: '/list/basic-list',
         name: 'BasicList',
         component: () => import('~/pages/list/basic-list.vue'),
