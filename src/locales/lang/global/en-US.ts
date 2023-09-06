@@ -25,6 +25,7 @@ export default {
   'app.setting.content-width.splitMenus': 'Auto Split Menus',
   'app.setting.content-width.keepAlive': 'KeepAlive',
   'app.setting.content-width.accordionMode': 'Menu Accordion Mode',
+  'app.setting.content-width.leftCollapsed': 'sideMenu Left',
   'app.setting.content-area.title': 'Content Area',
   'app.setting.content-area.header': 'Header',
   'app.setting.content-area.footer': 'Footer',
@@ -55,8 +56,7 @@ export default {
   'app.setting.weakmode': 'Weak Mode',
   'app.setting.copy': 'Copy Setting',
   'app.setting.copyinfo': 'copy success，please replace default-setting in config/default-setting.js',
-  'app.setting.production.hint':
-    'Setting panel shows in development environment only, please manually modify',
+  'app.setting.production.hint': 'Setting panel shows in development environment only, please manually modify',
   'app.multiTab.title': 'Multi Tab',
   'app.multiTab.closeCurrent': 'Close Current',
   'app.multiTab.closeOther': 'Close Other',
