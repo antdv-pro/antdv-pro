@@ -12,12 +12,22 @@ const { t } = useI18nLocale()
 const { selectedKeys, openKeys } = storeToRefs(layoutMenu)
 const { isMobile, isPad } = useQueryBreakpoints()
 watch(isPad, (val) => {
-  if (val)
-    appStore.toggleCollapsed(true)
-  else
-    appStore.toggleCollapsed(false)
+  if (val) appStore.toggleCollapsed(true)
+  else appStore.toggleCollapsed(false)
 })
-const layoutProps = computed(() => pick(appStore.layoutSetting, ['fixedHeader', 'fixedSider', 'splitMenus', 'menuHeader', 'header', 'menu', 'layout', 'footer', 'contentWidth']))
+const layoutProps = computed(() =>
+  pick(appStore.layoutSetting, [
+    'fixedHeader',
+    'fixedSider',
+    'splitMenus',
+    'menuHeader',
+    'header',
+    'menu',
+    'layout',
+    'footer',
+    'contentWidth',
+  ]),
+)
 </script>
 
 <template>
@@ -27,12 +37,13 @@ const layoutProps = computed(() => pick(appStore.layoutSetting, ['fixedHeader', 
     :menu-data="userStore.menuData"
     v-bind="layoutProps"
     :selected-keys="selectedKeys"
-    :open-keys=" layoutSetting.layout === 'top' ? [] : openKeys"
+    :open-keys="layoutSetting.layout === 'top' ? [] : openKeys"
     :copyright="layoutSetting.copyright"
     :is-mobile="isMobile"
     :logo="layoutSetting.logo"
     :title="layoutSetting.title"
     :accordion-mode="layoutSetting.accordionMode"
+    :left-collapsed="layoutSetting.leftCollapsed"
     :header-height="layoutSetting.headerHeight"
     @update:open-keys="layoutMenu.handleOpenKeys"
     @update:selected-keys="layoutMenu.handleSelectedKeys"
@@ -72,12 +83,11 @@ const layoutProps = computed(() => pick(appStore.layoutSetting, ['fixedHeader', 
     :animation-name="layoutSetting.animationName"
     :keep-alive="layoutSetting.keepAlive"
     :accordion-mode="layoutSetting.accordionMode"
+    :left-collapsed="layoutSetting.leftCollapsed"
     v-bind="layoutProps"
     :layout-setting="layoutSetting"
     @setting-change="appStore.changeSettingLayout"
   />
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

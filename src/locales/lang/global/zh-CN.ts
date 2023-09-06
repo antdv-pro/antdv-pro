@@ -25,6 +25,7 @@ export default {
   'app.setting.content-width.splitMenus': '自动分割菜单',
   'app.setting.content-width.keepAlive': '缓存功能',
   'app.setting.content-width.accordionMode': '菜单手风琴模式',
+  'app.setting.content-width.leftCollapsed': '侧边菜单折叠左侧',
   'app.setting.content-area.title': '内容区域',
   'app.setting.content-area.header': '顶栏',
   'app.setting.content-area.footer': '页脚',
@@ -55,8 +56,7 @@ export default {
   'app.setting.weakmode': '色弱模式',
   'app.setting.copy': '拷贝设置',
   'app.setting.copyinfo': '拷贝成功，请到 config/default-settings.js 中替换默认配置',
-  'app.setting.production.hint':
-    '配置栏只在开发环境用于预览，生产环境不会展现，请拷贝后手动修改配置文件',
+  'app.setting.production.hint': '配置栏只在开发环境用于预览，生产环境不会展现，请拷贝后手动修改配置文件',
   'app.multiTab.title': '多页签',
   'app.multiTab.closeCurrent': '关闭当前',
   'app.multiTab.closeOther': '关闭其他',
