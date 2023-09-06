@@ -73,7 +73,7 @@ const showLogo = computed(() => {
       <Menu />
     </div>
     <div
-      v-if="layout !== 'top' && !isMobile && leftCollapsed"
+      v-if="!isMobile && leftCollapsed"
       class="w-100% flex-shrink-0 ant-pro-sider-collapsed-button"
       :class="theme === 'inverted' ? 'ant-pro-sider-collapsed-button-inverted' : ''"
     >

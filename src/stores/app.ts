@@ -96,6 +96,7 @@ export const useAppStore = defineStore('app', () => {
     if (layoutSetting.theme === 'inverted' && layout === 'mix') layoutSetting.theme = 'light'
 
     if (layout !== 'mix') layoutSetting.splitMenus = false
+    else layoutSetting.leftCollapsed = true
 
     if (layout === 'top') layoutSetting.contentWidth = 'Fixed'
     else layoutSetting.contentWidth = 'Fluid'

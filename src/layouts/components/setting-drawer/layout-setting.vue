@@ -55,7 +55,7 @@ const list = computed(() => [
   {
     title: '侧边菜单折叠 左侧',
     key: 'leftCollapsed',
-    disabled: false,
+    disabled: props.layout !== 'side',
     disabledReason: '',
   },
 ])
