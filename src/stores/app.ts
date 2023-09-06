@@ -105,11 +105,14 @@ export const useAppStore = defineStore('app', () => {
   }
 
   const changeSettingLayout = (key: keyof LayoutSetting, value: any) => {
-    console.log(key, value)
-    if (key === 'theme') toggleTheme(value as ThemeType)
-    else if (key === 'colorPrimary') toggleColorPrimary(value)
-    else if (key === 'layout') toggleLayout(value as LayoutType)
-    else if (key in layoutSetting) (layoutSetting as any)[key] = value
+    if (key === 'theme')
+      toggleTheme(value as ThemeType)
+    else if (key === 'colorPrimary')
+      toggleColorPrimary(value)
+    else if (key === 'layout')
+      toggleLayout(value as LayoutType)
+    else if (key in layoutSetting)
+      (layoutSetting as any)[key] = value
   }
 
   return {

@@ -13,10 +13,10 @@ const cls = computed(() => ({
 </script>
 
 <template>
-  <div :class="cls">
+  <div :class="[cls]">
     <span
       v-if="layout === 'side' && !isMobile && !leftCollapsed"
-      class="ant-pro-global-header-collapsed-button"
+      class="ml-0 text-18px"
       @click="handleCollapsed?.(!collapsed)"
     >
       <MenuUnfoldOutlined v-if="collapsed" />
