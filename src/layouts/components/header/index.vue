@@ -2,7 +2,7 @@
 import type { CSSProperties } from 'vue'
 import GlobalHeader from '../global-header/index.vue'
 import { useLayoutState } from '../../basic-layout/context'
-const { headerHeight, fixedHeader, layout, isMobile, collapsed, collapsedWidth, siderWidth, menu } = useLayoutState()
+const { headerHeight, fixedHeader, layout, isMobile, collapsed, collapsedWidth, siderWidth, menu, splitMenus, selectedMenus } = useLayoutState()
 
 const headerStyle = computed<CSSProperties>(() => {
   const defaultStyle: CSSProperties = {
@@ -40,7 +40,7 @@ const cls = computed(() => {
   return classes
 })
 const needFixed = computed(() =>
-  fixedHeader.value || layout.value === 'mix',
+  fixedHeader.value || (layout.value === 'mix' && (splitMenus.value ? (selectedMenus.value ?? []).length > 0 : true)),
 )
 </script>
 
