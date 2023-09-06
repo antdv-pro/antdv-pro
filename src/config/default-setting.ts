@@ -21,7 +21,7 @@ export default {
   multiTabFixed: false,
   keepAlive: true,
   accordionMode: false,
-  leftCollapsed: false,
+  leftCollapsed: true,
   headerHeight: 48,
   copyright: 'Antdv Pro Team 2023',
   animationName: 'slide-fadein-right',
