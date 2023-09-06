@@ -5,7 +5,7 @@ import SubMenu from './sub-menu.vue'
 
 const { splitState, menuData, handleSplitSelectedKeys } = useLayoutState()
 
-const menuDataList = computed(() => menuData.value?.map(v => omit(v, ['children'])))
+const menuDataList = computed(() => menuData.value?.map(v => ({ ...omit(v, ['children']), childrenCount: (v.children ?? []).length })))
 </script>
 
 <template>
@@ -18,7 +18,7 @@ const menuDataList = computed(() => menuData.value?.map(v => omit(v, ['children'
   >
     <template v-for="item in menuDataList" :key="item.path">
       <template v-if="!item.hideInMenu">
-        <SubMenu :item="item" :link="false" />
+        <SubMenu :item="item" :link="item.childrenCount <= 0" />
       </template>
     </template>
   </a-menu>

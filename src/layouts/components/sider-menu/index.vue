@@ -3,7 +3,7 @@ import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons-vue'
 import type { CSSProperties } from 'vue'
 import { useLayoutState } from '../../basic-layout/context'
 import Menu from '../menu/index.vue'
-const { collapsed, handleCollapsed, layout, logo, theme, title, collapsedWidth, siderWidth, headerHeight, fixedSider, isMobile } = useLayoutState()
+const { collapsed, handleCollapsed, selectedMenus, splitMenus, layout, logo, theme, title, collapsedWidth, siderWidth, headerHeight, fixedSider, isMobile } = useLayoutState()
 
 const prefixCls = shallowRef('ant-pro-sider')
 
@@ -36,6 +36,7 @@ const showLogo = computed(() => {
     }"
   />
   <a-layout-sider
+    v-if="splitMenus ? (selectedMenus ?? []).length > 0 : true"
     :theme="theme === 'inverted' ? 'dark' : 'light'"
     :collapsed="collapsed && !isMobile"
     :trigger="null"
