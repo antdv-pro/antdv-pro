@@ -22,6 +22,10 @@ interface ConsultTableModel {
    */
   updatedAt: string
 
+  // 分页
+  current?: number
+  // size
+  pageSize?: number
 }
 
 type ConsultTableParams = Partial<Omit<ConsultTableModel, 'id'>>

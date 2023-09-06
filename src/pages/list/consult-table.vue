@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { DownOutlined, UpOutlined } from '@ant-design/icons-vue'
+import type { PaginationProps } from 'ant-design-vue'
 import type { ConsultTableModel, ConsultTableParams } from '~@/api/list/consult-table'
 import { deleteApi, getListApi } from '~@/api/list/consult-table'
 
@@ -44,6 +45,20 @@ const columns = shallowRef([
   },
 ])
 const loading = shallowRef(false)
+const pagination = reactive<PaginationProps>({
+  pageSize: 10,
+  pageSizeOptions: [10, 20, 30, 40],
+  current: 1,
+  total: 100,
+  showSizeChanger: true,
+  showQuickJumper: true,
+  showTotal: total => `总数据位：${total}`,
+  onChange(current, pageSize) {
+    pagination.pageSize = pageSize
+    pagination.current = current
+    init()
+  },
+})
 const dataSource = shallowRef<ConsultTableModel[]>([])
 const formModel = reactive<ConsultTableParams>({
   name: undefined,
@@ -53,11 +68,15 @@ const formModel = reactive<ConsultTableParams>({
   updatedAt: undefined,
 })
 
-const init = async () => {
+async function init() {
   if (loading.value) return
   loading.value = true
   try {
-    const { data } = await getListApi(formModel)
+    const { data } = await getListApi({
+      ...formModel,
+      current: pagination.current,
+      pageSize: pagination.pageSize,
+    })
     dataSource.value = data ?? []
   }
   catch (e) {
@@ -69,7 +88,7 @@ const init = async () => {
 }
 
 const onSearch = async () => {
-  // todo
+  pagination.current = 1
   await init()
 }
 
@@ -125,7 +144,7 @@ const expand = ref(false)
           </a-col>
           <a-col :span="8">
             <a-form-item name="updatedAt" label="上次调用时间">
-              <a-date-picker v-model:value="formModel.updatedAt" />
+              <a-date-picker v-model:value="formModel.updatedAt" style="width: 100%" />
             </a-form-item>
           </a-col>
         </a-row>
@@ -152,7 +171,7 @@ const expand = ref(false)
           </a-col>
           <a-col :span="8">
             <a-form-item name="callNo" label="服务调用次数">
-              <a-input-number v-model:value="formModel.callNo" />
+              <a-input-number v-model:value="formModel.callNo" style="width: 100%" />
             </a-form-item>
           </a-col>
         </a-row>
@@ -176,8 +195,8 @@ const expand = ref(false)
       </a-form>
     </a-card>
 
-    <a-card title="查询表格" text-right>
-      <a-table :loading="loading" :columns="columns" :data-source="dataSource">
+    <a-card title="查询表格">
+      <a-table :loading="loading" :columns="columns" :data-source="dataSource" :pagination="pagination">
         <template #bodyCell="{ column, record }">
           <template v-if="column.dataIndex === 'action'">
             <div flex gap-2>
@@ -188,7 +207,6 @@ const expand = ref(false)
           </template>
           <template v-if="column.dataIndex === 'status'">
             <div gap-2>
-              {{ }}
               {{ statusMap[record.status as keyof typeof statusMap] as string }}
             </div>
           </template>
