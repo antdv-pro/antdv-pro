@@ -27,6 +27,7 @@ export interface LayoutSetting {
   copyright?: string
   keepAlive?: boolean
   accordionMode?: boolean
+  leftCollapsed?: boolean
   animationName?: AnimationNameValueType
 }
 
@@ -41,15 +42,12 @@ export const useAppStore = defineStore('app', () => {
     components: {},
   })
   const toggleTheme = (theme: ThemeType) => {
-    if (layoutSetting.theme === theme)
-      return
+    if (layoutSetting.theme === theme) return
 
     layoutSetting.theme = theme
     if (theme === 'light' || theme === 'inverted') {
-      if (themeConfig.token)
-        themeConfig.token.colorBgContainer = '#fff'
-      if (themeConfig.components?.Menu)
-        delete themeConfig.components.Menu
+      if (themeConfig.token) themeConfig.token.colorBgContainer = '#fff'
+      if (themeConfig.components?.Menu) delete themeConfig.components.Menu
 
       themeConfig.algorithm = antdTheme.defaultAlgorithm
 
@@ -57,8 +55,7 @@ export const useAppStore = defineStore('app', () => {
     }
     else if (theme === 'dark') {
       toggleDark(true)
-      if (themeConfig.token)
-        themeConfig.token.colorBgContainer = 'rgb(36, 37, 37)'
+      if (themeConfig.token) themeConfig.token.colorBgContainer = 'rgb(36, 37, 37)'
       if (themeConfig.components) {
         themeConfig.components = {
           ...themeConfig.components,
@@ -79,20 +76,16 @@ export const useAppStore = defineStore('app', () => {
 
   const toggleColorPrimary = (color: string) => {
     layoutSetting.colorPrimary = color
-    if (themeConfig.token)
-      themeConfig.token.colorPrimary = color
+    if (themeConfig.token) themeConfig.token.colorPrimary = color
   }
 
   // 如果加载进来是暗色模式，就切换到暗色模式
-  if (isDark.value)
-    toggleTheme('dark')
+  if (isDark.value) toggleTheme('dark')
 
   // 监听isDark的变化
   watch(isDark, () => {
-    if (isDark.value)
-      toggleTheme('dark')
-    else
-      toggleTheme('light')
+    if (isDark.value) toggleTheme('dark')
+    else toggleTheme('light')
   })
 
   const toggleCollapsed = (collapsed: boolean) => {
@@ -100,16 +93,13 @@ export const useAppStore = defineStore('app', () => {
   }
 
   const toggleLayout = (layout: LayoutType) => {
-    if (layoutSetting.theme === 'inverted' && layout === 'mix')
-      layoutSetting.theme = 'light'
+    if (layoutSetting.theme === 'inverted' && layout === 'mix') layoutSetting.theme = 'light'
 
-    if (layout !== 'mix')
-      layoutSetting.splitMenus = false
+    if (layout !== 'mix') layoutSetting.splitMenus = false
+    else layoutSetting.leftCollapsed = true
 
-    if (layout === 'top')
-      layoutSetting.contentWidth = 'Fixed'
-    else
-      layoutSetting.contentWidth = 'Fluid'
+    if (layout === 'top') layoutSetting.contentWidth = 'Fixed'
+    else layoutSetting.contentWidth = 'Fluid'
 
     layoutSetting.layout = layout
   }

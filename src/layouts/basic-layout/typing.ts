@@ -54,7 +54,11 @@ export type ThemeType = 'light' | 'dark' | 'inverted'
 
 export type ContentWidth = 'Fluid' | 'Fixed'
 
-export interface MenuSelectEvent { item: any; key: string; selectedKeys: string[] }
+export interface MenuSelectEvent {
+  item: any
+  key: string
+  selectedKeys: string[]
+}
 
 const proLayoutEvents = {
   'onUpdate:openKeys': eventType<(val: string[]) => void>(),
@@ -74,6 +78,7 @@ export const proLayoutProps = {
   fixedSider: booleanType<boolean>(true),
   splitMenus: booleanType(),
   collapsed: booleanType<boolean>(false),
+  leftCollapsed: booleanType<boolean>(false),
   theme: stringType<ThemeType>('light'),
   onCollapsed: eventType<(collapsed: boolean) => void>(),
   isMobile: booleanType(),

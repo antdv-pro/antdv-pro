@@ -35,6 +35,7 @@ const layoutStateFunc = (props: ProLayoutProps, methods: ProLayoutProviderMethod
   const menu = computed(() => props.menu)
   const footer = computed(() => props.footer)
   const menuHeader = computed(() => props.menuHeader)
+  const leftCollapsed = computed(() => props.leftCollapsed)
 
   const menuDataMap = reactive(new Map<Key, MenuDataItem>())
   const splitState = reactive<{
@@ -42,19 +43,22 @@ const layoutStateFunc = (props: ProLayoutProps, methods: ProLayoutProviderMethod
   }>({
     selectedKeys: [],
   })
-  watch(menuData, () => {
-    menuDataMap.clear()
-    menuData.value?.forEach((item) => {
-      menuDataMap.set(item.path, item)
-    })
-  }, {
-    immediate: true,
-  })
+  watch(
+    menuData,
+    () => {
+      menuDataMap.clear()
+      menuData.value?.forEach((item) => {
+        menuDataMap.set(item.path, item)
+      })
+    },
+    {
+      immediate: true,
+    },
+  )
   const selectedMenus = computed(() => {
     if (isMobile.value || layout.value !== 'mix' || !splitMenus.value) return menuData.value
     const key = splitState.selectedKeys?.[0]
-    if (!key)
-      return []
+    if (!key) return []
 
     return menuDataMap.get(key)?.children ?? []
   })
@@ -90,28 +94,31 @@ const layoutStateFunc = (props: ProLayoutProps, methods: ProLayoutProviderMethod
     }
   }
 
-  watch(selectedKeys, () => {
-    if (splitMenus.value) {
-      const key = selectedKeys.value?.[0]
+  watch(
+    selectedKeys,
+    () => {
+      if (splitMenus.value) {
+        const key = selectedKeys.value?.[0]
 
-      if (key) {
-        const find = findSelected(key, menuData.value ?? [])
-        if (find)
-          splitState.selectedKeys = [find.path]
+        if (key) {
+          const find = findSelected(key, menuData.value ?? [])
+          if (find) splitState.selectedKeys = [find.path]
+        }
       }
-    }
-  }, {
-    immediate: true,
-  })
+    },
+    {
+      immediate: true,
+    },
+  )
   watch(splitMenus, () => {
-    if (!splitMenus.value) { splitState.selectedKeys = [] }
+    if (!splitMenus.value) {
+      splitState.selectedKeys = []
+    }
     else {
       const key = selectedKeys.value?.[0] ?? openKeys.value?.[0] ?? ''
       const find = findSelected(key, menuData.value ?? [])
-      if (find)
-        splitState.selectedKeys = [find?.path]
-      else
-        splitState.selectedKeys = []
+      if (find) splitState.selectedKeys = [find?.path]
+      else splitState.selectedKeys = []
     }
   })
   return {
@@ -119,6 +126,7 @@ const layoutStateFunc = (props: ProLayoutProps, methods: ProLayoutProviderMethod
     title,
     layout,
     collapsed,
+    leftCollapsed,
     collapsedWidth,
     menuData,
     siderWidth,
@@ -152,8 +160,6 @@ const layoutStateFunc = (props: ProLayoutProps, methods: ProLayoutProviderMethod
 
 const [useLayoutProvider, useLayoutInject] = createInjectionState(layoutStateFunc)
 
-export {
-  useLayoutProvider,
-}
+export { useLayoutProvider }
 
 export const useLayoutState = (): ReturnType<typeof layoutStateFunc> => useLayoutInject()!

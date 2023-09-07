@@ -379,6 +379,15 @@ const menuData = [
     keepAlive: false,
     locale: 'menu.form.advanced-form',
   },
+  {
+    id: 41,
+    parentId: 26,
+    path: '/list/consult-table',
+    title: '查询表格',
+    name: 'ConsultTable',
+    component: '/list/consult-table',
+    locale: 'menu.list.consult-table',
+  },
 ]
 
 export const accessMenuData = [

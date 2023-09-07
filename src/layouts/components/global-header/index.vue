@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { MenuFoldOutlined } from '@ant-design/icons-vue'
+import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons-vue'
 import { useLayoutState } from '../../basic-layout/context'
 import GlobalHeaderLogo from './global-header-logo.vue'
-const { layout, isMobile, handleMobileCollapsed, theme, menuHeader } = useLayoutState()
+const { layout, isMobile, handleMobileCollapsed, theme, menuHeader, collapsed, handleCollapsed, leftCollapsed }
+    = useLayoutState()
 const prefixCls = shallowRef('ant-pro-global-header')
 const cls = computed(() => ({
   [prefixCls.value]: true,
@@ -12,7 +13,15 @@ const cls = computed(() => ({
 </script>
 
 <template>
-  <div :class="cls">
+  <div :class="[cls]">
+    <span
+      v-if="layout === 'side' && !isMobile && !leftCollapsed"
+      class="ml-0 text-18px"
+      @click="handleCollapsed?.(!collapsed)"
+    >
+      <MenuUnfoldOutlined v-if="collapsed" />
+      <MenuFoldOutlined v-else />
+    </span>
     <template v-if="menuHeader">
       <GlobalHeaderLogo v-if="layout !== 'side' || isMobile" />
     </template>
@@ -29,5 +38,5 @@ const cls = computed(() => ({
 </template>
 
 <style lang="less">
-@import "./index.less";
+@import './index.less';
 </style>
