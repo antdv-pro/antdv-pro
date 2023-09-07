@@ -31,6 +31,14 @@ export default [
           title: '分析页',
         },
       },
+      {
+        path: '/dashboard/monitor',
+        name: 'DashboardMonitor',
+        component: () => import('~/pages/dashboard/monitor/index.vue'),
+        meta: {
+          title: '监控页',
+        },
+      },
     ],
   },
   {

@@ -388,6 +388,16 @@ const menuData = [
     component: '/list/consult-table',
     locale: 'menu.list.consult-table',
   },
+  {
+    id: 42,
+    parentId: 1,
+    title: '监控页',
+    component: '/dashboard/monitor',
+    path: '/dashboard/monitor',
+    name: 'DashboardMonitor',
+    keepAlive: true,
+    locale: 'menu.dashboard.monitor',
+  },
 ]
 
 export const accessMenuData = [
