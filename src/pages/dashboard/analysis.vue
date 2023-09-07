@@ -2,6 +2,7 @@
 import IntroduceRow from '~/pages/dashboard/introduce-row.vue'
 import SalesCard from '~/pages/dashboard/sales-card.vue'
 import TopSearch from '~/pages/dashboard/components/top-search.vue'
+import ProportionSales from '~/pages/dashboard/proportion-sales.vue'
 
 const loading = ref(false)
 
@@ -29,13 +30,7 @@ const visitData = ref([])
       </a-col>
       <a-col :xl="12" :lg="24" :md="24" :sm="24" :xs="24">
         <Suspense :fallback="null">
-          <!--          <ProportionSales -->
-          <!--            dropdown-group="{dropdownGroup}" -->
-          <!--            sales-type="{salesType}" -->
-          <!--            loading="{loading}" -->
-          <!--            sales-pie-data="{salesPieData" || []} -->
-          <!--            handle-change-sales-type="{handleChangeSalesType}" -->
-          <!--          /> -->
+          <ProportionSales />
         </Suspense>
       </a-col>
     </a-row>
