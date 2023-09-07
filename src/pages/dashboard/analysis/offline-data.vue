@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import NumberInfo from '~/pages/dashboard/number-info.vue'
-import CustomRingProgress from '~/pages/dashboard/components/custom-ring-progress.vue'
-import CustomLine from '~/pages/dashboard/components/custom-line.vue'
+import NumberInfo from '~/pages/dashboard/analysis/number-info.vue'
+import CustomRingProgress from '~/pages/dashboard/analysis/components/custom-ring-progress.vue'
+import CustomLine from '~/pages/dashboard/analysis/components/custom-line.vue'
 
 defineProps({
   loading: {

@@ -26,7 +26,7 @@ export default [
       {
         path: '/dashboard/analysis',
         name: 'DashboardAnalysis',
-        component: () => import('~/pages/dashboard/analysis.vue'),
+        component: () => import('~/pages/dashboard/analysis/index.vue'),
         meta: {
           title: '分析页',
         },

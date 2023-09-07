@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import IntroduceRow from '~/pages/dashboard/introduce-row.vue'
-import SalesCard from '~/pages/dashboard/sales-card.vue'
-import TopSearch from '~/pages/dashboard/components/top-search.vue'
-import ProportionSales from '~/pages/dashboard/proportion-sales.vue'
-import OfflineData from '~/pages/dashboard/offline-data.vue'
+import IntroduceRow from '~/pages/dashboard/analysis/introduce-row.vue'
+import SalesCard from '~/pages/dashboard/analysis/sales-card.vue'
+import TopSearch from '~/pages/dashboard/analysis/components/top-search.vue'
+import ProportionSales from '~/pages/dashboard/analysis/proportion-sales.vue'
+import OfflineData from '~/pages/dashboard/analysis/offline-data.vue'
 
 const loading = ref(false)
 
