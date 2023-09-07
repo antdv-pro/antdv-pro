@@ -17,11 +17,19 @@ defineProps({
     type: String,
     default: undefined,
   },
+  title: {
+    type: String,
+    default: undefined,
+  },
 })
 </script>
 
 <template>
   <div class="numberInfo">
+    <div class="numberInfoTitle" :title="title">
+      {{ title }}
+    </div>
+
     <div class="numberInfoSubTitle">
       <slot name="subTitle" />
     </div>

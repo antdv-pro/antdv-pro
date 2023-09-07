@@ -3,6 +3,7 @@ import IntroduceRow from '~/pages/dashboard/introduce-row.vue'
 import SalesCard from '~/pages/dashboard/sales-card.vue'
 import TopSearch from '~/pages/dashboard/components/top-search.vue'
 import ProportionSales from '~/pages/dashboard/proportion-sales.vue'
+import OfflineData from '~/pages/dashboard/offline-data.vue'
 
 const loading = ref(false)
 
@@ -34,5 +35,9 @@ const visitData = ref([])
         </Suspense>
       </a-col>
     </a-row>
+
+    <Suspense :fallback="null">
+      <OfflineData />
+    </Suspense>
   </page-container>
 </template>
