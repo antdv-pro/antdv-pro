@@ -39,6 +39,14 @@ export default [
           title: '监控页',
         },
       },
+      {
+        path: '/dashboard/workplace',
+        name: 'DashboardWorkplace',
+        component: () => import('~/pages/dashboard/workplace/index.vue'),
+        meta: {
+          title: '监控页',
+        },
+      },
     ],
   },
   {

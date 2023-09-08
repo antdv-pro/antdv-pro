@@ -398,6 +398,16 @@ const menuData = [
     keepAlive: true,
     locale: 'menu.dashboard.monitor',
   },
+  {
+    id: 43,
+    parentId: 1,
+    title: '工作台',
+    component: '/dashboard/workplace',
+    path: '/dashboard/workplace',
+    name: 'DashboardWorkplace',
+    keepAlive: true,
+    locale: 'menu.dashboard.workplace',
+  },
 ]
 
 export const accessMenuData = [
