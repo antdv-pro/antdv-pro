@@ -1,5 +1,5 @@
 import { resolve } from 'path'
-import { execaCommand } from 'execa'
+import { $ } from 'execa'
 import color from 'picocolors'
 import fsExtra from 'fs-extra'
 
@@ -10,7 +10,7 @@ if (isServersExist) {
   const isPackageJsonExist = fsExtra.existsSync(resolve(process.cwd(), './servers/package.json'))
   if (isPackageJsonExist) {
     // console.log('Sd')
-    const data = execaCommand('pnpm -F servers dev')
+    const data = $`pnpm -F servers dev`
     data.stdout.on('data', (data) => {
       const str = data.toString()
       if (str.includes('Unable to find an available port')) {
