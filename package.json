@@ -43,9 +43,9 @@
     "@commitlint/config-conventional": "^17.7.0",
     "@mistjs/eslint-config-vue": "^0.0.5",
     "@types/fs-extra": "^11.0.1",
-    "@types/lodash": "^4.14.197",
+    "@types/lodash": "^4.14.198",
     "@types/lodash-es": "^4.17.9",
-    "@types/node": "^18.17.12",
+    "@types/node": "^18.17.14",
     "@types/treeify": "^1.0.0",
     "@vitejs/plugin-vue": "^4.3.4",
     "@vitejs/plugin-vue-jsx": "^3.0.2",
@@ -73,7 +73,7 @@
     "unplugin-auto-import": "^0.16.6",
     "unplugin-vue-components": "^0.25.2",
     "vite": "^4.4.9",
-    "vue-tsc": "^1.8.8"
+    "vue-tsc": "^1.8.10"
   },
   "lint-staged": {
     "**/*.{vue,ts,js,jsx,tsx}": "eslint src --fix"

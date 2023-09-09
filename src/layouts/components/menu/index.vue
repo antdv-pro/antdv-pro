@@ -22,9 +22,9 @@ const menuTheme = computed(() => {
     @update:selected-keys="handleSelectedKeys"
     @select="handleMenuSelect"
   >
-    <template v-for="item in selectedMenus" :key="item.path">
+    <template v-for="item in selectedMenus">
       <template v-if="!item.hideInMenu">
-        <SubMenu :item="item" />
+        <SubMenu :key="item.path" :item="item" />
       </template>
     </template>
   </a-menu>

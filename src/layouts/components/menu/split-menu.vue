@@ -16,9 +16,9 @@ const menuDataList = computed(() => menuData.value?.map(v => ({ ...omit(v, ['chi
     :selected-keys="splitState.selectedKeys"
     @update:selected-keys="handleSplitSelectedKeys"
   >
-    <template v-for="item in menuDataList" :key="item.path">
+    <template v-for="item in menuDataList">
       <template v-if="!item.hideInMenu">
-        <SubMenu :item="item" :link="item.childrenCount <= 0" />
+        <SubMenu :key="item.path" :item="item" :link="item.childrenCount <= 0" />
       </template>
     </template>
   </a-menu>
