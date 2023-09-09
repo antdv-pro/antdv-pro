@@ -5,7 +5,7 @@ import { omit } from 'lodash'
 import { basicRouteMap, getRouterModule } from './router-modules'
 import type { MenuData, MenuDataItem } from '~@/layouts/basic-layout/typing'
 import dynamicRoutes, { ROOT_ROUTE_REDIRECT_PATH } from '~@/router/dynamic-routes'
-import i18n from '~@/locales'
+import { i18n } from '~@/locales'
 
 let cache_key = 1
 
@@ -14,7 +14,7 @@ const getCacheKey = () => `Cache_Key_${cache_key++}`
 const renderTitle = (route: RouteRecordRaw) => {
   const { title, locale } = route.meta || {}
   if (!title) return ''
-  return locale ? i18n.global.t(locale) : title
+  return locale ? (i18n.global as any).t(locale) : title
 }
 
 const formatMenu = (route: RouteRecordRaw, path?: string) => {

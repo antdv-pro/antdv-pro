@@ -2,7 +2,7 @@ import { createPinia } from 'pinia'
 import { createApp } from 'vue'
 import type { App } from 'vue'
 import Root from './App.vue'
-import i18n from './locales'
+import { setupI18n } from './locales'
 import {
   setupAccessDirective,
   setupLoadingDirective,
@@ -14,12 +14,12 @@ import '~/assets/styles/reset.css'
 import 'uno.css'
 
 const pinia = createPinia()
-function start() {
+async function start() {
   const app: App = createApp(Root)
-  setupDirective(app)
   app.use(pinia)
+  await setupI18n(app)
+  setupDirective(app)
   app.use(router)
-  app.use(i18n)
   app.mount('#app')
 }
 
