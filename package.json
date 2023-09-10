@@ -23,7 +23,7 @@
     "toJS": "esno scripts/to-js"
   },
   "dependencies": {
-    "@ant-design/icons-vue": "^6.1.0",
+    "@ant-design/icons-vue": "^7.0.0",
     "@ctrl/tinycolor": "^3.6.1",
     "@v-c/utils": "^0.0.23",
     "@vueuse/core": "^10.4.1",
