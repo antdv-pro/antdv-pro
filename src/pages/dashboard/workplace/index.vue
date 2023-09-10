@@ -264,8 +264,15 @@ onMounted(() => {
   new Radar(radarContainer.value, {
     data: radarData,
     xField: 'label',
-    yField: 'name',
-    seriesField: 'value',
+    yField: 'value',
+    seriesField: 'name',
+    point: {
+      size: 4,
+    },
+    legend: {
+      layout: 'horizontal',
+      position: 'bottom',
+    },
   }).render()
 })
 </script>
@@ -384,7 +391,7 @@ onMounted(() => {
       </a-col>
       <a-col :xl="8" :lg="24" :md="24" :sm="24" :xs="24">
         <a-card
-          :style="{ marginBottom: 24 }"
+          :style="{ marginBottom: '24px' }"
           title="快速开始 / 便捷导航"
           :bordered="false"
           :body-style="{ padding: 0 }"
@@ -416,8 +423,6 @@ onMounted(() => {
             </a-row>
           </div>
         </a-card>
-        <!--        </a-card-grid> -->
-        <!--        </a-card> -->
       </a-col>
     </a-row>
   </page-container>
@@ -474,11 +479,11 @@ onMounted(() => {
     top: 4px;
     flex: 1 1 auto;
     margin-left: 24px;
-    //color: @text-color-secondary;
+    color: gba(0,0,0,.45);
     line-height: 22px;
     .contentTitle {
       margin-bottom: 12px;
-      //color: @heading-color;
+      color: gba(0,0,0,.85);
       font-weight: 500;
       font-size: 20px;
       line-height: 28px;
@@ -497,17 +502,17 @@ onMounted(() => {
     padding: 0 32px;
     > p:first-child {
       margin-bottom: 4px;
-      //color: @text-color-secondary;
+      color: rgba(0,0,0,.45);
       font-size: 14px;
       line-height: 22px;
     }
     > p {
       margin: 0;
-      //color: @heading-color;
+      color: gba(0,0,0,.85);
       font-size: 30px;
       line-height: 38px;
       > span {
-        //color: @text-color-secondary;
+        color: rgba(0,0,0,.45);
         font-size: 20px;
       }
     }
@@ -544,7 +549,7 @@ onMounted(() => {
       vertical-align: top;
     }
     &:hover {
-      //color: @primary-color;
+      color: #1890ff;
     }
   }
 }
@@ -553,7 +558,7 @@ onMounted(() => {
   :deep(.ant-card-meta-description) {
     height: 44px;
     overflow: hidden;
-    //color: @text-color-secondary;
+    color: rgba(0,0,0,.45);
     line-height: 22px;
   }
   .cardTitle {
@@ -562,12 +567,12 @@ onMounted(() => {
       display: inline-block;
       height: 24px;
       margin-left: 12px;
-      //color: @heading-color;
+      color: rgba(0,0,0,.85);
       font-size: 14px;
       line-height: 24px;
       vertical-align: top;
       &:hover {
-        //color: @primary-color;
+        color: #1890ff;
       }
     }
   }
@@ -588,7 +593,7 @@ onMounted(() => {
       color: rgba(0,0,0,.45);
       .textOverflow();
       &:hover {
-        //color: @primary-color;
+        color: #1890ff;
       }
     }
     .datetime {
