@@ -601,7 +601,7 @@ onMounted(() => {
     statistic: {
       content: {
         style: {
-          fontSize: 17,
+          fontSize: '17px',
         },
       },
     },

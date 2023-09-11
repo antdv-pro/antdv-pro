@@ -326,7 +326,7 @@ onMounted(() => {
             </router-link>
           </template>
           <a-card-grid v-for="item in projectNotice" :key="item.id" class="projectGrid">
-            <a-card :body-style="{ padding: 0 }" :bordered="false">
+            <a-card :body-style="{ padding: 0 }" style="box-shadow: none" :bordered="false">
               <a-card-meta
                 :description="item.description"
               >
@@ -343,7 +343,7 @@ onMounted(() => {
                 <router-link :to="item.memberLink">
                   {{ item.member || '' }}
                 </router-link>
-                <span class="datetime" :title="item.updatedAt">
+                <span class="datetime" ml-2 :title="item.updatedAt">
                   {{ item.updatedAt }}
                 </span>
               </div>

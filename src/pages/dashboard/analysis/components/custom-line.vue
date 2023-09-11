@@ -4,7 +4,6 @@ import { Line } from '@antv/g2plot'
 const props = defineProps({
   offlineChartData: {
     type: Array,
-    default: undefined,
   },
 })
 
@@ -12,7 +11,7 @@ const container = ref()
 
 onMounted(() => {
   new Line(container.value, {
-    data: props.offlineChartData,
+    data: props.offlineChartData as any,
     padding: 'auto',
     xField: 'date',
     yField: 'value',

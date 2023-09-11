@@ -10,7 +10,7 @@ defineProps({
   },
 })
 
-const columns = [
+const columns: Record<string, any>[] = [
   {
     title: '排名',
     dataIndex: 'index',
@@ -20,7 +20,6 @@ const columns = [
     title: '搜索关键词',
     dataIndex: 'keyword',
     key: 'keyword',
-
   },
   {
     title: '用户数',
