@@ -382,10 +382,10 @@ const menuData = [
   {
     id: 41,
     parentId: 26,
-    path: '/list/consult-table',
+    path: '/list/table-list',
     title: '查询表格',
     name: 'ConsultTable',
-    component: '/list/consult-table',
+    component: '/list/table-list',
     locale: 'menu.list.consult-table',
   },
   {
