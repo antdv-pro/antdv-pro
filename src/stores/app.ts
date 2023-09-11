@@ -41,9 +41,12 @@ export const useAppStore = defineStore('app', () => {
     },
     components: {},
   })
+  const locale = ref<string>(lsLocaleState.value)
+  const toggleLocale = (locale: string) => {
+    lsLocaleState.value = locale
+  }
   const toggleTheme = (theme: ThemeType) => {
     if (layoutSetting.theme === theme) return
-
     layoutSetting.theme = theme
     if (theme === 'light' || theme === 'inverted') {
       if (themeConfig.token) themeConfig.token.colorBgContainer = '#fff'
@@ -88,6 +91,11 @@ export const useAppStore = defineStore('app', () => {
     else toggleTheme('light')
   })
 
+  // 监听isDark的变化
+  watch(preferredLanguages, () => {
+    toggleLocale(preferredLanguages.value[0])
+  })
+
   const toggleCollapsed = (collapsed: boolean) => {
     layoutSetting.collapsed = collapsed
   }
@@ -118,6 +126,8 @@ export const useAppStore = defineStore('app', () => {
   return {
     layoutSetting,
     theme: themeConfig,
+    locale,
+    toggleLocale,
     toggleTheme,
     toggleCollapsed,
     toggleDrawerVisible,

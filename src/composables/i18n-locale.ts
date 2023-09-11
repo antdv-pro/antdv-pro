@@ -1,20 +1,27 @@
 import dayjs from 'dayjs'
-import i18n, { loadLanguageAsync } from '~@/locales'
+import { i18n, loadLanguageAsync } from '~@/locales'
 import 'dayjs/locale/zh-cn'
 import router from '~@/router'
 import { useMetaTitle } from '~/composables/meta-title'
 
+const LOCALE_KEY = 'locale'
+
+export const preferredLanguages = usePreferredLanguages()
+
+export const lsLocaleState = useStorage(LOCALE_KEY, preferredLanguages.value[0])
+
 export const useI18nLocale = createSharedComposable(() => {
   // 加载多语言的loading状态
   const loading = ref(false)
+  const localeStore = useAppStore()
   // 多语言的信息
   const locale = computed<string>(() => {
-    return unref(i18n.global.locale)
+    return unref(i18n.global.locale) as string
   })
 
   // 获取antd的多语言
   const antd = computed(() => {
-    return i18n.global.getLocaleMessage(locale.value)?.antd || undefined
+    return (i18n.global.getLocaleMessage(unref(locale)) as any)?.antd || undefined
   })
 
   // 切换多语言
@@ -23,13 +30,13 @@ export const useI18nLocale = createSharedComposable(() => {
     loading.value = true
     try {
       // 加载多语言
+      localeStore.toggleLocale(locale)
       await loadLanguageAsync(locale)
       // 判断是否存在兼容模式
       if (i18n.mode === 'legacy')
         i18n.global.locale = locale as any
       else
-        i18n.global.locale.value = locale as any
-
+        (i18n.global.locale as any).value = locale as any
       loading.value = false
     }
     catch (e) {
@@ -47,9 +54,9 @@ export const useI18nLocale = createSharedComposable(() => {
 
   // 切换多语言功能
   const t = (key: string, defaultMessage?: string) => {
-    const message = i18n.global.t(key)
+    const message = (i18n.global as any).t(key)
     if (message !== key)
-      return i18n.global.t(key)
+      return (i18n.global as any).t(key)
     else
       return defaultMessage ?? key
   }
