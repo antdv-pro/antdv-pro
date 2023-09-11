@@ -330,9 +330,9 @@ export default [
         },
       },
       {
-        path: '/list/consult-table',
+        path: '/list/table-list',
         name: 'ConsultTable',
-        component: () => import('~/pages/list/consult-table.vue'),
+        component: () => import('~/pages/list/table-list.vue'),
         meta: {
           title: '查询表格',
           locale: 'menu.list.consult-table',

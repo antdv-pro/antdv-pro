@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { DownOutlined, UpOutlined } from '@ant-design/icons-vue'
 import type { PaginationProps } from 'ant-design-vue'
-import type { ConsultTableModel, ConsultTableParams } from '~@/api/list/consult-table'
-import { deleteApi, getListApi } from '~@/api/list/consult-table'
+import type { ConsultTableModel, ConsultTableParams } from '~@/api/list/table-list'
+import { deleteApi, getListApi } from '~@/api/list/table-list'
 
 const statusMap = {
   O: '关闭',
