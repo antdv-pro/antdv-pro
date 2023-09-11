@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { HeatmapLayer, Mapbox, PointLayer, Scene } from '@antv/l7'
-
 onMounted(() => {
   const scene = new Scene({
     id: 'map',
@@ -9,6 +8,9 @@ onMounted(() => {
         position: 'relative',
         width: '100%',
         height: '452px',
+        version: 8,
+        sources: {},
+        layers: [],
       },
       center: [110.19382669582967, 50.258134],
       pitch: 0,
