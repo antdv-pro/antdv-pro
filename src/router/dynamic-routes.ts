@@ -26,9 +26,25 @@ export default [
       {
         path: '/dashboard/analysis',
         name: 'DashboardAnalysis',
-        component: () => import('~/pages/dashboard/analysis.vue'),
+        component: () => import('~/pages/dashboard/analysis/index.vue'),
         meta: {
           title: '分析页',
+        },
+      },
+      {
+        path: '/dashboard/monitor',
+        name: 'DashboardMonitor',
+        component: () => import('~/pages/dashboard/monitor/index.vue'),
+        meta: {
+          title: '监控页',
+        },
+      },
+      {
+        path: '/dashboard/workplace',
+        name: 'DashboardWorkplace',
+        component: () => import('~/pages/dashboard/workplace/index.vue'),
+        meta: {
+          title: '监控页',
         },
       },
     ],
