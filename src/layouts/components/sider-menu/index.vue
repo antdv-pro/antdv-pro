@@ -69,7 +69,7 @@ const showLogo = computed(() => {
         <h1 v-if="!collapsed || isMobile">{{ title }}</h1>
       </a>
     </div>
-    <div class="flex-1 of-x-hidden of-y-auto">
+    <div class="flex-1 of-x-hidden of-y-auto scrollbar">
       <Menu />
     </div>
     <div
