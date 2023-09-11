@@ -6,13 +6,14 @@ import { createI18n } from 'vue-i18n'
 export let i18n: ReturnType<typeof createI18n>
 
 async function createI18nOptions(): Promise<I18nOptions> {
-  const localeStore = useLocaleStore()
-  const { locale } = storeToRefs(localeStore)
+  const appStore = useAppStore()
+  const { locale } = storeToRefs(appStore)
+  // 扩展可从服务器端获取语言翻译文件
   const defaultLocal = await import(`./lang/${locale.value}.ts`)
   return {
     legacy: false,
     locale: locale.value,
-    fallbackLocale: locale.value,
+    fallbackLocale: 'zh-CN',
     messages: {
       [locale.value]: defaultLocal.default,
     },
