@@ -14,11 +14,9 @@ const props = defineProps({
   },
   total: {
     type: Number,
-    default: undefined,
   },
   contentHeight: {
     type: Number,
-    default: undefined,
   },
 })
 </script>
@@ -79,7 +77,7 @@ const props = defineProps({
   }
   .meta {
     height: 22px;
-    color: rgba(0,0,0,.45);
+    // color: rgba(0,0,0,.45);
     font-size: 14px;
     line-height: 22px;
   }
@@ -95,7 +93,7 @@ const props = defineProps({
     margin-top: 4px;
     margin-bottom: 0;
     overflow: hidden;
-    color: rgba(0,0,0,.85);
+    // color: rgba(0,0,0,.85);
     font-size: 30px;
     line-height: 38px;
     white-space: nowrap;
@@ -116,7 +114,7 @@ const props = defineProps({
   .footer {
     margin-top: 8px;
     padding-top: 9px;
-    border-top: 1px solid #f0f0f0;
+    border-top: 1px solid var(--pro-ant-color-border);
     & > * {
       position: relative;
     }

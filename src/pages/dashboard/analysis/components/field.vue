@@ -31,7 +31,7 @@ defineProps({
   }
   .number {
     margin-left: 8px;
-    color: rgba(0,0,0,.85);
+    // color: rgba(0,0,0,.85);
   }
 }
 </style>

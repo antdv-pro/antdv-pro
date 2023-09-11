@@ -326,7 +326,7 @@ onMounted(() => {
             </router-link>
           </template>
           <a-card-grid v-for="item in projectNotice" :key="item.id" class="projectGrid">
-            <a-card :body-style="{ padding: 0 }" :bordered="false">
+            <a-card :body-style="{ padding: 0 }" style="box-shadow: none" :bordered="false">
               <a-card-meta
                 :description="item.description"
               >
@@ -343,7 +343,7 @@ onMounted(() => {
                 <router-link :to="item.memberLink">
                   {{ item.member || '' }}
                 </router-link>
-                <span class="datetime" :title="item.updatedAt">
+                <span class="datetime" ml-2 :title="item.updatedAt">
                   {{ item.updatedAt }}
                 </span>
               </div>
@@ -479,11 +479,11 @@ onMounted(() => {
     top: 4px;
     flex: 1 1 auto;
     margin-left: 24px;
-    color: gba(0,0,0,.45);
+    color: var(--pro-ant-color-text-tertiary);
     line-height: 22px;
     .contentTitle {
       margin-bottom: 12px;
-      color: gba(0,0,0,.85);
+      color:var(--pro-ant-color-text);
       font-weight: 500;
       font-size: 20px;
       line-height: 28px;
@@ -502,17 +502,17 @@ onMounted(() => {
     padding: 0 32px;
     > p:first-child {
       margin-bottom: 4px;
-      color: rgba(0,0,0,.45);
+      color: var(--pro-ant-color-text-tertiary);
       font-size: 14px;
       line-height: 22px;
     }
     > p {
       margin: 0;
-      color: gba(0,0,0,.85);
+      color:var(--pro-ant-color-text);
       font-size: 30px;
       line-height: 38px;
       > span {
-        color: rgba(0,0,0,.45);
+        color: var(--pro-ant-color-text-tertiary);
         font-size: 20px;
       }
     }
@@ -522,7 +522,6 @@ onMounted(() => {
       right: 0;
       width: 1px;
       height: 40px;
-      //background-color: @border-color-split;
       content: '';
     }
     &:last-child {
@@ -558,7 +557,7 @@ onMounted(() => {
   :deep(.ant-card-meta-description) {
     height: 44px;
     overflow: hidden;
-    color: rgba(0,0,0,.45);
+    color: var(--pro-ant-color-text-tertiary);
     line-height: 22px;
   }
   .cardTitle {
@@ -567,12 +566,12 @@ onMounted(() => {
       display: inline-block;
       height: 24px;
       margin-left: 12px;
-      color: rgba(0,0,0,.85);
+      color:var(--pro-ant-color-text);
       font-size: 14px;
       line-height: 24px;
       vertical-align: top;
       &:hover {
-        color: #1890ff;
+        color: var(--pro-ant-color-primary-hover);
       }
     }
   }
@@ -590,22 +589,22 @@ onMounted(() => {
     a {
       display: inline-block;
       flex: 1 1 0;
-      color: rgba(0,0,0,.45);
+      color: var(--pro-ant-color-text-tertiary);
       .textOverflow();
       &:hover {
-        color: #1890ff;
+        color: var(--pro-ant-color-primary-hover);
       }
     }
     .datetime {
       flex: 0 0 auto;
       float: right;
-      color: rgba(0,0,0,.25);
+      color: var(--pro-ant-color-text-quaternary);
     }
   }
 }
 
 .datetime {
-  color: rgba(0,0,0,.25);
+  color: var(--pro-ant-color-text-quaternary);
 }
 
 @media screen and (max-width: 1200px) and (min-width: 992px) {

@@ -3,23 +3,18 @@ import { CaretDownOutlined, CaretUpOutlined } from '@ant-design/icons-vue'
 defineProps({
   gap: {
     type: Number,
-    default: undefined,
   },
   subTotal: {
     type: Number,
-    default: undefined,
   },
   total: {
-    type: Number,
-    default: undefined,
+    type: [Number, String],
   },
   status: {
     type: String,
-    default: undefined,
   },
   title: {
     type: String,
-    default: undefined,
   },
 })
 </script>
@@ -35,7 +30,7 @@ defineProps({
     </div>
     <div class="numberInfoValue" :style="gap ? { marginTop: gap } : {}">
       <span>
-        {{ total.toLocaleString() }}
+        {{ total?.toLocaleString() }}
       </span>
 
       <span v-if="status || subTotal" class="subTotal">
@@ -58,7 +53,7 @@ defineProps({
   .numberInfoSubTitle {
     height: 22px;
     overflow: hidden;
-    color: rgba(0,0,0,.45);
+    // color: rgba(0,0,0,.45);
     font-size: 14px;
     line-height: 22px;
     white-space: nowrap;
@@ -76,13 +71,13 @@ defineProps({
       display: inline-block;
       height: 32px;
       margin-right: 32px;
-      color: rgba(0,0,0,.85);
+      // color: rgba(0,0,0,.85);
       font-size: 24px;
       line-height: 32px;
     }
     .subTotal {
       margin-right: 0;
-      color: rgba(0,0,0,.45);
+      // color: rgba(0,0,0,.45);
       font-size: 16px;
       vertical-align: top;
       .anticon {
