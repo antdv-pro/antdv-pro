@@ -260,8 +260,9 @@ const radarData = [
     value: 7,
   },
 ]
+let radar: Radar
 onMounted(() => {
-  new Radar(radarContainer.value, {
+  radar = new Radar(radarContainer.value, {
     data: radarData,
     xField: 'label',
     yField: 'value',
@@ -273,7 +274,12 @@ onMounted(() => {
       layout: 'horizontal',
       position: 'bottom',
     },
-  }).render()
+  })
+  radar.render()
+})
+
+onBeforeUnmount(() => {
+  radar?.destroy?.()
 })
 </script>
 

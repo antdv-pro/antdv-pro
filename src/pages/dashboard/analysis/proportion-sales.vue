@@ -17,8 +17,10 @@ const handleChangeSalesType = (e: any) => {
   salesType.value = e.target.value
 }
 
+const pies = shallowRef<Pie[]>([])
+
 const renderPie = (container: any, data: any) => {
-  new Pie(container, {
+  const pie = new Pie(container, {
     appendPadding: 10,
     data,
     angleField: 'y',
@@ -38,7 +40,9 @@ const renderPie = (container: any, data: any) => {
         content: '销售额',
       },
     },
-  }).render()
+  })
+  pie.render()
+  pies.value.push(pie)
 }
 
 const salesTypeData = [
@@ -120,6 +124,13 @@ onMounted(() => {
   renderPie(pieContainer1.value, salesTypeData)
   renderPie(pieContainer2.value, salesTypeDataOnline)
   renderPie(pieContainer3.value, salesTypeDataOffline)
+})
+
+onUnmounted(() => {
+  pies.value.forEach((pie) => {
+    pie?.destroy?.()
+  })
+  pies.value = []
 })
 </script>
 

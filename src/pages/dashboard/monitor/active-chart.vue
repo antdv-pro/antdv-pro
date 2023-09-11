@@ -10,7 +10,7 @@ const activeData = ref<activeDataItemType[]>([])
 
 const tinyAreaData = ref<number[]>([])
 
-let tinyArea: any
+let tinyArea: TinyArea | undefined
 let requestRef: any
 let timer: any
 
@@ -54,10 +54,13 @@ onMounted(() => {
   getActiveData()
 })
 
-onUnmounted(() => {
+onBeforeUnmount(() => {
   clearTimeout(timer)
   if (requestRef)
     cancelAnimationFrame(requestRef)
+
+  tinyArea?.destroy()
+  tinyArea = undefined
 })
 </script>
 

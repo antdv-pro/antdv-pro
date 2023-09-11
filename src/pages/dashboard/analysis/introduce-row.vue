@@ -30,8 +30,12 @@ const progressContainer = ref()
 
 const visitData = [7, 5, 4, 2, 4, 7, 5, 6, 5, 9, 6, 3, 1, 5, 3, 6, 5]
 
+const tinyArea = shallowRef()
+const tinyColumn = shallowRef()
+const progress = shallowRef()
+
 onMounted(() => {
-  new TinyArea(tinyAreaContainer.value, {
+  tinyArea.value = new TinyArea(tinyAreaContainer.value, {
     height: 46,
     data: visitData,
     smooth: true,
@@ -42,21 +46,34 @@ onMounted(() => {
     line: {
       color: '#975FE4',
     },
-  }).render()
+  })
 
-  new TinyColumn(tinyColumnContainer.value, {
+  tinyArea.value?.render()
+
+  tinyColumn.value = new TinyColumn(tinyColumnContainer.value, {
     height: 46,
     autoFit: false,
     data: visitData,
-  }).render()
+  })
+  tinyColumn.value?.render()
 
-  new Progress(progressContainer.value, {
+  progress.value = new Progress(progressContainer.value, {
     height: 46,
     autoFit: false,
     percent: 0.78,
     barWidthRatio: 0.2,
     color: '#13C2C2',
-  }).render()
+  })
+  progress.value?.render()
+})
+
+onBeforeUnmount(() => {
+  tinyArea.value?.destroy()
+  tinyArea.value = undefined
+  tinyColumn.value?.destroy()
+  tinyColumn.value = undefined
+  progress.value?.destroy()
+  progress.value = undefined
 })
 </script>
 

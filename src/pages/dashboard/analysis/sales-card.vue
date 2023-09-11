@@ -142,8 +142,9 @@ const changTab = (activeKey: Key) => {
   }
 }
 
+const column = shallowRef<Column>()
 onMounted(() => {
-  new Column(columnPlotContainer1.value, {
+  column.value = new Column(columnPlotContainer1.value, {
     data: salesData,
     xField: 'x',
     yField: 'y',
@@ -159,7 +160,13 @@ onMounted(() => {
         alias: '销售量',
       },
     },
-  }).render()
+  })
+  column.value?.render()
+})
+
+onBeforeUnmount(() => {
+  column.value?.destroy()
+  column.value = undefined
 })
 </script>
 
