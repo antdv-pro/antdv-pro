@@ -16,7 +16,7 @@ export const useI18nLocale = createSharedComposable(() => {
   const localeStore = useAppStore()
   // 多语言的信息
   const locale = computed<string>(() => {
-    return unref(i18n.global.locale) as string
+    return unref(i18n.global.locale)
   })
 
   // 获取antd的多语言
