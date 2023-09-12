@@ -28,7 +28,7 @@ const getActiveData = () => {
     })
     tinyAreaData.value.push(Math.floor(Math.random() * 200) + i * 50)
   }
-  tinyArea.changeData(tinyAreaData.value)
+  tinyArea?.changeData(tinyAreaData.value)
 }
 
 const loopData = () => {
