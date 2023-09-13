@@ -19,8 +19,9 @@ export const useLayoutMenu = defineStore('layout-menu', () => {
   const openKeys = ref<string[]>([])
   const changeMenu = () => {
     const route = router.currentRoute.value
-    if (menuDataMap.has(route.path)) {
-      const menu = menuDataMap.get(route.path)
+    const path = route.meta?.originPath ?? route.path
+    if (menuDataMap.has(path)) {
+      const menu = menuDataMap.get(path)
       // openKeys.value = []
       selectedKeys.value = []
       if (menu) {

@@ -21,5 +21,6 @@ declare module 'vue-router'{
     locale?: string
     parentName?: string
     parentComps?: RouteRecordRaw['component'][]
+    originPath?: string
   }
 }

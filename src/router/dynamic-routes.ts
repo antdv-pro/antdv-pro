@@ -417,6 +417,17 @@ export default [
           locale: 'menu.account.settings',
         },
       },
+      {
+        path: '/account/settings/:id',
+        name: 'AccountSettings1',
+        component: () => import('~/pages/account/settings.vue'),
+        meta: {
+          title: '个人设置1',
+          locale: 'menu.account.settings',
+          hideInMenu: true,
+          parentKeys: ['/account/settings'],
+        },
+      },
     ],
   },
 ] as RouteRecordRaw[]

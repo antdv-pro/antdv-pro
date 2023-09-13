@@ -167,7 +167,7 @@ const flatRoutes = (routes: RouteRecordRaw[], parentName?: string, parentComps: 
       currentRoute.meta.parentName = parentName
     if (parentComponents.length > 0)
       currentRoute.meta.parentComps = parentComponents
-
+    currentRoute.meta.originPath = currentRoute.path
     flatRouteData.push(currentRoute)
     if (route.children && route.children.length) {
       const comp = checkComponent(route.component)
