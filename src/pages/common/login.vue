@@ -173,6 +173,7 @@ onBeforeUnmount(() => {
                 <a-form-item name="username" :rules="[{ required: true, message: t('pages.login.username.required') }]">
                   <a-input
                     v-model:value="loginModel.username" allow-clear
+                    autocomplete="off"
                     :placeholder="t('pages.login.username.placeholder')" size="large" @press-enter="submit"
                   >
                     <template #prefix>
