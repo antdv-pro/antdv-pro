@@ -73,7 +73,7 @@ onMounted(() => {
     })
 
   pointLayerText = new PointLayer({
-    autoFit: false,
+    autoFit: true,
   })
   pointLayerText.source(data)
     .shape('Short_Name_ZH', 'text')

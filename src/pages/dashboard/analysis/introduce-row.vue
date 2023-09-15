@@ -39,7 +39,7 @@ onMounted(() => {
     height: 46,
     data: visitData,
     smooth: true,
-    autoFit: false,
+    autoFit: true,
     areaStyle: {
       fill: 'l(270) 0:#ffffff 0.5:#d4bcf2 1:#975FE4',
     },
@@ -52,14 +52,14 @@ onMounted(() => {
 
   tinyColumn.value = new TinyColumn(tinyColumnContainer.value, {
     height: 46,
-    autoFit: false,
+    autoFit: true,
     data: visitData,
   })
   tinyColumn.value?.render()
 
   progress.value = new Progress(progressContainer.value, {
     height: 46,
-    autoFit: false,
+    autoFit: true,
     percent: 0.78,
     barWidthRatio: 0.2,
     color: '#13C2C2',

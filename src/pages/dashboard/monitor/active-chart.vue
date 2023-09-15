@@ -47,7 +47,7 @@ onMounted(() => {
     height: 84,
     data: tinyAreaData.value,
     smooth: true,
-    autoFit: false,
+    autoFit: true,
   })
   tinyArea.render()
   loopData()
