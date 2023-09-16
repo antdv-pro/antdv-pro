@@ -115,9 +115,9 @@ onBeforeUnmount(() => {
         <div
           class="flex-between h-15 px-4 mb-[2px]"
         >
-          <div>
+          <div class="flex-end">
             <span class="ant-pro-form-login-logo">
-              <img src="/logo.svg">
+              <img w-full h-full object-cover src="/logo.svg">
             </span>
             <span class="ant-pro-form-login-title">
               Antdv Pro
@@ -302,11 +302,10 @@ onBeforeUnmount(() => {
 }
 
 .ant-pro-form-login-title {
-  position: relative;
-  top: 2px;
   color: var(--text-color);
   font-weight: 600;
-  font-size: 33px
+  font-size: 33px;
+  line-height: 1;
 }
 
 .ant-pro-form-login-logo {
