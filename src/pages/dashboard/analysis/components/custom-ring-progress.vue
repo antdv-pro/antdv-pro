@@ -12,7 +12,7 @@ onMounted(() => {
   new RingProgress(container.value, {
     height: 60,
     width: 60,
-    autoFit: false,
+    autoFit: true,
     percent: props.percent,
     innerRadius: 0.7,
     color: ['#fab120', '#E8EDF3'],

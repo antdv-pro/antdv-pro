@@ -548,7 +548,7 @@ onMounted(() => {
 
   new RingProgress(ringContainer1.value, {
     height: 128,
-    autoFit: false,
+    autoFit: true,
     percent: 0.28,
     innerRadius: 0.8,
     color: ['#fab120', '#E8EDF3'],
@@ -556,7 +556,7 @@ onMounted(() => {
 
   new RingProgress(ringContainer2.value, {
     height: 128,
-    autoFit: false,
+    autoFit: true,
     percent: 0.22,
     innerRadius: 0.8,
     color: ['#5DDECF', '#E8EDF3'],
@@ -564,7 +564,7 @@ onMounted(() => {
 
   new RingProgress(ringContainer3.value, {
     height: 128,
-    autoFit: false,
+    autoFit: true,
     percent: 0.32,
     innerRadius: 0.8,
     color: ['#2FC25B', '#E8EDF3'],

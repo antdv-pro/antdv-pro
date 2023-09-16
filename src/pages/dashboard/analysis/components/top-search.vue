@@ -401,14 +401,14 @@ onMounted(() => {
     height: 45,
     data: visitData2,
     smooth: true,
-    autoFit: false,
+    autoFit: true,
   }).render()
 
   new TinyArea(tinyAreaContainer2.value, {
     height: 45,
     data: visitData2,
     smooth: true,
-    autoFit: false,
+    autoFit: true,
   }).render()
 })
 </script>
