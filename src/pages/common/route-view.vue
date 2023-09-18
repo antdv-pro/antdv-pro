@@ -1,8 +1,12 @@
 <script setup lang="ts">
-import { CompConsumer } from '@/layouts/basic-layout/comp-consumer'
+import type { VNode } from 'vue'
 import { ParentCompConsumer } from '@/layouts/basic-layout/parent-comp-consumer'
+import { useCompConsumer } from '~/composables/comp-consumer.ts'
 const appStore = useAppStore()
 const { layoutSetting } = storeToRefs(appStore)
+const multiTabStore = useMultiTab()
+const { cacheList } = storeToRefs(multiTabStore)
+const { getComp } = useCompConsumer()
 </script>
 
 <template>
@@ -10,7 +14,9 @@ const { layoutSetting } = storeToRefs(appStore)
     <RouterView>
       <template #default="{ Component, route }">
         <Transition appear :name="layoutSetting.animationName" mode="out-in">
-          <CompConsumer v-if="layoutSetting.keepAlive" :component="Component" />
+          <KeepAlive v-if="layoutSetting.keepAlive" :include="cacheList">
+            <component :is="getComp(Component) as VNode" />
+          </KeepAlive>
           <component :is="Component" v-else :key="route.fullPath" />
         </Transition>
       </template>
