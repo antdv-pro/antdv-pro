@@ -14,7 +14,7 @@ const { getComp } = useCompConsumer()
       <template #default="{ Component, route }">
         <Transition appear :name="layoutSetting.animationName" mode="out-in">
           <KeepAlive v-if="layoutSetting.keepAlive" :include="cacheList">
-            <component :is="getComp(Component) as VNode" />
+            <component :is="getComp(Component) as VNode" :key="route.fullPath" />
           </KeepAlive>
           <component :is="Component" v-else :key="route.fullPath" />
         </Transition>
