@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { VNode } from 'vue'
 import { ParentCompConsumer } from '@/layouts/basic-layout/parent-comp-consumer'
-import { useCompConsumer } from '~/composables/comp-consumer.ts'
 const appStore = useAppStore()
 const { layoutSetting } = storeToRefs(appStore)
 const multiTabStore = useMultiTab()
