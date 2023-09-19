@@ -4,7 +4,7 @@ const compMap = new Map<string, VNode>()
 
 export const useCompConsumer = () => {
   const route = useRoute()
-  const getComp = (component: VNode) => {
+  const getComp = (component: VNode): VNode => {
     // 判断当前是否包含name，如果不包含name，那就直接处理掉name
     if (!route.name)
       return component
@@ -14,7 +14,7 @@ export const useCompConsumer = () => {
     const compName = component?.type?.name
     const routeName = route.name as string
     if (compMap.has(routeName))
-      return compMap.get(routeName)
+      return compMap.get(routeName) as VNode
 
     // 不存在的情况下，就需要进行组织
     const node = component
