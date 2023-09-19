@@ -22,22 +22,22 @@ const currentItem = computed(() => {
   return {} as any
 })
 const { contentWidth, hasPageContainer } = useLayoutState()
+const switchPage = async (bool: boolean) => {
+  await delayTimer(300)
+  hasPageContainer.value = bool
+}
 
 onMounted(async () => {
-  await delayTimer(300)
-  hasPageContainer.value = true
+  await switchPage(true)
 })
 onUnmounted(async () => {
-  await delayTimer(300)
-  hasPageContainer.value = false
+  await switchPage(false)
 })
 onActivated(async () => {
-  await delayTimer(300)
-  hasPageContainer.value = true
+  await switchPage(true)
 })
 onDeactivated(async () => {
-  await delayTimer(300)
-  hasPageContainer.value = false
+  await switchPage(false)
 })
 const contentCls = computed(() => {
   const cls: string[] = [
