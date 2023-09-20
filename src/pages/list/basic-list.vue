@@ -4,6 +4,8 @@ import { ExclamationCircleOutlined } from '@ant-design/icons-vue'
 import { createVNode } from 'vue'
 import dayjs from 'dayjs'
 import { getListApi } from '~@/api/list/basic-list'
+import VirtualList from '@/components/virtual-list/index.vue'
+// import VirtualListItem from '@/components/virtual-list-item/index.vue'
 
 const workData = ref([
   {
@@ -44,6 +46,7 @@ async function getList() {
   const data = await getListApi()
   dataSource.value = data.data ?? []
   pagination.value.total = data.data?.length ?? 0
+  console.log(dataSource.value)
 }
 
 /*
@@ -223,7 +226,7 @@ onMounted(() => {
         </a-card>
       </template>
       <!-- 列表主体 -->
-      <a-list item-layout="horizontal" :data-source="dataSource" :pagination="pagination">
+      <VirtualList v-if="dataSource.length !== 0" :data-source="dataSource">
         <template #renderItem="{ item }">
           <a-list-item>
             <a-list-item-meta
@@ -252,7 +255,7 @@ onMounted(() => {
               </div>
             </template>
             <template #extra>
-              <div>
+              <div class="a-extra">
                 <a key="list-loadmore-edit" class="m-4" @click="openModal(item)">
                   编辑
                 </a>
@@ -275,7 +278,7 @@ onMounted(() => {
             </template>
           </a-list-item>
         </template>
-      </a-list>
+      </VirtualList>
     </a-card>
 
     <!-- 底部添加按钮 -->
@@ -328,3 +331,11 @@ onMounted(() => {
     </a-modal>
   </page-container>
 </template>
+
+<style>
+.a-extra {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+</style>
