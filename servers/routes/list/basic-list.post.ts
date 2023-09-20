@@ -62,7 +62,7 @@ export default eventHandler(async (_event) => {
   const data = []
 
   // 数据复制
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 1000; i++) {
     const arr = cloneDeep(dataList)
     data.push(...arr)
   }
