@@ -105,7 +105,7 @@ const onReset = async () => {
  *
  */
 const handleDelete = async (record: ConsultTableModel) => {
-  const close = message.loading('删除中...')
+  const close = message.loading('删除中......')
   try {
     const res = await deleteApi(record!.id)
     if (res.code === 200)
