@@ -5,6 +5,10 @@ import TopSearch from '~/pages/dashboard/analysis/components/top-search.vue'
 import ProportionSales from '~/pages/dashboard/analysis/proportion-sales.vue'
 import OfflineData from '~/pages/dashboard/analysis/offline-data.vue'
 
+defineOptions({
+  name: 'Analysis',
+})
+
 const loading = ref(false)
 
 const visitData = ref([])

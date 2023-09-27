@@ -3,6 +3,10 @@ import { Gauge, Liquid, RingProgress, WordCloud } from '@antv/g2plot'
 import ActiveChart from '~/pages/dashboard/monitor/active-chart.vue'
 import CustomMap from '~/pages/dashboard/monitor/custom-map.vue'
 
+defineOptions({
+  name: 'Monitor',
+})
+
 const convertNumber = (number: number) => {
   return number.toLocaleString()
 }

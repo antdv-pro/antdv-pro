@@ -2,6 +2,10 @@
 import RepositoryForm from './repository-form.vue'
 import TaskForm from './task-form.vue'
 
+defineOptions({
+  name: 'AdvancedForm',
+})
+
 const repositoryFormRef = ref()
 const taskFormRef = ref()
 async function handleSubmit() {
