@@ -2,6 +2,10 @@
 import { Radar } from '@antv/g2plot'
 import EditableLinkGroup from '~/pages/dashboard/workplace/editable-link-group.vue'
 
+defineOptions({
+  name: 'Workplace',
+})
+
 const currentUser = {
   avatar: 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png',
   name: '吴彦祖',

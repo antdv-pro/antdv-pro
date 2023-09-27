@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import type { FormInstance } from 'ant-design-vue'
 
+defineOptions({
+  name: 'BasicForm',
+})
+
 const formRef = ref<FormInstance>()
 async function handleSubmit() {
   try {
