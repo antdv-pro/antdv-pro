@@ -1,3 +1,4 @@
+import path from 'node:path'
 import type { PluginOption } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
@@ -5,6 +6,11 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import Unocss from 'unocss/vite'
 import AntdvResolver from 'antdv-component-resolver'
+
+import Icons from 'unplugin-icons/vite'
+import { FileSystemIconLoader } from 'unplugin-icons/loaders'
+import IconsResolver from 'unplugin-icons/resolver'
+
 import { viteBuildInfo } from './vite-build-info'
 
 export function createVitePlugins(env: Record<string, string>) {
@@ -12,23 +18,35 @@ export function createVitePlugins(env: Record<string, string>) {
     vue(),
     vueJsx(),
     AutoImport({
-      imports: [
-        'vue',
-        'vue-router',
-        'vue-i18n',
-        '@vueuse/core',
-        'pinia',
-      ],
+      imports: ['vue', 'vue-router', 'vue-i18n', '@vueuse/core', 'pinia'],
       dts: 'types/auto-imports.d.ts',
       dirs: ['src/stores', 'src/composables'],
     }),
     Components({
-      resolvers: [AntdvResolver()],
+      resolvers: [
+        AntdvResolver(),
+        IconsResolver({
+          enabledCollections: ['assets-svg', 'material-symbols'],
+        }),
+      ],
       dts: 'types/components.d.ts',
       dirs: ['src/components'],
     }),
     Unocss(),
     viteBuildInfo(env.VITE_APP_NAME),
+    Icons({
+      customCollections: {
+        'assets-svg': FileSystemIconLoader(
+          path.resolve('src', 'assets/svg'),
+          svg => svg.replace(/^<svg /, '<svg fill="currentColor" '),
+        ),
+      },
+      iconCustomizer(collection, icon, props) {
+        props.width = '4em'
+        props.height = '4em'
+        props.color = 'red'
+      },
+    }),
   ]
   return vitePluginList
 }

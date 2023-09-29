@@ -42,6 +42,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",
+    "@iconify-json/material-symbols": "^1.1.59",
     "@mistjs/eslint-config-vue": "^0.0.5",
     "@types/fs-extra": "^11.0.1",
     "@types/lodash": "^4.14.198",
@@ -72,6 +73,7 @@
     "unocss-preset-chinese": "^0.0.7",
     "unocss-preset-ease": "^0.0.3",
     "unplugin-auto-import": "^0.16.6",
+    "unplugin-icons": "^0.17.0",
     "unplugin-vue-components": "^0.25.2",
     "vite": "^4.4.9",
     "vue-tsc": "^1.8.10"

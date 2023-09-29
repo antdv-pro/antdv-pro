@@ -41,7 +41,6 @@ const menuData = [
     path: '/link',
     name: 'Link',
     locale: 'menu.link',
-
   },
   {
     id: 6,
@@ -331,6 +330,27 @@ const menuData = [
     locale: 'menu.form.basic-form',
   },
   {
+    id: 44,
+    parentId: null,
+    title: '功能页',
+    icon: 'CodeOutlined',
+    component: 'RouteView',
+    redirect: '/feat/icon',
+    path: '/feat',
+    name: 'Feat',
+    locale: 'menu.feat',
+  },
+  {
+    id: 45,
+    parentId: 44,
+    title: '图标',
+    component: '/feat/icon',
+    path: '/feat/icon',
+    name: 'FeatIcon',
+    keepAlive: true,
+    locale: 'menu.feat.icon',
+  },
+  {
     id: 36,
     parentId: null,
     title: '个人页',
@@ -420,7 +440,6 @@ export const accessMenuData = [
     component: '/access/admin',
     locale: 'menu.access.admin',
   },
-
 ]
 
 export default eventHandler((event) => {
