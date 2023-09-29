@@ -338,7 +338,7 @@ const menuData = [
     redirect: '/feat/icon',
     path: '/feat',
     name: 'Feat',
-    locale: 'menu.feat',
+    locale: '功能页',
   },
   {
     id: 45,
@@ -348,7 +348,7 @@ const menuData = [
     path: '/feat/icon',
     name: 'FeatIcon',
     keepAlive: true,
-    locale: 'menu.feat.icon',
+    locale: '图标',
   },
   {
     id: 36,
