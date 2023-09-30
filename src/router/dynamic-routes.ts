@@ -106,7 +106,8 @@ export default [
           title: 'AntDesign',
           url: 'https://ant.design/',
         },
-      }, {
+      },
+      {
         path: '/link/antdv',
         name: 'LinkAntdv',
         component: basicRouteMap.Iframe,
@@ -176,6 +177,28 @@ export default [
             },
           },
         ],
+      },
+    ],
+  },
+  {
+    path: '/feat',
+    name: 'Feat',
+    redirect: '/feat/icon',
+    meta: {
+      title: '功能页',
+      icon: 'CodeOutlined',
+      locale: '功能页',
+    },
+    component: basicRouteMap.RouteView,
+    children: [
+      {
+        path: '/feat/icon',
+        name: 'FeatIcon',
+        component: () => import('~/pages/feat/icon/index.vue'),
+        meta: {
+          title: '图标',
+          locale: '图标',
+        },
       },
     ],
   },
@@ -378,7 +401,8 @@ export default [
           {
             path: '/list/search-list/applications',
             name: 'SearchListApplications',
-            component: () => import('~/pages/list/search-list/applications.vue'),
+            component: () =>
+              import('~/pages/list/search-list/applications.vue'),
             meta: {
               title: '搜索列表（应用）',
               locale: 'menu.list.search-list.applications',

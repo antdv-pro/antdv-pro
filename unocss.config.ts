@@ -1,3 +1,4 @@
+import path from 'node:path'
 import {
   defineConfig,
   presetAttributify,
@@ -10,6 +11,7 @@ import {
 } from 'unocss'
 import presetChinese from 'unocss-preset-chinese'
 import presetEase from 'unocss-preset-ease'
+import { FileSystemIconLoader } from '@iconify/utils/lib/loader/node-loaders'
 import antdUnoTheme from './themes/antd-uno-theme.json'
 
 export default defineConfig({
@@ -26,6 +28,11 @@ export default defineConfig({
     presetIcons({
       scale: 1.2,
       warn: true,
+      collections: {
+        custom: FileSystemIconLoader(
+          path.resolve(__dirname, 'src/assets/icons'),
+        ),
+      },
     }),
     presetWebFonts({
       fonts: {
