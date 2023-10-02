@@ -50,7 +50,6 @@
     "@types/lodash-es": "^4.17.9",
     "@types/node": "^18.17.15",
     "@types/treeify": "^1.0.0",
-    "@unocss/preset-icons": "^0.56.4",
     "@vitejs/plugin-vue": "^4.3.4",
     "@vitejs/plugin-vue-jsx": "^3.0.2",
     "antdv-component-resolver": "^1.0.4",

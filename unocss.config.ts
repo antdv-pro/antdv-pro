@@ -12,10 +12,16 @@ import {
 import presetChinese from 'unocss-preset-chinese'
 import presetEase from 'unocss-preset-ease'
 import { FileSystemIconLoader } from '@iconify/utils/lib/loader/node-loaders'
+import { icons as vscodeIcons } from '@iconify-json/vscode-icons'
 import antdUnoTheme from './themes/antd-uno-theme.json'
 
+// 由于 UnoCSS 在构建时使用静态提取，在编译时我们不可能知道所有实用程序的组合 https://unocss.dev/guide/extracting#safelist
+const safeVscodeIconsList = Object.keys(vscodeIcons.icons).map(
+  icon => `i-${vscodeIcons.prefix}:${icon}`,
+)
+
 export default defineConfig({
-  safelist: [],
+  safelist: [...safeVscodeIconsList],
   theme: {
     ...antdUnoTheme,
   },
