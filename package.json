@@ -6,11 +6,11 @@
   "author": "aibayanyu <aibayanyu@qq.com>",
   "repository": "antdv-pro/antdv-pro",
   "scripts": {
-    "dev:admin": "vite",
+    "dev:admin": "cross-env NODE_OPTIONS=--max-old-space-size=8192 vite",
     "dev": "run-p dev:admin dev:mockServer",
     "dev:mock": "pnpm -F servers dev",
     "dev:mockServer": "esno ./scripts/mock-server.ts",
-    "build": "vue-tsc && vite build",
+    "build": "vue-tsc && cross-env NODE_OPTIONS=--max-old-space-size=8192 vite build",
     "preview": "vite preview",
     "lint": "eslint src --fix",
     "typecheck": "vue-tsc --noEmit",
