@@ -23,7 +23,7 @@
     "toJS": "esno scripts/to-js"
   },
   "dependencies": {
-    "@ant-design/icons-vue": "^7.0.0",
+    "@ant-design/icons-vue": "^7.0.1",
     "@antv/g2plot": "^2.4.31",
     "@antv/l7": "^2.17.12",
     "@ctrl/tinycolor": "^3.6.1",

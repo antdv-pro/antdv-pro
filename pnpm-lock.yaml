@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@ant-design/icons-vue':
-        specifier: ^7.0.0
-        version: 7.0.0(vue@3.3.4)
+        specifier: ^7.0.1
+        version: 7.0.1(vue@3.3.4)
       '@antv/g2plot':
         specifier: ^2.4.31
         version: 2.4.31
@@ -198,8 +198,8 @@ packages:
     resolution: {integrity: sha512-4QBZg8ccyC6LPIRii7A0bZUk3+lEDCLnhB+FVsflGdcWPPmV+j3fire4AwwoqHV/BibgvBmR9ZIo4s867smv+g==}
     dev: false
 
-  /@ant-design/icons-vue@7.0.0(vue@3.3.4):
-    resolution: {integrity: sha512-VEb0r/Jqo2qi9olfBephYlyxbmhQVZ5+tJ3Zw5VaBd5h0wV1zdjGt5mJxSbRRs2mnnOWpsa1s4PeoLwNnkLV/w==}
+  /@ant-design/icons-vue@7.0.1(vue@3.3.4):
+    resolution: {integrity: sha512-eCqY2unfZK6Fe02AwFlDHLfoyEFreP6rBwAZMIJ1LugmfMiVgwWDYlp1YsRugaPtICYOabV1iWxXdP12u9U43Q==}
     peerDependencies:
       vue: '>=3.0.3'
     dependencies:
@@ -2973,7 +2973,7 @@ packages:
       vue: '>=3.2.0'
     dependencies:
       '@ant-design/colors': 6.0.0
-      '@ant-design/icons-vue': 7.0.0(vue@3.3.4)
+      '@ant-design/icons-vue': 7.0.1(vue@3.3.4)
       '@babel/runtime': 7.22.15
       '@ctrl/tinycolor': 3.6.1
       '@emotion/hash': 0.9.1
