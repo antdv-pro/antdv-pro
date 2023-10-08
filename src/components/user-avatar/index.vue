@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { LogoutOutlined, ProfileOutlined, UserOutlined } from '@ant-design/icons-vue'
+
 const message = useMessage()
 const userStore = useUserStore()
 const multiTabStore = useMultiTab()
 const layoutMenuStore = useLayoutMenu()
 const router = useRouter()
 const { avatar, nickname } = storeToRefs(userStore)
-const handleClick = async ({ key }: any) => {
+async function handleClick({ key }: any) {
   if (key === 'logout') {
     const hide = message.loading('退出登录...', 0)
     try {

@@ -1,4 +1,4 @@
-export const useLoadingCheck = () => {
+export function useLoadingCheck() {
   const loading = document.querySelector('body > #loading-app')
   if (loading) {
     const body = document.querySelector('body')

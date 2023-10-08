@@ -59,7 +59,7 @@ const list = computed(() => [
     disabledReason: '',
   },
 ])
-const handleChangeSetting = (key: string, value: any) => {
+function handleChangeSetting(key: string, value: any) {
   emit('changeSetting', key, value)
 }
 </script>

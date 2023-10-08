@@ -6,6 +6,6 @@ export interface UserInfo {
   roles?: (string | number)[]
 }
 
-export const getUserInfoApi = () => {
+export function getUserInfoApi() {
   return useGet<UserInfo>('/user/info')
 }

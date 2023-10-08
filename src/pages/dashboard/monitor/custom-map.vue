@@ -2,6 +2,7 @@
 import { HeatmapLayer, Mapbox, PointLayer, Scene } from '@antv/l7'
 import mapGrid from './map-grid.ts'
 import mapData from './map-data.ts'
+
 let scene: Scene
 let layer: HeatmapLayer
 let pointLayer: PointLayer
@@ -30,7 +31,8 @@ onMounted(() => {
 
   layer = new HeatmapLayer({})
   layer.source(
-    grid, {
+    grid,
+    {
       transforms: [
         {
           type: 'hexagon',
@@ -65,8 +67,8 @@ onMounted(() => {
       '#6baed6',
       '#4292c6',
       '#2171b5',
-      '#084594'],
-    )
+      '#084594',
+    ])
     .active({ color: '#0c2c84' })
     .style({
       opacity: 0.8,

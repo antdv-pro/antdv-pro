@@ -14,7 +14,7 @@ export interface LoginResultModel {
   token: string
 }
 
-export const loginApi = (params: LoginParams | LoginMobileParams) => {
+export function loginApi(params: LoginParams | LoginMobileParams) {
   return usePost<LoginResultModel, LoginParams | LoginMobileParams>('/login', params, {
     // 设置为false的时候不会携带token
     token: false,
@@ -25,6 +25,6 @@ export const loginApi = (params: LoginParams | LoginMobileParams) => {
   })
 }
 
-export const logoutApi = () => {
+export function logoutApi() {
   return useGet('/logout')
 }

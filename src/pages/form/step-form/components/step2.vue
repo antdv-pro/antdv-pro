@@ -9,13 +9,13 @@ const wrapperCol = { lg: { span: 19 }, sm: { span: 19 } }
 const formState = reactive({
   paymentPassword: '123456',
 })
-const nextStep = () => {
+function nextStep() {
   formRef.value?.validateFields().then(() => {
     emit('nextStep')
   })
 }
 
-const prevStep = () => {
+function prevStep() {
   emit('prevStep')
 }
 </script>

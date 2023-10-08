@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const router = useRouter()
-const back = () => {
+function back() {
   router.replace({
     path: '/',
   })

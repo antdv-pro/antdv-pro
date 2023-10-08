@@ -1,4 +1,3 @@
-
 import type { LoadingEnum } from '~#/loading-enum'
 import baseLoading from '@/components/base-loading/index.vue'
 
@@ -12,12 +11,7 @@ interface LoadingType {
 }
 /**
  * 全局loading配置
- * @param spin loading样式
- * @param minTime loading最短时间
- * @param modal loading遮罩是否开启
- * @param background loading背景
- * @param textColor loading文字颜色
- * @param color loading文字
+ * @param config
  */
 export function useLoading(config: LoadingType = {}) {
   const loadingConstructor = createApp(baseLoading, { ...config })
@@ -30,13 +24,15 @@ export function useLoading(config: LoadingType = {}) {
     if (!instance)
       instance = loadingConstructor.mount(document.createElement('div'))
 
-    if (!instance || !instance.$el) return
+    if (!instance || !instance.$el)
+      return
     target?.appendChild?.(instance.$el)
     startTime = performance.now()
   }
 
   const close = () => {
-    if (!instance || !instance.$el) return
+    if (!instance || !instance.$el)
+      return
     endTime = performance.now()
     if (endTime - startTime < minTime) {
       setTimeout(() => {

@@ -71,19 +71,19 @@ const state = reactive({
     },
   ],
 })
-const handleAdd = () => {
-  const key = state.data.length === 0 ? '1' : (parseInt(state.data[state.data.length - 1].key) + 1).toString()
+function handleAdd() {
+  const key = state.data.length === 0 ? '1' : (Number.parseInt(state.data[state.data.length - 1].key) + 1).toString()
   const newData = {
     key,
     name: `员工${key}`,
     // 如果小于10，前面补00，如001,如果小于100，大于10，前面补0，如010
-    workId: parseInt(key) < 10 ? `00${key}` : parseInt(key) < 100 ? `0${key}` : key,
+    workId: Number.parseInt(key) < 10 ? `00${key}` : Number.parseInt(key) < 100 ? `0${key}` : key,
     editable: true,
     department: ['行政部', 'IT部', '财务部'][Math.floor(Math.random() * 3)],
   }
   state.data.push(newData)
 }
-const remove = (key: string) => {
+function remove(key: string) {
   state.data = state.data.filter(item => item.key !== key)
 }
 </script>

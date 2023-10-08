@@ -7,20 +7,20 @@ export interface ListResultModel {
 
 export type ListResultParams = Partial<Omit<ListResultModel, 'id' | 'password'>>
 
-export const getListApi = async (params?: ListResultParams) => {
+export async function getListApi(params?: ListResultParams) {
   return usePost<ListResultModel[]>('/list', params)
 }
 
 export type CreateListParams = Partial<Omit<ListResultModel, 'id'>>
 
-export const createListApi = async (params: CreateListParams) => {
+export async function createListApi(params: CreateListParams) {
   return usePost('/list/create', params)
 }
 
-export const editListApi = async (params: ListResultModel) => {
+export async function editListApi(params: ListResultModel) {
   return usePut('/list', params)
 }
 
-export const delListApi = async (id: string | number) => {
+export async function delListApi(id: string | number) {
   return useDelete(`/list/${id}`)
 }

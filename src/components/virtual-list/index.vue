@@ -35,7 +35,8 @@ const Data = ref<any[]>()
 
 // 用来撑开容器高度
 const pillarHeight = computed(() => {
-  if (Data.value?.length) return props.itemHeight * Data.value?.length
+  if (Data.value?.length)
+    return props.itemHeight * Data.value?.length
 })
 
 const renderData = computed(() => {

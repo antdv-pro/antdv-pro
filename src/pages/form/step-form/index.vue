@@ -11,17 +11,17 @@ const state = reactive({
   form: null,
 })
 
-const nextStep = () => {
+function nextStep() {
   if (state.currentTab < 2)
     state.currentTab += 1
 }
 
-const prevStep = () => {
+function prevStep() {
   if (state.currentTab > 0)
     state.currentTab -= 1
 }
 
-const finish = () => {
+function finish() {
   state.currentTab = 0
 }
 </script>

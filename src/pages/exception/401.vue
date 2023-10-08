@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const router = useRouter()
-const login = () => {
+function login() {
   router.replace({
     path: '/login',
   })

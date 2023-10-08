@@ -1,7 +1,7 @@
 import { toArray } from '@v-c/utils'
 import type { AccessEnum } from '~@/utils/constant'
 
-export const useAccess = () => {
+export function useAccess() {
   const userStore = useUserStore()
   const roles = computed(() => userStore.roles)
   const hasAccess = (roles: (string | number)[] | string | number | AccessEnum) => {

@@ -4,6 +4,7 @@ import { Progress, TinyArea, TinyColumn } from '@antv/g2plot'
 import ChartCard from '~/pages/dashboard/analysis/components/chart-card.vue'
 import Field from '~/pages/dashboard/analysis/components/field.vue'
 import Trend from '~/pages/dashboard/analysis/trend.vue'
+
 defineProps({
   loading: {
     type: Boolean,
@@ -11,7 +12,7 @@ defineProps({
   },
 })
 
-const convertNumber = (number: number) => {
+function convertNumber(number: number) {
   return number.toLocaleString()
 }
 

@@ -1,8 +1,9 @@
 import type { VNode } from 'vue'
 import { createVNode } from 'vue'
+
 const compMap = new Map<string, VNode>()
 
-export const useCompConsumer = () => {
+export function useCompConsumer() {
   const route = useRoute()
   const getComp = (component: VNode): VNode => {
     // 判断当前是否包含name，如果不包含name，那就直接处理掉name

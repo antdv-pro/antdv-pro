@@ -6,7 +6,7 @@ export const breakpointsEnum = {
   xs: 575,
 }
 
-export const useQueryBreakpoints = () => {
+export function useQueryBreakpoints() {
   const breakpoints = reactive(useBreakpoints(breakpointsEnum))
 
   // 手机端

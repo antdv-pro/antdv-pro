@@ -22,7 +22,7 @@ const instance: AxiosInstance = axios.create({
   headers: { 'Content-Type': ContentTypeEnum.JSON },
 })
 const axiosLoading = new AxiosLoading()
-const requestHandler = async (config: InternalAxiosRequestConfig & RequestConfigExtra): Promise<InternalAxiosRequestConfig> => {
+async function requestHandler(config: InternalAxiosRequestConfig & RequestConfigExtra): Promise<InternalAxiosRequestConfig> {
   // 处理请求前的url
   if (
     import.meta.env.DEV
@@ -46,11 +46,11 @@ const requestHandler = async (config: InternalAxiosRequestConfig & RequestConfig
   return config
 }
 
-const responseHandler = (response: any): ResponseBody<any> | AxiosResponse<any> | Promise<any> | any => {
+function responseHandler(response: any): ResponseBody<any> | AxiosResponse<any> | Promise<any> | any {
   return response.data
 }
 
-const errorHandler = (error: AxiosError): Promise<any> => {
+function errorHandler(error: AxiosError): Promise<any> {
   const token = useAuthorization()
   const notification = useNotification()
 
@@ -109,7 +109,7 @@ instance.interceptors.request.use(requestHandler)
 instance.interceptors.response.use(responseHandler, errorHandler)
 
 export default instance
-const instancePromise = <R = any, T = any>(options: AxiosOptions<T> & RequestConfigExtra): Promise<ResponseBody<R>> => {
+function instancePromise<R = any, T = any>(options: AxiosOptions<T> & RequestConfigExtra): Promise<ResponseBody<R>> {
   const { loading } = options
   return new Promise((resolve, reject) => {
     instance.request(options).then((res) => {
@@ -123,7 +123,7 @@ const instancePromise = <R = any, T = any>(options: AxiosOptions<T> & RequestCon
       })
   })
 }
-export const useGet = < R=any, T = any> (url: string, params?: T, config?: AxiosRequestConfig & RequestConfigExtra): Promise<ResponseBody<R>> => {
+export function useGet< R = any, T = any>(url: string, params?: T, config?: AxiosRequestConfig & RequestConfigExtra): Promise<ResponseBody<R>> {
   const options = {
     url,
     params,
@@ -133,7 +133,7 @@ export const useGet = < R=any, T = any> (url: string, params?: T, config?: Axios
   return instancePromise< R, T >(options)
 }
 
-export const usePost = < R=any, T = any>(url: string, data?: T, config?: AxiosRequestConfig & RequestConfigExtra): Promise<ResponseBody<R>> => {
+export function usePost< R = any, T = any>(url: string, data?: T, config?: AxiosRequestConfig & RequestConfigExtra): Promise<ResponseBody<R>> {
   const options = {
     url,
     data,
@@ -143,7 +143,7 @@ export const usePost = < R=any, T = any>(url: string, data?: T, config?: AxiosRe
   return instancePromise< R, T >(options)
 }
 
-export const usePut = < R=any, T = any>(url: string, data?: T, config?: AxiosRequestConfig & RequestConfigExtra): Promise<ResponseBody<R>> => {
+export function usePut< R = any, T = any>(url: string, data?: T, config?: AxiosRequestConfig & RequestConfigExtra): Promise<ResponseBody<R>> {
   const options = {
     url,
     data,
@@ -153,7 +153,7 @@ export const usePut = < R=any, T = any>(url: string, data?: T, config?: AxiosReq
   return instancePromise<R, T>(options)
 }
 
-export const useDelete = < R=any, T = any>(url: string, data?: T, config?: AxiosRequestConfig & RequestConfigExtra): Promise<ResponseBody<R>> => {
+export function useDelete< R = any, T = any>(url: string, data?: T, config?: AxiosRequestConfig & RequestConfigExtra): Promise<ResponseBody<R>> {
   const options = {
     url,
     data,

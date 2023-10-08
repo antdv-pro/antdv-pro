@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { EditOutlined, EllipsisOutlined, SettingOutlined, ShareAltOutlined } from '@ant-design/icons-vue'
 import Category from './components/category.vue'
+
 const list = [
   {
     id: 'fake-list-0',

@@ -20,7 +20,7 @@ for (let i = 0; i < 7; i += 1) {
 
 const rangePickerValue = ref()
 
-const getDateRange = (type: string) => {
+function getDateRange(type: string) {
   const today = new Date()
   let startDate
   let endDate
@@ -49,7 +49,7 @@ const getDateRange = (type: string) => {
   }
 }
 getDateRange('day')
-const onClick = (e: any) => {
+function onClick(e: any) {
   e.target?.parentElement?.querySelectorAll('a').forEach((item: HTMLElement) => {
     item.classList.remove('currentDate')
   })
@@ -57,7 +57,7 @@ const onClick = (e: any) => {
   getDateRange(e.target.__vnode.key)
 }
 
-const convertNumber = (number: number) => {
+function convertNumber(number: number) {
   return number.toLocaleString()
 }
 
@@ -117,7 +117,7 @@ const columnPlotContainer2 = ref()
 
 let renderOnce = false
 
-const changTab = (activeKey: Key) => {
+function changTab(activeKey: Key) {
   if (activeKey === 'views' && !renderOnce) {
     setTimeout(() => {
       new Column(columnPlotContainer2.value, {

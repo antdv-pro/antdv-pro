@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { useLayoutState } from '~/layouts/basic-layout/context.ts'
-const prefixCls = shallowRef('ant-pro-footer-toolbar')
-const { siderWidth: layoutSiderWidth, mobileCollapsed } = useLayoutState()
+
 defineOptions({
   name: 'FooterToolBar',
 })
+const prefixCls = shallowRef('ant-pro-footer-toolbar')
+const { siderWidth: layoutSiderWidth, mobileCollapsed } = useLayoutState()
 const barWidth = computed(() => {
   return mobileCollapsed ? undefined : `calc(100% - ${layoutSiderWidth.value}px)`
 })

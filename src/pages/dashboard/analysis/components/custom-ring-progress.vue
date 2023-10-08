@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { RingProgress } from '@antv/g2plot'
+
 const props = defineProps({
   percent: {
     type: Number,

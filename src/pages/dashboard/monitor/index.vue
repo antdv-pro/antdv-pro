@@ -7,7 +7,7 @@ defineOptions({
   name: 'Monitor',
 })
 
-const convertNumber = (number: number) => {
+function convertNumber(number: number) {
   return number.toLocaleString()
 }
 const deadline = Date.now() + 1000 * 60 * 60 * 24 * 2 + 1000 * 30

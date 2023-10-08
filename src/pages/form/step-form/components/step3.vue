@@ -1,10 +1,10 @@
 <script setup lang="ts">
 const emit = defineEmits(['finish'])
 const router = useRouter()
-const finish = () => {
+function finish() {
   emit('finish')
 }
-const toOrderList = () => {
+function toOrderList() {
   router.push('/profile/advanced')
 }
 </script>

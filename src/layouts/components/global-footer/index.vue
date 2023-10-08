@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { CopyrightCircleOutlined } from '@ant-design/icons-vue'
+
 defineProps<{
   copyright?: string
 }>()

@@ -2,7 +2,7 @@
 const route = useRoute()
 const router = useRouter()
 const activeKey = computed(() => route.path)
-const handleChangePage = (key: any) => {
+function handleChangePage(key: any) {
   router.push(key)
 }
 </script>

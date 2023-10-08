@@ -7,6 +7,6 @@ export interface ListResultModel {
 
 export type ListResultParams = Partial<Omit<ListResultModel, 'id' | 'password'>>
 
-export const getListApi = async (params?: ListResultParams) => {
+export async function getListApi(params?: ListResultParams) {
   return usePost<ListResultModel[]>('/list/basic-list', params)
 }

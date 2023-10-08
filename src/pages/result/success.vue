@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { DingdingOutlined } from '@ant-design/icons-vue'
+
 const { t } = useI18n()
 const { isMobile } = useQueryBreakpoints()
 

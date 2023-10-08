@@ -23,11 +23,15 @@ export const useMultiTab = defineStore('multi-tab', () => {
   const cacheList = ref<string[]>([])
   const message = useMessage()
   const addItem = (route: RouteLocationNormalizedLoaded) => {
-    if (!route) return
+    if (!route)
+      return
     // 判断是不是重定向的地址，如果是，那么久不进行处理
-    if (route.path.startsWith('/redirect') || route.path.startsWith('/common')) return
-    if (route.path === '/') return
-    if (allowList.includes(route.path)) return
+    if (route.path.startsWith('/redirect') || route.path.startsWith('/common'))
+      return
+    if (route.path === '/')
+      return
+    if (allowList.includes(route.path))
+      return
     // 设置当前的loading为false
     if (refreshItem.value) {
       // 增加一个取消的延迟
@@ -98,15 +102,18 @@ export const useMultiTab = defineStore('multi-tab', () => {
   }
 
   const switchTab = (key: string) => {
-    if (key === activeKey.value) return
+    if (key === activeKey.value)
+      return
     router.push(key)
   }
 
   const closeOther = (key: string) => {
     switchTab(key)
     list.value.forEach((item) => {
-      if (item.affix) return
-      if (item.fullPath === key) return
+      if (item.affix)
+        return
+      if (item.fullPath === key)
+        return
       close(item.fullPath)
     })
   }
@@ -117,7 +124,8 @@ export const useMultiTab = defineStore('multi-tab', () => {
     const index = list.value.findIndex(item => item.fullPath === key)
     const leftList = list.value.slice(0, index)
     leftList.forEach((item) => {
-      if (item.affix) return
+      if (item.affix)
+        return
       close(item.fullPath)
     })
   }
@@ -128,7 +136,8 @@ export const useMultiTab = defineStore('multi-tab', () => {
     const index = list.value.findIndex(item => item.fullPath === key)
     const rightList = list.value.slice(index + 1)
     rightList.forEach((item) => {
-      if (item.affix) return
+      if (item.affix)
+        return
       close(item.fullPath)
     })
   }

@@ -16,7 +16,7 @@ const loadingList = ref([
   'dot',
 ])
 
-const startCustomLoading = (val: number) => {
+function startCustomLoading(val: number) {
   full.value = val === 2
   loading.value = true
   setTimeout(() => {
@@ -24,7 +24,7 @@ const startCustomLoading = (val: number) => {
   }, 2000)
 }
 
-const startLoading = (item: any) => {
+function startLoading(item: any) {
   const { open, close } = useLoading({ spin: item })
   open()
   setTimeout(() => {
@@ -32,7 +32,7 @@ const startLoading = (item: any) => {
   }, 2000)
 }
 
-const startTimeLoading = () => {
+function startTimeLoading() {
   const { open, close } = useLoading({ minTime: time.value })
   open()
   close()

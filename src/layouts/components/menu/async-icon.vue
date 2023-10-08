@@ -2,6 +2,7 @@
 import * as icons from '@ant-design/icons-vue'
 import { isFunction } from '@v-c/utils'
 import type { VNodeChild } from 'vue'
+
 const props = defineProps<{
   icon: string | ((...args: any[]) => VNodeChild)
 }>()

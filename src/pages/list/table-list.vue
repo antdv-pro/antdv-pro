@@ -69,7 +69,8 @@ const formModel = reactive<ConsultTableParams>({
 })
 
 async function init() {
-  if (loading.value) return
+  if (loading.value)
+    return
   loading.value = true
   try {
     const { data } = await getListApi({
@@ -87,12 +88,12 @@ async function init() {
   }
 }
 
-const onSearch = async () => {
+async function onSearch() {
   pagination.current = 1
   await init()
 }
 
-const onReset = async () => {
+async function onReset() {
   // 清空所有参数重新请求
   formModel.name = undefined
   formModel.desc = undefined
@@ -104,7 +105,7 @@ const onReset = async () => {
  *  @param record
  *
  */
-const handleDelete = async (record: ConsultTableModel) => {
+async function handleDelete(record: ConsultTableModel) {
   const close = message.loading('删除中......')
   try {
     const res = await deleteApi(record!.id)

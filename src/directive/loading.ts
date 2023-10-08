@@ -26,7 +26,8 @@ const loadingDirective: Directive = {
   },
   updated(el, bind) {
     const instance = el.instance
-    if (!instance) return
+    if (!instance)
+      return
     if (bind.value) {
       instance.open(
         el.getAttribute('loading-full') === 'true' ? document.body : el,
@@ -41,7 +42,7 @@ const loadingDirective: Directive = {
   },
 }
 
-export const setupLoadingDirective = (app: App) => {
+export function setupLoadingDirective(app: App) {
   app.directive('loading', loadingDirective)
 }
 

@@ -7,6 +7,7 @@ import SplitMenu from '../components/menu/split-menu.vue'
 import GlobalFooter from '../components/global-footer/index.vue'
 import { proLayoutProps } from './typing'
 import { useLayoutProvider } from './context'
+
 const props = defineProps(proLayoutProps)
 const emit = defineEmits(['update:collapsed'])
 
@@ -14,7 +15,7 @@ const emit = defineEmits(['update:collapsed'])
  * 处理展开收起的事件参数
  * @param collapsed 展开收起的事件参数
  */
-const handleCollapsed = (collapsed: boolean) => {
+function handleCollapsed(collapsed: boolean) {
   emit('update:collapsed', collapsed)
   props?.onCollapsed?.(collapsed)
 }
@@ -61,7 +62,7 @@ const contentCls = computed(() => {
           </Header>
         </template>
         <slot name="contentPrefix" />
-        <a-layout-content ref="layoutRef" class="ant-pro-basicLayout-content" flex flex-col>
+        <a-layout-content class="ant-pro-basicLayout-content" flex flex-col>
           <div :class="contentCls">
             <slot />
           </div>

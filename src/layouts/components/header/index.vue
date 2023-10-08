@@ -2,6 +2,7 @@
 import type { CSSProperties } from 'vue'
 import GlobalHeader from '../global-header/index.vue'
 import { useLayoutState } from '../../basic-layout/context'
+
 const {
   headerHeight,
   fixedHeader,
@@ -39,11 +40,14 @@ const headerStyle = computed<CSSProperties>(() => {
 })
 const cls = computed(() => {
   const classes = []
-  if (fixedHeader.value || layout.value === 'mix') classes.push('ant-pro-fixed-header')
+  if (fixedHeader.value || layout.value === 'mix')
+    classes.push('ant-pro-fixed-header')
 
-  if (layout.value) classes.push('ant-pro-fixed-header-action')
+  if (layout.value)
+    classes.push('ant-pro-fixed-header-action')
 
-  if (layout.value === 'mix') classes.push('ant-pro-fixed-header-inverted')
+  if (layout.value === 'mix')
+    classes.push('ant-pro-fixed-header-inverted')
 
   return classes
 })

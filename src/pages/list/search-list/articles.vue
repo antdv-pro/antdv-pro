@@ -2,6 +2,7 @@
 import { LikeOutlined, MessageOutlined, StarOutlined } from '@ant-design/icons-vue'
 import dayjs from 'dayjs'
 import Category from './components/category.vue'
+
 const list = [
   {
     id: 'fake-list-0',
@@ -194,7 +195,7 @@ const list = [
     ],
   },
 ]
-const formatTimer = (timer: number | string) => {
+function formatTimer(timer: number | string) {
   return dayjs(timer).format('YYYY-MM-DD HH:mm:ss')
 }
 </script>

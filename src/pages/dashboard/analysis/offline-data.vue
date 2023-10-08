@@ -11,7 +11,7 @@ defineProps({
 })
 
 const activeKey = ref()
-const handleTabChange = () => {
+function handleTabChange() {
 
 }
 

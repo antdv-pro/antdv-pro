@@ -14,11 +14,11 @@ let tinyArea: TinyArea | undefined
 let requestRef: any
 let timer: any
 
-const fixedZero = (val: number) => {
+function fixedZero(val: number) {
   return val < 10 ? `0${val}` : val
 }
 
-const getActiveData = () => {
+function getActiveData() {
   activeData.value = []
   tinyAreaData.value = []
   for (let i = 0; i < 24; i += 1) {
@@ -31,7 +31,7 @@ const getActiveData = () => {
   tinyArea?.changeData(tinyAreaData.value)
 }
 
-const loopData = () => {
+function loopData() {
   requestRef = requestAnimationFrame(() => {
     timer = window.setTimeout(() => {
       getActiveData()

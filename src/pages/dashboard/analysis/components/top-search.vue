@@ -3,6 +3,7 @@ import { EllipsisOutlined, InfoCircleOutlined } from '@ant-design/icons-vue'
 import { TinyArea } from '@antv/g2plot'
 import NumberInfo from '~/pages/dashboard/analysis/number-info.vue'
 import Trend from '~/pages/dashboard/analysis/trend.vue'
+
 defineProps({
   loading: {
     type: Boolean,

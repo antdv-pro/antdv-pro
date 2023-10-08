@@ -12,19 +12,19 @@ const state = reactive({
   inputValue: '',
 })
 
-const handleClose = (removedTag: string) => {
+function handleClose(removedTag: string) {
   const tags = state.tags.filter(tag => tag !== removedTag)
   state.tags = tags
 }
 
-const showInput = () => {
+function showInput() {
   state.inputVisible = true
   nextTick(() => {
     inputRef.value.focus()
   })
 }
 
-const handleInputConfirm = () => {
+function handleInputConfirm() {
   const inputValue = state.inputValue
   let tags = state.tags
   if (inputValue && !tags.includes(inputValue))

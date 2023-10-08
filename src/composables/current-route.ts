@@ -1,6 +1,6 @@
 import router from '@/router'
 
-export const useCurrentRoute = () => {
+export function useCurrentRoute() {
   const currentRoute = router.currentRoute
   const layoutMenuStore = useLayoutMenu()
   const { menuDataMap } = storeToRefs(layoutMenuStore)

@@ -1,23 +1,23 @@
-export const test200 = () => {
+export function test200() {
   return useGet('/')
 }
 
-export const test401 = () => {
+export function test401() {
   return useGet('/401')
 }
 
-export const test500 = () => {
+export function test500() {
   return useGet('/500')
 }
 
-export const testPut = () => {
+export function testPut() {
   return usePut('/test')
 }
 
-export const testPost = () => {
+export function testPost() {
   return usePost('/test')
 }
 
-export const testDelete = () => {
+export function testDelete() {
   return useDelete('/test')
 }

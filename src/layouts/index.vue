@@ -4,6 +4,7 @@ import BasicLayout from './basic-layout/index.vue'
 import SettingDrawer from './components/setting-drawer/index.vue'
 import MultiTab from './multi-tab/index.vue'
 import { animationNameList } from '~@/config/default-setting'
+
 const appStore = useAppStore()
 const { layoutSetting } = storeToRefs(appStore)
 const userStore = useUserStore()
@@ -12,7 +13,8 @@ const { t } = useI18nLocale()
 const { selectedKeys, openKeys } = storeToRefs(layoutMenu)
 const { isMobile, isPad } = useQueryBreakpoints()
 watch(isPad, (val) => {
-  if (val) appStore.toggleCollapsed(true)
+  if (val)
+    appStore.toggleCollapsed(true)
   else appStore.toggleCollapsed(false)
 })
 const layoutProps = computed(() =>

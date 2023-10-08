@@ -13,13 +13,13 @@ const salesType = ref('all')
 const pieContainer1 = ref()
 const pieContainer2 = ref()
 const pieContainer3 = ref()
-const handleChangeSalesType = (e: any) => {
+function handleChangeSalesType(e: any) {
   salesType.value = e.target.value
 }
 
 const pies = shallowRef<Pie[]>([])
 
-const renderPie = (container: any, data: any) => {
+function renderPie(container: any, data: any) {
   const pie = new Pie(container, {
     appendPadding: 10,
     data,

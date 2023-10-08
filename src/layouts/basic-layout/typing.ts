@@ -1,5 +1,6 @@
 import type { ExtractPropTypes, VNodeChild } from 'vue'
 import { arrayType, booleanType, eventType, numberType, stringType } from '@v-c/utils'
+
 export type CheckedType = boolean | string | number
 export type MenuData = MenuDataItem[]
 

@@ -5,6 +5,6 @@ export const accessDirective: Directive = (el, binding) => {
   if (!hasAccess(binding.value))
     el.parentNode?.removeChild(el)
 }
-export const setupAccessDirective = (app: App) => {
+export function setupAccessDirective(app: App) {
   app.directive('access', accessDirective)
 }

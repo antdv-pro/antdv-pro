@@ -26,7 +26,8 @@ export const useI18nLocale = createSharedComposable(() => {
 
   // 切换多语言
   const setLocale = async (locale: string) => {
-    if (loading.value) return
+    if (loading.value)
+      return
     loading.value = true
     try {
       // 加载多语言

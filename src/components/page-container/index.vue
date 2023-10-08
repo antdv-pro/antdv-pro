@@ -2,6 +2,7 @@
 import { delayTimer, isFunction } from '@v-c/utils'
 import type { VNodeChild } from 'vue'
 import { useLayoutState } from '~/layouts/basic-layout/context'
+
 defineProps<{
   title?: string
 }>()
@@ -22,7 +23,7 @@ const currentItem = computed(() => {
   return {} as any
 })
 const { contentWidth, hasPageContainer } = useLayoutState()
-const switchPage = async (bool: boolean) => {
+async function switchPage(bool: boolean) {
   await delayTimer(300)
   hasPageContainer.value = bool
 }
@@ -51,7 +52,7 @@ const contentCls = computed(() => {
 
   return cls
 })
-const renderTitle = (title: VNodeChild | (() => VNodeChild)) => {
+function renderTitle(title: VNodeChild | (() => VNodeChild)) {
   if (isFunction(title))
     return title()
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const { locale, setLocale } = useI18nLocale()
-const handleClick = ({ key }: any) => {
+function handleClick({ key }: any) {
   setLocale(key)
 }
 </script>

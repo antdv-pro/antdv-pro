@@ -1,4 +1,5 @@
 import type { STATUS } from '~@/utils/constant'
+
 interface ConsultTableModel {
   id: number
   /**
@@ -30,11 +31,11 @@ interface ConsultTableModel {
 
 type ConsultTableParams = Partial<Omit<ConsultTableModel, 'id'>>
 
-export const getListApi = async (params?: ConsultTableParams) => {
+export async function getListApi(params?: ConsultTableParams) {
   return usePost<ConsultTableModel[]>('/list/consult-list', params)
 }
 
-export const deleteApi = async (id: string | number) => {
+export async function deleteApi(id: string | number) {
   return useDelete(`/list/${id}`)
 }
 

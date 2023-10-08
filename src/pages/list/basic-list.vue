@@ -5,6 +5,7 @@ import { createVNode } from 'vue'
 import dayjs from 'dayjs'
 import { getListApi } from '~@/api/list/basic-list'
 import VirtualList from '@/components/virtual-list/index.vue'
+
 // import VirtualListItem from '@/components/virtual-list-item/index.vue'
 
 const workData = ref([
@@ -26,7 +27,7 @@ const radioValue = ref('a')
 
 const searchValue = ref()
 
-const onSearch = (value: string) => {
+function onSearch(value: string) {
   console.log('use value', value)
 }
 
@@ -52,7 +53,7 @@ async function getList() {
 /*
   处理删除对话框
 */
-const showConfirm = (index: number) => {
+function showConfirm(index: number) {
   Modal.confirm({
     title: '删除任务',
     icon: createVNode(ExclamationCircleOutlined),
@@ -106,7 +107,7 @@ function openModal(item: any, charge?: boolean) {
 }
 
 // 操作成功后操作
-const countDown = () => {
+function countDown() {
   let secondsToGo = 2
   const modal = Modal.success({
     title: '操作成功',

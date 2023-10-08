@@ -8,6 +8,7 @@ import ThemeColor from './theme-color.vue'
 import LayoutSetting from './layout-setting.vue'
 import RegionalSetting from './regional-setting.vue'
 import OtherSetting from './other-setting.vue'
+
 const props = withDefaults(
   defineProps<{
     open?: boolean
@@ -53,26 +54,26 @@ const emit = defineEmits(['update:open', 'settingChange'])
 const { copy } = useClipboard()
 const prefixCls = shallowRef('ant-pro-drawer-setting')
 const { message } = useGlobalConfig()
-const copySetting = () => {
+function copySetting() {
   copy(JSON.stringify(props.layoutSetting ?? {}))
   message?.success(props?.t?.('app.setting.copyinfo', '拷贝成功，请到 config/default-settings.js 中替换默认配置'))
 }
-const handleVisible = (open: boolean) => {
+function handleVisible(open: boolean) {
   emit('update:open', open)
 }
 
-const changeTheme = (theme: ThemeType) => {
+function changeTheme(theme: ThemeType) {
   emit('settingChange', 'theme', theme)
 }
 
-const changeColor = (color: string) => {
+function changeColor(color: string) {
   emit('settingChange', 'colorPrimary', color)
 }
 
-const changeLayout = (layout: string) => {
+function changeLayout(layout: string) {
   emit('settingChange', 'layout', layout)
 }
-const changeSettingLayout = (key: string, value: any) => {
+function changeSettingLayout(key: string, value: any) {
   emit('settingChange', key, value)
 }
 

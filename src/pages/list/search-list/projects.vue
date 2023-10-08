@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import Category from './components/category.vue'
+
 const list = [
   {
     id: 'fake-list-0',

@@ -48,7 +48,7 @@ const rules: any = computed(() => {
   }
 })
 
-const onSubmit = () => {
+function onSubmit() {
   formRef.value
     .validate()
     .then(() => {
@@ -75,10 +75,10 @@ function handleChange() {
           :label-col="labelCol"
           :wrapper-col="wrapperCol"
         >
-          <a-form-item ref="eamil" :label-col="{ span: 24 }" :label="t('account.settings.form-email')" name="eamil">
+          <a-form-item :label-col="{ span: 24 }" :label="t('account.settings.form-email')" name="eamil">
             <a-input v-model:value="formState.eamil" :placeholder="t('account.settings.form-input-plac')" style="width: 320px;" />
           </a-form-item>
-          <a-form-item ref="name" :label-col="{ span: 24 }" :label="t('account.settings.form-name')" name="name">
+          <a-form-item :label-col="{ span: 24 }" :label="t('account.settings.form-name')" name="name">
             <a-input v-model:value="formState.name" :placeholder="t('account.settings.form-input-plac')" style="width: 320px;" />
           </a-form-item>
           <a-form-item :label="t('account.settings.form-region')" :label-col="{ span: 24 }" name="region">
@@ -88,13 +88,13 @@ function handleChange() {
               </a-select-option>
             </a-select>
           </a-form-item>
-          <a-form-item ref="address" :label-col="{ span: 24 }" :label="t('account.settings.form-address')" name="address">
+          <a-form-item :label-col="{ span: 24 }" :label="t('account.settings.form-address')" name="address">
             <a-input v-model:value="formState.address" :placeholder="t('account.settings.form-input-plac')" style="width: 320px;" />
           </a-form-item>
-          <a-form-item ref="phoneNumber" :label-col="{ span: 24 }" :label="t('account.settings.form-phoneNumber')" name="phoneNumber">
+          <a-form-item :label-col="{ span: 24 }" :label="t('account.settings.form-phoneNumber')" name="phoneNumber">
             <a-input v-model:value="formState.phoneNumber" :placeholder="t('account.settings.form-input-plac')" />
           </a-form-item>
-          <a-form-item ref="desc" name="desc" :label="t('account.settings.form-desc')" :label-col="{ span: 24 }">
+          <a-form-item name="desc" :label="t('account.settings.form-desc')" :label-col="{ span: 24 }">
             <a-textarea v-model:value="formState.desc" :placeholder="t('account.settings.form-input-plac')" />
           </a-form-item>
           <a-form-item>

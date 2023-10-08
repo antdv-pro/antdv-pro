@@ -2,7 +2,7 @@
 const route = useRoute()
 const url = computed(() => route?.meta?.url)
 const loading = ref(true)
-const finishLoading = () => {
+function finishLoading() {
   loading.value = false
 }
 </script>

@@ -5,6 +5,7 @@ import GlobalLayoutFooter from '~/layouts/components/global-footer/index.vue'
 import { loginApi } from '~/api/common/login'
 import { getQueryParam } from '~/utils/tools'
 import type { LoginMobileParams, LoginParams } from '~@/api/common/login'
+
 const message = useMessage()
 const notification = useNotification()
 const appStore = useAppStore()
@@ -36,7 +37,7 @@ const { counter, pause, reset, resume, isActive } = useInterval(1000, {
     }
   },
 })
-const getCode = async () => {
+async function getCode() {
   codeLoading.value = true
   try {
     await formRef.value.validate(['mobile'])
@@ -53,7 +54,7 @@ const getCode = async () => {
   }
 }
 
-const submit = async () => {
+async function submit() {
   submitLoading.value = true
   try {
     await formRef.value?.validate()

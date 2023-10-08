@@ -16,7 +16,7 @@ const list = shallowRef<ListType[]>([
   })),
 ])
 const activeList = ref<string[]>([])
-const handleClick = (item: ListType) => {
+function handleClick(item: ListType) {
   if (item.key === 'all') {
     if (activeList.value.includes('all')) {
       // 删除全部选中
@@ -50,7 +50,8 @@ const authorList = shallowRef([
   {
     label: '付晓晓',
     value: '付晓晓',
-  }, {
+  },
+  {
     label: '周毛毛',
     value: '周毛毛',
   },
@@ -60,7 +61,8 @@ const praiseList = shallowRef([
   {
     label: '优秀',
     value: 1,
-  }, {
+  },
+  {
     label: '普通',
     value: 2,
   },

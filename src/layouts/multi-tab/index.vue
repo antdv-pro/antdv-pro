@@ -7,6 +7,7 @@ import {
 } from '@ant-design/icons-vue'
 import type { RouteLocationNormalized } from 'vue-router'
 import { listenerRouteChange, removeRouteListener } from '~@/utils/route-listener'
+
 const multiTabStore = useMultiTab()
 const { list, activeKey } = storeToRefs(multiTabStore)
 const { layoutSetting } = storeToRefs(useAppStore())
@@ -23,12 +24,17 @@ const tabStyle = computed<CSSProperties>(() => {
 const tabsRef = shallowRef()
 const { height } = useElementSize(tabsRef)
 
-const handleSwitch = ({ key }: any, current: string) => {
-  if (key === 'closeCurrent') multiTabStore.close(activeKey.value)
-  else if (key === 'closeLeft') multiTabStore.closeLeft(current)
-  else if (key === 'closeRight') multiTabStore.closeRight(current)
-  else if (key === 'closeOther') multiTabStore.closeOther(current)
-  else if (key === 'refresh') multiTabStore.refresh(activeKey.value)
+function handleSwitch({ key }: any, current: string) {
+  if (key === 'closeCurrent')
+    multiTabStore.close(activeKey.value)
+  else if (key === 'closeLeft')
+    multiTabStore.closeLeft(current)
+  else if (key === 'closeRight')
+    multiTabStore.closeRight(current)
+  else if (key === 'closeOther')
+    multiTabStore.closeOther(current)
+  else if (key === 'refresh')
+    multiTabStore.refresh(activeKey.value)
 }
 
 const isCurrentDisabled = computed(() => {
@@ -37,13 +43,13 @@ const isCurrentDisabled = computed(() => {
   )
 })
 
-const leftDisabled = (key: string) => {
+function leftDisabled(key: string) {
   // 判断左侧是否还有可关闭的
   const index = list.value.findIndex(v => v.fullPath === key)
   return index === 0 || list.value.filter(v => !v.affix).length <= 1
 }
 
-const rightDisabled = (key: string) => {
+function rightDisabled(key: string) {
   // 判断右侧是否还有可关闭的
   const index = list.value.findIndex(v => v.fullPath === key)
   return (
@@ -57,10 +63,12 @@ const otherDisabled = computed(() => {
   )
 })
 listenerRouteChange((route: RouteLocationNormalized) => {
-  if (route.fullPath.startsWith('/redirect')) return
+  if (route.fullPath.startsWith('/redirect'))
+    return
   const item = list.value.find(item => item.fullPath === route.fullPath)
 
-  if (route.fullPath === activeKey.value && !item?.loading) return
+  if (route.fullPath === activeKey.value && !item?.loading)
+    return
   activeKey.value = route.fullPath
   multiTabStore.addItem(route)
 }, true)

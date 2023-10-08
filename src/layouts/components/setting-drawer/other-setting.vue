@@ -14,7 +14,7 @@ const list = computed(() => ([
     disabledReason: '',
   },
 ]))
-const handleChangeWeak = (value: CheckedType) => {
+function handleChangeWeak(value: CheckedType) {
   emit('changeSetting', 'colorWeak', value)
 
   const dom = document.querySelector('body')

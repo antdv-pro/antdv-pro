@@ -21,8 +21,9 @@ export const basicRouteMap = {
   ComponentError: () => import('~/pages/exception/component-error.vue'),
 }
 
-export const getRouterModule = (path?: string): any => {
-  if (!path) return basicRouteMap.ComponentError
+export function getRouterModule(path?: string): any {
+  if (!path)
+    return basicRouteMap.ComponentError
   // 判断是否在basicRouteMap中存在
   if (path in basicRouteMap)
     return (basicRouteMap as any)[path]

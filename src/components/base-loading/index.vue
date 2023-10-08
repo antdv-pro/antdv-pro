@@ -2,6 +2,7 @@
 import type { Component, PropType } from 'vue'
 import type { LoadingEnum } from '~#/loading-enum'
 import { loadingMap } from '~#/loading-enum'
+
 export default defineComponent({
   name: 'BaseLoading',
   props: {

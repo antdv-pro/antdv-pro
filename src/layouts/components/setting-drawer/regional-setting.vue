@@ -60,7 +60,7 @@ const list = computed(() => ([
     disabledReason: '多页签开启后功能正常使用',
   },
 ]))
-const handleChangeSetting = (key: string, value: any) => {
+function handleChangeSetting(key: string, value: any) {
   emit('changeSetting', key, value)
 }
 </script>

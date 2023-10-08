@@ -6,7 +6,7 @@ export interface ProLayoutProviderMethods {
   handleCollapsed?: (collapsed: boolean) => void
 }
 
-const layoutStateFunc = (props: ProLayoutProps, methods: ProLayoutProviderMethods = {}) => {
+function layoutStateFunc(props: ProLayoutProps, methods: ProLayoutProviderMethods = {}) {
   const hasPageContainer = shallowRef(false)
   const logo = computed(() => props.logo)
   const title = computed(() => props.title)
@@ -56,9 +56,11 @@ const layoutStateFunc = (props: ProLayoutProps, methods: ProLayoutProviderMethod
     },
   )
   const selectedMenus = computed(() => {
-    if (isMobile.value || layout.value !== 'mix' || !splitMenus.value) return menuData.value
+    if (isMobile.value || layout.value !== 'mix' || !splitMenus.value)
+      return menuData.value
     const key = splitState.selectedKeys?.[0]
-    if (!key) return []
+    if (!key)
+      return []
 
     return menuDataMap.get(key)?.children ?? []
   })
@@ -86,10 +88,12 @@ const layoutStateFunc = (props: ProLayoutProps, methods: ProLayoutProviderMethod
 
   const findSelected = (key: Key, menuData: MenuData, pItem?: MenuDataItem): MenuDataItem | undefined => {
     for (const item of menuData ?? []) {
-      if (item.path === key) return pItem ?? item
+      if (item.path === key)
+        return pItem ?? item
       if (item.children && item.children.length) {
         const find = findSelected(key, item.children, pItem ?? item)
-        if (find) return find
+        if (find)
+          return find
       }
     }
   }
@@ -102,7 +106,8 @@ const layoutStateFunc = (props: ProLayoutProps, methods: ProLayoutProviderMethod
 
         if (key) {
           const find = findSelected(key, menuData.value ?? [])
-          if (find) splitState.selectedKeys = [find.path]
+          if (find)
+            splitState.selectedKeys = [find.path]
         }
       }
     },
@@ -117,7 +122,8 @@ const layoutStateFunc = (props: ProLayoutProps, methods: ProLayoutProviderMethod
     else {
       const key = selectedKeys.value?.[0] ?? openKeys.value?.[0] ?? ''
       const find = findSelected(key, menuData.value ?? [])
-      if (find) splitState.selectedKeys = [find?.path]
+      if (find)
+        splitState.selectedKeys = [find?.path]
       else splitState.selectedKeys = []
     }
   })

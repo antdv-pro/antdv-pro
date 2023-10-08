@@ -35,13 +35,15 @@ export async function setupI18n(app: App) {
  * @param locale 语言类型
  * @returns 返回参数
  */
-export const loadLanguageAsync = async (locale: string) => {
+export async function loadLanguageAsync(locale: string) {
   const current = unref(i18n.global.locale)
   try {
-    if (current === locale) return nextTick()
+    if (current === locale)
+      return nextTick()
 
     const messages = await import(`./lang/${locale}.ts`)
-    if (messages) i18n.global.setLocaleMessage(locale, messages.default)
+    if (messages)
+      i18n.global.setLocaleMessage(locale, messages.default)
   }
   catch (e) {
     console.warn('load language error', e)

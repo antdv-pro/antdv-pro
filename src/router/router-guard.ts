@@ -2,6 +2,7 @@ import { AxiosError } from 'axios'
 import router from '~/router'
 import { useMetaTitle } from '~/composables/meta-title'
 import { setRouteEmitter } from '~@/utils/route-listener'
+
 const allowList = ['/login', '/error', '/401', '/404', '/403']
 const loginPath = '/login'
 

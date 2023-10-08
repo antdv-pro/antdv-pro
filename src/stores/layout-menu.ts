@@ -2,7 +2,7 @@ import { isUrl } from '@v-c/utils'
 import type { MenuData, MenuDataItem } from '~@/layouts/basic-layout/typing'
 import router from '~@/router'
 
-const toMapMenuData = (menuData: MenuData, menuDataMap: Map<string, MenuDataItem>, matched: MenuDataItem[] = []) => {
+function toMapMenuData(menuData: MenuData, menuDataMap: Map<string, MenuDataItem>, matched: MenuDataItem[] = []) {
   menuData.forEach((v) => {
     menuDataMap.set(v.path, { ...v, matched })
     if (v.children && v.children.length)
@@ -91,7 +91,8 @@ export const useLayoutMenu = defineStore('layout-menu', () => {
 
   watch(router.currentRoute, (route) => {
     // 路由发生变化
-    if (route.path === selectedKeys.value[0]) return
+    if (route.path === selectedKeys.value[0])
+      return
     changeMenu()
   })
 
