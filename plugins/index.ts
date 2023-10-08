@@ -2,9 +2,11 @@ import type { PluginOption } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import AutoImport from 'unplugin-auto-import/vite'
+import GenerateConfig from 'unplugin-config/vite'
 import Components from 'unplugin-vue-components/vite'
 import Unocss from 'unocss/vite'
 import AntdvResolver from 'antdv-component-resolver'
+import { APP_NAME, GLOB_CONFIG_FILE_NAME, OUTPUT_DIR } from './constants'
 import { viteBuildInfo } from './vite-build-info'
 
 export function createVitePlugins(env: Record<string, string>) {
@@ -26,6 +28,14 @@ export function createVitePlugins(env: Record<string, string>) {
       resolvers: [AntdvResolver()],
       dts: 'types/components.d.ts',
       dirs: ['src/components'],
+    }),
+    // https://github.com/kirklin/unplugin-config
+    GenerateConfig({
+      disabledConfig: false,
+      globConfigFileName: GLOB_CONFIG_FILE_NAME,
+      outputDir: OUTPUT_DIR,
+      appName: APP_NAME,
+      envConfigPrefix: 'VITE_GLOB_',
     }),
     Unocss(),
     viteBuildInfo(env.VITE_APP_NAME),
