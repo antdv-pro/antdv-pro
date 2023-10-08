@@ -45,8 +45,8 @@ importers:
         specifier: ^2.1.6
         version: 2.1.6(typescript@5.2.2)(vue@3.3.4)
       unplugin-config:
-        specifier: ^0.0.12
-        version: 0.0.12(esbuild@0.19.2)(vite@4.4.9)
+        specifier: ^0.0.13
+        version: 0.0.13(esbuild@0.19.4)(vite@4.4.11)
       vue:
         specifier: ^3.3.4
         version: 3.3.4
@@ -1588,10 +1588,10 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: true
 
-<<<<<<< HEAD
   /@kirklin/logger@0.0.2:
     resolution: {integrity: sha512-CGZ9HGmHGTcGnU8CDQm7RR7hZgxLyRHTIFpS1FDCQkVaipdL/poq72ibpKqqQflomgKRCYV6GReP7ZXEZeDx1w==}
-=======
+    dev: false
+
   /@ljharb/resumer@0.0.1:
     resolution: {integrity: sha512-skQiAOrCfO7vRTq53cxznMpks7wS1va95UCidALlOVWqvBAzwPVErwizDwoMqNVMEn1mDq0utxZd02eIrvF1lw==}
     engines: {node: '>= 0.4'}
@@ -1602,7 +1602,6 @@ packages:
   /@ljharb/through@2.3.9:
     resolution: {integrity: sha512-yN599ZBuMPPK4tdoToLlvgJB4CLK8fGl7ntfy0Wn7U6ttNvHYurd81bfUiK/6sMkiIwm65R6ck4L6+Y3DfVbNQ==}
     engines: {node: '>= 0.4'}
->>>>>>> c4b02ff (feat: replace eslint config)
     dev: false
 
   /@mapbox/geojson-rewind@0.5.2:
@@ -2257,14 +2256,8 @@ packages:
     resolution: {integrity: sha512-ZYFzrvyWUNhaPomn80dsMNgMeXxNWZBdkuG/hWlUvXvbdUH8ZERNBGXnU87McuGcWDsyzX2aChCv/SVN348k3A==}
     dev: true
 
-<<<<<<< HEAD
-  /@types/node@18.17.15:
-    resolution: {integrity: sha512-2yrWpBk32tvV/JAd3HNHWuZn/VDN1P+72hWirHnvsvTGSqbANi+kSeuQR9yAHnbvaBvHDsoTdXV0Fe+iRtHLKA==}
-=======
   /@types/node@18.18.4:
     resolution: {integrity: sha512-t3rNFBgJRugIhackit2mVcLfF6IRc0JE4oeizPQL8Zrm8n2WY/0wOdpOPhdtG0V9Q2TlW/axbF1MJ6z+Yj/kKQ==}
-    dev: true
->>>>>>> c4b02ff (feat: replace eslint config)
 
   /@types/node@20.5.1:
     resolution: {integrity: sha512-4tT2UrL5LBqDwoed9wZ6N3umC4Yhz3W3FloMmiiG4JwmUJWpie0c7lcnUNd4gtMKuDEO4wRVS8B6Xa0uMRsMKg==}
@@ -4282,30 +4275,6 @@ packages:
     hasBin: true
     requiresBuild: true
     optionalDependencies:
-<<<<<<< HEAD
-      '@esbuild/android-arm': 0.19.2
-      '@esbuild/android-arm64': 0.19.2
-      '@esbuild/android-x64': 0.19.2
-      '@esbuild/darwin-arm64': 0.19.2
-      '@esbuild/darwin-x64': 0.19.2
-      '@esbuild/freebsd-arm64': 0.19.2
-      '@esbuild/freebsd-x64': 0.19.2
-      '@esbuild/linux-arm': 0.19.2
-      '@esbuild/linux-arm64': 0.19.2
-      '@esbuild/linux-ia32': 0.19.2
-      '@esbuild/linux-loong64': 0.19.2
-      '@esbuild/linux-mips64el': 0.19.2
-      '@esbuild/linux-ppc64': 0.19.2
-      '@esbuild/linux-riscv64': 0.19.2
-      '@esbuild/linux-s390x': 0.19.2
-      '@esbuild/linux-x64': 0.19.2
-      '@esbuild/netbsd-x64': 0.19.2
-      '@esbuild/openbsd-x64': 0.19.2
-      '@esbuild/sunos-x64': 0.19.2
-      '@esbuild/win32-arm64': 0.19.2
-      '@esbuild/win32-ia32': 0.19.2
-      '@esbuild/win32-x64': 0.19.2
-=======
       '@esbuild/android-arm': 0.19.4
       '@esbuild/android-arm64': 0.19.4
       '@esbuild/android-x64': 0.19.4
@@ -4328,8 +4297,6 @@ packages:
       '@esbuild/win32-arm64': 0.19.4
       '@esbuild/win32-ia32': 0.19.4
       '@esbuild/win32-x64': 0.19.4
-    dev: true
->>>>>>> c4b02ff (feat: replace eslint config)
 
   /escalade@3.1.1:
     resolution: {integrity: sha512-k0er2gUkLf8O0zKJiAhmkTnJlTvINGv7ygDNPbeIsX/TJjGJZHuh9B2UxbsaEkmlEo9MfhrSzmhIlhRlI2GXnw==}
@@ -8210,11 +8177,7 @@ packages:
     dependencies:
       acorn: 8.10.0
       estree-walker: 3.0.3
-<<<<<<< HEAD
-      magic-string: 0.30.3
-=======
       magic-string: 0.30.4
->>>>>>> c4b02ff (feat: replace eslint config)
       unplugin: 1.5.0
     dev: true
 
@@ -8354,8 +8317,8 @@ packages:
       - rollup
     dev: true
 
-  /unplugin-config@0.0.12(esbuild@0.19.2)(vite@4.4.9):
-    resolution: {integrity: sha512-IzEWHwj8/jDmifY/JOjSAowo4hF5/eDwPrv78zDkN6F7WsQJy+UE2XQhCVFwv0dohRpSyd/fidYpVCYlJqIRzA==}
+  /unplugin-config@0.0.13(esbuild@0.19.4)(vite@4.4.11):
+    resolution: {integrity: sha512-VZyYzjzhNgXl/K7XrJshHZ0unex0vMH98KFtBckqiGUhxhY0yavQjGsA5sOAQgkuiFEJ+ZwdOdaQPwhMlrEfbg==}
     peerDependencies:
       '@nuxt/kit': ^3
       '@nuxt/schema': ^3
@@ -8378,9 +8341,9 @@ packages:
         optional: true
     dependencies:
       '@kirklin/logger': 0.0.2
-      esbuild: 0.19.2
+      esbuild: 0.19.4
       unplugin: 1.5.0
-      vite: 4.4.9(@types/node@18.17.15)(less@4.2.0)
+      vite: 4.4.11(@types/node@18.18.4)(less@4.2.0)
     dev: false
 
   /unplugin-vue-components@0.25.2(vue@3.3.4):
@@ -8410,15 +8373,6 @@ packages:
     transitivePeerDependencies:
       - rollup
       - supports-color
-    dev: true
-
-  /unplugin@1.5.0:
-    resolution: {integrity: sha512-9ZdRwbh/4gcm1JTOkp9lAkIDrtOyOxgHmY7cjuwI8L/2RTikMcVG25GsZwNAgRuap3iDw2jeq7eoqtAsz5rW3A==}
-    dependencies:
-      acorn: 8.10.0
-      chokidar: 3.5.3
-      webpack-sources: 3.2.3
-      webpack-virtual-modules: 0.5.0
     dev: true
 
   /unplugin@1.5.0:
