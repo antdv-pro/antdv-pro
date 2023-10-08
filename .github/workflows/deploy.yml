@@ -22,16 +22,9 @@ jobs:
           run: pnpm run build
 
         - name: Deploy
-          uses: sand4rt/ftp-deployer@v1.7
+          uses: SamKirkland/FTP-Deploy-Action@v4.3.4
           with:
-              sftp: false # optional
-              host: ${{ secrets.FTP_HOST }} # e.g. ftp.host.com or sftp.host.com (without ftp:// or ftps://)
-              port: 21 # optional, default is: 21
+              server: ${{ secrets.FTP_HOST }} # e.g. ftp.host.com or sftp.host.com (without ftp:// or ftps://)
               username: ${{ secrets.FTP_USERNAME }} # FTP username
               password: ${{ secrets.FTP_PASSWORD }} # FTP password
-              remote_folder: ${{ secrets.FTP_REMOTE_FOLDER }} # optional, remote path of your FTP server
-              local_folder: dist # optional, local path, default is: dist
-              cleanup: true # optional, remove existing files inside FTP remote folder
-              include: '[]' # optional, e.g. '['dist']'
-              exclude: '[]' # optional, e.g. '['node_modules/**', '.git/**', '*.env']'
-              passive: true # optional
+              local-dir: dist # optional, local path, default is: dist
