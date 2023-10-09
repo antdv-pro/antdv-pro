@@ -2,6 +2,9 @@
 import { App, theme } from 'ant-design-vue'
 import { registerTokenToCSSVar } from './token-to-cssvar'
 
+defineOptions({
+  name: 'TokenProvider',
+})
 const { token } = theme.useToken()
 const { setToken } = useAntdToken()
 const { message, modal, notification } = App.useApp()

@@ -8,6 +8,9 @@ import GlobalFooter from '../components/global-footer/index.vue'
 import { proLayoutProps } from './typing'
 import { useLayoutProvider } from './context'
 
+defineOptions({
+  name: 'BasicLayout',
+})
 const props = defineProps(proLayoutProps)
 const emit = defineEmits(['update:collapsed'])
 

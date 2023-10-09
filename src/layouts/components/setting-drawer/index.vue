@@ -9,6 +9,9 @@ import LayoutSetting from './layout-setting.vue'
 import RegionalSetting from './regional-setting.vue'
 import OtherSetting from './other-setting.vue'
 
+defineOptions({
+  name: 'SettingDrawer',
+})
 const props = withDefaults(
   defineProps<{
     open?: boolean

@@ -21,6 +21,7 @@ async function start() {
   setupDirective(app)
   app.use(router)
   app.mount('#app')
+  app.config.performance = true
 }
 
 function setupDirective(app: App) {
