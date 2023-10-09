@@ -31,11 +31,15 @@ export function createVitePlugins(env: Record<string, string>) {
     }),
     // https://github.com/kirklin/unplugin-config
     GenerateConfig({
-      disabledConfig: false,
-      globConfigFileName: GLOB_CONFIG_FILE_NAME,
-      outputDir: OUTPUT_DIR,
       appName: APP_NAME,
-      envConfigPrefix: 'VITE_GLOB_',
+      configFile: {
+        generate: true,
+        fileName: GLOB_CONFIG_FILE_NAME,
+        outputDir: OUTPUT_DIR,
+      },
+      envVariables: {
+        prefix: 'VITE_GLOB_',
+      },
     }),
     Unocss(),
     viteBuildInfo(env.VITE_APP_NAME),
