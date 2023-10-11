@@ -8,6 +8,8 @@
   "scripts": {
     "dev": "mist",
     "build": "vue-tsc && mist build",
+    "build:nitro": "mist build nitro",
+    "start:nirto": "node dist/servers/server/index.mjs",
     "preview": "mist preview",
     "lint": "eslint src --fix",
     "typecheck": "vue-tsc --noEmit",
@@ -40,7 +42,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.7.2",
     "@commitlint/config-conventional": "^17.7.0",
-    "@mistjs/core": "0.0.1-beta.2",
+    "@mistjs/cli": "0.0.1-beta.2",
     "@mistjs/eslint-config": "1.0.0-beta.2",
     "@types/fs-extra": "^11.0.2",
     "@types/lodash": "^4.14.199",

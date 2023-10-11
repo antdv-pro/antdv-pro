@@ -63,7 +63,7 @@ importers:
       '@commitlint/config-conventional':
         specifier: ^17.7.0
         version: 17.7.0
-      '@mistjs/core':
+      '@mistjs/cli':
         specifier: 0.0.1-beta.2
         version: 0.0.1-beta.2(vite@4.4.11)
       '@mistjs/eslint-config':
@@ -1755,8 +1755,8 @@ packages:
     engines: {node: '>=6.0.0'}
     dev: false
 
-  /@mistjs/core@0.0.1-beta.2(vite@4.4.11):
-    resolution: {integrity: sha512-HFMp7LV/jqIJyQunxSM96ibAtVaFPFiJMsBHERFMp8Vlh9axyUhuZ4eSi6WHU4QnoeZI32WnPMfHZzot27y7vA==}
+  /@mistjs/cli@0.0.1-beta.2(vite@4.4.11):
+    resolution: {integrity: sha512-DQhOLA22CmEpQf+nN1Gj+AYlD9RoYaFB2rsu+nMJzVkaw/ZNhlUtRy6ehnSOzI5eqoD5RfLxK1W28+ktd9nLsQ==}
     hasBin: true
     peerDependencies:
       vite: ^3 || ^4
@@ -1915,7 +1915,6 @@ packages:
     engines: {node: '>= 10.0.0'}
     cpu: [arm]
     os: [linux]
-    libc: [glibc]
     requiresBuild: true
     dev: true
     optional: true
@@ -1925,7 +1924,6 @@ packages:
     engines: {node: '>= 10.0.0'}
     cpu: [arm64]
     os: [linux]
-    libc: [glibc]
     requiresBuild: true
     dev: true
     optional: true
@@ -1935,7 +1933,6 @@ packages:
     engines: {node: '>= 10.0.0'}
     cpu: [arm64]
     os: [linux]
-    libc: [musl]
     requiresBuild: true
     dev: true
     optional: true
@@ -1945,7 +1942,6 @@ packages:
     engines: {node: '>= 10.0.0'}
     cpu: [x64]
     os: [linux]
-    libc: [glibc]
     requiresBuild: true
     dev: true
     optional: true
@@ -1955,7 +1951,6 @@ packages:
     engines: {node: '>= 10.0.0'}
     cpu: [x64]
     os: [linux]
-    libc: [musl]
     requiresBuild: true
     dev: true
     optional: true
