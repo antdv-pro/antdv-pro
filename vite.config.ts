@@ -1,8 +1,10 @@
-import { resolve } from 'path'
-import { fileURLToPath } from 'url'
+import { resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
+import * as process from 'node:process'
 import { loadEnv } from 'vite'
 import type { ConfigEnv, UserConfig } from 'vite'
 import { createVitePlugins } from './plugins'
+
 const baseSrc = fileURLToPath(new URL('./src', import.meta.url))
 // https://vitejs.dev/config/
 export default ({ mode }: ConfigEnv): UserConfig => {
@@ -89,11 +91,11 @@ export default ({ mode }: ConfigEnv): UserConfig => {
       port: 6678,
       proxy: {
         ...proxyObj,
-        [env.VITE_APP_BASE_API]: {
-          target: env.VITE_APP_BASE_URL,
-          changeOrigin: true,
-          rewrite: path => path.replace(new RegExp(`^${env.VITE_APP_BASE_API}`), ''),
-        },
+        // [env.VITE_APP_BASE_API]: {
+        //   target: env.VITE_APP_BASE_URL,
+        //   changeOrigin: true,
+        //   rewrite: path => path.replace(new RegExp(`^${env.VITE_APP_BASE_API}`), ''),
+        // },
       },
     },
   }

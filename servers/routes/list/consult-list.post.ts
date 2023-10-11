@@ -5,7 +5,6 @@ enum STATUS {
   RUNNING = '1',
   ONLINE = '2',
   ERROR = '3',
-
 }
 
 export default eventHandler(async (_event) => {
@@ -70,7 +69,8 @@ export default eventHandler(async (_event) => {
     },
   ]
   const data = dataList.filter((i) => {
-    if (body.name) return body.name === i.name
+    if (body.name)
+      return body.name === i.name
     else return true
   })
   return {

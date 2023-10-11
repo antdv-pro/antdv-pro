@@ -6,12 +6,9 @@
   "author": "aibayanyu <aibayanyu@qq.com>",
   "repository": "antdv-pro/antdv-pro",
   "scripts": {
-    "dev:admin": "vite",
-    "dev": "run-p dev:admin dev:mockServer",
-    "dev:mock": "pnpm -F servers dev",
-    "dev:mockServer": "esno ./scripts/mock-server.ts",
-    "build": "vue-tsc && vite build",
-    "preview": "vite preview",
+    "dev": "mist",
+    "build": "vue-tsc && mist build",
+    "preview": "mist preview",
     "lint": "eslint src --fix",
     "typecheck": "vue-tsc --noEmit",
     "bump:patch": "changelogen --bump --output CHANGELOG.md --release --patch",
@@ -43,6 +40,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.7.2",
     "@commitlint/config-conventional": "^17.7.0",
+    "@mistjs/core": "0.0.1-beta.2",
     "@mistjs/eslint-config": "1.0.0-beta.2",
     "@types/fs-extra": "^11.0.2",
     "@types/lodash": "^4.14.199",

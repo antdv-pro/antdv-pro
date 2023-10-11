@@ -1,26 +1,28 @@
-import { readdir, stat } from 'fs'
+import { readdir, stat } from 'node:fs'
 import type { Plugin } from 'vite'
 import dayjs from 'dayjs'
 import type { Dayjs } from 'dayjs'
 import duration from 'dayjs/plugin/duration'
 import pkg from 'picocolors'
+
 const { green, blue, bold } = pkg
 dayjs.extend(duration)
 
 const staticPath = 'dist'
 const fileListTotal: number[] = []
 
-// eslint-disable-next-line @typescript-eslint/ban-types
-const recursiveDirectory = (folder: string, callback: Function): void => {
+function recursiveDirectory(folder: string, callback: Function): void {
   readdir(folder, (err, files: string[]) => {
-    if (err) throw err
+    if (err)
+      throw err
     let count = 0
     const checkEnd = () => {
       ++count === files.length && callback()
     }
     files.forEach((item: string) => {
       stat(`${folder}/${item}`, async (err, stats) => {
-        if (err) throw err
+        if (err)
+          throw err
         if (stats.isFile()) {
           fileListTotal.push(stats.size)
           checkEnd()
@@ -34,21 +36,22 @@ const recursiveDirectory = (folder: string, callback: Function): void => {
   })
 }
 
-const sum = (arr: number[]) => {
+function sum(arr: number[]) {
   return arr.reduce((t: number, c: number) => {
     return t + c
   }, 0)
 }
-const formatBytes = (a: number, b?: number): string => {
-  if (a === 0) return '0 Bytes'
+function formatBytes(a: number, b?: number): string {
+  if (a === 0)
+    return '0 Bytes'
   const c = 1024
   const d = b || 2
   const e = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
   const f = Math.floor(Math.log(a) / Math.log(c))
-  return `${parseFloat((a / Math.pow(c, f)).toFixed(d))} ${e[f]}`
+  return `${Number.parseFloat((a / c ** f).toFixed(d))} ${e[f]}`
 }
 
-export const viteBuildInfo = (name: string): Plugin => {
+export function viteBuildInfo(name: string): Plugin {
   let config: { command: string }
   let startTime: Dayjs
   let endTime: Dayjs

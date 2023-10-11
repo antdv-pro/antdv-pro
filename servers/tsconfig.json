@@ -1,6 +1,7 @@
 {
+  "extends": ["../tsconfig.json"],
   "compilerOptions": {
     "allowSyntheticDefaultImports": true
   },
-  "extends": "./.nitro/types/tsconfig.json"
+  "include": ["**/*.ts","../.mist/types/*.d.ts"],
 }
