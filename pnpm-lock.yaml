@@ -1773,7 +1773,7 @@ packages:
       nitropack: 2.6.3
       ora: 7.0.1
       picocolors: 1.0.0
-      vite: 4.4.11(@types/node@18.18.4)(less@4.2.0)
+      vite: 4.4.11(@types/node@20.8.4)(less@4.2.0)
     transitivePeerDependencies:
       - '@azure/app-configuration'
       - '@azure/cosmos'
