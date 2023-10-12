@@ -8,7 +8,6 @@
   "scripts": {
     "dev": "mist",
     "build": "vue-tsc && mist build",
-    "build:vercel": "nitropack build servers",
     "build:nitro": "mist build nitro",
     "start:nirto": "node dist/servers/server/index.mjs",
     "preview": "mist preview",
