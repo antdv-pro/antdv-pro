@@ -17,9 +17,9 @@
 
 ## 介绍
 
-Wendy Panel是一个分布式饥荒管理面板，用于管理[Steam上的饥荒联机版](https://store.steampowered.com/app/322330/_/)的专用服务器，基于现代化的前端项目[antdv-pro](https://github.com/antdv-pro/antdv-pro)实现，后者基于于Vue3、Vite4、ant-design-vue4、Pinia、UnoCSS和Typescrip等技术。通过Wendy Panel可以快速搭建饥荒服务器管理平台，并非常方便的进行维护和管理，这是饥荒服务器管理平台的最终解决方案。
+Wendy Panel是一个分布式饥荒管理面板，用于管理[Steam上的饥荒联机版](https://store.steampowered.com/app/322330/_/)的专用服务器，基于现代化的前端项目[antdv-pro](https://github.com/antdv-pro/antdv-pro)实现，后者由Vue3、Vite4、ant-design-vue4、Pinia、UnoCSS和Typescrip等技术实现。通过Wendy Panel可以快速搭建饥荒服务器管理平台，并非常方便的进行维护和管理，这是饥荒服务器管理平台的最终解决方案。
 
-
+<br/>
 
 文档地址：[Home | Wendy Panel (dstgo.cn)](https://wendy.dstgo.cn/)
 

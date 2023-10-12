@@ -18,7 +18,7 @@
 
 Wendy Panel is a distributed Don't Starve Together management panel, used to manage dedicated servers of [Don't Starve Together on Steam](https://store.steampowered.com/app/322330/_/), based on the modern front-end project [antdv -pro](https://github.com/antdv-pro/antdv-pro) implementation, which is based on technologies such as Vue3, Vite4, ant-design-vue4, Pinia, UnoCSS and Typescript. Through Wendy Panel, you can quickly build a Don't Starve server management platform and make it very convenient to maintain and manage. This is the ultimate solution for the Don't Starve server management platform.
 
-
+<br>
 
 Document: [Home | Wendy Panel (dstgo.cn)](https://wendy.dstgo.cn/)
 
