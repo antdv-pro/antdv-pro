@@ -16,6 +16,7 @@ export interface LayoutSetting {
   fixedHeader?: boolean
   fixedSider?: boolean
   splitMenus?: boolean
+  watermark?: boolean
   header?: boolean
   footer?: boolean
   menu?: boolean

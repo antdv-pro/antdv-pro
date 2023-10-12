@@ -30,6 +30,7 @@ export default {
   'app.setting.content-area.header': '顶栏',
   'app.setting.content-area.footer': '页脚',
   'app.setting.content-area.menu': '菜单',
+  'app.setting.content-area.watermark': '水印',
   'app.setting.content-area.menuHeader': '菜单头',
   'app.setting.content-area.multiTab': '多页签',
   'app.setting.content-area.multiTabFixed': '固定多页签',

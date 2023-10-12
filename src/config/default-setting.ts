@@ -14,6 +14,7 @@ export default {
   splitMenus: false,
   header: true,
   menu: true,
+  watermark: true,
   menuHeader: true,
   footer: false,
   colorWeak: false,

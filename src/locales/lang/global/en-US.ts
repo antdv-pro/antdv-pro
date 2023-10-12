@@ -30,6 +30,7 @@ export default {
   'app.setting.content-area.header': 'Header',
   'app.setting.content-area.footer': 'Footer',
   'app.setting.content-area.menu': 'Menu',
+  'app.setting.content-area.watermark': 'Watermark',
   'app.setting.content-area.menuHeader': 'Menu Header',
   'app.setting.content-area.multiTab': 'Multi Tab',
   'app.setting.content-area.multiTabFixed': 'Fixed Multi Tab',
