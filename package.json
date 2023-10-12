@@ -8,9 +8,8 @@
   "scripts": {
     "dev": "mist",
     "build": "vue-tsc && mist build",
-    "build:vercel": "run-s check:vercel build:nitro",
+    "build:vercel": "nitropack build servers",
     "build:nitro": "mist build nitro",
-    "check:vercel": "esno ./scripts/vercel.ts",
     "start:nirto": "node dist/servers/server/index.mjs",
     "preview": "mist preview",
     "lint": "eslint src --fix",
