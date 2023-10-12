@@ -69,7 +69,8 @@ const layoutProps = computed(() =>
     </template>
 
     <template #renderFooterLinks />
-    <a-watermark h-full flex flex-col flex-1 :content="layoutSetting.title ?? 'Antdv Pro'">
+
+    <a-watermark h-full flex flex-col flex-1 :content="!layoutSetting.watermark ? '' : layoutSetting.title ?? 'Antdv Pro'">
       <RouterView>
         <template #default="{ Component }">
           <component :is="Component" />
@@ -90,6 +91,7 @@ const layoutProps = computed(() =>
     :keep-alive="layoutSetting.keepAlive"
     :accordion-mode="layoutSetting.accordionMode"
     :left-collapsed="layoutSetting.leftCollapsed"
+    :watermark="layoutSetting.watermark"
     v-bind="layoutProps"
     :layout-setting="layoutSetting"
     @setting-change="appStore.changeSettingLayout"

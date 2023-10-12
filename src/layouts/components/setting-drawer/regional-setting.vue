@@ -7,6 +7,7 @@ const props = defineProps<{
   header?: boolean
   footer?: boolean
   menu?: boolean
+  watermark?: boolean
   menuHeader?: boolean
   multiTab?: boolean
   multiTabFixed?: boolean
@@ -20,6 +21,12 @@ const list = computed(() => ([
   {
     title: '动画',
     key: 'animationName',
+    disabled: false,
+    disabledReason: '',
+  },
+  {
+    title: '水印',
+    key: 'watermark',
     disabled: false,
     disabledReason: '',
   },
@@ -60,6 +67,7 @@ const list = computed(() => ([
     disabledReason: '多页签开启后功能正常使用',
   },
 ]))
+
 function handleChangeSetting(key: string, value: any) {
   emit('changeSetting', key, value)
 }

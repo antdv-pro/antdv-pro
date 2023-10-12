@@ -26,6 +26,7 @@ const props = withDefaults(
     keepAlive?: boolean
     accordionMode?: boolean
     leftCollapsed?: boolean
+    watermark?: boolean
     header?: boolean
     footer?: boolean
     menu?: boolean
@@ -204,6 +205,7 @@ const { token } = useAntdToken()
           :t="t"
           :layout="layout"
           :header="header"
+          :watermark="watermark"
           :menu-header="menuHeader"
           :footer="footer"
           :animation-name="animationName"
