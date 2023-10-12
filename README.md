@@ -1,99 +1,61 @@
-<div align="center"> <a href="https://github.com/antdv-pro/antdv-pro"> <img alt="VbenAdmin Logo" width="200" height="200" src="./public/logo.svg"> </a> <br> <br>
+<div align="center"> 
+<a href="https://github.com/antdv-pro/antdv-pro"> 
+<img alt="Wendy Panel" width="300" height="300" src="./public/wendy.png">
+</a> 
+<br>
 
+![GitHub](https://img.shields.io/github/license/dstgo/wendy-pro)
 
-<h1>Antdv Pro</h1>
+<h1>Wendy Panel</h1>
 
 </div>
 
-![gitee](https://gitee.com/antdv-pro/antdv-pro/badge/star.svg)
-![github](https://img.shields.io/github/stars/antdv-pro/antdv-pro?style=social)
-
-**English** | [简体中文](./README.zh-CN.md)
+[English](./README.en.md) | **简体中文**
 
 
-## Introduction
-
-AntdvPro is a complete set of enterprise-level mid-backend front-end/design solutions based on Vue3, Vite4, ant-design-vue4, Pinia, UnoCSS and Typescript. It refers to the design pattern of Ali react version antd-pro, using the latest and most popular The front-end technology stack has built-in dynamic routing, multi-theme, multi-layout and other functions, which can help you quickly build enterprise-level mid-background product prototypes.
 
 
-## Features
+## 介绍
 
-* pnpm: Using the latest pnpm as a package management tool, it can greatly reduce the size of node_modules, speed up the installation speed of packages, and can also share dependencies to reduce disk usage.
-* vite: vite as a front-end development tool, it can greatly speed up the start-up speed of the project, and also supports hot updates, which can greatly improve development efficiency.
-* vue3: vue3.3.x as the front-end framework, the basic code is written in script-setup, with less code and low maintenance cost.
-* nitro mock: Use nitro as the server's mock data, decoupled from the project, and more flexible and easy to use.
-* ant-design-vue4: ant-design-vue4 as the UI framework, the author of admin-pro is also a core member of ant-design-vue, which can provide long-term maintenance support.
-* pinia: pinia as a state management tool, it can greatly improve the readability and maintainability of the code, and also supports Typescript.
-* UnoCSS: Atomic CSS framework, reduce the troubles caused by thinking about some common class names, and improve our development efficiency.
-* Code specification: We have encapsulated a set of eslint-based code specification configuration files, which can be used out of the box to unify the problems brought by different teams.
-* Theme: The design specifications of antd-pro of the react version are used, and a set of theme modes based on vue are developed. On this basis, some new functions are added to meet various different needs as much as possible.
-* Request function: Based on axios, a set of request functions with complete types and some basic interceptor encapsulations are encapsulated. You only need to make corresponding implementation adjustments according to the requirements to meet the different needs of various projects.
-* Mobile compatibility: We have tried our best to make the basic framework compatible with the mobile terminal mode, but because our main goal is the enterprise-level mid-background product, we have not made too much adaptation to the mobile terminal. If your project needs to adapt to the mobile terminal, you can refer to our code for corresponding adjustments.
+Wendy Panel是一个分布式饥荒管理面板，用于管理[Steam上的饥荒联机版](https://store.steampowered.com/app/322330/_/)的专用服务器，基于现代化的前端项目[antdv-pro](https://github.com/antdv-pro/antdv-pro)实现，后者基于于Vue3、Vite4、ant-design-vue4、Pinia、UnoCSS和Typescrip等技术。通过Wendy Panel可以快速搭建饥荒服务器管理平台，并非常方便的进行维护和管理，这是饥荒服务器管理平台的最终解决方案。
 
 
-## Preview
 
-[antdv-pro](https://antdv-pro.com) -  Test Account: admin/admin
+文档地址：[Home | Wendy Panel (dstgo.cn)](https://wendy.dstgo.cn/)
 
-[antdv-pro-docs](https://docs.antdv-pro.com) - Documentation
+后端项目：[dstgo/wilson: open source distributed Game Server web manager](https://github.com/dstgo/wilson)
 
-## Community
+守护进程：[dstgo/wigfrid](https://github.com/dstgo/wigfrid)
 
-QQ Group: [939791772](https://qm.qq.com/cgi-bin/qm/qr?k=dZMUtNNxv0BLxQwOoZwGQ7nR24GT-24s&authKey=F2Rpv5Gez5nD7Pr5HrYalfd3J6T9PEcu2TJ/femkp9ZQF+YhlvvYyrvJone8BoeT&noverify=0)
 
-Wechat: aibayanyu2022
 
-Discord: [discord](https://discord.gg/tPb4G6gXmm)
+## 特性
 
-### WeChatGroup
+- **容器化**：每一个专用服务器就是一个容器实例，实例之间相互运行隔离，互不干扰。
+- **资源限制**：通过限制容器的资源使用，可以避免实例对宿主机的资源的过度消耗。
+- **弹性管理**：实例的资源弹性分配，资源规格热更新。
+- **分布式**：分布式管理多个机器节点上的容器。
+- **开放接口**：开放接口支持，以供第三方进行调用。
 
-<img src="https://git.lingyu.org.cn/yanyu/images/raw/branch/main/wx-group.jpg" width="300">
 
-## Useage
+
+## 开发
 
 ```bash
-
-# Install degit
-npm  i -g degit
-
-# Pull the code
-degit antdv-pro/antdv-pro [your project name]
-
-#  Switch to the project directory
-cd [your project name]
-
-# Install
+# 安装依赖
 pnpm install
 
-# Development
+# 启动项目
 pnpm dev
 ```
 
-## Contribute
-
-We are very welcome to have you participate in our open source project.
 
 
-**Pull Request:**
+## 贡献
 
-1. Fork code!
-2. Create your own branch: `git checkout -b feat-xxxx`
-3. Submit your changes: `git commit -am 'feat(function): add xxxxx'`
-4. Push your branch: `git push origin feat-xxxx`
-5. submit`pull request`
+1. fork到自己仓库
+2. 提交修改的代码
+3. 推送到自己的仓库
+4. 向本仓库提交pr
+5. 等待pr被merge
 
-Thank you to all the people who already contributed to antdv-pro!
-
-<a href="https://github.com/antdv-pro/antdv-pro/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=antdv-pro/antdv-pro&max=100&columns=15" />
-</a>
-
-## Support
-
-If you lick our project, you can support us by clicking the "Star" button in the upper right corner. Your support is my motivation. Thank you ~
-
-## Sponsor
-
-If you like our project, you can sponsor us to help us maintain the project better.
-
-[Alipay/Wechat](https://docs.antdv-pro.com/other/sponsor.html)
