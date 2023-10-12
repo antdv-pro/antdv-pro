@@ -8,6 +8,8 @@
   "scripts": {
     "dev": "mist",
     "build": "vue-tsc && mist build",
+    "clear:vercel": "rm -rf ./vercel.json",
+    "build:vercel": "run-s clear:vercel build:nitro",
     "build:nitro": "mist build nitro",
     "start:nirto": "node dist/servers/server/index.mjs",
     "preview": "mist preview",
@@ -65,7 +67,6 @@
     "less": "^4.2.0",
     "lint-staged": "^14.0.1",
     "lodash": "^4.17.21",
-    "nitropack": "^2.6.3",
     "npm-run-all": "^4.1.5",
     "picocolors": "^1.0.0",
     "treeify": "^1.1.0",
