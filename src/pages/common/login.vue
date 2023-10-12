@@ -1,5 +1,11 @@
 <script setup lang="ts">
-import { AlipayCircleFilled, LockOutlined, MobileOutlined, TaobaoCircleFilled, UserOutlined, WeiboCircleFilled } from '@ant-design/icons-vue'
+import {
+  AlipayCircleFilled,
+  LockOutlined,
+  TaobaoCircleFilled,
+  UserOutlined,
+  WeiboCircleFilled,
+} from '@ant-design/icons-vue'
 import { delayTimer } from '@v-c/utils'
 import { AxiosError } from 'axios'
 import GlobalLayoutFooter from '~/layouts/components/global-footer/index.vue'
@@ -29,7 +35,7 @@ const resetCounter = 60
 const submitLoading = shallowRef(false)
 const errorAlert = shallowRef(false)
 const bubbleCanvas = ref<HTMLCanvasElement>()
-const { counter, pause, reset, resume, isActive } = useInterval(1000, {
+const { pause, reset, resume } = useInterval(1000, {
   controls: true,
   immediate: false,
   callback(count) {
@@ -39,6 +45,8 @@ const { counter, pause, reset, resume, isActive } = useInterval(1000, {
     }
   },
 })
+
+// eslint-disable-next-line unused-imports/no-unused-vars
 async function getCode() {
   codeLoading.value = true
   try {
@@ -95,6 +103,7 @@ async function submit() {
     submitLoading.value = false
   }
 }
+
 onMounted(async () => {
   await delayTimer(300)
   pageBubble.init(unref(bubbleCanvas)!)
@@ -121,7 +130,7 @@ onBeforeUnmount(() => {
               <img w-full h-full object-cover src="/logo.svg">
             </span>
             <span class="ant-pro-form-login-title">
-              Antdv Pro
+              {{ t('app.name') }}
             </span>
             <span class="ant-pro-form-login-desc">
               {{ t("pages.layouts.userLayout.title") }}
@@ -148,7 +157,7 @@ onBeforeUnmount(() => {
         <div class="box-border flex min-h-[520px]">
           <!-- 登录框左侧 -->
           <div class="ant-pro-form-login-main-left min-h-[520px] flex-center  bg-[var(--bg-color-container)]">
-            <img src="@/assets/images/login-left.png" class="h-5/6 w-5/6">
+            <img src="@/assets/images/login-left.png" class="h-full w-full">
           </div>
           <a-divider m-0 type="vertical" class="ant-pro-login-divider  min-h-[520px]" />
           <!-- 登录框右侧 -->
@@ -157,19 +166,19 @@ onBeforeUnmount(() => {
               {{ t('pages.login.tips') }}
             </div>
             <a-form ref="formRef" :model="loginModel">
-              <a-tabs v-model:activeKey="loginModel.type" centered>
-                <a-tab-pane key="account" :tab="t('pages.login.accountLogin.tab')" />
-                <a-tab-pane key="mobile" :tab="t('pages.login.phoneLogin.tab')" />
-              </a-tabs>
+              <!--              <a-tabs v-model:activeKey="loginModel.type" centered> -->
+              <!--                <a-tab-pane key="account" :tab="t('pages.login.accountLogin.tab')" /> -->
+              <!--                <a-tab-pane key="mobile" :tab="t('pages.login.phoneLogin.tab')" /> -->
+              <!--              </a-tabs> -->
               <!-- 判断是否存在error -->
-              <a-alert
-                v-if="errorAlert && loginModel.type === 'account'" mb-24px
-                :message="t('pages.login.accountLogin.errorMessage')" type="error" show-icon
-              />
-              <a-alert
-                v-if="errorAlert && loginModel.type === 'mobile'" mb-24px
-                :message="t('pages.login.phoneLogin.errorMessage')" type="error" show-icon
-              />
+              <!--              <a-alert -->
+              <!--                v-if="errorAlert && loginModel.type === 'account'" mb-24px -->
+              <!--                :message="t('pages.login.accountLogin.errorMessage')" type="error" show-icon -->
+              <!--              /> -->
+              <!--              <a-alert -->
+              <!--                v-if="errorAlert && loginModel.type === 'mobile'" mb-24px -->
+              <!--                :message="t('pages.login.phoneLogin.errorMessage')" type="error" show-icon -->
+              <!--              /> -->
               <template v-if="loginModel.type === 'account'">
                 <a-form-item name="username" :rules="[{ required: true, message: t('pages.login.username.required') }]">
                   <a-input
@@ -193,47 +202,48 @@ onBeforeUnmount(() => {
                   </a-input-password>
                 </a-form-item>
               </template>
-              <template v-if="loginModel.type === 'mobile'">
-                <a-form-item
-                  name="mobile" :rules="[
-                    { required: true, message: t('pages.login.phoneNumber.required') },
-                    {
-                      pattern: /^(86)?1([38][0-9]|4[579]|5[0-35-9]|6[6]|7[0135678]|9[89])[0-9]{8}$/,
-                      message: t('pages.login.phoneNumber.invalid'),
-                    },
-                  ]"
-                >
-                  <a-input
-                    v-model:value="loginModel.mobile" allow-clear
-                    :placeholder="t('pages.login.phoneNumber.placeholder')" size="large" @press-enter="submit"
-                  >
-                    <template #prefix>
-                      <MobileOutlined />
-                    </template>
-                  </a-input>
-                </a-form-item>
-                <a-form-item name="code" :rules="[{ required: true, message: t('pages.login.captcha.required') }]">
-                  <div flex items-center>
-                    <a-input
-                      v-model:value="loginModel.code"
-                      style="flex: 1 1 0%; transition: width 0.3s ease 0s; margin-right: 8px;" allow-clear
-                      :placeholder="t('pages.login.captcha.placeholder')" size="large" @press-enter="submit"
-                    >
-                      <template #prefix>
-                        <LockOutlined />
-                      </template>
-                    </a-input>
-                    <a-button :loading="codeLoading" :disabled="isActive" size="large" @click="getCode">
-                      <template v-if="!isActive">
-                        {{ t('pages.login.phoneLogin.getVerificationCode') }}
-                      </template>
-                      <template v-else>
-                        {{ resetCounter - counter }} {{ t('pages.getCaptchaSecondText') }}
-                      </template>
-                    </a-button>
-                  </div>
-                </a-form-item>
-              </template>
+              <!-- 暂时不需要手机号登录 -->
+              <!--              <template v-if="loginModel.type === 'mobile'"> -->
+              <!--                <a-form-item -->
+              <!--                  name="mobile" :rules="[ -->
+              <!--                    { required: true, message: t('pages.login.phoneNumber.required') }, -->
+              <!--                    { -->
+              <!--                      pattern: /^(86)?1([38][0-9]|4[579]|5[0-35-9]|6[6]|7[0135678]|9[89])[0-9]{8}$/, -->
+              <!--                      message: t('pages.login.phoneNumber.invalid'), -->
+              <!--                    }, -->
+              <!--                  ]" -->
+              <!--                > -->
+              <!--                  <a-input -->
+              <!--                    v-model:value="loginModel.mobile" allow-clear -->
+              <!--                    :placeholder="t('pages.login.phoneNumber.placeholder')" size="large" @press-enter="submit" -->
+              <!--                  > -->
+              <!--                    <template #prefix> -->
+              <!--                      <MobileOutlined /> -->
+              <!--                    </template> -->
+              <!--                  </a-input> -->
+              <!--                </a-form-item> -->
+              <!--                <a-form-item name="code" :rules="[{ required: true, message: t('pages.login.captcha.required') }]"> -->
+              <!--                  <div flex items-center> -->
+              <!--                    <a-input -->
+              <!--                      v-model:value="loginModel.code" -->
+              <!--                      style="flex: 1 1 0%; transition: width 0.3s ease 0s; margin-right: 8px;" allow-clear -->
+              <!--                      :placeholder="t('pages.login.captcha.placeholder')" size="large" @press-enter="submit" -->
+              <!--                    > -->
+              <!--                      <template #prefix> -->
+              <!--                        <LockOutlined /> -->
+              <!--                      </template> -->
+              <!--                    </a-input> -->
+              <!--                    <a-button :loading="codeLoading" :disabled="isActive" size="large" @click="getCode"> -->
+              <!--                      <template v-if="!isActive"> -->
+              <!--                        {{ t('pages.login.phoneLogin.getVerificationCode') }} -->
+              <!--                      </template> -->
+              <!--                      <template v-else> -->
+              <!--                        {{ resetCounter - counter }} {{ t('pages.getCaptchaSecondText') }} -->
+              <!--                      </template> -->
+              <!--                    </a-button> -->
+              <!--                  </div> -->
+              <!--                </a-form-item> -->
+              <!--              </template> -->
               <div class="mb-24px flex-between">
                 <a-checkbox v-model:checked="loginModel.remember">
                   {{ t('pages.login.rememberMe') }}
@@ -335,8 +345,8 @@ onBeforeUnmount(() => {
 
 }
 
-.ant-pro-form-login-main{
-  box-shadow: var(--c-shadow);
+.ant-pro-form-login-main {
+  box-shadow: 2px 2px 8px 2px rgba(29, 35, 41, .05);
 }
 
 .icon {
@@ -351,35 +361,40 @@ onBeforeUnmount(() => {
     color: var(--pro-ant-color-primary);
   }
 }
+
 .login-media(@width:100%) {
-  .ant-pro-form-login-main{
+  .ant-pro-form-login-main {
     width: @width;
   }
-  .ant-pro-form-login-main-left{
+  .ant-pro-form-login-main-left {
     display: none;
   }
-  .ant-pro-form-login-main-right{
+  .ant-pro-form-login-main-right {
     width: 100%;
   }
-  .ant-pro-form-login-desc{
+  .ant-pro-form-login-desc {
     display: none;
   }
 }
-@media (min-width : 992px) {
-  .ant-pro-form-login-main-left{
+
+@media (min-width: 992px) {
+  .ant-pro-form-login-main-left {
     width: 700px;
   }
 }
-@media(min-width:768px) and (max-width:991px){
-  .ant-pro-login-divider{
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .ant-pro-login-divider {
     display: none;
   }
+
   .login-media(400px)
 }
-@media screen and (max-width:767px) {
+
+@media screen and (max-width: 767px) {
   .login-media(350px);
 
-  .ant-pro-login-divider{
+  .ant-pro-login-divider {
     display: none;
   }
 }

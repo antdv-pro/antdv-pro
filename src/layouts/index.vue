@@ -56,26 +56,27 @@ const layoutProps = computed(() =>
     @update:collapsed="appStore.toggleCollapsed"
   >
     <template #headerActions>
-      <UserAvatar />
       <SelectLang />
-      <GithubLink />
       <template v-if="!isMobile">
-        <GiteeLink />
+        <GithubLink />
         <DocLink />
       </template>
+      <UserAvatar />
     </template>
     <template #contentPrefix>
       <MultiTab v-if="layoutSetting.multiTab" />
     </template>
 
     <template #renderFooterLinks />
-    <a-watermark h-full flex flex-col flex-1 :content="layoutSetting.title ?? 'Antdv Pro'">
-      <RouterView>
-        <template #default="{ Component }">
-          <component :is="Component" />
-        </template>
-      </RouterView>
-    </a-watermark>
+    <!-- 取消水印    -->
+    <!--    <a-watermark h-full flex flex-col flex-1 :content="layoutSetting.title ?? 'Antdv Pro'"> -->
+    <!--      -->
+    <!--    </a-watermark> -->
+    <RouterView>
+      <template #default="{ Component }">
+        <component :is="Component" />
+      </template>
+    </RouterView>
   </BasicLayout>
   <SettingDrawer
     v-model:open="layoutSetting.drawerVisible"

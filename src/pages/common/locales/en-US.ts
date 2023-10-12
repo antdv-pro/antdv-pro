@@ -1,6 +1,6 @@
 export default {
   // LoginPage
-  'pages.layouts.userLayout.title': 'Antdv Pro is a universal middle-stage management system based on Ant Design Vue',
+  'pages.layouts.userLayout.title': 'A distributed dst panel based on AntDv-Pro',
   'pages.login.accountLogin.tab': 'Account Login',
   'pages.login.accountLogin.errorMessage': 'Incorrect username/password(admin/admin)',
   'pages.login.failure': 'Login failed, please try again!',
@@ -23,5 +23,5 @@ export default {
   'pages.login.submit': 'Login',
   'pages.login.loginWith': 'Login with :',
   'pages.login.registerAccount': 'Register Account',
-  'pages.login.tips': 'welcome to the system',
+  'pages.login.tips': 'welcome to the system !',
 }

@@ -20,11 +20,3 @@ jobs:
 
         - name: Build
           run: pnpm run build
-
-        - name: Deploy
-          uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-          with:
-              server: ${{ secrets.FTP_HOST }} # e.g. ftp.host.com or sftp.host.com (without ftp:// or ftps://)
-              username: ${{ secrets.FTP_USERNAME }} # FTP username
-              password: ${{ secrets.FTP_PASSWORD }} # FTP password
-              local-dir: dist/ # optional, local path, default is: dist

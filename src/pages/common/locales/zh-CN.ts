@@ -1,6 +1,6 @@
 export default {
   //  登录页面
-  'pages.layouts.userLayout.title': 'Antdv Pro 是一个基于Ant Design Vue的通用中台管理系统',
+  'pages.layouts.userLayout.title': '一个基于AntDv-Pro的分布式饥荒管理面板',
   'pages.login.accountLogin.tab': '账户密码登录',
   'pages.login.accountLogin.errorMessage': '错误的用户名和密码(admin/admin)',
   'pages.login.failure': '登录失败，请重试！',
@@ -21,7 +21,8 @@ export default {
   'pages.login.rememberMe': '自动登录',
   'pages.login.forgotPassword': '忘记密码 ?',
   'pages.login.submit': '登录',
-  'pages.login.loginWith': '其他登录方式 :',
+  'pages.login.register': '注册',
+  'pages.login.loginWith': '其他方式 :',
   'pages.login.registerAccount': '注册账户',
-  'pages.login.tips': '欢迎使用本系统',
+  'pages.login.tips': '欢迎使用',
 }

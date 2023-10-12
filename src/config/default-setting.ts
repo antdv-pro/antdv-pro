@@ -1,7 +1,7 @@
 import type { LayoutSetting } from '~@/stores/app'
 
 export default {
-  title: 'Antdv Pro',
+  title: 'Wendy Panel',
   theme: 'light',
   logo: '/logo.svg',
   collapsed: false,
@@ -23,7 +23,7 @@ export default {
   accordionMode: false,
   leftCollapsed: true,
   headerHeight: 48,
-  copyright: 'Antdv Pro Team 2023',
+  copyright: 'dstogo Team 2023',
   animationName: 'slide-fadein-right',
 } as LayoutSetting
 
