@@ -64,11 +64,11 @@ importers:
         specifier: ^17.7.0
         version: 17.7.0
       '@mistjs/cli':
-        specifier: 0.0.1-beta.2
-        version: 0.0.1-beta.2(vite@4.4.11)
+        specifier: ^0.0.1-beta.4
+        version: 0.0.1-beta.4(vite@4.4.11)
       '@mistjs/eslint-config':
-        specifier: 1.0.0-beta.2
-        version: 1.0.0-beta.2(eslint@8.51.0)(prettier@3.0.3)(typescript@5.2.2)(vitest@0.34.6)
+        specifier: ^1.0.0-beta.4
+        version: 1.0.0-beta.4(eslint@8.51.0)(prettier@3.0.3)(typescript@5.2.2)(vitest@0.34.6)
       '@types/fs-extra':
         specifier: ^11.0.2
         version: 11.0.2
@@ -1758,8 +1758,8 @@ packages:
     engines: {node: '>=6.0.0'}
     dev: false
 
-  /@mistjs/cli@0.0.1-beta.2(vite@4.4.11):
-    resolution: {integrity: sha512-DQhOLA22CmEpQf+nN1Gj+AYlD9RoYaFB2rsu+nMJzVkaw/ZNhlUtRy6ehnSOzI5eqoD5RfLxK1W28+ktd9nLsQ==}
+  /@mistjs/cli@0.0.1-beta.4(vite@4.4.11):
+    resolution: {integrity: sha512-W3Ab/O8ml3ch6eUzYxCixViOeVEH1gOblAVA+Ru8Qc2AA0bWXVvnyQZ1rRHrGP/clW/O6LrBacjnugTuE7/L4w==}
     hasBin: true
     peerDependencies:
       vite: ^3 || ^4
@@ -1794,8 +1794,8 @@ packages:
       - xml2js
     dev: true
 
-  /@mistjs/eslint-config@1.0.0-beta.2(eslint@8.51.0)(prettier@3.0.3)(typescript@5.2.2)(vitest@0.34.6):
-    resolution: {integrity: sha512-poYgJ+iKi0a/6U+ejy5LBNspm/MDkeaWLmnJFMLVCIgSKyhWchfHyjEcKc+iOT0V9ftQw8TqY4m1Ptqs5M3N8w==}
+  /@mistjs/eslint-config@1.0.0-beta.4(eslint@8.51.0)(prettier@3.0.3)(typescript@5.2.2)(vitest@0.34.6):
+    resolution: {integrity: sha512-W8HvKfYk/4KlBwxvLM0P3K5Iaun24c9Bd3koslacnctd/QA8yOtuiIHvXTqP1gkAd2PCKDqGiacuJzaetP9HSw==}
     peerDependencies:
       eslint: '>8.0.0'
     dependencies:

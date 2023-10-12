@@ -42,8 +42,8 @@
   "devDependencies": {
     "@commitlint/cli": "^17.7.2",
     "@commitlint/config-conventional": "^17.7.0",
-    "@mistjs/cli": "0.0.1-beta.2",
-    "@mistjs/eslint-config": "1.0.0-beta.2",
+    "@mistjs/cli": "^0.0.1-beta.4",
+    "@mistjs/eslint-config": "^1.0.0-beta.4",
     "@types/fs-extra": "^11.0.2",
     "@types/lodash": "^4.14.199",
     "@types/lodash-es": "^4.17.9",
