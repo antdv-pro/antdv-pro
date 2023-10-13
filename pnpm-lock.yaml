@@ -132,9 +132,6 @@ importers:
       lodash:
         specifier: ^4.17.21
         version: 4.17.21
-      nitropack:
-        specifier: ^2.6.3
-        version: 2.6.3
       npm-run-all:
         specifier: ^4.1.5
         version: 4.1.5
