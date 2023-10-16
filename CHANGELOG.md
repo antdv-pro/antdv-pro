@@ -1,6 +1,55 @@
 # Changelog
 
 
+## v1.0.0
+
+[compare changes](https://github.com/antdv-pro/antdv-pro/compare/v0.2.0...v1.0.0)
+
+### 🚀 Enhancements
+
+- Add antdv-style ([329690f](https://github.com/antdv-pro/antdv-pro/commit/329690f))
+- Mist replace vite ([df6be41](https://github.com/antdv-pro/antdv-pro/commit/df6be41))
+- Delete file ([327ae33](https://github.com/antdv-pro/antdv-pro/commit/327ae33))
+- **setting:** Supported watermark switch ([a441950](https://github.com/antdv-pro/antdv-pro/commit/a441950))
+- Support eager mode ([32d9340](https://github.com/antdv-pro/antdv-pro/commit/32d9340))
+
+### 🩹 Fixes
+
+- Add component name ([a444650](https://github.com/antdv-pro/antdv-pro/commit/a444650))
+- Support vercel deploy ([c78010f](https://github.com/antdv-pro/antdv-pro/commit/c78010f))
+- Support vercel deploy ([c2294aa](https://github.com/antdv-pro/antdv-pro/commit/c2294aa))
+- Change vercel config ([8af11a8](https://github.com/antdv-pro/antdv-pro/commit/8af11a8))
+- Change vercel config ([6f828e5](https://github.com/antdv-pro/antdv-pro/commit/6f828e5))
+- Dev server error ([7ef7e00](https://github.com/antdv-pro/antdv-pro/commit/7ef7e00))
+
+### 🏡 Chore
+
+- Update deps ([524df05](https://github.com/antdv-pro/antdv-pro/commit/524df05))
+- Update `unplugin-config` ([403f3bb](https://github.com/antdv-pro/antdv-pro/commit/403f3bb))
+- Delete multimenu ([5673f06](https://github.com/antdv-pro/antdv-pro/commit/5673f06))
+- Resolve conflict ([5cac11e](https://github.com/antdv-pro/antdv-pro/commit/5cac11e))
+- Change version ([20bb03f](https://github.com/antdv-pro/antdv-pro/commit/20bb03f))
+- Change ([fcac6a0](https://github.com/antdv-pro/antdv-pro/commit/fcac6a0))
+- Change ([550a341](https://github.com/antdv-pro/antdv-pro/commit/550a341))
+- Change ([c2e4cc5](https://github.com/antdv-pro/antdv-pro/commit/c2e4cc5))
+- Change ([1826431](https://github.com/antdv-pro/antdv-pro/commit/1826431))
+
+### 🤖 CI
+
+- Support deploy ([5f7cd06](https://github.com/antdv-pro/antdv-pro/commit/5f7cd06))
+- Support deploy ([e53528e](https://github.com/antdv-pro/antdv-pro/commit/e53528e))
+- Change local-dir ([4c278e4](https://github.com/antdv-pro/antdv-pro/commit/4c278e4))
+- Change local-dir ([415fa6a](https://github.com/antdv-pro/antdv-pro/commit/415fa6a))
+- Change deploy ([259b768](https://github.com/antdv-pro/antdv-pro/commit/259b768))
+- Change deploy ([0cc948d](https://github.com/antdv-pro/antdv-pro/commit/0cc948d))
+
+### ❤️ Contributors
+
+- Aibayanyu <aibayanyu@qq.com>
+- Aibayanyu20 <aibayanyu@qq.com>
+- 246859 ([@CQUT-Programmer](http://github.com/CQUT-Programmer))
+- Kirk Lin ([@kirklin](http://github.com/kirklin))
+
 ## v0.2.0
 
 [compare changes](https://github.com/antdv-pro/antdv-pro/compare/v0.0.19...v0.2.0)
