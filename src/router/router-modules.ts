@@ -21,6 +21,12 @@ export const basicRouteMap = {
   ComponentError: () => import('~/pages/exception/component-error.vue'),
 }
 
+function checkEager(module: any) {
+  if (typeof module === 'object' && 'default' in module)
+    return module.default
+
+  return module
+}
 export function getRouterModule(path?: string): any {
   if (!path)
     return basicRouteMap.ComponentError
@@ -35,10 +41,10 @@ export function getRouterModule(path?: string): any {
   const fullPath = `/src/pages/${path}.vue`
   const fullPathIndex = `/src/pages/${path}/index.vue`
   if (fullPathIndex in routerModules)
-    return routerModules[fullPathIndex]
+    return checkEager(routerModules[fullPathIndex])
 
   // 返回插件信息
-  return routerModules[fullPath]
+  return checkEager(routerModules[fullPath])
 }
 
 export default routerModules
