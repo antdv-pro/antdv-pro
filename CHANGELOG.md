@@ -1,9 +1,9 @@
 # Changelog
 
 
-## v1.0.0
+## v1.0.0-beta.1
 
-[compare changes](https://github.com/antdv-pro/antdv-pro/compare/v0.2.0...v1.0.0)
+[compare changes](https://github.com/antdv-pro/antdv-pro/compare/v0.2.0...v1.0.0-beta.1)
 
 ### 🚀 Enhancements
 
@@ -33,6 +33,7 @@
 - Change ([550a341](https://github.com/antdv-pro/antdv-pro/commit/550a341))
 - Change ([c2e4cc5](https://github.com/antdv-pro/antdv-pro/commit/c2e4cc5))
 - Change ([1826431](https://github.com/antdv-pro/antdv-pro/commit/1826431))
+- **release:** V1.0.0 ([699a870](https://github.com/antdv-pro/antdv-pro/commit/699a870))
 
 ### 🤖 CI
 
