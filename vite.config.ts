@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import * as process from 'node:process'
@@ -98,6 +99,10 @@ export default ({ mode }: ConfigEnv): UserConfig => {
         //   rewrite: path => path.replace(new RegExp(`^${env.VITE_APP_BASE_API}`), ''),
         // },
       },
+    },
+    test: {
+      globals: true,
+      environment: 'jsdom',
     },
   }
 }
