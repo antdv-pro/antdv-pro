@@ -263,6 +263,7 @@ declare global {
   const useScriptTag: typeof import('@vueuse/core')['useScriptTag']
   const useScroll: typeof import('@vueuse/core')['useScroll']
   const useScrollLock: typeof import('@vueuse/core')['useScrollLock']
+  const useScrollToTop: typeof import('../src/composables/loading')['useScrollToTop']
   const useSessionStorage: typeof import('@vueuse/core')['useSessionStorage']
   const useSetGlobalConfig: typeof import('../src/composables/global-config')['useSetGlobalConfig']
   const useShare: typeof import('@vueuse/core')['useShare']

@@ -62,4 +62,5 @@ router.beforeEach(async (to, _, next) => {
 router.afterEach((to) => {
   useMetaTitle(to)
   useLoadingCheck()
+  useScrollToTop()
 })

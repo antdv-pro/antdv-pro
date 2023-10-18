@@ -7,3 +7,14 @@ export function useLoadingCheck() {
     }, 100)
   }
 }
+
+export function useScrollToTop() {
+  const app = document.getElementById('app')
+  if (app) {
+    setTimeout(() => {
+      app.scrollTo({
+        top: 0,
+      })
+    }, 300)
+  }
+}
