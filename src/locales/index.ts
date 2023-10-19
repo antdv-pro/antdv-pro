@@ -5,11 +5,19 @@ import { createI18n } from 'vue-i18n'
 // eslint-disable-next-line import/no-mutable-exports
 export let i18n: I18n
 
+const defaultLoadLang = 'zh-CN'
+
 async function createI18nOptions(): Promise<I18nOptions> {
   const appStore = useAppStore()
   const { locale } = storeToRefs(appStore)
   // 扩展可从服务器端获取语言翻译文件
-  const defaultLocal = await import(`./lang/${locale.value}.ts`)
+  let defaultLocal
+  try {
+    defaultLocal = await import(`./lang/${locale.value}.ts`)
+  }
+  catch (e) {
+    defaultLocal = await import(`./lang/${defaultLoadLang}.ts`)
+  }
   return {
     legacy: false,
     locale: locale.value,
@@ -40,8 +48,13 @@ export async function loadLanguageAsync(locale: string) {
   try {
     if (current === locale)
       return nextTick()
-
-    const messages = await import(`./lang/${locale}.ts`)
+    let messages
+    try {
+      messages = await import(`./lang/${locale}.ts`)
+    }
+    catch (e) {
+      messages = await import(`./lang/${defaultLoadLang}.ts`)
+    }
     if (messages)
       i18n.global.setLocaleMessage(locale, messages.default)
   }
