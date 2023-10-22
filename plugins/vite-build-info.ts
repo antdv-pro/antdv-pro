@@ -8,7 +8,6 @@ import pkg from 'picocolors'
 const { green, blue, bold } = pkg
 dayjs.extend(duration)
 
-const staticPath = 'dist'
 const fileListTotal: number[] = []
 
 function recursiveDirectory(folder: string, callback: Function): void {
@@ -52,12 +51,12 @@ function formatBytes(a: number, b?: number): string {
 }
 
 export function viteBuildInfo(name: string): Plugin {
-  let config: { command: string }
+  let config: { command: string; build: { outDir?: string } }
   let startTime: Dayjs
   let endTime: Dayjs
   return {
     name: 'vite:buildInfo',
-    configResolved(resolvedConfig: { command: string }) {
+    configResolved(resolvedConfig: { command: string; build: { outDir?: string } }) {
       config = resolvedConfig
     },
     buildStart() {
@@ -75,7 +74,7 @@ export function viteBuildInfo(name: string): Plugin {
     closeBundle() {
       if (config.command === 'build') {
         endTime = dayjs(new Date())
-        recursiveDirectory(staticPath, () => {
+        recursiveDirectory(config.build.outDir, () => {
           console.log(
             bold(
               green(
