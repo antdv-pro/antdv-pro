@@ -1,5 +1,5 @@
 import { readdir, stat } from 'node:fs'
-import type { Plugin } from 'vite'
+import type { Plugin, ResolvedConfig } from 'vite'
 import dayjs from 'dayjs'
 import type { Dayjs } from 'dayjs'
 import duration from 'dayjs/plugin/duration'
@@ -51,12 +51,12 @@ function formatBytes(a: number, b?: number): string {
 }
 
 export function viteBuildInfo(name: string): Plugin {
-  let config: { command: string; build: { outDir?: string } }
+  let config: ResolvedConfig
   let startTime: Dayjs
   let endTime: Dayjs
   return {
     name: 'vite:buildInfo',
-    configResolved(resolvedConfig: { command: string; build: { outDir?: string } }) {
+    configResolved(resolvedConfig) {
       config = resolvedConfig
     },
     buildStart() {
