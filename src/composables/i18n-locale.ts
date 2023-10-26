@@ -16,16 +16,22 @@ export const useI18nLocale = createSharedComposable(() => {
   const localeStore = useAppStore()
   // 多语言的信息
   const locale = computed<string>(() => {
+    if (!i18n)
+      return 'zh-CN'
+
     return unref(i18n.global.locale)
   })
 
   // 获取antd的多语言
   const antd = computed(() => {
-    return (i18n.global.getLocaleMessage(unref(locale)) as any)?.antd || undefined
+    return (i18n?.global?.getLocaleMessage?.(unref(locale)) as any)?.antd || undefined
   })
 
   // 切换多语言
   const setLocale = async (locale: string) => {
+    if (!i18n)
+      return
+
     if (loading.value)
       return
     loading.value = true
@@ -55,9 +61,9 @@ export const useI18nLocale = createSharedComposable(() => {
 
   // 切换多语言功能
   const t = (key: string, defaultMessage?: string) => {
-    const message = (i18n.global as any).t(key)
+    const message = (i18n?.global as any)?.t?.(key)
     if (message !== key)
-      return (i18n.global as any).t(key)
+      return (i18n?.global as any)?.t?.(key)
     else
       return defaultMessage ?? key
   }
