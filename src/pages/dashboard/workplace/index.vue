@@ -339,6 +339,7 @@ onBeforeUnmount(() => {
             <a-card :body-style="{ padding: 0 }" style="box-shadow: none" :bordered="false">
               <a-card-meta
                 :description="item.description"
+                class="w-full"
               >
                 <template #title>
                   <div class="cardTitle">
