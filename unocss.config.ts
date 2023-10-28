@@ -13,7 +13,10 @@ import presetEase from 'unocss-preset-ease'
 import antdUnoTheme from './themes/antd-uno-theme.json'
 
 export default defineConfig({
-  safelist: [],
+  safelist: [
+    'py-16px',
+    'pb-16px',
+  ],
   theme: {
     ...antdUnoTheme,
   },
