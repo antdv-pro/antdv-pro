@@ -187,5 +187,8 @@ onUnmounted(() => {
   .ant-tabs-nav-operations {
     display: none !important;
   }
+  .ant-tabs-nav {
+    margin-bottom: 0;
+  }
 }
 </style>

@@ -62,7 +62,7 @@ function renderTitle(title: VNodeChild | (() => VNodeChild)) {
 
 <template>
   <div>
-    <div class="bg-[var(--bg-color)]" px-24px pb-16px mb-24px mx--24px mt--24px>
+    <div class="bg-[var(--bg-color)]" px-24px py-16px mb-24px mx--24px mt--24px>
       <a-breadcrumb v-if="!currentItem.hideInBreadcrumb">
         <template v-if="currentItem.matched?.length">
           <a-breadcrumb-item v-for="item in currentItem.matched" :key="item.path">
