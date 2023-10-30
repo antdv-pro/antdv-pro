@@ -107,8 +107,8 @@ onBeforeUnmount(() => {
 
 <template>
   <div class="login-container">
-    <div h-screen w-screen absolute>
-      <canvas ref="bubbleCanvas" absolute z-10 />
+    <div h-screen w-screen absolute z-10>
+      <canvas ref="bubbleCanvas" />
     </div>
     <div class="login-content flex-center">
       <div class="ant-pro-form-login-main rounded">
@@ -256,8 +256,10 @@ onBeforeUnmount(() => {
         </div>
       </div>
     </div>
-    <div py-24px px-50px fixed bottom-0 w-screen :data-theme="layoutSetting.theme" text-14px>
-      <GlobalLayoutFooter :copyright="layoutSetting.copyright">
+    <div py-24px px-50px fixed bottom-0 z-11 w-screen :data-theme="layoutSetting.theme" text-14px>
+      <GlobalLayoutFooter
+        :copyright="layoutSetting.copyright" icp="鲁ICP备2023021414号-2"
+      >
         <template #renderFooterLinks>
           <footer-links />
         </template>
