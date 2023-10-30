@@ -19,7 +19,7 @@ const prefixCls = shallowRef('ant-pro-global-footer')
       <slot name="renderFooterLinks" />
     </div>
     <div v-if="copyright" :class="`${prefixCls}-copyright`">
-      <a v-if="icp" href="https://beian.miit.gov.cn/">{{ icp }}</a> <CopyrightCircleOutlined /> {{ copyright }}
+      <a v-if="icp" href="https://beian.miit.gov.cn/" target="_blank">{{ icp }}</a> <CopyrightCircleOutlined /> {{ copyright }}
     </div>
   </div>
 </template>
