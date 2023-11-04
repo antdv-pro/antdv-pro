@@ -67,8 +67,8 @@ importers:
         specifier: 0.0.1-beta.4
         version: 0.0.1-beta.4(vite@4.5.0)
       '@mistjs/eslint-config':
-        specifier: 1.0.0-beta.4
-        version: 1.0.0-beta.4(eslint@8.53.0)(prettier@3.0.3)(typescript@5.2.2)(vitest@0.34.6)
+        specifier: 1.0.0-beta.5
+        version: 1.0.0-beta.5(eslint@8.53.0)(prettier@3.0.3)(typescript@5.2.2)(vitest@0.34.6)
       '@types/fs-extra':
         specifier: ^11.0.3
         version: 11.0.3
@@ -1819,8 +1819,8 @@ packages:
       - xml2js
     dev: true
 
-  /@mistjs/eslint-config@1.0.0-beta.4(eslint@8.53.0)(prettier@3.0.3)(typescript@5.2.2)(vitest@0.34.6):
-    resolution: {integrity: sha512-W8HvKfYk/4KlBwxvLM0P3K5Iaun24c9Bd3koslacnctd/QA8yOtuiIHvXTqP1gkAd2PCKDqGiacuJzaetP9HSw==}
+  /@mistjs/eslint-config@1.0.0-beta.5(eslint@8.53.0)(prettier@3.0.3)(typescript@5.2.2)(vitest@0.34.6):
+    resolution: {integrity: sha512-OrvRUm/aOyRLzTxHigOIiM+dAacDIUcqHqcj9gXnMHCot+BdQLB1JoIk9b5bKKz214m9QVbZlvwYs9jUgm/1sw==}
     peerDependencies:
       eslint: '>8.0.0'
     dependencies:
