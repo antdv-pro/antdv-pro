@@ -49,7 +49,7 @@ Discord: [discord](https://discord.gg/tPb4G6gXmm)
 
 ### 微信群
 
-<img src="https://git.lingyu.org.cn/yanyu/images/raw/branch/main/wx-group.jpg" width="300">
+gitee不再更新微信群地址，如需加入微信群，请加微信号：aibayanyu2022，备注：加群
 
 ## 使用
 
