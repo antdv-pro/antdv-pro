@@ -47,7 +47,7 @@ const columns = shallowRef([
 const loading = shallowRef(false)
 const pagination = reactive<PaginationProps>({
   pageSize: 10,
-  pageSizeOptions: [10, 20, 30, 40],
+  pageSizeOptions: ['10', '20', '30', '40'],
   current: 1,
   total: 100,
   showSizeChanger: true,
