@@ -1,6 +1,43 @@
 # Changelog
 
 
+## v1.0.0-beta.2
+
+[compare changes](https://github.com/antdv-pro/antdv-pro/compare/v1.0.0-beta.1...v1.0.0-beta.2)
+
+### 🚀 Enhancements
+
+- Add vitest ([ec66360](https://github.com/antdv-pro/antdv-pro/commit/ec66360))
+- Add icp ([ced7249](https://github.com/antdv-pro/antdv-pro/commit/ced7249))
+
+### 🩹 Fixes
+
+- Fix the page not scrolling to the top when switching ([d6a2406](https://github.com/antdv-pro/antdv-pro/commit/d6a2406))
+- Fix locale auto load error ([e441349](https://github.com/antdv-pro/antdv-pro/commit/e441349))
+- Using vite's outDir to unify staticPath ([d5f5448](https://github.com/antdv-pro/antdv-pro/commit/d5f5448))
+- Fix typo ([e68bb8c](https://github.com/antdv-pro/antdv-pro/commit/e68bb8c))
+- Fix i18n hot accept error ([e1da2a8](https://github.com/antdv-pro/antdv-pro/commit/e1da2a8))
+- Card layout misalignment ([1944820](https://github.com/antdv-pro/antdv-pro/commit/1944820))
+- Remove tabs default margin ([8de0518](https://github.com/antdv-pro/antdv-pro/commit/8de0518))
+- Not has multitab prcessing pagecontainer spacing ([a604f9d](https://github.com/antdv-pro/antdv-pro/commit/a604f9d))
+- Icp open blank page ([f0739e2](https://github.com/antdv-pro/antdv-pro/commit/f0739e2))
+- Page show not right close #122 ([#122](https://github.com/antdv-pro/antdv-pro/issues/122))
+
+### 🏡 Chore
+
+- Change version ([742270e](https://github.com/antdv-pro/antdv-pro/commit/742270e))
+- Update deps ([d291e93](https://github.com/antdv-pro/antdv-pro/commit/d291e93))
+- Update deps ([00b693e](https://github.com/antdv-pro/antdv-pro/commit/00b693e))
+
+### ❤️ Contributors
+
+- Aibayanyu <aibayanyu@qq.com>
+- Jiabochao ([@jiabochao](http://github.com/jiabochao))
+- Undefined ([@undefined-moe](http://github.com/undefined-moe))
+- 萍萍 ([@jiabochao](http://github.com/jiabochao))
+- Aibayanyu20 <aibayanyu@qq.com>
+- Unknown ([@aibayanyu20](http://github.com/aibayanyu20))
+
 ## v1.0.0-beta.1
 
 [compare changes](https://github.com/antdv-pro/antdv-pro/compare/v0.2.0...v1.0.0-beta.1)
