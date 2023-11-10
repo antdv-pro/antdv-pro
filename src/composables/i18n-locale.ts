@@ -52,7 +52,9 @@ export const useI18nLocale = createSharedComposable(() => {
   }
 
   watch(locale, () => {
-    dayjs.locale(antd.value.locale)
+    if (antd.value && antd.value.locale)
+      dayjs.locale(antd.value.locale)
+
     const route = router.currentRoute.value
     useMetaTitle(route)
   }, {
