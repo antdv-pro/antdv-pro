@@ -1,6 +1,28 @@
 # Changelog
 
 
+## v1.0.0-beta.3
+
+[compare changes](https://github.com/antdv-pro/antdv-pro/compare/v1.0.0-beta.2...v1.0.0-beta.3)
+
+### 🩹 Fixes
+
+- Locale error ([df1293d](https://github.com/antdv-pro/antdv-pro/commit/df1293d))
+
+### 🏡 Chore
+
+- Update readme ([27ab14e](https://github.com/antdv-pro/antdv-pro/commit/27ab14e))
+- Update deps ([9946ea4](https://github.com/antdv-pro/antdv-pro/commit/9946ea4))
+- Update deps ([aae9b3a](https://github.com/antdv-pro/antdv-pro/commit/aae9b3a))
+- Unified build output directory #118 ([#118](https://github.com/antdv-pro/antdv-pro/issues/118))
+- Update deps ([75937d6](https://github.com/antdv-pro/antdv-pro/commit/75937d6))
+
+### ❤️ Contributors
+
+- Aibayanyu <aibayanyu@qq.com>
+- Aibayanyu20 <aibayanyu@qq.com>
+- Kirk Lin ([@kirklin](http://github.com/kirklin))
+
 ## v1.0.0-beta.2
 
 [compare changes](https://github.com/antdv-pro/antdv-pro/compare/v1.0.0-beta.1...v1.0.0-beta.2)
