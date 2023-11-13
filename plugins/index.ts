@@ -4,6 +4,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import AutoImport from 'unplugin-auto-import/vite'
 import GenerateConfig from 'unplugin-config/vite'
 import Components from 'unplugin-vue-components/vite'
+import VitePluginPreloadAll from 'vite-plugin-preload'
 import Unocss from 'unocss/vite'
 import AntdvResolver from 'antdv-component-resolver'
 import { GLOB_CONFIG_FILE_NAME, OUTPUT_DIR } from './constants'
@@ -13,6 +14,7 @@ export function createVitePlugins(env: Record<string, string>) {
   const vitePluginList: (PluginOption | PluginOption[])[] = [
     vue(),
     vueJsx(),
+    VitePluginPreloadAll(),
     AutoImport({
       imports: [
         'vue',
