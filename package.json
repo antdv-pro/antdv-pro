@@ -11,7 +11,7 @@
     "clear:vercel": "rm -rf ./vercel.json",
     "build:vercel": "run-s clear:vercel build:nitro",
     "build:nitro": "mist build nitro",
-    "start:nirto": "node .output/server/index.mjs ",
+    "start:nirto": "node .output/server/index.mjs",
     "preview": "mist preview",
     "lint": "eslint src --fix",
     "typecheck": "vue-tsc --noEmit",
