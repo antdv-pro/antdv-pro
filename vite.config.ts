@@ -91,6 +91,9 @@ export default ({ mode }: ConfigEnv): UserConfig => {
       },
     },
     server: {
+      hmr: {
+        overlay: false,
+      },
       port: 6678,
       host: '0.0.0.0',
       proxy: {
