@@ -53,7 +53,7 @@
     "@vitejs/plugin-vue": "^4.5.0",
     "@vitejs/plugin-vue-jsx": "^3.1.0",
     "@vue/test-utils": "^2.4.2",
-    "antdv-component-resolver": "^1.0.4",
+    "antdv-component-resolver": "^1.0.5",
     "antdv-style": "0.0.1-beta.2",
     "changelogen": "^0.5.5",
     "cross-env": "^7.0.3",

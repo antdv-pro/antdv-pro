@@ -94,8 +94,8 @@ importers:
         specifier: ^2.4.2
         version: 2.4.2(vue@3.3.8)
       antdv-component-resolver:
-        specifier: ^1.0.4
-        version: 1.0.4(unplugin-vue-components@0.25.2)
+        specifier: ^1.0.5
+        version: 1.0.5(unplugin-vue-components@0.25.2)
       antdv-style:
         specifier: 0.0.1-beta.2
         version: 0.0.1-beta.2(vue@3.3.8)
@@ -3748,8 +3748,8 @@ packages:
       vue-types: 3.0.2(vue@3.3.8)
       warning: 4.0.3
 
-  /antdv-component-resolver@1.0.4(unplugin-vue-components@0.25.2):
-    resolution: {integrity: sha512-oVl73Ci4He+drDPysz3yGLsUF8cfK8plCurzoA/kz9IslzCWaFwXdWRa81lsvIE8lQh2Z6nxmD1+244b/c+0fw==}
+  /antdv-component-resolver@1.0.5(unplugin-vue-components@0.25.2):
+    resolution: {integrity: sha512-nr0C8ngYCmDY5PO7O4/PdkqHVAt3LAtyui9ntQktv8JI5X5s/+mzEJF0VhFJdMVonCsC1vZl9awha4L8H2pmVw==}
     peerDependencies:
       unplugin-vue-components: ^0.25.1
     dependencies:
