@@ -100,6 +100,8 @@ export default ({ mode }: ConfigEnv): UserConfig => {
         ...proxyObj,
         // [env.VITE_APP_BASE_API]: {
         //   target: env.VITE_APP_BASE_URL,
+        // //   如果你是https接口，需要配置这个参数
+        // //   secure: false,
         //   changeOrigin: true,
         //   rewrite: path => path.replace(new RegExp(`^${env.VITE_APP_BASE_API}`), ''),
         // },
