@@ -34,6 +34,7 @@ const props = withDefaults(
     colorWeak?: boolean
     multiTab?: boolean
     multiTabFixed?: boolean
+    compactAlgorithm?: boolean
     animationName?: string
     animationNameList?: any[]
     layoutSetting?: Record<string, any>
@@ -197,6 +198,7 @@ const { token } = useAntdToken()
         :keep-alive="keepAlive"
         :accordion-mode="accordionMode"
         :left-collapsed="leftCollapsed"
+        :compact-algorithm="compactAlgorithm"
         @change-setting="changeSettingLayout"
       />
       <a-divider />

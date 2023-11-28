@@ -29,10 +29,12 @@ export interface LayoutSetting {
   keepAlive?: boolean
   accordionMode?: boolean
   leftCollapsed?: boolean
+  compactAlgorithm?: boolean
   animationName?: AnimationNameValueType
 }
 
 export const useAppStore = defineStore('app', () => {
+  const { darkAlgorithm, compactAlgorithm, defaultAlgorithm } = antdTheme
   const layoutSetting = reactive<LayoutSetting>(defaultSetting)
   const themeConfig = reactive<ThemeConfig>({
     algorithm: antdTheme.defaultAlgorithm,
@@ -46,6 +48,12 @@ export const useAppStore = defineStore('app', () => {
   const toggleLocale = (locale: string) => {
     lsLocaleState.value = locale
   }
+  const toggleCompact = (isCompact = true) => {
+    layoutSetting.compactAlgorithm = isCompact
+    const algorithm = layoutSetting.theme === 'dark' ? [darkAlgorithm] : [defaultAlgorithm]
+    isCompact && algorithm.push(compactAlgorithm)
+    themeConfig.algorithm = algorithm
+  }
   const toggleTheme = (theme: ThemeType) => {
     if (layoutSetting.theme === theme)
       return
@@ -55,9 +63,6 @@ export const useAppStore = defineStore('app', () => {
         themeConfig.token.colorBgContainer = '#fff'
       if (themeConfig.components?.Menu)
         delete themeConfig.components.Menu
-
-      themeConfig.algorithm = antdTheme.defaultAlgorithm
-
       toggleDark(false)
     }
     else if (theme === 'dark') {
@@ -74,8 +79,8 @@ export const useAppStore = defineStore('app', () => {
           } as any,
         }
       }
-      themeConfig.algorithm = antdTheme.darkAlgorithm
     }
+    toggleCompact(layoutSetting.compactAlgorithm)
   }
 
   const toggleDrawerVisible = (visible: boolean) => {
@@ -130,6 +135,8 @@ export const useAppStore = defineStore('app', () => {
       toggleColorPrimary(value)
     else if (key === 'layout')
       toggleLayout(value as LayoutType)
+    else if (key === 'compactAlgorithm')
+      toggleCompact(value)
     else if (key in layoutSetting)
       (layoutSetting as any)[key] = value
   }
