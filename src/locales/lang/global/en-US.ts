@@ -26,6 +26,7 @@ export default {
   'app.setting.content-width.keepAlive': 'KeepAlive',
   'app.setting.content-width.accordionMode': 'Menu Accordion Mode',
   'app.setting.content-width.leftCollapsed': 'sideMenu Left',
+  'app.setting.content-width.compactAlgorithm': 'Compact Mode',
   'app.setting.content-area.title': 'Content Area',
   'app.setting.content-area.header': 'Header',
   'app.setting.content-area.footer': 'Footer',

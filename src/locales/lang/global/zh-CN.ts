@@ -26,6 +26,7 @@ export default {
   'app.setting.content-width.keepAlive': '缓存功能',
   'app.setting.content-width.accordionMode': '菜单手风琴模式',
   'app.setting.content-width.leftCollapsed': '侧边菜单折叠左侧',
+  'app.setting.content-width.compactAlgorithm': '紧凑模式',
   'app.setting.content-area.title': '内容区域',
   'app.setting.content-area.header': '顶栏',
   'app.setting.content-area.footer': '页脚',

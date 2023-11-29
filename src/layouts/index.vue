@@ -32,6 +32,7 @@ const layoutProps = computed(() =>
     'layout',
     'footer',
     'contentWidth',
+    'compactAlgorithm',
   ]),
 )
 </script>
