@@ -8,6 +8,15 @@ const openNotification = () => {
     duration: 0,
   })
 }
+const router = useRouter()
+const onOpenLik = (id: string) => {
+  router.push({
+    path: '/form/edit',
+    query: {
+      id,
+    },
+  })
+}
 </script>
 
 <template>
@@ -15,6 +24,12 @@ const openNotification = () => {
     Analysis
     <a-button @click="openNotification">
       notification
+    </a-button>
+    <a-button @click="onOpenLik('111')">
+      按钮1
+    </a-button>
+    <a-button @click="onOpenLik('22')">
+      按钮2
     </a-button>
   </div>
 </template>

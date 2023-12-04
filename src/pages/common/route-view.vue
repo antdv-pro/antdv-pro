@@ -3,9 +3,9 @@
 
 <template>
   <RouterView>
-    <template #default="{ Component }">
-      <Transition appear name="slide-fadein-right">
-        <component :is="Component" />
+    <template #default="{ Component, route }">
+      <Transition appear name="slide-fadein-right" mode="out-in">
+        <component :is="Component" :key="route.fullPath" />
       </Transition>
     </template>
   </RouterView>

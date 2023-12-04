@@ -54,6 +54,16 @@ export default [
           title: '基础表单',
         },
       },
+      {
+        path: '/form/edit',
+        name: 'FormEdit',
+        component: () => import('~/pages/form/edit.vue'),
+        meta: {
+          hideInMenu: true,
+          keepAlive: false,
+          title: '编辑表单',
+        },
+      },
     ],
   },
   {
