@@ -24,7 +24,7 @@ function handleCollapsed(collapsed: boolean) {
 }
 
 // 依赖注入所有的配置项，对属性进行控制，减少传值
-const { hasPageContainer } = useLayoutProvider(props, {
+const { hasPageContainer, layout } = useLayoutProvider(props, {
   handleCollapsed,
 })
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { delayTimer, isFunction } from '@v-c/utils'
+import { isFunction } from '@v-c/utils'
 import type { VNodeChild } from 'vue'
 import { useLayoutState } from '~/layouts/basic-layout/context'
 
@@ -25,22 +25,21 @@ const currentItem = computed(() => {
   return {} as any
 })
 const { contentWidth, hasPageContainer } = useLayoutState()
-async function switchPage(bool: boolean) {
-  await delayTimer(300)
-  hasPageContainer.value = bool
-}
+hasPageContainer.value = true
 
-onMounted(async () => {
-  await switchPage(true)
+onUnmounted(() => {
+  setTimeout(() => {
+    hasPageContainer.value = false
+  }, 280)
 })
-onUnmounted(async () => {
-  await switchPage(false)
+
+onActivated(() => {
+  hasPageContainer.value = true
 })
-onActivated(async () => {
-  await switchPage(true)
-})
-onDeactivated(async () => {
-  await switchPage(false)
+onDeactivated(() => {
+  setTimeout(() => {
+    hasPageContainer.value = false
+  }, 280)
 })
 const contentCls = computed(() => {
   const cls: string[] = [
@@ -64,7 +63,7 @@ function renderTitle(title: VNodeChild | (() => VNodeChild)) {
 
 <template>
   <div>
-    <div class="bg-[var(--bg-color)]" :class="layoutSetting.multiTab ? 'pb-16px' : 'py-16px'" px-24px mb-24px mx--24px mt--24px>
+    <div v-if="hasPageContainer" class="bg-[var(--bg-color)]" :class="layoutSetting.multiTab ? 'pb-16px' : 'py-16px'" px-24px mb-24px mx--24px mt--24px>
       <a-breadcrumb v-if="!currentItem.hideInBreadcrumb">
         <template v-if="currentItem.matched?.length">
           <a-breadcrumb-item v-for="item in currentItem.matched" :key="item.path">
