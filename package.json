@@ -60,7 +60,7 @@
     "cross-env": "^7.0.3",
     "directory-tree": "^3.5.1",
     "esbuild": "^0.19.9",
-    "eslint": "^8.56.0",
+    "eslint": "npm:eslint-ts-patch@^8.55.0-1",
     "esno": "^0.17.0",
     "execa": "^8.0.1",
     "fs-extra": "^11.2.0",
