@@ -25,7 +25,7 @@ export const useMultiTab = defineStore('multi-tab', () => {
   const addItem = (route: RouteLocationNormalizedLoaded) => {
     if (!route)
       return
-    // 判断是不是重定向的地址，如果是，那么久不进行处理
+    // 判断是不是重定向的地址，如果是，那么就不进行处理
     if (route.path.startsWith('/redirect') || route.path.startsWith('/common'))
       return
     if (route.path === '/')
@@ -78,7 +78,7 @@ export const useMultiTab = defineStore('multi-tab', () => {
       return
     }
     const item = list.value[index]
-    // 需要判断当前的标签是不是被选中，如果是，还需要判断当前是不是第一个页签，如果是，那么久需要激活上一个页签，如果不是，那就需要激活下一个页签
+    // 需要判断当前的标签是不是被选中，如果是，还需要判断当前是不是第一个页签，如果是，那么就需要激活上一个页签，如果不是，那就需要激活下一个页签
     if (item.fullPath === activeKey.value) {
       const newItem = index === 0 ? list.value[index + 1] : list.value[index - 1]
       activeKey.value = newItem.fullPath
