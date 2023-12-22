@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { DownOutlined, UpOutlined } from '@ant-design/icons-vue'
-import type { PaginationProps } from 'ant-design-vue'
+import { Modal } from 'ant-design-vue'
+import { ColumnHeightOutlined, DownOutlined, PlusOutlined, ReloadOutlined, SettingOutlined, UpOutlined } from '@ant-design/icons-vue'
+import type { MenuProps, PaginationProps, TableProps } from 'ant-design-vue'
 import type { ConsultTableModel, ConsultTableParams } from '~@/api/list/table-list'
 import { deleteApi, getListApi } from '~@/api/list/table-list'
 
@@ -68,6 +69,48 @@ const formModel = reactive<ConsultTableParams>({
   updatedAt: undefined,
 })
 
+const tableSize = ref<string[]>(['large'])
+const sizeItems = ref<MenuProps['items']>([
+  {
+    key: 'large',
+    label: '默认',
+    title: '默认',
+  },
+  {
+    key: 'middle',
+    label: '中等',
+    title: '中等',
+  },
+  {
+    key: 'small',
+    label: '紧凑',
+    title: '紧凑',
+  },
+])
+const open = ref(false)
+const options = computed(() => {
+  return columns.value.map((item) => {
+    if (item.dataIndex === 'action') {
+      return {
+        label: item.title,
+        value: item.dataIndex,
+        disabled: true,
+      }
+    }
+    return {
+      label: item.title,
+      value: item.dataIndex,
+    }
+  })
+})
+const dropdownVisible = ref(false)
+const getCheckList = computed(() => columns.value.map(item => item.dataIndex))
+const state = reactive({
+  indeterminate: false,
+  checkAll: true,
+  checkList: getCheckList.value,
+})
+
 async function init() {
   if (loading.value)
     return
@@ -119,6 +162,80 @@ async function handleDelete(record: ConsultTableModel) {
   finally {
     close()
   }
+}
+
+/**
+ * 新增事件
+ *
+ */
+function handleOk() {
+  open.value = false
+  Modal.destroyAll()
+  onSearch()
+}
+
+/**
+ * 密度切换
+ *
+ */
+const handleSizeChange: MenuProps['onClick'] = (e) => {
+  tableSize.value[0] = e.key as string
+}
+
+/**
+ * 过滤
+ *
+ */
+function filterAction(value: string[]) {
+  return columns.value.filter((item) => {
+    if (value.includes(item.dataIndex)) {
+      // 为true时，循环遍历的值会暴露出去
+      return true
+    }
+    return false
+  })
+}
+
+// 备份columns
+const filterColumns = ref(filterAction(getCheckList.value))
+
+/**
+ * 全选/反选事件
+ *
+ */
+
+function handleCheckAllChange(e: any) {
+  Object.assign(state, {
+    checkList: e.target.checked ? getCheckList.value : [],
+    indeterminate: true,
+  })
+  filterColumns.value = e.target.checked ? filterAction(getCheckList.value) : filterColumns.value.filter(item => item.dataIndex === 'action')
+}
+
+watch(
+  () => state.checkList,
+  (val) => {
+    state.indeterminate = !!val.length && val.length < getCheckList.value.length
+    state.checkAll = val.length === getCheckList.value.length
+  },
+)
+
+/**
+ * 重置事件
+ *
+ */
+function handleResetChange() {
+  state.checkList = getCheckList.value
+  filterColumns.value = filterAction(getCheckList.value)
+}
+
+/**
+ * checkbox点击事件
+ *
+ */
+function handleCheckChange(value: any) {
+  const filterValue = filterAction(value)
+  filterColumns.value = filterValue
 }
 
 onMounted(() => {
@@ -197,7 +314,48 @@ const expand = ref(false)
     </a-card>
 
     <a-card title="查询表格">
-      <a-table :loading="loading" :columns="columns" :data-source="dataSource" :pagination="pagination">
+      <template #extra>
+        <a-space size="middle">
+          <a-button type="primary" @click="() => open = true">
+            <template #icon>
+              <PlusOutlined />
+            </template>
+            新增
+          </a-button>
+          <a-tooltip title="刷新">
+            <ReloadOutlined @click="onSearch" />
+          </a-tooltip>
+          <a-tooltip title="密度">
+            <a-dropdown trigger="click">
+              <ColumnHeightOutlined />
+              <template #overlay>
+                <a-menu v-model:selected-keys="tableSize" :items="sizeItems" @click="handleSizeChange" />
+              </template>
+            </a-dropdown>
+          </a-tooltip>
+          <a-tooltip title="列设置">
+            <a-dropdown v-model:open="dropdownVisible" trigger="click">
+              <SettingOutlined />
+              <template #overlay>
+                <a-card>
+                  <template #title>
+                    <a-checkbox v-model:checked="state.checkAll" :indeterminate="state.indeterminate" @change="handleCheckAllChange">
+                      列选择
+                    </a-checkbox>
+                  </template>
+                  <template #extra>
+                    <a-button type="link" @click="handleResetChange">
+                      重置
+                    </a-button>
+                  </template>
+                  <a-checkbox-group v-model:value="state.checkList" :options="options" style="display: flex; flex-direction: column;" @change="handleCheckChange" />
+                </a-card>
+              </template>
+            </a-dropdown>
+          </a-tooltip>
+        </a-space>
+      </template>
+      <a-table :loading="loading" :columns="filterColumns" :data-source="dataSource" :pagination="pagination" :size="tableSize[0] as TableProps['size']">
         <template #bodyCell="{ column, record }">
           <template v-if="column.dataIndex === 'action'">
             <div flex gap-2>
@@ -214,5 +372,12 @@ const expand = ref(false)
         </template>
       </a-table>
     </a-card>
+
+    <a-modal v-model:open="open" title="新建规则" width="400px" @ok="handleOk">
+      <a-space direction="vertical" size="large" class="w-full">
+        <a-input placeholder="请输入" />
+        <a-textarea placeholder="请输入" />
+      </a-space>
+    </a-modal>
   </page-container>
 </template>
