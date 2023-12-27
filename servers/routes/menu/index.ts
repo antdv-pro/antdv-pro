@@ -1,5 +1,16 @@
 const menuData = [
   {
+    id: 2,
+    parentId: null,
+    title: '分析页',
+    icon: 'DashboardOutlined',
+    component: '/dashboard/analysis',
+    path: '/dashboard/analysis',
+    name: 'DashboardAnalysis',
+    keepAlive: true,
+    locale: 'menu.dashboard.analysis',
+  },
+  {
     id: 1,
     parentId: null,
     title: '仪表盘',
@@ -9,16 +20,6 @@ const menuData = [
     path: '/dashboard',
     name: 'Dashboard',
     locale: 'menu.dashboard',
-  },
-  {
-    id: 2,
-    parentId: 1,
-    title: '分析页',
-    component: '/dashboard/analysis',
-    path: '/dashboard/analysis',
-    name: 'DashboardAnalysis',
-    keepAlive: true,
-    locale: 'menu.dashboard.analysis',
   },
   {
     id: 3,
@@ -425,7 +426,8 @@ export const accessMenuData = [
 
 export default eventHandler((event) => {
   const token = getHeader(event, 'Authorization')
-  const username = Buffer.from(token, 'base64').toString('utf-8')
+  // eslint-disable-next-line node/prefer-global/buffer
+  const username = Buffer.from(token as any, 'base64').toString('utf-8')
   return {
     code: 200,
     msg: '获取成功',
