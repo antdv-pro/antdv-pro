@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { isFunction } from '@v-c/utils'
 import type { VNodeChild } from 'vue'
+import { useLayoutMenuInject } from './context.ts'
 import { useLayoutState } from '~/layouts/basic-layout/context'
 
 defineProps<{
@@ -14,8 +15,7 @@ defineSlots<{
   extra(props: any): any
   footer(props: any): any
 }>()
-const layoutMenuStore = useLayoutMenu()
-const appStore = useAppStore()
+const { layoutMenu: layoutMenuStore, appStore } = useLayoutMenuInject()
 const { layoutSetting } = storeToRefs(appStore)
 const { menuDataMap, selectedKeys } = storeToRefs(layoutMenuStore)
 const currentItem = computed(() => {

@@ -3,7 +3,8 @@ import type { RouteRecordRaw } from 'vue-router'
 import { omit } from 'lodash'
 import { basicRouteMap, getRouterModule } from './router-modules'
 import type { MenuData, MenuDataItem } from '~@/layouts/basic-layout/typing'
-import dynamicRoutes, { ROOT_ROUTE_REDIRECT_PATH } from '~@/router/dynamic-routes'
+import dynamicRoutes from '~@/router/dynamic-routes'
+import { ROOT_ROUTE_REDIRECT_PATH } from '~@/router/constant'
 import { i18n } from '~@/locales'
 
 let cache_key = 1
