@@ -1,7 +1,7 @@
 {
   "name": "antdv-pro",
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "packageManager": "pnpm@8.10.0",
   "author": "aibayanyu <aibayanyu@qq.com>",
   "repository": "antdv-pro/antdv-pro",
@@ -15,7 +15,7 @@
     "preview": "mist preview",
     "lint": "eslint src --fix",
     "typecheck": "vue-tsc --noEmit",
-    "bump:patch": "changelogen --bump --output CHANGELOG.md --release --prerelease",
+    "bump:patch": "changelogen --bump --output CHANGELOG.md --release",
     "bump:minor": "changelogen --bump --output CHANGELOG.md --release --minor",
     "bump:major": "changelogen --bump --output CHANGELOG.md --release --major",
     "prepare": "husky install",

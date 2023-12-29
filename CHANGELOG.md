@@ -1,6 +1,23 @@
 # Changelog
 
 
+## v1.0.1
+
+[compare changes](https://github.com/antdv-pro/antdv-pro/compare/v1.0.0...v1.0.1)
+
+### 🩹 Fixes
+
+- Fix circular imports ([7ab99da](https://github.com/antdv-pro/antdv-pro/commit/7ab99da))
+- Fix page container dynamic update in advance ([13d9486](https://github.com/antdv-pro/antdv-pro/commit/13d9486))
+
+### 🏡 Chore
+
+- **release:** V1.0.0 ([e7ca880](https://github.com/antdv-pro/antdv-pro/commit/e7ca880))
+
+### ❤️ Contributors
+
+- Aibayanyu20 <aibayanyu@qq.com>
+
 ## v1.0.0
 
 [compare changes](https://github.com/antdv-pro/antdv-pro/compare/v1.0.0-beta.3...v1.0.0)
