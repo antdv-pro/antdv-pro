@@ -124,6 +124,9 @@ function remove(key: string) {
       </a-card>
     </a-space>
     <FooterToolBar>
+      <template #left>
+        测试
+      </template>
       <template #right>
         <a-button type="primary" @click="handleSubmit">
           提交

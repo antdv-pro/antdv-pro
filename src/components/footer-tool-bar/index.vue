@@ -5,9 +5,12 @@ defineOptions({
   name: 'FooterToolBar',
 })
 const prefixCls = shallowRef('ant-pro-footer-toolbar')
-const { siderWidth: layoutSiderWidth, mobileCollapsed } = useLayoutState()
+const { siderWidth: layoutSiderWidth, collapsed, collapsedWidth, isMobile, layout } = useLayoutState()
 const barWidth = computed(() => {
-  return mobileCollapsed ? undefined : `calc(100% - ${layoutSiderWidth.value}px)`
+  if (isMobile.value || layout.value === 'top')
+    return undefined
+
+  return `calc(100% - ${collapsed.value ? collapsedWidth.value : layoutSiderWidth.value}px)`
 })
 </script>
 
