@@ -17,12 +17,17 @@ defineSlots<{
 }>()
 const { layoutMenu: layoutMenuStore, appStore } = useLayoutMenuInject()
 const { layoutSetting } = storeToRefs(appStore)
-const { menuDataMap, selectedKeys } = storeToRefs(layoutMenuStore)
-const currentItem = computed(() => {
-  const key: string = selectedKeys.value.length ? selectedKeys.value[0] : ''
+const { menuDataMap } = storeToRefs(layoutMenuStore)
+const route = useRoute()
+function getCurrentItem() {
+  const key: string = route.meta?.originPath ?? route.path
   if (key && menuDataMap.value.has(key))
     return menuDataMap.value.get(key)
   return {} as any
+}
+const currentItem = shallowRef(getCurrentItem())
+onBeforeMount(() => {
+  currentItem.value = getCurrentItem()
 })
 const { contentWidth, hasPageContainer } = useLayoutState()
 hasPageContainer.value = true
