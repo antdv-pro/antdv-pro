@@ -1,6 +1,56 @@
 # Changelog
 
 
+## v1.0.0
+
+[compare changes](https://github.com/antdv-pro/antdv-pro/compare/v1.0.0-beta.3...v1.0.0)
+
+### 🚀 Enhancements
+
+- Add preload ([6c0e6c9](https://github.com/antdv-pro/antdv-pro/commit/6c0e6c9))
+- Support vite 5 ([e84c7b7](https://github.com/antdv-pro/antdv-pro/commit/e84c7b7))
+- Complete compact-algorithm ([99f2074](https://github.com/antdv-pro/antdv-pro/commit/99f2074))
+- Query table add toolbar ([7fe8f90](https://github.com/antdv-pro/antdv-pro/commit/7fe8f90))
+
+### 🩹 Fixes
+
+- Change ([8bdfd94](https://github.com/antdv-pro/antdv-pro/commit/8bdfd94))
+- Preload error ([c0de1fc](https://github.com/antdv-pro/antdv-pro/commit/c0de1fc))
+- Fix top mode page-container not expand close #127 ([#127](https://github.com/antdv-pro/antdv-pro/issues/127))
+- Eslint error ([39dbe6f](https://github.com/antdv-pro/antdv-pro/commit/39dbe6f))
+- Eslint not support ([d249d98](https://github.com/antdv-pro/antdv-pro/commit/d249d98))
+- Note ([92beb3e](https://github.com/antdv-pro/antdv-pro/commit/92beb3e))
+- X-axis scroll bar appears in top layout mode ([bf2a206](https://github.com/antdv-pro/antdv-pro/commit/bf2a206))
+- Footertoolbar not effect layout ([e025b9c](https://github.com/antdv-pro/antdv-pro/commit/e025b9c))
+
+### 🏡 Chore
+
+- Delete eslintignore replace eslint.config ([baa7747](https://github.com/antdv-pro/antdv-pro/commit/baa7747))
+- Update deps ([6fc6496](https://github.com/antdv-pro/antdv-pro/commit/6fc6496))
+- Change tsconfig ([734e287](https://github.com/antdv-pro/antdv-pro/commit/734e287))
+- Update scripts ([f372ac9](https://github.com/antdv-pro/antdv-pro/commit/f372ac9))
+- Change script ([1e80dd4](https://github.com/antdv-pro/antdv-pro/commit/1e80dd4))
+- Update deps ([0de46db](https://github.com/antdv-pro/antdv-pro/commit/0de46db))
+- Support ssl config ([ca9d37b](https://github.com/antdv-pro/antdv-pro/commit/ca9d37b))
+- Update deps ([b7c557c](https://github.com/antdv-pro/antdv-pro/commit/b7c557c))
+- Update deps ([ff86513](https://github.com/antdv-pro/antdv-pro/commit/ff86513))
+- Update deps ([abaee14](https://github.com/antdv-pro/antdv-pro/commit/abaee14))
+- Add funding ([03ef885](https://github.com/antdv-pro/antdv-pro/commit/03ef885))
+- Change ([ceb08eb](https://github.com/antdv-pro/antdv-pro/commit/ceb08eb))
+- Update vue@3.4.x ([a9e9ac9](https://github.com/antdv-pro/antdv-pro/commit/a9e9ac9))
+
+### 🤖 CI
+
+- Change node version ([540224b](https://github.com/antdv-pro/antdv-pro/commit/540224b))
+
+### ❤️ Contributors
+
+- Aibayanyu20 <aibayanyu@qq.com>
+- ZhouWei <1244620067@qq.com>
+- Undefined ([@undefined-moe](http://github.com/undefined-moe))
+- LinRenJie <xoxosos666@gmail.com>
+- Aibayanyu <aibayanyu@qq.com>
+
 ## v1.0.0-beta.3
 
 [compare changes](https://github.com/antdv-pro/antdv-pro/compare/v1.0.0-beta.2...v1.0.0-beta.3)
