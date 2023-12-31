@@ -17,7 +17,7 @@ const props = withDefaults(
     open?: boolean
     theme?: ThemeType
     colorPrimary?: string
-    colorList?: { key: string; color: string }[]
+    colorList?: { key: string, color: string }[]
     layout?: LayoutType
     contentWidth?: ContentWidth
     fixedHeader?: boolean

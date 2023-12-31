@@ -1,4 +1,4 @@
-import mist from '@mistjs/eslint-config'
+import mist from '@antfu/eslint-config'
 
 export default mist({
   vue: true,
@@ -16,5 +16,6 @@ export default mist({
 }, {
   rules: {
     'no-console': 0,
+    'style/quote-props': 0,
   },
 })

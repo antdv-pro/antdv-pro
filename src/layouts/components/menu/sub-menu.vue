@@ -4,7 +4,7 @@ import type { VNodeChild } from 'vue'
 import AsyncIcon from './async-icon.vue'
 import type { MenuDataItem } from '~@/layouts/basic-layout/typing'
 
-withDefaults(defineProps<{ item: MenuDataItem; link?: boolean }>(), {
+withDefaults(defineProps<{ item: MenuDataItem, link?: boolean }>(), {
   link: true,
 })
 function renderTitle(title: VNodeChild | (() => VNodeChild)) {
