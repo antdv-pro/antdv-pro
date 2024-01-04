@@ -45,7 +45,7 @@ Wechat: aibayanyu2022
 
 Discord: [discord](https://discord.gg/tPb4G6gXmm)
 
-### WeChatGroup
+### WeChatGroup 备注【加群】
 
 <img src="https://git.lingyu.org.cn/yanyu/images/raw/branch/main/wx-group.jpg" width="300">
 
