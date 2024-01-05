@@ -106,12 +106,12 @@ function remove(key: string) {
           :data-source="state.data"
           :pagination="false"
         >
-          <template #bodyCell="{ column, record }">
-            <template v-if="column.key === 'action'">
+          <template #bodyCell="scope">
+            <template v-if="scope?.column?.key === 'action'">
               <a-popconfirm
                 v-if="state.data.length"
                 title="Sure to delete?"
-                @confirm="remove(record.key)"
+                @confirm="remove(scope?.record?.key)"
               >
                 <a>Delete</a>
               </a-popconfirm>

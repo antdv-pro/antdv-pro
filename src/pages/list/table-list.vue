@@ -356,17 +356,17 @@ const expand = ref(false)
         </a-space>
       </template>
       <a-table :loading="loading" :columns="filterColumns" :data-source="dataSource" :pagination="pagination" :size="tableSize[0] as TableProps['size']">
-        <template #bodyCell="{ column, record }">
-          <template v-if="column.dataIndex === 'action'">
+        <template #bodyCell="scope">
+          <template v-if="scope?.column?.dataIndex === 'action'">
             <div flex gap-2>
-              <a c-error @click="handleDelete(record as ConsultTableModel)">
+              <a c-error @click="handleDelete(scope?.record as ConsultTableModel)">
                 删除
               </a>
             </div>
           </template>
-          <template v-if="column.dataIndex === 'status'">
+          <template v-if="scope?.column?.dataIndex === 'status'">
             <div gap-2>
-              {{ statusMap[record.status as keyof typeof statusMap] as string }}
+              {{ statusMap[scope?.record?.status as keyof typeof statusMap] as string }}
             </div>
           </template>
         </template>
