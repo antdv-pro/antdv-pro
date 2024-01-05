@@ -1,6 +1,24 @@
 # Changelog
 
 
+## v1.0.2
+
+[compare changes](https://github.com/antdv-pro/antdv-pro/compare/v1.0.1...v1.0.2)
+
+### 🩹 Fixes
+
+- Typo ([ba8f474](https://github.com/antdv-pro/antdv-pro/commit/ba8f474))
+
+### 🏡 Chore
+
+- Update deps ([0d41da9](https://github.com/antdv-pro/antdv-pro/commit/0d41da9))
+- Use antfu eslint config replace mist config ([c11224e](https://github.com/antdv-pro/antdv-pro/commit/c11224e))
+- Update deps ([a12b56f](https://github.com/antdv-pro/antdv-pro/commit/a12b56f))
+
+### ❤️ Contributors
+
+- Aibayanyu20 <aibayanyu@qq.com>
+
 ## v1.0.1
 
 [compare changes](https://github.com/antdv-pro/antdv-pro/compare/v1.0.0...v1.0.1)
