@@ -330,6 +330,15 @@ export default [
         },
       },
       {
+        path: '/list/crud-table',
+        name: 'CrudTable',
+        component: () => import('~/pages/list/crud-table.vue'),
+        meta: {
+          title: '增删改查表格',
+          locale: 'menu.list.crud-table',
+        },
+      },
+      {
         path: '/list/basic-list',
         name: 'BasicList',
         component: () => import('~/pages/list/basic-list.vue'),

@@ -409,6 +409,15 @@ const menuData = [
     keepAlive: true,
     locale: 'menu.dashboard.workplace',
   },
+  {
+    id: 44,
+    parentId: 26,
+    path: '/list/crud-table',
+    title: '增删改查表格',
+    name: 'CrudTable',
+    component: '/list/crud-table',
+    locale: 'menu.list.crud-table',
+  },
 ]
 
 export const accessMenuData = [
