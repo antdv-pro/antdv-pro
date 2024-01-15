@@ -24,8 +24,15 @@ function handleCollapsed(collapsed: boolean) {
 }
 
 // 依赖注入所有的配置项，对属性进行控制，减少传值
-const { layout } = useLayoutProvider(props, {
+const { layout, contentWidth } = useLayoutProvider(props, {
   handleCollapsed,
+})
+const contentCls = computed(() => {
+  if (contentWidth.value === 'Fixed')
+    return 'ant-pro-basicLayout-content-fixed'
+
+  else
+    return ''
 })
 </script>
 
@@ -52,7 +59,7 @@ const { layout } = useLayoutProvider(props, {
         </template>
         <slot name="contentPrefix" />
         <a-layout-content class="ant-pro-basicLayout-content" flex flex-col>
-          <div h-full flex flex-col flex-1>
+          <div h-full flex flex-col flex-1 :class="contentCls">
             <slot />
           </div>
         </a-layout-content>
