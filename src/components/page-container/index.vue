@@ -29,6 +29,10 @@ const currentItem = shallowRef(getCurrentItem())
 onBeforeMount(() => {
   currentItem.value = getCurrentItem()
 })
+
+watch(() => route.path, () => {
+  currentItem.value = getCurrentItem()
+})
 const { contentWidth } = useLayoutState()
 const contentCls = computed(() => {
   const cls: string[] = [
