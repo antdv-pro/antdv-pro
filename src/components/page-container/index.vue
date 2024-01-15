@@ -30,8 +30,11 @@ onBeforeMount(() => {
   currentItem.value = getCurrentItem()
 })
 const { contentWidth, hasPageContainer } = useLayoutState()
-hasPageContainer.value = true
-
+onMounted(() => {
+  setTimeout(() => {
+    hasPageContainer.value = true
+  }, 280)
+})
 onUnmounted(() => {
   setTimeout(() => {
     hasPageContainer.value = false
@@ -39,7 +42,9 @@ onUnmounted(() => {
 })
 
 onActivated(() => {
-  hasPageContainer.value = true
+  setTimeout(() => {
+    hasPageContainer.value = true
+  }, 280)
 })
 onDeactivated(() => {
   setTimeout(() => {
