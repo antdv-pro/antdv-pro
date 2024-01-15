@@ -29,28 +29,7 @@ const currentItem = shallowRef(getCurrentItem())
 onBeforeMount(() => {
   currentItem.value = getCurrentItem()
 })
-const { contentWidth, hasPageContainer } = useLayoutState()
-onMounted(() => {
-  setTimeout(() => {
-    hasPageContainer.value = true
-  }, 280)
-})
-onUnmounted(() => {
-  setTimeout(() => {
-    hasPageContainer.value = false
-  }, 280)
-})
-
-onActivated(() => {
-  setTimeout(() => {
-    hasPageContainer.value = true
-  }, 280)
-})
-onDeactivated(() => {
-  setTimeout(() => {
-    hasPageContainer.value = false
-  }, 280)
-})
+const { contentWidth } = useLayoutState()
 const contentCls = computed(() => {
   const cls: string[] = [
     'flex flex-col flex-1',
@@ -72,8 +51,8 @@ function renderTitle(title: VNodeChild | (() => VNodeChild)) {
 </script>
 
 <template>
-  <div>
-    <div v-if="hasPageContainer" class="bg-[var(--bg-color)]" :class="layoutSetting.multiTab ? 'pb-16px' : 'py-16px'" px-24px mb-24px mx--24px mt--24px>
+  <div class="ant-pro-page-container">
+    <div class="bg-[var(--bg-color)]" :class="layoutSetting.multiTab ? 'pb-16px' : 'py-16px'" px-24px mb-24px mx--24px mt--24px>
       <a-breadcrumb v-if="!currentItem.hideInBreadcrumb">
         <template v-if="currentItem.matched?.length">
           <a-breadcrumb-item v-for="item in currentItem.matched" :key="item.path">
