@@ -1,6 +1,35 @@
 # Changelog
 
 
+## v1.1.0
+
+[compare changes](https://github.com/antdv-pro/antdv-pro/compare/v1.0.2...v1.1.0)
+
+### 🚀 Enhancements
+
+- Add table-query hook for crud table ([ab64028](https://github.com/antdv-pro/antdv-pro/commit/ab64028))
+
+### 🩹 Fixes
+
+- Eslint-config in vscode ([f8018ac](https://github.com/antdv-pro/antdv-pro/commit/f8018ac))
+- 路由切换可能导致page-container的头部面包屑等区域被意外隐藏 ([03d3ea8](https://github.com/antdv-pro/antdv-pro/commit/03d3ea8))
+- Nested not change ([afa71cd](https://github.com/antdv-pro/antdv-pro/commit/afa71cd))
+
+### 💅 Refactors
+
+- Page container ([0c0cd0d](https://github.com/antdv-pro/antdv-pro/commit/0c0cd0d))
+
+### 🏡 Chore
+
+- Remove icon ([79cb981](https://github.com/antdv-pro/antdv-pro/commit/79cb981))
+- Update deps ([4535f65](https://github.com/antdv-pro/antdv-pro/commit/4535f65))
+
+### ❤️ Contributors
+
+- Aibayanyu20 <aibayanyu@qq.com>
+- Sun1090 <1090964491@qq.com>
+- Wangqifan <wangqifan@wxdata.cn>
+
 ## v1.0.2
 
 [compare changes](https://github.com/antdv-pro/antdv-pro/compare/v1.0.1...v1.0.2)

@@ -24,22 +24,15 @@ function handleCollapsed(collapsed: boolean) {
 }
 
 // 依赖注入所有的配置项，对属性进行控制，减少传值
-const { hasPageContainer, layout } = useLayoutProvider(props, {
+const { layout, contentWidth } = useLayoutProvider(props, {
   handleCollapsed,
 })
-
-// 自定义容器的宽高
 const contentCls = computed(() => {
-  const cls: string[] = [
-    'h-full flex flex-col flex-1',
-  ]
-  if (props.contentWidth === 'Fluid' || hasPageContainer.value)
-    cls.push('w-full')
+  if (contentWidth.value === 'Fixed')
+    return 'ant-pro-basicLayout-content-fixed'
 
-  else if (props.contentWidth === 'Fixed' && !hasPageContainer.value)
-    cls.push(...['max-w-1200px w-1200px', 'mx-auto'])
-
-  return cls
+  else
+    return ''
 })
 </script>
 
@@ -66,7 +59,7 @@ const contentCls = computed(() => {
         </template>
         <slot name="contentPrefix" />
         <a-layout-content class="ant-pro-basicLayout-content" flex flex-col>
-          <div :class="contentCls">
+          <div h-full flex flex-col flex-1 :class="contentCls">
             <slot />
           </div>
         </a-layout-content>
