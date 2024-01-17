@@ -22,6 +22,7 @@ export interface LayoutSetting {
   menu?: boolean
   menuHeader?: boolean
   colorWeak?: boolean
+  colorGray?: boolean
   multiTab?: boolean
   multiTabFixed?: boolean
   headerHeight?: number
@@ -113,6 +114,34 @@ export const useAppStore = defineStore('app', () => {
     layoutSetting.collapsed = collapsed
   }
 
+  function toggleGray(isGray = true) {
+    layoutSetting.colorGray = isGray
+    const dom = document.querySelector('body')
+    if (dom) {
+      if (isGray) {
+        toggleWeak(false)
+        dom.style.filter = 'grayscale(100%)'
+      }
+      else { dom.style.filter = '' }
+    }
+  }
+  if (layoutSetting.colorGray)
+    toggleGray(true)
+
+  function toggleWeak(isWeak = true) {
+    layoutSetting.colorWeak = isWeak
+    const dom = document.querySelector('body')
+    if (dom) {
+      if (isWeak) {
+        toggleGray(false)
+        dom.style.filter = 'invert(80%)'
+      }
+      else { dom.style.filter = '' }
+    }
+  }
+  if (layoutSetting.colorWeak)
+    toggleWeak(true)
+
   const toggleLayout = (layout: LayoutType) => {
     if (layoutSetting.theme === 'inverted' && layout === 'mix')
       layoutSetting.theme = 'light'
@@ -137,6 +166,10 @@ export const useAppStore = defineStore('app', () => {
       toggleLayout(value as LayoutType)
     else if (key === 'compactAlgorithm')
       toggleCompact(value)
+    else if (key === 'colorWeak')
+      toggleWeak(value)
+    else if (key === 'colorGray')
+      toggleGray(value)
     else if (key in layoutSetting)
       (layoutSetting as any)[key] = value
   }
@@ -151,5 +184,7 @@ export const useAppStore = defineStore('app', () => {
     toggleDrawerVisible,
     changeSettingLayout,
     toggleColorPrimary,
+    toggleGray,
+    toggleWeak,
   }
 })

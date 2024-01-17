@@ -84,6 +84,7 @@ const layoutProps = computed(() =>
     :theme="layoutSetting.theme"
     :color-primary="layoutSetting.colorPrimary"
     :color-weak="layoutSetting.colorWeak"
+    :color-gray="layoutSetting.colorGray"
     :multi-tab="layoutSetting.multiTab"
     :multi-tab-fixed="layoutSetting.multiTabFixed"
     :animation-name-list="animationNameList"

@@ -32,6 +32,7 @@ const props = withDefaults(
     menu?: boolean
     menuHeader?: boolean
     colorWeak?: boolean
+    colorGray?: boolean
     multiTab?: boolean
     multiTabFixed?: boolean
     compactAlgorithm?: boolean
@@ -220,7 +221,7 @@ const { token } = useAntdToken()
       </Body>
       <a-divider />
       <Body :title="t?.('app.setting.othersettings') ?? '其他设置'">
-        <OtherSetting :t="t" :color-weak="colorWeak" @change-setting="changeSettingLayout" />
+        <OtherSetting :t="t" :color-weak="colorWeak" :color-gray="colorGray" @change-setting="changeSettingLayout" />
       </Body>
       <a-divider />
       <Body>
