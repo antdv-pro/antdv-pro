@@ -44,7 +44,7 @@
     "@antfu/eslint-config": "^2.6.3",
     "@commitlint/cli": "^18.4.4",
     "@commitlint/config-conventional": "^18.4.4",
-    "@mistjs/cli": "0.0.1-beta.6",
+    "@mistjs/cli": "0.0.1-beta.7",
     "@mistjs/vite-plugin-preload": "^0.0.1",
     "@types/fs-extra": "^11.0.4",
     "@types/lodash": "^4.14.202",

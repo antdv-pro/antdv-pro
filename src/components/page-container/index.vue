@@ -30,9 +30,17 @@ onBeforeMount(() => {
   currentItem.value = getCurrentItem()
 })
 
+let timer: ReturnType<typeof setTimeout> | undefined
 watch(() => route.path, () => {
-  currentItem.value = getCurrentItem()
+  if (timer) {
+    clearTimeout(timer)
+    timer = undefined
+  }
+  timer = setTimeout(() => {
+    currentItem.value = getCurrentItem()
+  }, 300)
 })
+
 const { contentWidth } = useLayoutState()
 const contentCls = computed(() => {
   const cls: string[] = [
