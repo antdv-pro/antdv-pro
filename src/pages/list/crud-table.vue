@@ -33,6 +33,10 @@ const { state, initQuery, resetQuery, query } = useTableQuery({
     value: undefined,
     remark: undefined,
   },
+  afterQuery: (res) => {
+    console.log(res)
+    return res
+  },
 })
 
 const crudTableModal = ref<InstanceType<typeof CrudTableModal>>()

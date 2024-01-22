@@ -1,6 +1,7 @@
 import type { PaginationProps } from 'ant-design-vue'
 import type { TableRowSelection } from 'ant-design-vue/es/table/interface'
 import { assign } from 'lodash'
+import type { ResponseBody } from '~@/utils/request'
 
 /**
  * 表格分页扩展类型
@@ -37,7 +38,7 @@ export interface TableQueryOptions {
   /**
    *查询接口
    */
-  queryApi: (params: any) => Promise<any>
+  queryApi: (params?: any) => Promise<ResponseBody<any>>
   /**
    * 是否加载中
    */
@@ -74,6 +75,10 @@ export interface TableQueryOptions {
    * 查询前回调
    */
   beforeQuery: () => void
+  /**
+   * 查询后回调
+   */
+  afterQuery: <R = any>(data: R) => typeof data
 }
 
 /**
@@ -117,6 +122,9 @@ export function useTableQuery(_options: Partial<TableQueryOptions>) {
     },
     beforeQuery() {
     },
+    afterQuery(data: TablePaginationProps) {
+      return data
+    },
   }, _options))
 
   // 查询方法
@@ -134,8 +142,9 @@ export function useTableQuery(_options: Partial<TableQueryOptions>) {
         order: state.pagination.order,
         ...state.queryParams,
       })
-      state.dataSource = data.records ?? []
-      state.pagination.total = data.total ?? 0
+      const _data = await state.afterQuery(data)
+      state.dataSource = _data.records ?? []
+      state.pagination.total = _data.total ?? 0
     }
     catch (e) {
       throw new Error(`Query Failed: ${e}`)
