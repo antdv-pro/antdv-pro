@@ -37,7 +37,7 @@ export interface TableQueryOptions {
   /**
    *查询接口
    */
-  queryApi: (params: any) => Promise<any>
+  queryApi: <R = any, T = any>(params?: T) => Promise<R>
   /**
    * 是否加载中
    */
@@ -77,7 +77,7 @@ export interface TableQueryOptions {
   /**
    * 查询后回调
    */
-  afterQuery: () => void
+  afterQuery: <R = any>(data: R) => typeof data
 }
 
 /**
@@ -121,7 +121,7 @@ export function useTableQuery(_options: Partial<TableQueryOptions>) {
     },
     beforeQuery() {
     },
-    afterQuery(data) {
+    afterQuery(data: TablePaginationProps) {
       return data
     },
   }, _options))
