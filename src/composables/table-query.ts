@@ -74,6 +74,10 @@ export interface TableQueryOptions {
    * 查询前回调
    */
   beforeQuery: () => void
+  /**
+   * 查询后回调
+   */
+  afterQuery: () => void
 }
 
 /**
@@ -117,6 +121,9 @@ export function useTableQuery(_options: Partial<TableQueryOptions>) {
     },
     beforeQuery() {
     },
+    afterQuery(data) {
+      return data
+    },
   }, _options))
 
   // 查询方法
@@ -134,8 +141,9 @@ export function useTableQuery(_options: Partial<TableQueryOptions>) {
         order: state.pagination.order,
         ...state.queryParams,
       })
-      state.dataSource = data.records ?? []
-      state.pagination.total = data.total ?? 0
+      const _data = await state.afterQuery(data)
+      state.dataSource = _data.records ?? []
+      state.pagination.total = _data.total ?? 0
     }
     catch (e) {
       throw new Error(`Query Failed: ${e}`)
