@@ -31,14 +31,20 @@ export interface TableRowSelectionsProps extends TableRowSelection {
   selectedRowKeys: any[]
 }
 
+interface TableQueryResult<D = any> {
+  records: D[]
+  total: number
+  [key: string]: any
+}
+
 /**
  * 表格查询配置
  */
-export interface TableQueryOptions {
+export interface TableQueryOptions<D = any> {
   /**
    *查询接口
    */
-  queryApi: (params?: any) => Promise<ResponseBody<any>>
+  queryApi: <R = any>(params?: R) => Promise<ResponseBody<TableQueryResult<D>>>
   /**
    * 是否加载中
    */
@@ -46,7 +52,7 @@ export interface TableQueryOptions {
   /**
    * 数据源
    */
-  dataSource: any[]
+  dataSource: D[]
   /**
    * 查询参数
    */
@@ -74,11 +80,11 @@ export interface TableQueryOptions {
   /**
    * 查询前回调
    */
-  beforeQuery: () => void
+  beforeQuery: () => void | Promise<void>
   /**
    * 查询后回调
    */
-  afterQuery: <R = any>(data: R) => typeof data
+  afterQuery: <R extends TableQueryResult<D> = any>(data: R) => R | Promise<R>
 }
 
 /**
@@ -142,9 +148,11 @@ export function useTableQuery(_options: Partial<TableQueryOptions>) {
         order: state.pagination.order,
         ...state.queryParams,
       })
-      const _data = await state.afterQuery(data)
-      state.dataSource = _data.records ?? []
-      state.pagination.total = _data.total ?? 0
+      if (data) {
+        const _data = await state.afterQuery(data)
+        state.dataSource = _data.records ?? []
+        state.pagination.total = _data.total ?? 0
+      }
     }
     catch (e) {
       throw new Error(`Query Failed: ${e}`)
