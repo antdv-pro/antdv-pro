@@ -59,7 +59,7 @@
     "changelogen": "^0.5.5",
     "cross-env": "^7.0.3",
     "directory-tree": "^3.5.1",
-    "esbuild": "^0.19.11",
+    "esbuild": "^0.19.12",
     "eslint": "^8.56.0",
     "esno": "^0.17.0",
     "execa": "^8.0.1",
