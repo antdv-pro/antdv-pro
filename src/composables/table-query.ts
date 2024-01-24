@@ -1,7 +1,6 @@
 import type { PaginationProps } from 'ant-design-vue'
 import type { TableRowSelection } from 'ant-design-vue/es/table/interface'
 import { assign } from 'lodash'
-import type { ResponseBody } from '~@/utils/request'
 
 /**
  * 表格分页扩展类型
@@ -44,7 +43,7 @@ export interface TableQueryOptions<D = any> {
   /**
    *查询接口
    */
-  queryApi: <R = any>(params?: R) => Promise<ResponseBody<TableQueryResult<D>>>
+  queryApi: (params?: any) => Promise<any>
   /**
    * 是否加载中
    */
