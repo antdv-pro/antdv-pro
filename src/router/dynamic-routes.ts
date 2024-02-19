@@ -176,7 +176,7 @@ export default [
     redirect: '/profile/basic',
     meta: {
       title: 'menu.profile',
-      icon: 'profile',
+      icon: 'ProfileOutlined',
       locale: 'menu.profile',
     },
     component: basicRouteMap.RouteView,
