@@ -90,7 +90,7 @@ Thank you to all the people who already contributed to antdv-pro!
 
 ## Support
 
-If you lick our project, you can support us by clicking the "Star" button in the upper right corner. Your support is my motivation. Thank you ~
+If you like our project, you can support us by clicking the "Star" button in the upper right corner. Your support is my motivation. Thank you ~
 
 ## Sponsor
 
