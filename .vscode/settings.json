@@ -67,8 +67,12 @@
     "toml"
   ],
   "i18n-ally.localesPaths": [
-    "src/locales",
-    "src/locales/lang",
+    "src/locales/lang/global",
+    "src/locales/lang/pages",
     "src/pages/common/locales"
-  ]
+  ],
+  "i18n-ally.enabledParsers": ["ts"],
+  "i18n-ally.parsers.typescript.compilerOptions": {
+    "moduleResolution": "node"
+  }
 }
