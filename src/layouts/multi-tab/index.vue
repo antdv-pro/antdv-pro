@@ -11,12 +11,27 @@ import { listenerRouteChange, removeRouteListener } from '~@/utils/route-listene
 const multiTabStore = useMultiTab()
 const { list, activeKey } = storeToRefs(multiTabStore)
 const { layoutSetting } = storeToRefs(useAppStore())
+const {
+  layout,
+  isMobile,
+  collapsed,
+  collapsedWidth,
+  siderWidth,
+  menu,
+} = useLayoutState()
 const tabStyle = computed<CSSProperties>(() => {
   const style: CSSProperties = {}
   if (layoutSetting.value.multiTabFixed) {
     style.position = 'fixed'
     style.top = `${layoutSetting.value.headerHeight}px`
-    style.zIndex = 1
+    style.zIndex = 199
+    style.right = 0
+  }
+  if ((layout.value === 'side' || layout.value === 'mix') && menu.value) {
+    if (!isMobile.value && layoutSetting.value.multiTabFixed) {
+      const width = collapsed.value ? collapsedWidth.value : siderWidth.value
+      style.width = `calc(100% - ${width}px)`
+    }
   }
 
   return style
