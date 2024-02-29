@@ -41,7 +41,7 @@ AntdvPro是一个基于Vue3、Vite4、ant-design-vue4、Pinia、UnoCSS和Typescr
 
 ## 社区
 
-QQ群: [939791772](https://qm.qq.com/cgi-bin/qm/qr?k=dZMUtNNxv0BLxQwOoZwGQ7nR24GT-24s&authKey=F2Rpv5Gez5nD7Pr5HrYalfd3J6T9PEcu2TJ/femkp9ZQF+YhlvvYyrvJone8BoeT&noverify=0)
+QQ群: 申请微信群
 
 微信: [aibayanyu2022](https://u.wechat.com/MASIsAa8353Hi4e59-aBPaA)
 
