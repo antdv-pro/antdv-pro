@@ -39,7 +39,7 @@ AntdvPro is a complete set of enterprise-level mid-backend front-end/design solu
 
 ## Community
 
-QQ Group: [939791772](https://qm.qq.com/cgi-bin/qm/qr?k=dZMUtNNxv0BLxQwOoZwGQ7nR24GT-24s&authKey=F2Rpv5Gez5nD7Pr5HrYalfd3J6T9PEcu2TJ/femkp9ZQF+YhlvvYyrvJone8BoeT&noverify=0)
+QQ Group: apply wechat group
 
 Wechat: aibayanyu2022
 
