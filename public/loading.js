@@ -200,10 +200,7 @@
           </div>
         </div>
         <div class="loading-title">
-          正在加载资源
-        </div>
-        <div class="loading-sub-title">
-          首次加载资源可能需要较多时间 请耐心等待
+          Loading...
         </div>
       </div>
     `

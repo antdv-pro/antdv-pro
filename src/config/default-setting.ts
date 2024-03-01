@@ -20,7 +20,7 @@ export default {
   multiTab: true,
   multiTabFixed: false,
   keepAlive: true,
-  accordionMode: false,
+  accordionMode: true,
   leftCollapsed: true,
   headerHeight: 48,
   copyright: 'dstogo Team 2023',

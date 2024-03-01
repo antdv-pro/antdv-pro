@@ -1,6 +1,6 @@
 export default {
   // LoginPage
-  'pages.layouts.userLayout.title': 'A distributed dst panel based on AntDv-Pro',
+  'pages.layouts.userLayout.title': 'A distributed dst dedicated server management panel based on AntDv-Pro',
   'pages.login.accountLogin.tab': 'Account Login',
   'pages.login.accountLogin.errorMessage': 'Incorrect username/password(admin/admin)',
   'pages.login.failure': 'Login failed, please try again!',

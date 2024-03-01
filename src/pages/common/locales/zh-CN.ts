@@ -1,28 +1,49 @@
 export default {
-  //  登录页面
-  'pages.layouts.userLayout.title': '一个基于AntDv-Pro的分布式饥荒管理面板',
-  'pages.login.accountLogin.tab': '账户密码登录',
-  'pages.login.accountLogin.errorMessage': '错误的用户名和密码(admin/admin)',
+  // 登录
+  'pages.layouts.userLayout.title': '一个基于AntDv-Pro的饥荒专用服务器分布式管理面板',
+  'pages.login.tips': '欢迎使用',
   'pages.login.failure': '登录失败，请重试！',
   'pages.login.success': '登录成功！',
-  'pages.login.username.placeholder': '用户名: admin or user',
-  'pages.login.username.required': '用户名是必填项！',
-  'pages.login.password.placeholder': '密码: admin',
-  'pages.login.password.required': '密码是必填项！',
-  'pages.login.phoneLogin.tab': '手机号登录',
-  'pages.login.phoneLogin.errorMessage': '验证码错误',
-  'pages.login.phoneNumber.placeholder': '请输入手机号！',
-  'pages.login.phoneNumber.required': '手机号是必填项！',
-  'pages.login.phoneNumber.invalid': '不合法的手机号！',
-  'pages.login.captcha.placeholder': '请输入验证码！',
-  'pages.login.captcha.required': '验证码是必填项！',
-  'pages.login.phoneLogin.getVerificationCode': '获取验证码',
+  'pages.login.username.placeholder': '用户名/邮箱',
+  'pages.login.password.placeholder': '输入密码',
   'pages.getCaptchaSecondText': '秒后重新获取',
   'pages.login.rememberMe': '自动登录',
-  'pages.login.forgotPassword': '忘记密码 ?',
+  'pages.login.forgotpwd': '忘记密码',
+  'pages.login.register': '注册账号',
   'pages.login.submit': '登录',
-  'pages.login.register': '注册',
-  'pages.login.loginWith': '其他方式 :',
-  'pages.login.registerAccount': '注册账户',
-  'pages.login.tips': '欢迎使用',
+
+  // 注册
+  'pages.register.tips': '注册账号',
+  'pages.register.submit': '注册',
+  'pages.register.username.placeholder': '输入用户名',
+  'pages.register.passwd.placeholder': '输入密码',
+  'pages.register.passwd2.placeholder': '再次输入密码',
+  'pages.register.email.placeholder': '输入账号邮箱',
+  'pages.register.code.placeholder': '输入邮箱验证码',
+
+  // 忘记密码
+  'pages.forgotpwd.submit': '修改',
+  'pages.forgotpwd.tips': '忘记密码',
+  'pages.forgotpwd.email.placeholder': '输入账号邮箱',
+  'pages.forgotpwd.passwd.placeholder': '输入新密码',
+  'pages.forgotpwd.passwd2.placeholder': '再次输入新密码',
+
+  // 其它
+  'pages.back': '返回',
+  'pages.email': '邮箱',
+  'pages.loginWith': '其他方式 :',
+  'pages.email.getcode': '获取验证码',
+  // 规则
+  'pages.login.required.username':'账号是必填项',
+  'pages.login.pattern.username':'账号只能由英文数字组成',
+  'pages.login.range.username':'账号长度必须位于6到15之间',
+  'pages.login.required.email':'邮箱是必填项',
+  'pages.login.required.passwd':'密码是必填项',
+  'pages.login.valid.passwd':'密码长度必须位8到20之间',
+  'pages.login.required.code':'验证码是必填项',
+  'pages.login.required.rePasswd':'再次输入密码',
+  
+  'pages.login.equal.rePasswd':'两次输入的密码必须一致',
+
+  'pages.login.is.email':'输入正确的邮箱格式',
 }
