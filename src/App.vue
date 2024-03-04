@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useLayoutMenuProvide } from '~/components/page-container/context.ts'
+import { useLayoutMenuProvide } from '~/components/page-container/context'
 
 const appStore = useAppStore()
 const { theme } = storeToRefs(appStore)
