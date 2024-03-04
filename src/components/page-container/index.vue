@@ -8,12 +8,12 @@ defineProps<{
   title?: string
 }>()
 defineSlots<{
-  default(props: any): any
-  title(props: any): any
-  content(props: any): any
-  extraContent(props: any): any
-  extra(props: any): any
-  footer(props: any): any
+  default: (props: any) => any
+  title: (props: any) => any
+  content: (props: any) => any
+  extraContent: (props: any) => any
+  extra: (props: any) => any
+  footer: (props: any) => any
 }>()
 const { layoutMenu: layoutMenuStore, appStore } = useLayoutMenuInject()
 const { layoutSetting } = storeToRefs(appStore)
