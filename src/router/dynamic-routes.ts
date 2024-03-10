@@ -2,17 +2,6 @@ import type { RouteRecordRaw } from 'vue-router'
 import { basicRouteMap } from './router-modules'
 import { AccessEnum } from '~@/utils/constant'
 
-export const ROOT_ROUTE_REDIRECT_PATH = '/dashboard'
-const Layout = () => import('~/layouts/index.vue')
-
-export const rootRoute: RouteRecordRaw = {
-  path: '/',
-  name: 'rootPath',
-  redirect: ROOT_ROUTE_REDIRECT_PATH,
-  component: Layout,
-  children: [],
-}
-
 export default [
   {
     path: '/dashboard',
@@ -187,7 +176,7 @@ export default [
     redirect: '/profile/basic',
     meta: {
       title: 'menu.profile',
-      icon: 'profile',
+      icon: 'ProfileOutlined',
       locale: 'menu.profile',
     },
     component: basicRouteMap.RouteView,
@@ -338,6 +327,15 @@ export default [
         meta: {
           title: '查询表格',
           locale: 'menu.list.consult-table',
+        },
+      },
+      {
+        path: '/list/crud-table',
+        name: 'CrudTable',
+        component: () => import('~/pages/list/crud-table.vue'),
+        meta: {
+          title: '增删改查表格',
+          locale: 'menu.list.crud-table',
         },
       },
       {

@@ -2,7 +2,7 @@
 import { CheckOutlined } from '@ant-design/icons-vue'
 
 defineProps<{
-  colorList: ({ key: string; color: string })[]
+  colorList: ({ key: string, color: string })[]
   color?: string
   onChange?: (color: string) => void
   t?: (key: string, ...args: any[]) => string

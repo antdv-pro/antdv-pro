@@ -17,7 +17,7 @@ const props = withDefaults(
     open?: boolean
     theme?: ThemeType
     colorPrimary?: string
-    colorList?: { key: string; color: string }[]
+    colorList?: { key: string, color: string }[]
     layout?: LayoutType
     contentWidth?: ContentWidth
     fixedHeader?: boolean
@@ -32,8 +32,10 @@ const props = withDefaults(
     menu?: boolean
     menuHeader?: boolean
     colorWeak?: boolean
+    colorGray?: boolean
     multiTab?: boolean
     multiTabFixed?: boolean
+    compactAlgorithm?: boolean
     animationName?: string
     animationNameList?: any[]
     layoutSetting?: Record<string, any>
@@ -197,6 +199,7 @@ const { token } = useAntdToken()
         :keep-alive="keepAlive"
         :accordion-mode="accordionMode"
         :left-collapsed="leftCollapsed"
+        :compact-algorithm="compactAlgorithm"
         @change-setting="changeSettingLayout"
       />
       <a-divider />
@@ -218,7 +221,7 @@ const { token } = useAntdToken()
       </Body>
       <a-divider />
       <Body :title="t?.('app.setting.othersettings') ?? '其他设置'">
-        <OtherSetting :t="t" :color-weak="colorWeak" @change-setting="changeSettingLayout" />
+        <OtherSetting :t="t" :color-weak="colorWeak" :color-gray="colorGray" @change-setting="changeSettingLayout" />
       </Body>
       <a-divider />
       <Body>

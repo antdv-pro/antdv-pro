@@ -1,5 +1,9 @@
 <script setup lang="ts">
 import { GithubOutlined } from '@ant-design/icons-vue'
+
+defineOptions({
+  name: 'FooterLinks',
+})
 </script>
 
 <template>

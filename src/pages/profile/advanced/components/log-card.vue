@@ -81,8 +81,8 @@ function getI18n(key: any) {
     <a-tabs v-model:activeKey="activeKey">
       <a-tab-pane key="1" :tab="t('profile.advanced.log')">
         <a-table :data-source="data" :columns="columns">
-          <template #headerCell="{ column }">
-            {{ getI18n(column.key) }}
+          <template #headerCell="scope">
+            {{ getI18n(scope?.column?.key) }}
           </template>
         </a-table>
       </a-tab-pane>

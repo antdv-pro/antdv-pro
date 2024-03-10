@@ -48,6 +48,7 @@
       align-items: center;
       justify-content: center;
       min-height: 32px;
+      width: 100%;
     }
 
     img{
@@ -65,6 +66,10 @@
       line-height: 32px;
       vertical-align: middle;
       animation: pro-layout-title-hide .3s;
+      width: calc(100% - 32px);
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
   }
 

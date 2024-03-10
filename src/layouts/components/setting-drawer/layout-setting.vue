@@ -11,6 +11,7 @@ const props = defineProps<{
   keepAlive?: boolean
   accordionMode?: boolean
   leftCollapsed?: boolean
+  compactAlgorithm?: boolean
   t?: (key: string, ...args: any[]) => string
 }>()
 
@@ -56,6 +57,12 @@ const list = computed(() => [
     title: '侧边菜单折叠 左侧',
     key: 'leftCollapsed',
     disabled: props.layout !== 'side',
+    disabledReason: '',
+  },
+  {
+    title: '紧凑模式',
+    key: 'compactAlgorithm',
+    disabled: false,
     disabledReason: '',
   },
 ])
@@ -131,6 +138,14 @@ function handleChangeSetting(key: string, value: any) {
                 :checked="leftCollapsed"
                 :disabled="item.disabled"
                 @update:checked="(e:CheckedType) => handleChangeSetting('leftCollapsed', e)"
+              />
+            </template>
+            <template v-if="item.key === 'compactAlgorithm'">
+              <a-switch
+                size="small"
+                :checked="compactAlgorithm"
+                :disabled="item.disabled"
+                @update:checked="(e:CheckedType) => handleChangeSetting('compactAlgorithm', e)"
               />
             </template>
           </template>

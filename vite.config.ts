@@ -5,6 +5,7 @@ import * as process from 'node:process'
 import { loadEnv } from 'vite'
 import type { ConfigEnv, UserConfig } from 'vite'
 import { createVitePlugins } from './plugins'
+import { OUTPUT_DIR } from './plugins/constants'
 
 const baseSrc = fileURLToPath(new URL('./src', import.meta.url))
 // https://vitejs.dev/config/
@@ -78,6 +79,7 @@ export default ({ mode }: ConfigEnv): UserConfig => {
     },
     build: {
       chunkSizeWarningLimit: 4096,
+      outDir: OUTPUT_DIR,
       rollupOptions: {
         output: {
           manualChunks: {
@@ -95,6 +97,8 @@ export default ({ mode }: ConfigEnv): UserConfig => {
         ...proxyObj,
         // [env.VITE_APP_BASE_API]: {
         //   target: env.VITE_APP_BASE_URL,
+        // //   如果你是https接口，需要配置这个参数
+        // //   secure: false,
         //   changeOrigin: true,
         //   rewrite: path => path.replace(new RegExp(`^${env.VITE_APP_BASE_API}`), ''),
         // },

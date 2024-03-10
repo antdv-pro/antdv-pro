@@ -482,15 +482,15 @@ onMounted(() => {
         pageSize: 5,
       }"
     >
-      <template #bodyCell="{ column, record }">
-        <template v-if="column.key === 'keyword'">
+      <template #bodyCell="scope">
+        <template v-if="scope?.column?.key === 'keyword'">
           <a>
-            {{ record.keyword }}
+            {{ scope?.record?.keyword }}
           </a>
         </template>
-        <template v-else-if="column.key === 'range'">
-          <Trend :flag="record.status === 1 ? 'down' : 'up'">
-            <span :style="{ marginRight: '4px' }">{{ record.range }}%</span>
+        <template v-else-if="scope?.column?.key === 'range'">
+          <Trend :flag="scope?.record?.status === 1 ? 'down' : 'up'">
+            <span :style="{ marginRight: '4px' }">{{ scope?.record?.range }}%</span>
           </Trend>
         </template>
       </template>

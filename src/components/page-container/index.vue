@@ -1,45 +1,47 @@
 <script setup lang="ts">
-import { delayTimer, isFunction } from '@v-c/utils'
+import { isFunction } from '@v-c/utils'
 import type { VNodeChild } from 'vue'
+import { useLayoutMenuInject } from './context.ts'
 import { useLayoutState } from '~/layouts/basic-layout/context'
 
 defineProps<{
   title?: string
 }>()
 defineSlots<{
-  default(props: any): any
-  title(props: any): any
-  content(props: any): any
-  extraContent(props: any): any
-  extra(props: any): any
-  footer(props: any): any
+  default: (props: any) => any
+  title: (props: any) => any
+  content: (props: any) => any
+  extraContent: (props: any) => any
+  extra: (props: any) => any
+  footer: (props: any) => any
 }>()
-const layoutMenuStore = useLayoutMenu()
-const { menuDataMap, selectedKeys } = storeToRefs(layoutMenuStore)
-const currentItem = computed(() => {
-  const key: string = selectedKeys.value.length ? selectedKeys.value[0] : ''
+const { layoutMenu: layoutMenuStore, appStore } = useLayoutMenuInject()
+const { layoutSetting } = storeToRefs(appStore)
+const { menuDataMap } = storeToRefs(layoutMenuStore)
+const route = useRoute()
+function getCurrentItem() {
+  const key: string = route.meta?.originPath ?? route.path
   if (key && menuDataMap.value.has(key))
     return menuDataMap.value.get(key)
   return {} as any
-})
-const { contentWidth, hasPageContainer } = useLayoutState()
-async function switchPage(bool: boolean) {
-  await delayTimer(300)
-  hasPageContainer.value = bool
 }
+const currentItem = shallowRef(getCurrentItem())
+onBeforeMount(() => {
+  currentItem.value = getCurrentItem()
+})
 
-onMounted(async () => {
-  await switchPage(true)
+let timer: ReturnType<typeof setTimeout> | undefined
+watch(() => route.path, () => {
+  if (timer) {
+    clearTimeout(timer)
+    timer = undefined
+  }
+  timer = setTimeout(() => {
+    currentItem.value = getCurrentItem()
+  }, 300)
 })
-onUnmounted(async () => {
-  await switchPage(false)
-})
-onActivated(async () => {
-  await switchPage(true)
-})
-onDeactivated(async () => {
-  await switchPage(false)
-})
+
+const { contentWidth } = useLayoutState()
 const contentCls = computed(() => {
   const cls: string[] = [
     'flex flex-col flex-1',
@@ -61,8 +63,8 @@ function renderTitle(title: VNodeChild | (() => VNodeChild)) {
 </script>
 
 <template>
-  <div>
-    <div class="bg-[var(--bg-color)]" px-24px pb-16px mb-24px mx--24px mt--24px>
+  <div class="ant-pro-page-container">
+    <div class="bg-[var(--bg-color)]" :class="layoutSetting.multiTab ? 'pb-16px' : 'py-16px'" px-24px mb-24px mx--24px mt--24px>
       <a-breadcrumb v-if="!currentItem.hideInBreadcrumb">
         <template v-if="currentItem.matched?.length">
           <a-breadcrumb-item v-for="item in currentItem.matched" :key="item.path">

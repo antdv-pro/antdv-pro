@@ -5,7 +5,7 @@ export function useMetaTitle(route: RouteRecordRaw | RouteLocationNormalizedLoad
   const { title, locale } = route.meta ?? {}
   if (title || locale) {
     if (locale)
-      useTitle((i18n.global as any).t(locale))
+      useTitle((i18n?.global as any).t?.(locale) ?? title)
     else
       useTitle(title)
   }

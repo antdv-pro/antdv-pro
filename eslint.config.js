@@ -1,4 +1,4 @@
-import mist from '@mistjs/eslint-config'
+import mist from '@antfu/eslint-config'
 
 export default mist({
   vue: true,
@@ -7,11 +7,15 @@ export default mist({
   gitignore: true,
   markdown: true,
   ignores: [
+    'types/auto-imports.d.ts',
+    'types/components.d.ts',
+    'public',
     'tsconfig.*.json',
     'tsconfig.json',
   ],
 }, {
   rules: {
-    'no-console': 'off',
+    'no-console': 0,
+    'style/quote-props': 0,
   },
 })

@@ -11,6 +11,22 @@
     // position: relative;
     margin: 24px;
     display: flex;
+
+    &-fluid{
+      width: 100%;
+    }
+
+    &-fixed{
+      width: 1200px;
+      max-width: 1200px;
+      margin: 0 auto;
+
+      &:has(.ant-pro-page-container){
+        width: 100%;
+        max-width: unset;
+        margin: unset;
+      }
+    }
   }
 }
 
