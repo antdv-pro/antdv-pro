@@ -6,7 +6,7 @@ import type { ConsultTableModel, ConsultTableParams } from '~@/api/list/table-li
 import { deleteApi, getListApi } from '~@/api/list/table-list'
 
 const statusMap = {
-  O: '关闭',
+  0: '关闭',
   1: '运行中',
   2: '上线',
   3: '错误',
