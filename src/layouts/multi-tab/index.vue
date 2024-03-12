@@ -38,7 +38,7 @@ const tabStyle = computed<CSSProperties>(() => {
   return style
 })
 const tabsRef = shallowRef()
-const { height } = useElementSize(tabsRef)
+const { height } = useElementBounding(tabsRef)
 
 function handleSwitch({ key }: any, current: string) {
   if (key === 'closeCurrent')
@@ -96,7 +96,7 @@ onUnmounted(() => {
 <template>
   <div
     v-if="layoutSetting.multiTabFixed"
-    :style="{ height: `${height + 10}px` }"
+    :style="{ height: `${height}px` }"
   />
   <a-tabs
     ref="tabsRef"
