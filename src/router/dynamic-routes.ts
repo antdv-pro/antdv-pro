@@ -168,6 +168,32 @@ export default [
           },
         ],
       },
+      {
+        path: '/menu/menu4',
+        redirect: '/menu/menu4/menu1',
+        name: 'MenuMenu2-1',
+        meta: {
+          title: '菜单2-1',
+        },
+        children: [
+          {
+            path: '/menu/menu4/menu1',
+            name: 'MenuMenu211',
+            component: () => import('~/pages/menu/menu-2-1/menu1.vue'),
+            meta: {
+              title: '菜单2-1-1',
+            },
+          },
+          {
+            path: '/menu/menu4/menu2',
+            name: 'MenuMenu212',
+            component: () => import('~/pages/menu/menu-2-1/menu2.vue'),
+            meta: {
+              title: '菜单2-1-2',
+            },
+          },
+        ],
+      },
     ],
   },
   {
