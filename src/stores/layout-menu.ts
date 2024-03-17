@@ -1,6 +1,7 @@
 import { isUrl } from '@v-c/utils'
 import type { MenuData, MenuDataItem } from '~@/layouts/basic-layout/typing'
 import router from '~@/router'
+import { deepFind } from '~@/utils/tree'
 
 function toMapMenuData(menuData: MenuData, menuDataMap: Map<string, MenuDataItem>, matched: MenuDataItem[] = []) {
   menuData.forEach((v) => {
@@ -46,32 +47,29 @@ export const useLayoutMenu = defineStore('layout-menu', () => {
   }, { immediate: true, flush: 'post' })
 
   const { menuData } = storeToRefs(userStore)
+  const findMenuByPath: any = (path: string) => (obj: MenuData) =>
+    deepFind(o => o.path === path)(obj)
   const handleAccordionMode = (innerOpenKeys: string[]) => {
     const rootSubmenuKeys: string[] | undefined = menuData.value?.map((item) => {
       return item.path
     })
-    const intersection = innerOpenKeys.filter(value => openKeys.value?.includes(value))
-    const currentClickKey = innerOpenKeys.concat(openKeys.value).filter(value => !intersection.includes(value))[0]
-
-    if (rootSubmenuKeys?.includes(currentClickKey)) {
-      switch (innerOpenKeys.includes(currentClickKey)) {
-        case true:
-          openKeys.value = [currentClickKey]
-          break
-        case false:
-          openKeys.value = []
-          break
+    const latestOpenKey = innerOpenKeys.find(key => !openKeys.value.includes(key))
+    if (latestOpenKey) {
+      if (!rootSubmenuKeys.includes(latestOpenKey)) {
+        // 与 前一项比较 是否为同一级，同级则移除前一项
+        const prevKey = innerOpenKeys[innerOpenKeys.length - 2]
+        const preMenuItem = findMenuByPath(prevKey)(menuData.value)
+        const latestOpenMenuItem = findMenuByPath(latestOpenKey)(menuData.value)
+        if (preMenuItem && latestOpenMenuItem && preMenuItem.parentId === latestOpenMenuItem.parentId)
+          innerOpenKeys.splice(innerOpenKeys.indexOf(prevKey), 1)
+        openKeys.value = innerOpenKeys
+      }
+      else {
+        openKeys.value = [latestOpenKey]
       }
     }
     else {
-      switch (innerOpenKeys.includes(currentClickKey)) {
-        case true:
-          openKeys.value = innerOpenKeys
-          break
-        case false:
-          openKeys.value = innerOpenKeys.slice(0, openKeys.value.indexOf(currentClickKey))
-          break
-      }
+      openKeys.value = innerOpenKeys
     }
   }
 

@@ -418,6 +418,33 @@ const menuData = [
     component: '/list/crud-table',
     locale: 'menu.list.crud-table',
   },
+  {
+    id: 45,
+    parentId: 9,
+    path: '/menu/menu4',
+    redirect: '/menu/menu4/menu1',
+    title: '菜单2-1',
+    component: 'RouteView',
+    locale: 'menu.menu.menu4',
+  },
+  {
+    id: 46,
+    parentId: 45,
+    path: '/menu/menu4/menu1',
+    component: '/menu/menu-2-1/menu1',
+    title: '菜单2-1-1',
+    keepAlive: true,
+    locale: 'menu.menu4.menu1',
+  },
+  {
+    id: 47,
+    parentId: 45,
+    path: '/menu/menu4/menu2',
+    component: '/menu/menu-2-1/menu2',
+    title: '菜单2-1-2',
+    keepAlive: true,
+    locale: 'menu.menu4.menu2',
+  },
 ]
 
 export const accessMenuData = [
