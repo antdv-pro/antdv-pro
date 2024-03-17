@@ -15,6 +15,7 @@ const Comp = computed(() => {
   else {
     return (icons as any)[props.icon]
   }
+  return undefined
 })
 </script>
 

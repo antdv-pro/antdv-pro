@@ -19,6 +19,7 @@ const {
   collapsedWidth,
   siderWidth,
   menu,
+  selectedMenus,
 } = useLayoutState()
 const tabStyle = computed<CSSProperties>(() => {
   const style: CSSProperties = {}
@@ -29,7 +30,8 @@ const tabStyle = computed<CSSProperties>(() => {
     style.right = 0
   }
   if ((layout.value === 'side' || layout.value === 'mix') && menu.value) {
-    if (!isMobile.value && layoutSetting.value.multiTabFixed) {
+    // bugfix: https://github.com/antdv-pro/antdv-pro/issues/172
+    if (!isMobile.value && layoutSetting.value.multiTabFixed && selectedMenus.value?.length) {
       const width = collapsed.value ? collapsedWidth.value : siderWidth.value
       style.width = `calc(100% - ${width}px)`
     }

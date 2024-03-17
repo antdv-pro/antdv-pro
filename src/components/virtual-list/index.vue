@@ -37,6 +37,7 @@ const Data = ref<any[]>()
 const pillarHeight = computed(() => {
   if (Data.value?.length)
     return props.itemHeight * Data.value?.length
+  return undefined
 })
 
 const renderData = computed(() => {
