@@ -92,6 +92,8 @@ Thank you to all the people who already contributed to antdv-pro!
 
 If you like our project, you can support us by clicking the "Star" button in the upper right corner. Your support is my motivation. Thank you ~
 
+Thanks to the open source project license provided by [Jetbrains](https://www.jetbrains.com/?from=antdv-pro).
+
 ## Sponsor
 
 If you like our project, you can sponsor us to help us maintain the project better.

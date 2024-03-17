@@ -95,6 +95,7 @@ pnpm dev
 
 如果你觉得这个项目对你有帮助，你可以点右上角 "Star" 支持一下，你的支持就是我的动力，谢谢~
 
+感谢[Jetbrains](https://www.jetbrains.com/?from=antdv-pro).提供的开源项目许可证支持
 
 ## 赞助
 
