@@ -47,10 +47,9 @@ QQ群: 申请微信群
 
 Discord: [discord](https://discord.gg/tPb4G6gXmm)
 
-### 微信群
+### Antdv 小助手微信回复【101】邀请进一群
 
-gitee不再更新微信群地址，如需加入微信群，请加微信号：aibayanyu2022，备注：加群
-
+<img src="https://git.lingyu.org.cn/yanyu/images/raw/branch/main/robot1.jpg" width="300">
 ## 使用
 
 ```bash

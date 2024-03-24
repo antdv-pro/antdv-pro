@@ -45,9 +45,14 @@ Wechat: aibayanyu2022
 
 Discord: [discord](https://discord.gg/tPb4G6gXmm)
 
-### WeChatGroup 一群加微信备注【加群】（二群扫码）
+### WeChatGroup （二群扫码）
 
 <img src="https://git.lingyu.org.cn/yanyu/images/raw/branch/main/wx-group.jpg" width="300">
+
+#### Antdv 小助手微信回复【101】邀请进一群
+
+<img src="https://git.lingyu.org.cn/yanyu/images/raw/branch/main/robot1.jpg" width="300">
+
 
 ## Useage
 
