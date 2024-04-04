@@ -9,7 +9,7 @@
     "node": ">=18.15.0"
   },
   "scripts": {
-    "dev": "mist",
+    "dev": "mist --host",
     "build": "vue-tsc && mist build",
     "clear:vercel": "rm -rf ./vercel.json",
     "build:vercel": "run-s clear:vercel build:nitro",
@@ -47,7 +47,7 @@
     "@antfu/eslint-config": "^2.9.0",
     "@commitlint/cli": "^18.6.1",
     "@commitlint/config-conventional": "^18.6.3",
-    "@mistjs/cli": "0.0.1-beta.7",
+    "@mistjs/cli": "0.0.1-beta.8",
     "@mistjs/vite-plugin-preload": "^0.0.1",
     "@types/fs-extra": "^11.0.4",
     "@types/lodash": "^4.17.0",

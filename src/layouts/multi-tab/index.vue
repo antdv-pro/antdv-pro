@@ -36,6 +36,9 @@ const tabStyle = computed<CSSProperties>(() => {
       style.width = `calc(100% - ${width}px)`
     }
   }
+  // bugfix https://github.com/antdv-pro/antdv-pro/issues/173
+  if (layoutSetting.value.header === false)
+    style.top = '0px'
 
   return style
 })

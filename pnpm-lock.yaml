@@ -62,8 +62,8 @@ devDependencies:
     specifier: ^18.6.3
     version: 18.6.3
   '@mistjs/cli':
-    specifier: 0.0.1-beta.7
-    version: 0.0.1-beta.7(vite@5.2.5)
+    specifier: 0.0.1-beta.8
+    version: 0.0.1-beta.8(vite@5.2.5)
   '@mistjs/vite-plugin-preload':
     specifier: ^0.0.1
     version: 0.0.1(vite@5.2.5)
@@ -2007,8 +2007,8 @@ packages:
       sort-object: 3.0.3
     dev: false
 
-  /@mistjs/cli@0.0.1-beta.7(vite@5.2.5):
-    resolution: {integrity: sha512-7/f26hlaJhD7/nUOiZo30WrhJyHkdogOn5SCg9eDacGb3fZKt/eMadflwPylX+OBTuFCry2zXDz0qbyQ+SD8FQ==}
+  /@mistjs/cli@0.0.1-beta.8(vite@5.2.5):
+    resolution: {integrity: sha512-WrQS9NrltFCHTA0RDCkEFqQAo1F7vHywE5NjfW0XSnKi8nrStUg9kZVt7yXYvCaSV7B843+IcloFh+E7W3c8rA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:

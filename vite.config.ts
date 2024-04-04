@@ -92,7 +92,6 @@ export default ({ mode }: ConfigEnv): UserConfig => {
     },
     server: {
       port: 6678,
-      host: '0.0.0.0',
       proxy: {
         ...proxyObj,
         // [env.VITE_APP_BASE_API]: {
