@@ -59,7 +59,7 @@ function init() {
   }
 }
 
-function handleScroll(e: UIEvent) {
+function handleScroll(e: Event) {
   const scrollTop = (e.target as HTMLDivElement).scrollTop
   start.value = Math.floor(scrollTop / props.itemHeight)
   transformY.value = start.value * props.itemHeight
