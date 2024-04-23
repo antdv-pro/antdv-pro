@@ -2,7 +2,7 @@
   "name": "antdv-pro",
   "type": "module",
   "version": "1.1.0",
-  "packageManager": "pnpm@9.0.2",
+  "packageManager": "pnpm@9.0.5",
   "author": "aibayanyu <aibayanyu@qq.com>",
   "repository": "antdv-pro/antdv-pro",
   "engines": {
@@ -33,7 +33,7 @@
     "@ctrl/tinycolor": "^4.1.0",
     "@v-c/utils": "^0.0.26",
     "@vueuse/core": "^10.9.0",
-    "ant-design-vue": "^4.1.2",
+    "ant-design-vue": "^4.2.0",
     "axios": "^1.6.8",
     "dayjs": "^1.11.10",
     "lodash-es": "^4.17.21",

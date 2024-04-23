@@ -27,8 +27,8 @@ importers:
         specifier: ^10.9.0
         version: 10.9.0(vue@3.4.23(typescript@5.4.5))
       ant-design-vue:
-        specifier: ^4.1.2
-        version: 4.1.2(vue@3.4.23(typescript@5.4.5))
+        specifier: ^4.2.0
+        version: 4.2.0(vue@3.4.23(typescript@5.4.5))
       axios:
         specifier: ^1.6.8
         version: 1.6.8
@@ -1908,8 +1908,8 @@ packages:
     resolution: {integrity: sha512-bN798gFfQX+viw3R7yrGWRqnrN2oRkEkUjjl4JNn4E8GxxbjtG3FbrEIIY3l8/hrwUwIeCZvi4QuOTP4MErVug==}
     engines: {node: '>=12'}
 
-  ant-design-vue@4.1.2:
-    resolution: {integrity: sha512-ynFkDJLlHgumeK6Hr1UZ7PvQNZ1uBcri/pmejBdS3kRqHeA5VRsxneYDwa8YxA+uYB5YfT2jpYsSHsiMiCjRGg==}
+  ant-design-vue@4.2.0:
+    resolution: {integrity: sha512-tw20aZn5Qv/xtJze+BMPNueS8pETBeuO1UWqbBQmg2/wp9WmtetsbEcANBg1QERI6E9ikSrQ2Yr9xlIyIJEYdw==}
     engines: {node: '>=12.22.0'}
     peerDependencies:
       vue: '>=3.2.0'
@@ -7896,7 +7896,7 @@ snapshots:
 
   ansi-styles@6.2.1: {}
 
-  ant-design-vue@4.1.2(vue@3.4.23(typescript@5.4.5)):
+  ant-design-vue@4.2.0(vue@3.4.23(typescript@5.4.5)):
     dependencies:
       '@ant-design/colors': 6.0.0
       '@ant-design/icons-vue': 7.0.1(vue@3.4.23(typescript@5.4.5))
@@ -7935,7 +7935,7 @@ snapshots:
       '@emotion/server': 11.11.0(@emotion/css@11.11.2)
       '@emotion/utils': 1.2.1
       '@vueuse/core': 10.9.0(vue@3.4.23(typescript@5.4.5))
-      ant-design-vue: 4.1.2(vue@3.4.23(typescript@5.4.5))
+      ant-design-vue: 4.2.0(vue@3.4.23(typescript@5.4.5))
       vue: 3.4.23(typescript@5.4.5)
     transitivePeerDependencies:
       - '@vue/composition-api'
