@@ -72,8 +72,8 @@ const layoutProps = computed(() =>
 
     <a-watermark h-full flex flex-col flex-1 :content="!layoutSetting.watermark ? '' : layoutSetting.title ?? 'Antdv Pro'">
       <RouterView>
-        <template #default="{ Component }">
-          <component :is="Component" />
+        <template #default="{ Component, route }">
+          <component :is="Component" :key="route.fullPath" />
         </template>
       </RouterView>
     </a-watermark>
