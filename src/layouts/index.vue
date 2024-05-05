@@ -13,8 +13,6 @@ const { layoutSetting } = storeToRefs(appStore)
 const userStore = useUserStore()
 const layoutMenu = useLayoutMenu()
 const { t } = useI18nLocale()
-const multiTabStore = useMultiTab()
-const { cacheList } = storeToRefs(multiTabStore)
 const { selectedKeys, openKeys } = storeToRefs(layoutMenu)
 const { isMobile, isPad } = useQueryBreakpoints()
 watch(isPad, (val) => {
@@ -75,12 +73,9 @@ const layoutProps = computed(() =>
     <a-watermark h-full flex flex-col flex-1 :content="!layoutSetting.watermark ? '' : layoutSetting.title ?? 'Antdv Pro'">
       <RouterView>
         <template #default="{ Component, route }">
-          <Transition appear :name="layoutSetting.animationName" mode="out-in">
-            <KeepAlive v-if="layoutSetting.keepAlive" :include="[...cacheList, 'CustomRouteView']">
-              <component :is="Component" :key="route.fullPath" />
-            </KeepAlive>
-            <component :is="Component" v-else :key="route.fullPath" />
-          </Transition>
+          <KeepAlive>
+            <component :is="Component" :key="route.fullPath" />
+          </KeepAlive>
         </template>
       </RouterView>
     </a-watermark>

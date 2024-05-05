@@ -17,10 +17,12 @@ const { getComp } = useCompConsumer()
     <ParentCompConsumer>
       <RouterView>
         <template #default="{ Component, route }">
-          <KeepAlive v-if="layoutSetting.keepAlive" :include="[...cacheList]">
-            <component :is="getComp(Component)" :key="route.fullPath" />
-          </KeepAlive>
-          <component :is="Component" v-else :key="route.fullPath" />
+          <Transition appear :name="layoutSetting.animationName" mode="out-in">
+            <KeepAlive v-if="layoutSetting.keepAlive" :include="[...cacheList]">
+              <component :is="getComp(Component)" :key="route.fullPath" />
+            </KeepAlive>
+            <component :is="Component" v-else :key="route.fullPath" />
+          </Transition>
         </template>
       </RouterView>
     </ParentCompConsumer>
