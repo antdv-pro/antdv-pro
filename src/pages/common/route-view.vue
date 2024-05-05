@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { ParentCompConsumer } from '@/layouts/basic-layout/parent-comp-consumer'
 
+defineOptions({
+  name: 'CustomRouteView',
+})
+
 const appStore = useAppStore()
 const { layoutSetting } = storeToRefs(appStore)
 const multiTabStore = useMultiTab()
@@ -13,7 +17,7 @@ const { getComp } = useCompConsumer()
     <ParentCompConsumer>
       <RouterView>
         <template #default="{ Component, route }">
-          <KeepAlive v-if="layoutSetting.keepAlive" :include="cacheList">
+          <KeepAlive v-if="layoutSetting.keepAlive" :include="[...cacheList]">
             <component :is="getComp(Component)" :key="route.fullPath" />
           </KeepAlive>
           <component :is="Component" v-else :key="route.fullPath" />

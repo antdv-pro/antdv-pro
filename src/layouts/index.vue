@@ -13,6 +13,8 @@ const { layoutSetting } = storeToRefs(appStore)
 const userStore = useUserStore()
 const layoutMenu = useLayoutMenu()
 const { t } = useI18nLocale()
+const multiTabStore = useMultiTab()
+const { cacheList } = storeToRefs(multiTabStore)
 const { selectedKeys, openKeys } = storeToRefs(layoutMenu)
 const { isMobile, isPad } = useQueryBreakpoints()
 watch(isPad, (val) => {
@@ -74,7 +76,10 @@ const layoutProps = computed(() =>
       <RouterView>
         <template #default="{ Component, route }">
           <Transition appear :name="layoutSetting.animationName" mode="out-in">
-            <component :is="Component" :key="route.fullPath" />
+            <KeepAlive v-if="layoutSetting.keepAlive" :include="[...cacheList, 'CustomRouteView']">
+              <component :is="Component" :key="route.fullPath" />
+            </KeepAlive>
+            <component :is="Component" v-else :key="route.fullPath" />
           </Transition>
         </template>
       </RouterView>
