@@ -73,7 +73,9 @@ const layoutProps = computed(() =>
     <a-watermark h-full flex flex-col flex-1 :content="!layoutSetting.watermark ? '' : layoutSetting.title ?? 'Antdv Pro'">
       <RouterView>
         <template #default="{ Component, route }">
-          <component :is="Component" :key="route.fullPath" />
+          <Transition appear :name="layoutSetting.animationName" mode="out-in">
+            <component :is="Component" :key="route.fullPath" />
+          </Transition>
         </template>
       </RouterView>
     </a-watermark>
