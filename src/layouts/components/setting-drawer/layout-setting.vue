@@ -78,7 +78,7 @@ function handleChangeSetting(key, value) {
                 size="small"
                 :disabled="item.disabled"
                 :value="contentWidth || 'Fluid'"
-                @update:value="(e:SelectValue) => handleChangeSetting('contentWidth', e)"
+                @update:value="(e) => handleChangeSetting('contentWidth', e)"
               >
                 <a-select-option v-if="layout === 'top'" value="Fixed">
                   {{ t?.('app.setting.content-width.fixed') ?? 'Fixed' }}
@@ -93,7 +93,7 @@ function handleChangeSetting(key, value) {
                 size="small"
                 :checked="fixedHeader"
                 :disabled="item.disabled"
-                @update:checked="(e:CheckedType) => handleChangeSetting('fixedHeader', e)"
+                @update:checked="(e) => handleChangeSetting('fixedHeader', e)"
               />
             </template>
             <template v-if="item.key === 'fixSiderbar'">
@@ -101,7 +101,7 @@ function handleChangeSetting(key, value) {
                 size="small"
                 :checked="fixedSider"
                 :disabled="item.disabled"
-                @update:checked="(e:CheckedType) => handleChangeSetting('fixedSider', e)"
+                @update:checked="(e) => handleChangeSetting('fixedSider', e)"
               />
             </template>
             <template v-if="item.key === 'splitMenus'">
@@ -109,7 +109,7 @@ function handleChangeSetting(key, value) {
                 size="small"
                 :checked="splitMenus"
                 :disabled="item.disabled"
-                @update:checked="(e:CheckedType) => handleChangeSetting('splitMenus', e)"
+                @update:checked="(e) => handleChangeSetting('splitMenus', e)"
               />
             </template>
             <template v-if="item.key === 'keepAlive'">
@@ -117,7 +117,7 @@ function handleChangeSetting(key, value) {
                 size="small"
                 :checked="keepAlive"
                 :disabled="item.disabled"
-                @update:checked="(e:CheckedType) => handleChangeSetting('keepAlive', e)"
+                @update:checked="(e) => handleChangeSetting('keepAlive', e)"
               />
             </template>
             <template v-if="item.key === 'accordionMode'">
@@ -125,7 +125,7 @@ function handleChangeSetting(key, value) {
                 size="small"
                 :checked="accordionMode"
                 :disabled="item.disabled"
-                @update:checked="(e:CheckedType) => handleChangeSetting('accordionMode', e)"
+                @update:checked="(e) => handleChangeSetting('accordionMode', e)"
               />
             </template>
             <template v-if="item.key === 'leftCollapsed'">
@@ -133,7 +133,7 @@ function handleChangeSetting(key, value) {
                 size="small"
                 :checked="leftCollapsed"
                 :disabled="item.disabled"
-                @update:checked="(e:CheckedType) => handleChangeSetting('leftCollapsed', e)"
+                @update:checked="(e) => handleChangeSetting('leftCollapsed', e)"
               />
             </template>
             <template v-if="item.key === 'compactAlgorithm'">
@@ -141,7 +141,7 @@ function handleChangeSetting(key, value) {
                 size="small"
                 :checked="compactAlgorithm"
                 :disabled="item.disabled"
-                @update:checked="(e:CheckedType) => handleChangeSetting('compactAlgorithm', e)"
+                @update:checked="(e) => handleChangeSetting('compactAlgorithm', e)"
               />
             </template>
           </template>

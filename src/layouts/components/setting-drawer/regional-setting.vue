@@ -79,13 +79,13 @@ function handleChangeSetting(key, value) {
               size="small"
               :checked="props[item.key]"
               :disabled="item.disabled"
-              @update:checked="(e:CheckedType) => handleChangeSetting(item.key, e)"
+              @update:checked="(e) => handleChangeSetting(item.key, e)"
             />
             <a-select
               v-else style="width: 120px;"
               :value="animationName"
               :options="animationNameList" size="small"
-              @update:value="(e:SelectValue) => handleChangeSetting(item.key, e)"
+              @update:value="(e) => handleChangeSetting(item.key, e)"
             />
           </template>
           <span :style="{ opacity: item.disabled ? '0.5' : '1' }">

@@ -466,7 +466,7 @@ onMounted(() => {
       </a-col>
     </a-row>
     <a-table
-      :row-key="(record:any) => record.index"
+      :row-key="(record) => record.index"
       size="small"
       :columns="columns"
       :data-source="searchData"

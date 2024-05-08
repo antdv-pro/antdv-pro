@@ -1,7 +1,7 @@
 <script lang="tsx">
 import type { Component, PropType } from 'vue'
-import type { LoadingEnum } from '~#/loading-enum'
-import { loadingMap } from '~#/loading-enum'
+import type { LoadingEnum } from '~#/loading-enum.js'
+import { loadingMap } from '~#/loading-enum.js'
 
 export default defineComponent({
   name: 'BaseLoading',
