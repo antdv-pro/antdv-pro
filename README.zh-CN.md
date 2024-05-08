@@ -36,6 +36,10 @@ AntdvPro是一个基于Vue3、Vite4、ant-design-vue4、Pinia、UnoCSS和Typescr
 
 [antdv-pro](https://antdv-pro.com) -  测试账号：admin/admin
 
+[antdv-pro-js](https://github.com/antdv-pro/antdv-pro/tree/feat-js) - JS版本
+
+[antdv-pro-js-gitee](https://gitee.com/antdv-pro/antdv-pro/tree/feat-js/) - Gitee JS 版本
+
 [antdv-pro-docs](https://docs.antdv-pro.com) - 在线文档地址
 
 

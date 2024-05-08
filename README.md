@@ -35,6 +35,10 @@ AntdvPro is a complete set of enterprise-level mid-backend front-end/design solu
 
 [antdv-pro](https://antdv-pro.com) -  Test Account: admin/admin
 
+[antdv-pro-js](https://github.com/antdv-pro/antdv-pro/tree/feat-js) - Javascript version
+
+[antdv-pro-js-gitee](https://gitee.com/antdv-pro/antdv-pro/tree/feat-js/) - Gitee Javascript version
+
 [antdv-pro-docs](https://docs.antdv-pro.com) - Documentation
 
 ## Community
