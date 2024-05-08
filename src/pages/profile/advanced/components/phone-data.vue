@@ -1,14 +1,6 @@
-<script setup lang="ts">
+<script setup>
 const { t } = useI18n()
-
-interface PhoneItem {
-  name: string
-  phone: string
-  spentTime: string
-  date: string
-}
-
-const phoneDate = ref<PhoneItem[]>([
+const phoneDate = ref([
   {
     name: '张三',
     phone: '16866666666',
@@ -34,8 +26,7 @@ const phoneDate = ref<PhoneItem[]>([
     date: '2022-6-20 9:50',
   },
 ])
-
-function removeItem(item: PhoneItem) {
+function removeItem(item) {
   const index = phoneDate.value.indexOf(item)
   phoneDate.value.splice(index, 1)
 }

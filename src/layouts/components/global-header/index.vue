@@ -1,10 +1,9 @@
-<script setup lang="ts">
+<script setup>
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons-vue'
-import { useLayoutState } from '../../basic-layout/context'
+import { useLayoutState } from '../../basic-layout/context.js'
 import GlobalHeaderLogo from './global-header-logo.vue'
 
-const { layout, isMobile, handleMobileCollapsed, theme, menuHeader, collapsed, handleCollapsed, leftCollapsed }
-    = useLayoutState()
+const { layout, isMobile, handleMobileCollapsed, theme, menuHeader, collapsed, handleCollapsed, leftCollapsed } = useLayoutState()
 const prefixCls = shallowRef('ant-pro-global-header')
 const cls = computed(() => ({
   [prefixCls.value]: true,

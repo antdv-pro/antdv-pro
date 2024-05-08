@@ -1,22 +1,13 @@
-<script setup lang="ts">
-import type { FormInstance } from 'ant-design-vue'
-
+<script setup>
 const emit = defineEmits(['nextStep'])
-const formRef = ref<FormInstance>()
+const formRef = ref()
 const labelCol = { lg: { span: 5 }, sm: { span: 5 } }
 const wrapperCol = { lg: { span: 19 }, sm: { span: 19 } }
-
-interface FirstFormState {
-  paymentAccount: string
-  collectAccount: string
-  name: string
-  amount: number | undefined
-}
-const formState = reactive<FirstFormState>({
+const formState = reactive({
   paymentAccount: '',
   collectAccount: 'test@example.com',
   name: 'Kirk Lin',
-  amount: 1000000,
+  amount: 1e6,
 })
 async function nextStep() {
   try {

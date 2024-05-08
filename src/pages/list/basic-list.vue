@@ -1,12 +1,10 @@
-<script setup lang="ts">
+<script setup>
 import { Modal } from 'ant-design-vue'
 import { ExclamationCircleOutlined } from '@ant-design/icons-vue'
 import { createVNode } from 'vue'
 import dayjs from 'dayjs'
 import { getListApi } from '~@/api/list/basic-list'
 import VirtualList from '@/components/virtual-list/index.vue'
-
-// import VirtualListItem from '@/components/virtual-list-item/index.vue'
 
 const workData = ref([
   {
@@ -22,42 +20,29 @@ const workData = ref([
     content: '24个任务',
   },
 ])
-
 const radioValue = ref('a')
-
 const searchValue = ref()
-
-function onSearch(value: string) {
+function onSearch(value) {
   console.log('use value', value)
 }
-
-const dataSource = ref<any[]>([])
-
+const dataSource = ref([])
 const pagination = ref({
   pageSize: 5,
   pageSizeOptions: ['10', '20', '30', '40', '50'],
   showQuickJumper: true,
   total: 0,
 })
-
-/*
-  获取数据
-*/
 async function getList() {
   const data = await getListApi()
   dataSource.value = data.data ?? []
   pagination.value.total = data.data?.length ?? 0
   console.log(dataSource.value)
 }
-
-/*
-  处理删除对话框
-*/
-function showConfirm(index: number) {
+function showConfirm(index) {
   Modal.confirm({
     title: '删除任务',
     icon: createVNode(ExclamationCircleOutlined),
-    content: createVNode('div', { }, '确定要删除该任务吗?'),
+    content: createVNode('div', {}, '确定要删除该任务吗?'),
     cancelText: '取消',
     okText: '确认',
     onOk() {
@@ -66,32 +51,16 @@ function showConfirm(index: number) {
     class: 'test',
   })
 }
-
-/*
-  处理编辑弹框
-*/
-interface FormState {
-  title: string
-  start: any
-  owner: string
-  description: string
-  index?: number
-}
-
-const formState = reactive<FormState>({
+const formState = reactive({
   title: '',
   start: '',
   owner: '清风不问烟雨',
   description: '',
   index: 0,
 })
-
 const openModalValue = ref(false)
-
-const isAdd = ref<boolean>(false)
-
-// 打开对话框
-function openModal(item: any, charge?: boolean) {
+const isAdd = ref(false)
+function openModal(item, charge) {
   if (charge) {
     isAdd.value = true
     openModalValue.value = true
@@ -105,8 +74,6 @@ function openModal(item: any, charge?: boolean) {
     formState.index = dataSource.value.indexOf(item)
   }
 }
-
-// 操作成功后操作
 function countDown() {
   let secondsToGo = 2
   const modal = Modal.success({
@@ -118,24 +85,20 @@ function countDown() {
     modal.update({
       content: `本窗口将在${secondsToGo}后自动关闭`,
     })
-  }, 1000)
+  }, 1e3)
   setTimeout(() => {
     clearInterval(interval)
     modal.destroy()
-  }, secondsToGo * 1000)
+  }, secondsToGo * 1e3)
 }
-
-// 确定 处理编辑或添加
 function handleOk() {
   for (const item in formState) {
     if (item !== 'index') {
-      if ((!(formState as any)[item]))
+      if (!formState[item])
         return
     }
   }
-
-  const currentIndex = formState.index as number
-
+  const currentIndex = formState.index
   if (isAdd.value) {
     const newItem = {
       title: formState.title,
@@ -149,18 +112,13 @@ function handleOk() {
       if (item === 'start')
         dataSource.value[currentIndex][item] = formState.start.format('YYYY-MM-DD HH:mm')
       else
-        dataSource.value[currentIndex][item] = (formState as any)[item]
+        dataSource.value[currentIndex][item] = formState[item]
     }
   }
-
   openModalValue.value = false
-
   cancelModal()
-
   countDown()
 }
-
-// 关闭对话框后操作
 function cancelModal() {
   console.log('cancel')
   formState.description = ''
@@ -168,7 +126,6 @@ function cancelModal() {
   formState.start = ''
   formState.title = ''
 }
-
 onMounted(() => {
   getList()
 })

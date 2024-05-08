@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { PlusOutlined } from '@ant-design/icons-vue'
 
 const links = [

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 const emit = defineEmits(['finish'])
 const router = useRouter()
 function finish() {

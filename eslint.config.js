@@ -6,6 +6,11 @@ export default mist({
   typescript: true,
   gitignore: true,
   markdown: true,
+}, {
+  rules: {
+    'no-console': 0,
+    'style/quote-props': 0,
+  },
   ignores: [
     'types/auto-imports.d.ts',
     'types/components.d.ts',
@@ -13,9 +18,4 @@ export default mist({
     'tsconfig.*.json',
     'tsconfig.json',
   ],
-}, {
-  rules: {
-    'no-console': 0,
-    'style/quote-props': 0,
-  },
 })

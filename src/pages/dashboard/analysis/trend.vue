@@ -1,14 +1,14 @@
-<script setup lang="ts">
+<script setup>
 import { CaretDownOutlined, CaretUpOutlined } from '@ant-design/icons-vue'
 
 defineProps({
   flag: {
     type: String,
-    default: undefined,
+    default: void 0,
   },
   children: {
     type: String,
-    default: undefined,
+    default: void 0,
   },
 })
 </script>

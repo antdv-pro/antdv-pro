@@ -1,11 +1,10 @@
-<script setup lang="ts">
+<script setup>
 import RepositoryForm from './repository-form.vue'
 import TaskForm from './task-form.vue'
 
 defineOptions({
   name: 'AdvancedForm',
 })
-
 const repositoryFormRef = ref()
 const taskFormRef = ref()
 async function handleSubmit() {
@@ -17,7 +16,6 @@ async function handleSubmit() {
     console.log('Failed:', errorInfo)
   }
 }
-
 const state = reactive({
   columns: [
     {
@@ -83,7 +81,7 @@ function handleAdd() {
   }
   state.data.push(newData)
 }
-function remove(key: string) {
+function remove(key) {
   state.data = state.data.filter(item => item.key !== key)
 }
 </script>

@@ -1,7 +1,6 @@
-<script setup lang="ts">
-import type { CSSProperties } from 'vue'
+<script setup>
 import GlobalHeader from '../global-header/index.vue'
-import { useLayoutState } from '../../basic-layout/context'
+import { useLayoutState } from '../../basic-layout/context.js'
 
 const {
   headerHeight,
@@ -15,9 +14,8 @@ const {
   splitMenus,
   selectedMenus,
 } = useLayoutState()
-
-const headerStyle = computed<CSSProperties>(() => {
-  const defaultStyle: CSSProperties = {
+const headerStyle = computed(() => {
+  const defaultStyle = {
     height: `${headerHeight.value}px`,
     lineHeight: `${headerHeight.value}px`,
     paddingInline: 0,
@@ -27,7 +25,6 @@ const headerStyle = computed<CSSProperties>(() => {
     defaultStyle.width = '100%'
     defaultStyle.right = 0
   }
-
   if (layout.value === 'side' && menu.value) {
     if (!isMobile.value && fixedHeader.value) {
       const width = collapsed.value ? collapsedWidth.value : siderWidth.value
@@ -35,25 +32,21 @@ const headerStyle = computed<CSSProperties>(() => {
     }
     defaultStyle.zIndex = 19
   }
-
   return defaultStyle
 })
 const cls = computed(() => {
   const classes = []
   if (fixedHeader.value || layout.value === 'mix')
     classes.push('ant-pro-fixed-header')
-
   if (layout.value)
     classes.push('ant-pro-fixed-header-action')
-
   if (layout.value === 'mix')
     classes.push('ant-pro-fixed-header-inverted')
-
   return classes
 })
 const needFixed = computed(
-  () =>
-    fixedHeader.value || (layout.value === 'mix' && (splitMenus.value ? (selectedMenus.value ?? []).length > 0 : true)),
+  // eslint-disable-next-line style/no-mixed-operators
+  () => fixedHeader.value || layout.value === 'mix' && (splitMenus.value ? (selectedMenus.value ?? []).length > 0 : true),
 )
 </script>
 

@@ -1,14 +1,8 @@
-<script setup lang="ts">
+<script setup>
 import { AlipayOutlined, DingdingOutlined, TaobaoOutlined } from '@ant-design/icons-vue'
 
-interface DataItem {
-  title: string
-  avatar: string
-}
-
 const { t } = useI18n()
-
-const data = computed<DataItem[]>(() => {
+const data = computed(() => {
   return [
     {
       title: t('account.settings.account.taobao'),

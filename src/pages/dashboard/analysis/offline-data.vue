@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import NumberInfo from '~/pages/dashboard/analysis/number-info.vue'
 import CustomRingProgress from '~/pages/dashboard/analysis/components/custom-ring-progress.vue'
 import CustomLine from '~/pages/dashboard/analysis/components/custom-line.vue'
@@ -9,12 +9,9 @@ defineProps({
     default: false,
   },
 })
-
 const activeKey = ref()
 function handleTabChange() {
-
 }
-
 const offlineData = [
   {
     name: 'Stores 0',

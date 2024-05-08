@@ -1,11 +1,10 @@
-<script setup lang="ts">
+<script setup>
 import * as icons from '@ant-design/icons-vue'
 import { isFunction } from '@v-c/utils'
-import type { VNodeChild } from 'vue'
 
-const props = defineProps<{
-  icon: string | ((...args: any[]) => VNodeChild)
-}>()
+const props = defineProps({
+  icon: { type: [String, Function], required: true },
+})
 const Comp = computed(() => {
   if (isFunction(props.icon)) {
     const node = props.icon()
@@ -13,9 +12,9 @@ const Comp = computed(() => {
       return node
   }
   else {
-    return (icons as any)[props.icon]
+    return icons[props.icon]
   }
-  return undefined
+  return void 0
 })
 </script>
 

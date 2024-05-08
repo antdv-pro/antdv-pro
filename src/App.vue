@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { useLayoutMenuProvide } from '~/components/page-container/context'
 
 const appStore = useAppStore()

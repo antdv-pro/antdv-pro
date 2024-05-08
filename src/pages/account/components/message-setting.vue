@@ -1,13 +1,6 @@
-<script setup lang="ts">
-interface DataItem {
-  title: string
-  desc: string
-  checked: boolean
-}
-
+<script setup>
 const { t } = useI18n()
-
-const data = reactive<DataItem[]>([
+const data = reactive([
   {
     title: t('account.settings.message.title1'),
     desc: t('account.settings.message.desc1'),

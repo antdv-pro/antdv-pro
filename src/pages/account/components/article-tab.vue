@@ -1,14 +1,7 @@
-<script setup lang="ts">
-interface IDataItem {
-  title: string
-  tags: string[]
-  content: string
-}
-
-defineProps<{
-  dataSource: IDataItem[]
-}>()
-
+<script setup>
+defineProps({
+  dataSource: { type: Array, required: true },
+})
 const { t } = useI18n()
 </script>
 

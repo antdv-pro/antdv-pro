@@ -1,12 +1,6 @@
-<script setup lang="ts">
-interface DataItem {
-  title: string
-  desc: string
-}
-
+<script setup>
 const { t } = useI18n()
-
-const data = computed<DataItem[]>(() => {
+const data = computed(() => {
   return [
     {
       title: t('account.settings.security.account-password'),

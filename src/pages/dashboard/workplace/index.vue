@@ -1,11 +1,10 @@
-<script setup lang="ts">
+<script setup>
 import { Radar } from '@antv/g2plot'
 import EditableLinkGroup from '~/pages/dashboard/workplace/editable-link-group.vue'
 
 defineOptions({
   name: 'Workplace',
 })
-
 const currentUser = {
   avatar: 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png',
   name: '吴彦祖',
@@ -15,7 +14,6 @@ const currentUser = {
   title: '交互专家',
   group: '蚂蚁金服－某某某事业群－某某平台部－某某技术部－UED',
 }
-
 const projectNotice = [
   {
     id: 'xxx1',
@@ -78,7 +76,6 @@ const projectNotice = [
     memberLink: '',
   },
 ]
-
 const activities = [
   {
     id: 'trend-1',
@@ -185,7 +182,6 @@ const activities = [
     template2: '新建项目',
   },
 ]
-
 const radarContainer = ref()
 const radarData = [
   {
@@ -264,7 +260,7 @@ const radarData = [
     value: 7,
   },
 ]
-let radar: Radar
+let radar
 onMounted(() => {
   radar = new Radar(radarContainer.value, {
     data: radarData,
@@ -281,7 +277,6 @@ onMounted(() => {
   })
   radar.render()
 })
-
 onBeforeUnmount(() => {
   radar?.destroy?.()
 })

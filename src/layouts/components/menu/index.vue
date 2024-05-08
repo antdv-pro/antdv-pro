@@ -1,5 +1,5 @@
-<script setup lang="ts">
-import { useLayoutState } from '../../basic-layout/context'
+<script setup>
+import { useLayoutState } from '../../basic-layout/context.js'
 import SubMenu from './sub-menu.vue'
 
 const { theme, collapsed, layout, isMobile, selectedMenus, selectedKeys, openKeys, handleOpenKeys, handleSelectedKeys, handleMenuSelect } = useLayoutState()

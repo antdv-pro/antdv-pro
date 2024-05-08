@@ -1,8 +1,6 @@
-<script setup lang="ts">
+<script setup>
 import { Modal } from 'ant-design-vue'
 import { ColumnHeightOutlined, DownOutlined, PlusOutlined, ReloadOutlined, SettingOutlined, UpOutlined } from '@ant-design/icons-vue'
-import type { MenuProps, PaginationProps, TableProps } from 'ant-design-vue'
-import type { ConsultTableModel, ConsultTableParams } from '~@/api/list/table-list'
 import { deleteApi, getListApi } from '~@/api/list/table-list'
 
 const statusMap = {
@@ -46,7 +44,7 @@ const columns = shallowRef([
   },
 ])
 const loading = shallowRef(false)
-const pagination = reactive<PaginationProps>({
+const pagination = reactive({
   pageSize: 10,
   pageSizeOptions: ['10', '20', '30', '40'],
   current: 1,
@@ -60,17 +58,16 @@ const pagination = reactive<PaginationProps>({
     init()
   },
 })
-const dataSource = shallowRef<ConsultTableModel[]>([])
-const formModel = reactive<ConsultTableParams>({
-  name: undefined,
-  callNo: undefined,
-  desc: undefined,
-  status: undefined,
-  updatedAt: undefined,
+const dataSource = shallowRef([])
+const formModel = reactive({
+  name: void 0,
+  callNo: void 0,
+  desc: void 0,
+  status: void 0,
+  updatedAt: void 0,
 })
-
-const tableSize = ref<string[]>(['large'])
-const sizeItems = ref<MenuProps['items']>([
+const tableSize = ref(['large'])
+const sizeItems = ref([
   {
     key: 'large',
     label: '默认',
@@ -110,7 +107,6 @@ const state = reactive({
   checkAll: true,
   checkList: getCheckList.value,
 })
-
 async function init() {
   if (loading.value)
     return
@@ -130,28 +126,19 @@ async function init() {
     loading.value = false
   }
 }
-
 async function onSearch() {
   pagination.current = 1
   await init()
 }
-
 async function onReset() {
-  // 清空所有参数重新请求
-  formModel.name = undefined
-  formModel.desc = undefined
+  formModel.name = void 0
+  formModel.desc = void 0
   await init()
 }
-
-/**
- * 删除功能
- *  @param record
- *
- */
-async function handleDelete(record: ConsultTableModel) {
+async function handleDelete(record) {
   const close = message.loading('删除中......')
   try {
-    const res = await deleteApi(record!.id)
+    const res = await deleteApi(record.id)
     if (res.code === 200)
       await init()
     message.success('删除成功')
@@ -163,55 +150,30 @@ async function handleDelete(record: ConsultTableModel) {
     close()
   }
 }
-
-/**
- * 新增事件
- *
- */
 function handleOk() {
   open.value = false
   Modal.destroyAll()
   onSearch()
 }
-
-/**
- * 密度切换
- *
- */
-const handleSizeChange: MenuProps['onClick'] = (e) => {
-  tableSize.value[0] = e.key as string
+function handleSizeChange(e) {
+  tableSize.value[0] = e.key
 }
-
-/**
- * 过滤
- *
- */
-function filterAction(value: string[]) {
+function filterAction(value) {
   return columns.value.filter((item) => {
-    if (value.includes(item.dataIndex)) {
-      // 为true时，循环遍历的值会暴露出去
+    if (value.includes(item.dataIndex))
       return true
-    }
+
     return false
   })
 }
-
-// 备份columns
 const filterColumns = ref(filterAction(getCheckList.value))
-
-/**
- * 全选/反选事件
- *
- */
-
-function handleCheckAllChange(e: any) {
+function handleCheckAllChange(e) {
   Object.assign(state, {
     checkList: e.target.checked ? getCheckList.value : [],
     indeterminate: true,
   })
   filterColumns.value = e.target.checked ? filterAction(getCheckList.value) : filterColumns.value.filter(item => item.dataIndex === 'action')
 }
-
 watch(
   () => state.checkList,
   (val) => {
@@ -219,29 +181,17 @@ watch(
     state.checkAll = val.length === getCheckList.value.length
   },
 )
-
-/**
- * 重置事件
- *
- */
 function handleResetChange() {
   state.checkList = getCheckList.value
   filterColumns.value = filterAction(getCheckList.value)
 }
-
-/**
- * checkbox点击事件
- *
- */
-function handleCheckChange(value: any) {
+function handleCheckChange(value) {
   const filterValue = filterAction(value)
   filterColumns.value = filterValue
 }
-
 onMounted(() => {
   init()
 })
-
 const expand = ref(false)
 </script>
 
@@ -355,18 +305,18 @@ const expand = ref(false)
           </a-tooltip>
         </a-space>
       </template>
-      <a-table :loading="loading" :columns="filterColumns" :data-source="dataSource" :pagination="pagination" :size="tableSize[0] as TableProps['size']">
+      <a-table :loading="loading" :columns="filterColumns" :data-source="dataSource" :pagination="pagination" :size="tableSize[0]">
         <template #bodyCell="scope">
           <template v-if="scope?.column?.dataIndex === 'action'">
             <div flex gap-2>
-              <a c-error @click="handleDelete(scope?.record as ConsultTableModel)">
+              <a c-error @click="handleDelete(scope?.record)">
                 删除
               </a>
             </div>
           </template>
           <template v-if="scope?.column?.dataIndex === 'status'">
             <div gap-2>
-              {{ statusMap[scope?.record?.status as keyof typeof statusMap] as string }}
+              {{ statusMap[scope?.record?.status ] }}
             </div>
           </template>
         </template>

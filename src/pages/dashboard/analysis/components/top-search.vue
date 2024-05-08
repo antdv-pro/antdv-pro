@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { EllipsisOutlined, InfoCircleOutlined } from '@ant-design/icons-vue'
 import { TinyArea } from '@antv/g2plot'
 import NumberInfo from '~/pages/dashboard/analysis/number-info.vue'
@@ -10,8 +10,7 @@ defineProps({
     default: false,
   },
 })
-
-const columns: Record<string, any>[] = [
+const columns = [
   {
     title: '排名',
     dataIndex: 'index',
@@ -26,19 +25,17 @@ const columns: Record<string, any>[] = [
     title: '用户数',
     dataIndex: 'count',
     key: 'count',
-    sorter: (a: { count: number }, b: { count: number }) => a.count - b.count,
+    sorter: (a, b) => a.count - b.count,
   },
   {
     title: '周涨幅',
     dataIndex: 'range',
     key: 'range',
-    sorter: (a: { range: number }, b: { range: number }) => {
-      // eslint-disable-next-line no-unused-expressions
-      a.range - b.range
+    sorter: (a, b) => {
+      return a.range - b.range
     },
   },
 ]
-
 const searchData = [
   {
     index: 1,
@@ -391,12 +388,9 @@ const searchData = [
     status: 1,
   },
 ]
-
 const visitData2 = [1, 6, 4, 8, 3, 7, 2]
-
 const tinyAreaContainer1 = ref()
 const tinyAreaContainer2 = ref()
-
 onMounted(() => {
   new TinyArea(tinyAreaContainer1.value, {
     height: 45,
@@ -404,7 +398,6 @@ onMounted(() => {
     smooth: true,
     autoFit: true,
   }).render()
-
   new TinyArea(tinyAreaContainer2.value, {
     height: 45,
     data: visitData2,

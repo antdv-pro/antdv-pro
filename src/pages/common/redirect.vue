@@ -1,11 +1,12 @@
-<script setup lang="ts">
+<script setup>
 const route = useRoute()
 const router = useRouter()
 const params = route.params
-const path = params?.path ? decodeURIComponent(params.path as string) : ''
+const path = params?.path ? decodeURIComponent(params.path) : ''
 if (path)
   router.replace(path)
-else router.replace('/')
+else
+  router.replace('/')
 </script>
 
 <template>

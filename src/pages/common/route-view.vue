@@ -1,10 +1,9 @@
-<script setup lang="ts">
+<script setup>
 import { ParentCompConsumer } from '@/layouts/basic-layout/parent-comp-consumer'
 
 defineOptions({
   name: 'CustomRouteView',
 })
-
 const appStore = useAppStore()
 const { layoutSetting } = storeToRefs(appStore)
 const multiTabStore = useMultiTab()

@@ -1,23 +1,19 @@
-<script setup lang="ts">
-import type { SelectValue } from 'ant-design-vue/es/select'
-import type { CheckedType, LayoutType } from '../../basic-layout/typing'
-
-const props = defineProps<{
-  layout?: LayoutType
-  header?: boolean
-  footer?: boolean
-  menu?: boolean
-  watermark?: boolean
-  menuHeader?: boolean
-  multiTab?: boolean
-  multiTabFixed?: boolean
-  animationName?: string
-  animationNameList?: any[]
-  t?: (key: string, ...args: any[]) => string
-}>()
-
+<script setup>
+const props = defineProps({
+  layout: { type: String, required: false },
+  header: { type: Boolean, required: false },
+  footer: { type: Boolean, required: false },
+  menu: { type: Boolean, required: false },
+  watermark: { type: Boolean, required: false },
+  menuHeader: { type: Boolean, required: false },
+  multiTab: { type: Boolean, required: false },
+  multiTabFixed: { type: Boolean, required: false },
+  animationName: { type: String, required: false },
+  animationNameList: { type: Array, required: false },
+  t: { type: Function, required: false },
+})
 const emit = defineEmits(['changeSetting'])
-const list = computed(() => ([
+const list = computed(() => [
   {
     title: '动画',
     key: 'animationName',
@@ -66,9 +62,8 @@ const list = computed(() => ([
     disabled: false,
     disabledReason: '多页签开启后功能正常使用',
   },
-]))
-
-function handleChangeSetting(key: string, value: any) {
+])
+function handleChangeSetting(key, value) {
   emit('changeSetting', key, value)
 }
 </script>
@@ -82,7 +77,7 @@ function handleChangeSetting(key: string, value: any) {
             <a-switch
               v-if="item.key !== 'animationName'"
               size="small"
-              :checked="(props as any)[item.key]"
+              :checked="props[item.key]"
               :disabled="item.disabled"
               @update:checked="(e:CheckedType) => handleChangeSetting(item.key, e)"
             />

@@ -1,13 +1,12 @@
-<script setup lang="ts">
+<script setup>
 import { CheckOutlined } from '@ant-design/icons-vue'
 
-defineProps<{
-  colorList: ({ key: string, color: string })[]
-  color?: string
-  onChange?: (color: string) => void
-  t?: (key: string, ...args: any[]) => string
-}>()
-
+defineProps({
+  colorList: { type: Array, required: true },
+  color: { type: String, required: false },
+  onChange: { type: Function, required: false },
+  t: { type: Function, required: false },
+})
 const prefixCls = shallowRef('ant-pro-drawer-setting-theme-color')
 </script>
 

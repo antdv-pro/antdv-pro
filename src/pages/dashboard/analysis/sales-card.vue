@@ -1,6 +1,5 @@
-<script setup lang="ts">
+<script setup>
 import { Column } from '@antv/g2plot'
-import type { Key } from 'ant-design-vue/es/_util/type'
 import dayjs from 'dayjs'
 
 defineProps({
@@ -9,19 +8,16 @@ defineProps({
     default: false,
   },
 })
-
-const rankingListData: { title: string, total: number }[] = []
+const rankingListData = []
 for (let i = 0; i < 7; i += 1) {
   rankingListData.push({
     title: `工专路 ${i} 号店`,
     total: 323234,
   })
 }
-
 const rangePickerValue = ref()
-
-function getDateRange(type: string) {
-  const today = new Date()
+function getDateRange(type) {
+  const today = /* @__PURE__ */ new Date()
   let startDate
   let endDate
   switch (type) {
@@ -44,23 +40,20 @@ function getDateRange(type: string) {
       rangePickerValue.value = [dayjs(startDate), dayjs(endDate)]
       break
     default:
-      // 返回默认值或抛出错误，视情况而定
       return null
   }
 }
 getDateRange('day')
-function onClick(e: any) {
-  e.target?.parentElement?.querySelectorAll('a').forEach((item: HTMLElement) => {
+function onClick(e) {
+  e.target?.parentElement?.querySelectorAll('a').forEach((item) => {
     item.classList.remove('currentDate')
   })
   e.target?.classList.add('currentDate')
   getDateRange(e.target.__vnode.key)
 }
-
-function convertNumber(number: number) {
+function convertNumber(number) {
   return number.toLocaleString()
 }
-
 const salesData = [
   {
     x: '1月',
@@ -111,13 +104,10 @@ const salesData = [
     y: 431,
   },
 ]
-
 const columnPlotContainer1 = ref()
 const columnPlotContainer2 = ref()
-
 let renderOnce = false
-
-function changTab(activeKey: Key) {
+function changTab(activeKey) {
   if (activeKey === 'views' && !renderOnce) {
     setTimeout(() => {
       new Column(columnPlotContainer2.value, {
@@ -141,8 +131,7 @@ function changTab(activeKey: Key) {
     })
   }
 }
-
-const column = shallowRef<Column>()
+const column = shallowRef()
 onMounted(() => {
   column.value = new Column(columnPlotContainer1.value, {
     data: salesData,
@@ -163,10 +152,9 @@ onMounted(() => {
   })
   column.value?.render()
 })
-
 onBeforeUnmount(() => {
   column.value?.destroy()
-  column.value = undefined
+  column.value = void 0
 })
 </script>
 

@@ -1,12 +1,10 @@
-<script setup lang="ts">
+<script setup>
 import { PlusOutlined } from '@ant-design/icons-vue'
 import CrudTableModal from './components/crud-table-modal.vue'
-import type { CrudTableModel } from '~@/api/list/crud-table'
 import { deleteApi, getListApi } from '~@/api/list/crud-table'
 import { useTableQuery } from '~@/composables/table-query'
 
 const message = useMessage()
-
 const columns = shallowRef([
   {
     title: '名',
@@ -25,23 +23,20 @@ const columns = shallowRef([
     dataIndex: 'action',
   },
 ])
-
 const { state, initQuery, resetQuery, query } = useTableQuery({
   queryApi: getListApi,
   queryParams: {
-    name: undefined,
-    value: undefined,
-    remark: undefined,
+    name: void 0,
+    value: void 0,
+    remark: void 0,
   },
   afterQuery: (res) => {
     console.log(res)
     return res
   },
 })
-
-const crudTableModal = ref<InstanceType<typeof CrudTableModal>>()
-
-async function handleDelete(record: CrudTableModel) {
+const crudTableModal = ref()
+async function handleDelete(record) {
   if (!record.id)
     return message.error('id 不能为空')
   try {
@@ -57,12 +52,10 @@ async function handleDelete(record: CrudTableModel) {
     close()
   }
 }
-
 function handleAdd() {
   crudTableModal.value?.open()
 }
-
-function handleEdit(record: CrudTableModel) {
+function handleEdit(record) {
   crudTableModal.value?.open(record)
 }
 </script>
@@ -119,12 +112,12 @@ function handleEdit(record: CrudTableModel) {
         <template #bodyCell="scope">
           <template v-if="scope?.column?.dataIndex === 'action'">
             <div flex gap-2>
-              <a-button type="link" @click="handleEdit(scope?.record as CrudTableModel)">
+              <a-button type="link" @click="handleEdit(scope?.record)">
                 编辑
               </a-button>
               <a-popconfirm
                 title="确定删除该条数据？" ok-text="确定" cancel-text="取消"
-                @confirm="handleDelete(scope?.record as CrudTableModel)"
+                @confirm="handleDelete(scope?.record)"
               >
                 <a-button type="link">
                   删除

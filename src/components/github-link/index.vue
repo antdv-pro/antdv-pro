@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { GithubOutlined } from '@ant-design/icons-vue'
 </script>
 

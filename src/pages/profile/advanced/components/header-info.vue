@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 const command = ref('a')
 const activeKey = ref()
 const { t } = useI18n()

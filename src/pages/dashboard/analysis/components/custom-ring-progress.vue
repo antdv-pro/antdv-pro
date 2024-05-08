@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { RingProgress } from '@antv/g2plot'
 
 const props = defineProps({
@@ -8,7 +8,6 @@ const props = defineProps({
   },
 })
 const container = ref()
-
 onMounted(() => {
   new RingProgress(container.value, {
     height: 60,

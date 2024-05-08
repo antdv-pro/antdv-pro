@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import basicSetting from './components/basic-setting.vue'
 import securitySetting from './components/security-setting.vue'
 import accountSetting from './components/account-setting.vue'
@@ -6,7 +6,6 @@ import messageSetting from './components/message-setting.vue'
 
 const { t } = useI18n()
 const selectedKeys = ref(['1'])
-
 const items = computed(() => {
   return [
     {
@@ -31,8 +30,7 @@ const items = computed(() => {
     },
   ]
 })
-
-function seti18n(key: string) {
+function seti18n(key) {
   switch (key) {
     case '1':
       return t('account.settings.basic-setting')

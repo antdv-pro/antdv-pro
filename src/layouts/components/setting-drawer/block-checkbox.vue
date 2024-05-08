@@ -1,12 +1,12 @@
-<script setup lang="ts">
+<script setup>
 import { CheckOutlined } from '@ant-design/icons-vue'
 
-const props = defineProps<{
-  theme?: 'light' | 'dark' | 'inverted' | 'top' | 'side' | 'mix'
-  isDark?: boolean
-  checked?: boolean
-  t?: (key: string, ...args: any[]) => string
-}>()
+const props = defineProps({
+  theme: { type: String, required: false },
+  isDark: { type: Boolean, required: false },
+  checked: { type: Boolean, required: false },
+  t: { type: Function, required: false },
+})
 const prefixCls = shallowRef('ant-pro-drawer-setting-block-checkbox')
 const cls = computed(() => {
   return {
@@ -16,7 +16,6 @@ const cls = computed(() => {
     [`${prefixCls.value}-theme-item-${props.theme}`]: props.isDark,
   }
 })
-
 const { token } = useAntdToken()
 </script>
 

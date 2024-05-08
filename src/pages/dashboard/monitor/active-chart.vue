@@ -1,23 +1,14 @@
-<script setup lang="ts">
+<script setup>
 import { TinyArea } from '@antv/g2plot'
 
-interface activeDataItemType {
-  x: string
-  y: number
-}
-
-const activeData = ref<activeDataItemType[]>([])
-
-const tinyAreaData = ref<number[]>([])
-
-let tinyArea: TinyArea | undefined
-let requestRef: any
-let timer: any
-
-function fixedZero(val: number) {
+const activeData = ref([])
+const tinyAreaData = ref([])
+let tinyArea
+let requestRef
+let timer
+function fixedZero(val) {
   return val < 10 ? `0${val}` : val
 }
-
 function getActiveData() {
   activeData.value = []
   tinyAreaData.value = []
@@ -30,18 +21,15 @@ function getActiveData() {
   }
   tinyArea?.changeData(tinyAreaData.value)
 }
-
 function loopData() {
   requestRef = requestAnimationFrame(() => {
     timer = window.setTimeout(() => {
       getActiveData()
       loopData()
-    }, 1000)
+    }, 1e3)
   })
 }
-
 const tinyAreaContainer = ref()
-
 onMounted(() => {
   tinyArea = new TinyArea(tinyAreaContainer.value, {
     height: 84,
@@ -53,14 +41,12 @@ onMounted(() => {
   loopData()
   getActiveData()
 })
-
 onBeforeUnmount(() => {
   clearTimeout(timer)
   if (requestRef)
     cancelAnimationFrame(requestRef)
-
   tinyArea?.destroy()
-  tinyArea = undefined
+  tinyArea = void 0
 })
 </script>
 

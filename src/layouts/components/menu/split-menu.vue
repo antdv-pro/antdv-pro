@@ -1,10 +1,9 @@
-<script setup lang="ts">
+<script setup>
 import { omit } from '@v-c/utils'
-import { useLayoutState } from '../../basic-layout/context'
+import { useLayoutState } from '../../basic-layout/context.js'
 import SubMenu from './sub-menu.vue'
 
 const { splitState, menuData, handleSplitSelectedKeys } = useLayoutState()
-
 const menuDataList = computed(() => menuData.value?.map(v => ({ ...omit(v, ['children']), childrenCount: (v.children ?? []).length })))
 </script>
 

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { CaretDownOutlined, CaretUpOutlined } from '@ant-design/icons-vue'
 
 defineProps({

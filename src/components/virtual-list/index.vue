@@ -1,54 +1,37 @@
-<script setup lang="ts">
-interface Prop {
-  // 列表每一项的高度
-  dataSource: any[]
-  itemHeight?: number
-}
-
-const props = withDefaults(defineProps<Prop>(), {
-  itemHeight: 80,
+<script setup>
+const props = defineProps({
+  dataSource: { type: Array, required: true },
+  itemHeight: { type: Number, required: false, default: 80 },
 })
-
-const transformY = ref<number>()
-const transformStyle = computed<string>(() => {
+const transformY = ref()
+const transformStyle = computed(() => {
   return `transform: translateY(${transformY.value}px)`
 })
-
-const scrollerContainerRef = ref<HTMLDivElement>()
-// 容器高度
+const scrollerContainerRef = ref()
 const scrollerContainerRefHeight = computed(() => {
   return scrollerContainerRef.value ? scrollerContainerRef.value.offsetHeight : 0
 })
-
-// 渲染视口的item数量
-const itemCount = computed<number>(() => {
+const itemCount = computed(() => {
   return Math.ceil(scrollerContainerRefHeight.value / props.itemHeight) + 1
 })
-
-// 最顶端和低端元素在数组中的索引
-const start = ref<number>(0)
-const end = computed<number>(() => {
+const start = ref(0)
+const end = computed(() => {
   return start.value + itemCount.value
 })
-
-const Data = ref<any[]>()
-
-// 用来撑开容器高度
+const Data = ref()
 const pillarHeight = computed(() => {
   if (Data.value?.length)
     return props.itemHeight * Data.value?.length
-  return undefined
+  return void 0
 })
-
 const renderData = computed(() => {
   const _start = Math.max(0, start.value)
-  const _end = Math.min(end.value, Data.value!.length)
+  const _end = Math.min(end.value, Data.value.length)
   return Data.value?.slice(_start, _end)
 })
-
 function init() {
   if (!props.dataSource) {
-    const res = Array.from({ length: 10000 })
+    const res = Array.from({ length: 1e4 })
     res.forEach((_, i) => {
       res[i] = i
     })
@@ -58,13 +41,11 @@ function init() {
     Data.value = props.dataSource
   }
 }
-
-function handleScroll(e: Event) {
-  const scrollTop = (e.target as HTMLDivElement).scrollTop
+function handleScroll(e) {
+  const scrollTop = e.target.scrollTop
   start.value = Math.floor(scrollTop / props.itemHeight)
   transformY.value = start.value * props.itemHeight
 }
-
 onMounted(() => {
   init()
 })

@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup>
 import { EditOutlined, EllipsisOutlined, SettingOutlined, ShareAltOutlined } from '@ant-design/icons-vue'
 import Category from './components/category.vue'
 

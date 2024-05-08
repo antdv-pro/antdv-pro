@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { CloseCircleOutlined, RightOutlined } from '@ant-design/icons-vue'
 
 const { t } = useI18n()

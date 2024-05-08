@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { InfoCircleOutlined } from '@ant-design/icons-vue'
 import { Progress, TinyArea, TinyColumn } from '@antv/g2plot'
 import ChartCard from '~/pages/dashboard/analysis/components/chart-card.vue'
@@ -11,11 +11,9 @@ defineProps({
     default: false,
   },
 })
-
-function convertNumber(number: number) {
+function convertNumber(number) {
   return number.toLocaleString()
 }
-
 const topColResponsiveProps = {
   xs: 24,
   sm: 12,
@@ -24,17 +22,13 @@ const topColResponsiveProps = {
   xl: 6,
   style: { marginBottom: '24px' },
 }
-
 const tinyAreaContainer = ref()
 const tinyColumnContainer = ref()
 const progressContainer = ref()
-
 const visitData = [7, 5, 4, 2, 4, 7, 5, 6, 5, 9, 6, 3, 1, 5, 3, 6, 5]
-
 const tinyArea = shallowRef()
 const tinyColumn = shallowRef()
 const progress = shallowRef()
-
 onMounted(() => {
   tinyArea.value = new TinyArea(tinyAreaContainer.value, {
     height: 46,
@@ -48,16 +42,13 @@ onMounted(() => {
       color: '#975FE4',
     },
   })
-
   tinyArea.value?.render()
-
   tinyColumn.value = new TinyColumn(tinyColumnContainer.value, {
     height: 46,
     autoFit: true,
     data: visitData,
   })
   tinyColumn.value?.render()
-
   progress.value = new Progress(progressContainer.value, {
     height: 46,
     autoFit: true,
@@ -67,14 +58,13 @@ onMounted(() => {
   })
   progress.value?.render()
 })
-
 onBeforeUnmount(() => {
   tinyArea.value?.destroy()
-  tinyArea.value = undefined
+  tinyArea.value = void 0
   tinyColumn.value?.destroy()
-  tinyColumn.value = undefined
+  tinyColumn.value = void 0
   progress.value?.destroy()
-  progress.value = undefined
+  progress.value = void 0
 })
 </script>
 

@@ -1,11 +1,9 @@
-<script setup lang="ts">
+<script setup>
 import { useLoading } from '@/composables/base-loading'
 
 const loading = ref(false)
 const full = ref(false)
-
-const time = ref(1000)
-
+const time = ref(1e3)
 const loadingList = ref([
   'pulse',
   'rect',
@@ -15,23 +13,20 @@ const loadingList = ref([
   'chase',
   'dot',
 ])
-
-function startCustomLoading(val: number) {
+function startCustomLoading(val) {
   full.value = val === 2
   loading.value = true
   setTimeout(() => {
     loading.value = false
-  }, 2000)
+  }, 2e3)
 }
-
-function startLoading(item: any) {
+function startLoading(item) {
   const { open, close } = useLoading({ spin: item })
   open()
   setTimeout(() => {
     close()
-  }, 2000)
+  }, 2e3)
 }
-
 function startTimeLoading() {
   const { open, close } = useLoading({ minTime: time.value })
   open()

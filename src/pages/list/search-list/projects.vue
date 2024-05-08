@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup>
 import Category from './components/category.vue'
 
 const list = [

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { Gauge, Liquid, RingProgress, WordCloud } from '@antv/g2plot'
 import ActiveChart from '~/pages/dashboard/monitor/active-chart.vue'
 import CustomMap from '~/pages/dashboard/monitor/custom-map.vue'
@@ -6,12 +6,10 @@ import CustomMap from '~/pages/dashboard/monitor/custom-map.vue'
 defineOptions({
   name: 'Monitor',
 })
-
-function convertNumber(number: number) {
+function convertNumber(number) {
   return number.toLocaleString()
 }
-const deadline = Date.now() + 1000 * 60 * 60 * 24 * 2 + 1000 * 30
-
+const deadline = Date.now() + 1e3 * 60 * 60 * 24 * 2 + 1e3 * 30
 const wordCloudData = [
   {
     name: '三亚市',
@@ -514,14 +512,12 @@ const wordCloudData = [
     type: 0,
   },
 ]
-
 const gaugeContainer = ref()
 const ringContainer1 = ref()
 const ringContainer2 = ref()
 const ringContainer3 = ref()
 const wordCloudContainer = ref()
 const liquidContainer = ref()
-
 onMounted(() => {
   new Gauge(gaugeContainer.value, {
     height: 180,
@@ -549,7 +545,6 @@ onMounted(() => {
       },
     },
   }).render()
-
   new RingProgress(ringContainer1.value, {
     height: 128,
     autoFit: true,
@@ -557,7 +552,6 @@ onMounted(() => {
     innerRadius: 0.8,
     color: ['#fab120', '#E8EDF3'],
   }).render()
-
   new RingProgress(ringContainer2.value, {
     height: 128,
     autoFit: true,
@@ -565,7 +559,6 @@ onMounted(() => {
     innerRadius: 0.8,
     color: ['#5DDECF', '#E8EDF3'],
   }).render()
-
   new RingProgress(ringContainer3.value, {
     height: 128,
     autoFit: true,
@@ -573,7 +566,6 @@ onMounted(() => {
     innerRadius: 0.8,
     color: ['#2FC25B', '#E8EDF3'],
   }).render()
-
   new WordCloud(wordCloudContainer.value, {
     data: wordCloudData,
     height: 162,
@@ -594,7 +586,6 @@ onMounted(() => {
       },
     },
   }).render()
-
   new Liquid(liquidContainer.value, {
     height: 161,
     percent: 0.35,

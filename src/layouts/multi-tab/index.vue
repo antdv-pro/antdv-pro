@@ -1,11 +1,9 @@
-<script lang="ts" setup>
-import type { CSSProperties } from 'vue'
+<script setup>
 import {
   CloseOutlined,
   MoreOutlined,
   ReloadOutlined,
 } from '@ant-design/icons-vue'
-import type { RouteLocationNormalized } from 'vue-router'
 import { listenerRouteChange, removeRouteListener } from '~@/utils/route-listener'
 import { useLayoutState } from '~/layouts/basic-layout/context'
 
@@ -21,8 +19,8 @@ const {
   menu,
   selectedMenus,
 } = useLayoutState()
-const tabStyle = computed<CSSProperties>(() => {
-  const style: CSSProperties = {}
+const tabStyle = computed(() => {
+  const style = {}
   if (layoutSetting.value.multiTabFixed) {
     style.position = 'fixed'
     style.top = `${layoutSetting.value.headerHeight}px`
@@ -30,22 +28,18 @@ const tabStyle = computed<CSSProperties>(() => {
     style.right = 0
   }
   if ((layout.value === 'side' || layout.value === 'mix') && menu.value) {
-    // bugfix: https://github.com/antdv-pro/antdv-pro/issues/172
     if (!isMobile.value && layoutSetting.value.multiTabFixed && selectedMenus.value?.length) {
       const width = collapsed.value ? collapsedWidth.value : siderWidth.value
       style.width = `calc(100% - ${width}px)`
     }
   }
-  // bugfix https://github.com/antdv-pro/antdv-pro/issues/173
   if (layoutSetting.value.header === false)
     style.top = '0px'
-
   return style
 })
 const tabsRef = shallowRef()
 const { height } = useElementBounding(tabsRef)
-
-function handleSwitch({ key }: any, current: string) {
+function handleSwitch({ key }, current) {
   if (key === 'closeCurrent')
     multiTabStore.close(activeKey.value)
   else if (key === 'closeLeft')
@@ -57,37 +51,24 @@ function handleSwitch({ key }: any, current: string) {
   else if (key === 'refresh')
     multiTabStore.refresh(activeKey.value)
 }
-
 const isCurrentDisabled = computed(() => {
-  return (
-    list.value.length === 1 || list.value.filter(v => !v.affix).length <= 1
-  )
+  return list.value.length === 1 || list.value.filter(v => !v.affix).length <= 1
 })
-
-function leftDisabled(key: string) {
-  // 判断左侧是否还有可关闭的
+function leftDisabled(key) {
   const index = list.value.findIndex(v => v.fullPath === key)
   return index === 0 || list.value.filter(v => !v.affix).length <= 1
 }
-
-function rightDisabled(key: string) {
-  // 判断右侧是否还有可关闭的
+function rightDisabled(key) {
   const index = list.value.findIndex(v => v.fullPath === key)
-  return (
-    index === list.value.length - 1
-    || list.value.filter(v => !v.affix).length <= 1
-  )
+  return index === list.value.length - 1 || list.value.filter(v => !v.affix).length <= 1
 }
 const otherDisabled = computed(() => {
-  return (
-    list.value.length === 1 || list.value.filter(v => !v.affix).length <= 1
-  )
+  return list.value.length === 1 || list.value.filter(v => !v.affix).length <= 1
 })
-listenerRouteChange((route: RouteLocationNormalized) => {
+listenerRouteChange((route) => {
   if (route.fullPath.startsWith('/redirect'))
     return
-  const item = list.value.find(item => item.fullPath === route.fullPath)
-
+  const item = list.value.find(item2 => item2.fullPath === route.fullPath)
   if (route.fullPath === activeKey.value && !item?.loading)
     return
   activeKey.value = route.fullPath

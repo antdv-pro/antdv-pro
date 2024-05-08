@@ -1,6 +1,6 @@
-<script setup lang="ts">
+<script setup>
 import { App, theme } from 'ant-design-vue'
-import { registerTokenToCSSVar } from './token-to-cssvar'
+import { registerTokenToCSSVar } from './token-to-cssvar.js'
 
 defineOptions({
   name: 'TokenProvider',
@@ -8,12 +8,11 @@ defineOptions({
 const { token } = theme.useToken()
 const { setToken } = useAntdToken()
 const { message, modal, notification } = App.useApp()
-
 useSetGlobalConfig({
   message,
   modal,
   notification,
-} as any)
+})
 watchEffect(() => {
   setToken(token.value)
   registerTokenToCSSVar(token.value)

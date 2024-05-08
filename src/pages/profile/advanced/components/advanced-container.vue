@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import headerInfo from './header-info.vue'
 import stepCard from './step-card.vue'
 import userInfoCard from './user-info.vue'

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { pick } from '@v-c/utils'
 import BasicLayout from './basic-layout/index.vue'
 import SettingDrawer from './components/setting-drawer/index.vue'
@@ -18,10 +18,11 @@ const { isMobile, isPad } = useQueryBreakpoints()
 watch(isPad, (val) => {
   if (val)
     appStore.toggleCollapsed(true)
-  else appStore.toggleCollapsed(false)
+  else
+    appStore.toggleCollapsed(false)
 })
-const layoutProps = computed(() =>
-  pick(appStore.layoutSetting, [
+const layoutProps = computed(
+  () => pick(appStore.layoutSetting, [
     'fixedHeader',
     'fixedSider',
     'splitMenus',

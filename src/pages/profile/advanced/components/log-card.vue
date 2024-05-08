@@ -1,10 +1,8 @@
-<script setup lang="ts">
+<script setup>
 import dayjs from 'dayjs'
 
 const { t } = useI18n()
-
 const activeKey = ref()
-
 const columns = ref([
   {
     title: t('profile.advanced.log-type'),
@@ -34,7 +32,6 @@ const columns = ref([
     key: 'info',
   },
 ])
-
 const data = [
   {
     key: '1',
@@ -61,8 +58,7 @@ const data = [
     info: '无',
   },
 ]
-
-function getI18n(key: any) {
+function getI18n(key) {
   if (key === 'type')
     return t('profile.advanced.log-type')
   else if (key === 'owner')

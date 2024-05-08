@@ -1,7 +1,6 @@
-<script setup lang="ts">
+<script setup>
 import { CloseOutlined, CopyOutlined, NotificationOutlined, SettingOutlined } from '@ant-design/icons-vue'
 import { useClipboard } from '@v-c/utils'
-import type { ContentWidth, LayoutType, ThemeType } from '../../basic-layout/typing'
 import Body from './body.vue'
 import BlockCheckbox from './block-checkbox.vue'
 import ThemeColor from './theme-color.vue'
@@ -12,50 +11,44 @@ import OtherSetting from './other-setting.vue'
 defineOptions({
   name: 'SettingDrawer',
 })
-const props = withDefaults(
-  defineProps<{
-    open?: boolean
-    theme?: ThemeType
-    colorPrimary?: string
-    colorList?: { key: string, color: string }[]
-    layout?: LayoutType
-    contentWidth?: ContentWidth
-    fixedHeader?: boolean
-    fixedSider?: boolean
-    splitMenus?: boolean
-    keepAlive?: boolean
-    accordionMode?: boolean
-    leftCollapsed?: boolean
-    watermark?: boolean
-    header?: boolean
-    footer?: boolean
-    menu?: boolean
-    menuHeader?: boolean
-    colorWeak?: boolean
-    colorGray?: boolean
-    multiTab?: boolean
-    multiTabFixed?: boolean
-    compactAlgorithm?: boolean
-    animationName?: string
-    animationNameList?: any[]
-    layoutSetting?: Record<string, any>
-    t?: (key: string, ...args: any[]) => string
-  }>(),
-  {
-    theme: 'light',
-    colorList: () => [
-      { key: 'techBlue', color: '#1677FF' },
-      { key: 'daybreak', color: '#1890ff' },
-      { key: 'dust', color: '#F5222D' },
-      { key: 'volcano', color: '#FA541C' },
-      { key: 'sunset', color: '#FAAD14' },
-      { key: 'cyan', color: '#13C2C2' },
-      { key: 'green', color: '#52C41A' },
-      { key: 'geekblue', color: '#2F54EB' },
-      { key: 'purple', color: '#722ED1' },
-    ],
-  },
-)
+const props = defineProps({
+  open: { type: Boolean, required: false },
+  theme: { type: String, required: false, default: 'light' },
+  colorPrimary: { type: String, required: false },
+  colorList: { type: Array, required: false, default: () => [
+    { key: 'techBlue', color: '#1677FF' },
+    { key: 'daybreak', color: '#1890ff' },
+    { key: 'dust', color: '#F5222D' },
+    { key: 'volcano', color: '#FA541C' },
+    { key: 'sunset', color: '#FAAD14' },
+    { key: 'cyan', color: '#13C2C2' },
+    { key: 'green', color: '#52C41A' },
+    { key: 'geekblue', color: '#2F54EB' },
+    { key: 'purple', color: '#722ED1' },
+  ] },
+  layout: { type: String, required: false },
+  contentWidth: { type: String, required: false },
+  fixedHeader: { type: Boolean, required: false },
+  fixedSider: { type: Boolean, required: false },
+  splitMenus: { type: Boolean, required: false },
+  keepAlive: { type: Boolean, required: false },
+  accordionMode: { type: Boolean, required: false },
+  leftCollapsed: { type: Boolean, required: false },
+  watermark: { type: Boolean, required: false },
+  header: { type: Boolean, required: false },
+  footer: { type: Boolean, required: false },
+  menu: { type: Boolean, required: false },
+  menuHeader: { type: Boolean, required: false },
+  colorWeak: { type: Boolean, required: false },
+  colorGray: { type: Boolean, required: false },
+  multiTab: { type: Boolean, required: false },
+  multiTabFixed: { type: Boolean, required: false },
+  compactAlgorithm: { type: Boolean, required: false },
+  animationName: { type: String, required: false },
+  animationNameList: { type: Array, required: false },
+  layoutSetting: { type: Object, required: false },
+  t: { type: Function, required: false },
+})
 const emit = defineEmits(['update:open', 'settingChange'])
 const { copy } = useClipboard()
 const prefixCls = shallowRef('ant-pro-drawer-setting')
@@ -64,25 +57,21 @@ function copySetting() {
   copy(JSON.stringify(props.layoutSetting ?? {}))
   message?.success(props?.t?.('app.setting.copyinfo', '拷贝成功，请到 config/default-settings.js 中替换默认配置'))
 }
-function handleVisible(open: boolean) {
+function handleVisible(open) {
   emit('update:open', open)
 }
-
-function changeTheme(theme: ThemeType) {
+function changeTheme(theme) {
   emit('settingChange', 'theme', theme)
 }
-
-function changeColor(color: string) {
+function changeColor(color) {
   emit('settingChange', 'colorPrimary', color)
 }
-
-function changeLayout(layout: string) {
+function changeLayout(layout) {
   emit('settingChange', 'layout', layout)
 }
-function changeSettingLayout(key: string, value: any) {
+function changeSettingLayout(key, value) {
   emit('settingChange', key, value)
 }
-
 const { token } = useAntdToken()
 </script>
 

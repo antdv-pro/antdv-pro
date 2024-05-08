@@ -1,13 +1,11 @@
-<script setup lang="ts">
-import type { FormInstance } from 'ant-design-vue'
-
+<script setup>
 defineProps({
   showSubmit: {
     type: Boolean,
     default: false,
   },
 })
-const formRef = ref<FormInstance>()
+const formRef = ref()
 async function handleSubmit() {
   try {
     const values = await formRef.value?.validateFields()
@@ -17,7 +15,7 @@ async function handleSubmit() {
     console.log('Failed:', errorInfo)
   }
 }
-const formState = reactive<Record<string, any>>({
+const formState = reactive({
   name: null,
   url: null,
   owner: null,

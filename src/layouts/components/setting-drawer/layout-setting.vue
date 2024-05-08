@@ -1,20 +1,16 @@
-<script setup lang="ts">
-import type { SelectValue } from 'ant-design-vue/es/select'
-import type { CheckedType, ContentWidth, LayoutType } from '../../basic-layout/typing'
-
-const props = defineProps<{
-  contentWidth?: ContentWidth
-  layout?: LayoutType
-  fixedHeader?: boolean
-  fixedSider?: boolean
-  splitMenus?: boolean
-  keepAlive?: boolean
-  accordionMode?: boolean
-  leftCollapsed?: boolean
-  compactAlgorithm?: boolean
-  t?: (key: string, ...args: any[]) => string
-}>()
-
+<script setup>
+const props = defineProps({
+  contentWidth: { type: String, required: false },
+  layout: { type: String, required: false },
+  fixedHeader: { type: Boolean, required: false },
+  fixedSider: { type: Boolean, required: false },
+  splitMenus: { type: Boolean, required: false },
+  keepAlive: { type: Boolean, required: false },
+  accordionMode: { type: Boolean, required: false },
+  leftCollapsed: { type: Boolean, required: false },
+  compactAlgorithm: { type: Boolean, required: false },
+  t: { type: Function, required: false },
+})
 const emit = defineEmits(['changeSetting'])
 const list = computed(() => [
   {
@@ -66,7 +62,7 @@ const list = computed(() => [
     disabledReason: '',
   },
 ])
-function handleChangeSetting(key: string, value: any) {
+function handleChangeSetting(key, value) {
   emit('changeSetting', key, value)
 }
 </script>

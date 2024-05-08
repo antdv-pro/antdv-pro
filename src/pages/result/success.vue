@@ -1,9 +1,8 @@
-<script setup lang="ts">
+<script setup>
 import { DingdingOutlined } from '@ant-design/icons-vue'
 
 const { t } = useI18n()
 const { isMobile } = useQueryBreakpoints()
-
 const result = computed(() => {
   return {
     title: t('result.success.title'),

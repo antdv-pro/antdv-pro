@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import advancedContainer from './components/advanced-container.vue'
 
 defineOptions({

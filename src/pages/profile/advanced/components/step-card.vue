@@ -1,9 +1,8 @@
-<script setup lang="ts">
+<script setup>
 import { DingdingOutlined } from '@ant-design/icons-vue'
 import dayjs from 'dayjs'
 
 const { isMobile } = useQueryBreakpoints()
-
 const { t } = useI18n()
 </script>
 

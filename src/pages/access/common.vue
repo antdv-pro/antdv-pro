@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { AccessEnum } from '~@/utils/constant'
 
 const { hasAccess, roles } = useAccess()

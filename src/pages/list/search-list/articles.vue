@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup>
 import { LikeOutlined, MessageOutlined, StarOutlined } from '@ant-design/icons-vue'
 import dayjs from 'dayjs'
 import Category from './components/category.vue'
@@ -195,7 +195,7 @@ const list = [
     ],
   },
 ]
-function formatTimer(timer: number | string) {
+function formatTimer(timer) {
   return dayjs(timer).format('YYYY-MM-DD HH:mm:ss')
 }
 </script>

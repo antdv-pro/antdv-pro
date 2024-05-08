@@ -1,16 +1,14 @@
-<script setup lang="ts">
+<script setup>
 import { isFunction, isUrl } from '@v-c/utils'
-import type { VNodeChild } from 'vue'
 import AsyncIcon from './async-icon.vue'
-import type { MenuDataItem } from '~@/layouts/basic-layout/typing'
 
-withDefaults(defineProps<{ item: MenuDataItem, link?: boolean }>(), {
-  link: true,
+defineProps({
+  item: { type: Object, required: true },
+  link: { type: Boolean, required: false, default: true },
 })
-function renderTitle(title: VNodeChild | (() => VNodeChild)) {
+function renderTitle(title) {
   if (isFunction(title))
     return title()
-
   return title
 }
 </script>

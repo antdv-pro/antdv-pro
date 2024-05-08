@@ -1,7 +1,6 @@
-<script setup lang="ts">
+<script setup>
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons-vue'
-import type { CSSProperties } from 'vue'
-import { useLayoutState } from '../../basic-layout/context'
+import { useLayoutState } from '../../basic-layout/context.js'
 import Menu from '../menu/index.vue'
 
 const {
@@ -21,30 +20,22 @@ const {
   isMobile,
   header,
 } = useLayoutState()
-
 const prefixCls = shallowRef('ant-pro-sider')
-
-const siderStyle = computed<CSSProperties>(() => {
-  const style: CSSProperties = {
+const siderStyle = computed(() => {
+  const style = {
     paddingTop: `${layout.value !== 'side' && !isMobile.value ? headerHeight.value : 0}px`,
-    transition:
-        'background-color 0.3s ease 0s, min-width 0.3s ease 0s, max-width 0.3s cubic-bezier(0.645, 0.045, 0.355, 1) 0s',
+    transition: 'background-color 0.3s ease 0s, min-width 0.3s ease 0s, max-width 0.3s cubic-bezier(0.645, 0.045, 0.355, 1) 0s',
     overflow: 'hidden',
   }
-
-  // bugfix https://github.com/antdv-pro/antdv-pro/issues/173
   if (layout.value === 'mix' && header.value === false)
     style.paddingTop = '0px'
-
   return style
 })
-
 const cls = computed(() => ({
   [prefixCls.value]: true,
   [`${prefixCls.value}-fixed`]: fixedSider.value,
   [`${prefixCls.value}-layout-${layout.value}`]: !!layout.value,
 }))
-
 const showLogo = computed(() => {
   return (layout.value === 'side' || isMobile.value) && layout.value !== 'mix'
 })

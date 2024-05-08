@@ -1,4 +1,4 @@
-<script lang="ts" setup></script>
+<script setup></script>
 
 <template>
   <div class="preloader-wrapper" />

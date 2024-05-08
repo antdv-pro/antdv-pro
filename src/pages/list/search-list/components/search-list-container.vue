@@ -1,8 +1,8 @@
-<script lang="ts" setup>
+<script setup>
 const route = useRoute()
 const router = useRouter()
 const activeKey = computed(() => route.path)
-function handleChangePage(key: any) {
+function handleChangePage(key) {
   router.push(key)
 }
 </script>

@@ -1,63 +1,50 @@
-<script setup lang="ts">
+<script setup>
 import { isFunction } from '@v-c/utils'
-import type { VNodeChild } from 'vue'
-import { useLayoutMenuInject } from './context.ts'
+import { useLayoutMenuInject } from './context.js'
 import { useLayoutState } from '~/layouts/basic-layout/context'
 
-defineProps<{
-  title?: string
-}>()
-defineSlots<{
-  default: (props: any) => any
-  title: (props: any) => any
-  content: (props: any) => any
-  extraContent: (props: any) => any
-  extra: (props: any) => any
-  footer: (props: any) => any
-}>()
+defineProps({
+  title: { type: String, required: false },
+})
+defineSlots()
 const { layoutMenu: layoutMenuStore, appStore } = useLayoutMenuInject()
 const { layoutSetting } = storeToRefs(appStore)
 const { menuDataMap } = storeToRefs(layoutMenuStore)
 const route = useRoute()
 function getCurrentItem() {
-  const key: string = route.meta?.originPath ?? route.path
+  const key = route.meta?.originPath ?? route.path
   if (key && menuDataMap.value.has(key))
     return menuDataMap.value.get(key)
-  return {} as any
+  return {}
 }
 const currentItem = shallowRef(getCurrentItem())
 onBeforeMount(() => {
   currentItem.value = getCurrentItem()
 })
-
-let timer: ReturnType<typeof setTimeout> | undefined
+let timer
 watch(() => route.path, () => {
   if (timer) {
     clearTimeout(timer)
-    timer = undefined
+    timer = void 0
   }
   timer = setTimeout(() => {
     currentItem.value = getCurrentItem()
   }, 300)
 })
-
 const { contentWidth } = useLayoutState()
 const contentCls = computed(() => {
-  const cls: string[] = [
+  const cls = [
     'flex flex-col flex-1',
   ]
   if (contentWidth.value === 'Fluid')
     cls.push('w-full')
-
   else if (contentWidth.value === 'Fixed')
     cls.push(...['max-w-1200px w-1200px', 'mx-auto'])
-
   return cls
 })
-function renderTitle(title: VNodeChild | (() => VNodeChild)) {
+function renderTitle(title) {
   if (isFunction(title))
     return title()
-
   return title
 }
 </script>

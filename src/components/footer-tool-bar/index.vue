@@ -1,5 +1,5 @@
-<script setup lang="ts">
-import { useLayoutState } from '~/layouts/basic-layout/context.ts'
+<script setup>
+import { useLayoutState } from '~/layouts/basic-layout/context.js'
 
 defineOptions({
   name: 'FooterToolBar',
@@ -8,8 +8,7 @@ const prefixCls = shallowRef('ant-pro-footer-toolbar')
 const { siderWidth: layoutSiderWidth, collapsed, collapsedWidth, isMobile, layout } = useLayoutState()
 const barWidth = computed(() => {
   if (isMobile.value || layout.value === 'top')
-    return undefined
-
+    return void 0
   return `calc(100% - ${collapsed.value ? collapsedWidth.value : layoutSiderWidth.value}px)`
 })
 </script>

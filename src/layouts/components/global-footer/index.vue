@@ -1,15 +1,13 @@
-<script setup lang="ts">
+<script setup>
 import { CopyrightCircleOutlined } from '@ant-design/icons-vue'
 
 defineOptions({
   name: 'GlobalFooter',
 })
-
-defineProps<{
-  copyright?: string
-  icp?: string
-}>()
-
+defineProps({
+  copyright: { type: String, required: false },
+  icp: { type: String, required: false },
+})
 const prefixCls = shallowRef('ant-pro-global-footer')
 </script>
 

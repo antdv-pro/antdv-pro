@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { EllipsisOutlined } from '@ant-design/icons-vue'
 import { Pie } from '@antv/g2plot'
 
@@ -8,18 +8,15 @@ defineProps({
     default: false,
   },
 })
-
 const salesType = ref('all')
 const pieContainer1 = ref()
 const pieContainer2 = ref()
 const pieContainer3 = ref()
-function handleChangeSalesType(e: any) {
+function handleChangeSalesType(e) {
   salesType.value = e.target.value
 }
-
-const pies = shallowRef<Pie[]>([])
-
-function renderPie(container: any, data: any) {
+const pies = shallowRef([])
+function renderPie(container, data) {
   const pie = new Pie(container, {
     appendPadding: 10,
     data,
@@ -44,7 +41,6 @@ function renderPie(container: any, data: any) {
   pie.render()
   pies.value.push(pie)
 }
-
 const salesTypeData = [
   {
     x: '家用电器',
@@ -119,13 +115,11 @@ const salesTypeDataOffline = [
     y: 65,
   },
 ]
-
 onMounted(() => {
   renderPie(pieContainer1.value, salesTypeData)
   renderPie(pieContainer2.value, salesTypeDataOnline)
   renderPie(pieContainer3.value, salesTypeDataOffline)
 })
-
 onUnmounted(() => {
   pies.value.forEach((pie) => {
     pie?.destroy?.()

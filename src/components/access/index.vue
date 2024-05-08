@@ -1,9 +1,7 @@
-<script setup lang="ts">
-import type { AccessEnum } from '~/utils/constant'
-
-defineProps<{
-  access: string | number | (string | number)[] | AccessEnum
-}>()
+<script setup>
+defineProps({
+  access: { type: [String, Number, Array], required: true },
+})
 const { hasAccess } = useAccess()
 </script>
 

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 const route = useRoute()
 const url = computed(() => route?.meta?.url)
 const loading = ref(true)

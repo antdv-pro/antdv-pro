@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import Step1 from './components/step1.vue'
 import Step2 from './components/step2.vue'
 import Step3 from './components/step3.vue'
@@ -10,17 +10,14 @@ const state = reactive({
   currentTab: 0,
   form: null,
 })
-
 function nextStep() {
   if (state.currentTab < 2)
     state.currentTab += 1
 }
-
 function prevStep() {
   if (state.currentTab > 0)
     state.currentTab -= 1
 }
-
 function finish() {
   state.currentTab = 0
 }

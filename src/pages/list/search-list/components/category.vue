@@ -1,11 +1,6 @@
-<script setup lang="ts">
+<script setup>
 const number = ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '十一', '十二']
-
-interface ListType {
-  name: string
-  key: string
-}
-const list = shallowRef<ListType[]>([
+const list = shallowRef([
   {
     name: '全部',
     key: 'all',
@@ -15,35 +10,27 @@ const list = shallowRef<ListType[]>([
     key: `category${index + 1}`,
   })),
 ])
-const activeList = ref<string[]>([])
-function handleClick(item: ListType) {
+const activeList = ref([])
+function handleClick(item) {
   if (item.key === 'all') {
     if (activeList.value.includes('all')) {
-      // 删除全部选中
       activeList.value = []
       return
     }
     else {
-      // 全部选中
       activeList.value = list.value.map(v => v.key)
     }
     return
   }
   if (activeList.value.includes(item.key)) {
-    // 删除当前选中
     activeList.value = activeList.value.filter(v => v !== item.key)
-    if (activeList.value.includes('all')) {
-      // 删除全部选中
+    if (activeList.value.includes('all'))
       activeList.value = activeList.value.filter(v => v !== 'all')
-    }
   }
   else {
-    // 添加当前选中
     activeList.value = [...activeList.value, item.key]
-    if (activeList.value.length === list.value.length - 1) {
-      // 全部选中
+    if (activeList.value.length === list.value.length - 1)
       activeList.value = [...activeList.value, 'all']
-    }
   }
 }
 const authorList = shallowRef([
@@ -56,7 +43,6 @@ const authorList = shallowRef([
     value: '周毛毛',
   },
 ])
-// 好评度
 const praiseList = shallowRef([
   {
     label: '优秀',

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 const router = useRouter()
 function back() {
   router.replace({
@@ -16,7 +16,7 @@ function back() {
     </template>
   </a-result>
 </template>
-<!-- <script setup lang="ts">
+<!-- <script setup>
 import { useLoading } from '@/composables/base-loading'
 
 const loading = ref(false)
