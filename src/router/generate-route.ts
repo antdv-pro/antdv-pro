@@ -190,7 +190,7 @@ export function generateFlatRoutes(routes: RouteRecordRaw[]) {
     path: '/',
     redirect: ROOT_ROUTE_REDIRECT_PATH,
     name: 'ROOT_EMPTY_PATH',
-    // fixBug: https://github.com/antdv-pro/antdv-pro/issues/179
+    // fix: https://github.com/antdv-pro/antdv-pro/issues/179
     // component: getRouterModule('RouteView'),
     children: flatRoutesList,
   }
