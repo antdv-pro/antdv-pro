@@ -68,12 +68,9 @@ const layoutProps = computed(() =>
     <template #contentPrefix>
       <MultiTab v-if="layoutSetting.multiTab" />
     </template>
-
     <template #renderFooterLinks />
-
-    <a-watermark h-full flex flex-col flex-1 :content="!layoutSetting.watermark ? '' : layoutSetting.title ?? 'Antdv Pro'">
-      <RouteView />
-    </a-watermark>
+    <a-watermark v-if="layoutSetting.watermark" h-full w-full flex flex-col flex-1 style="position: fixed" :content="layoutSetting.title ?? 'Antdv Pro'" />
+    <RouteView />
   </BasicLayout>
   <SettingDrawer
     v-model:open="layoutSetting.drawerVisible"

@@ -13,18 +13,16 @@ const { getComp } = useCompConsumer()
 </script>
 
 <template>
-  <div class="flex flex-col h-full">
-    <ParentCompConsumer>
-      <RouterView>
-        <template #default="{ Component, route }">
-          <Transition appear :name="layoutSetting.animationName" mode="out-in">
-            <KeepAlive v-if="layoutSetting.keepAlive" :include="[...cacheList]">
-              <component :is="getComp(Component)" :key="route.fullPath" />
-            </KeepAlive>
-            <component :is="Component" v-else :key="route.fullPath" />
-          </Transition>
-        </template>
-      </RouterView>
-    </ParentCompConsumer>
-  </div>
+  <ParentCompConsumer>
+    <RouterView>
+      <template #default="{ Component, route }">
+        <Transition appear :name="layoutSetting.animationName" mode="out-in">
+          <KeepAlive v-if="layoutSetting.keepAlive" :include="[...cacheList]">
+            <component :is="getComp(Component)" :key="route.fullPath" />
+          </KeepAlive>
+          <component :is="Component" v-else :key="route.fullPath" />
+        </Transition>
+      </template>
+    </RouterView>
+  </ParentCompConsumer>
 </template>
