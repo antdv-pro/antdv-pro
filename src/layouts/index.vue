@@ -70,7 +70,6 @@ const layoutProps = computed(() =>
     </template>
     <template #renderFooterLinks />
     <a-watermark
-      v-if="layoutSetting.watermark"
       class="h-full w-full flex flex-col flex-1"
       :content="layoutSetting.watermark ? layoutSetting.title ?? 'Antdv Pro' : ' ' "
     >
