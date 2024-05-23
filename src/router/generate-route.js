@@ -165,7 +165,7 @@ export function generateFlatRoutes(routes) {
     path: '/',
     redirect: ROOT_ROUTE_REDIRECT_PATH,
     name: 'ROOT_EMPTY_PATH',
-    component: getRouterModule('RouteView'),
+    // component: getRouterModule('RouteView'),
     children: flatRoutesList,
   }
   return [parentRoute]

@@ -3,6 +3,7 @@ import { pick } from '@v-c/utils'
 import BasicLayout from './basic-layout/index.vue'
 import SettingDrawer from './components/setting-drawer/index.vue'
 import MultiTab from './multi-tab/index.vue'
+import RouteView from './components/route-view.vue'
 import { animationNameList } from '~@/config/default-setting'
 
 defineOptions({
@@ -72,13 +73,7 @@ const layoutProps = computed(
     <template #renderFooterLinks />
 
     <a-watermark h-full flex flex-col flex-1 :content="!layoutSetting.watermark ? '' : layoutSetting.title ?? 'Antdv Pro'">
-      <RouterView>
-        <template #default="{ Component, route }">
-          <KeepAlive>
-            <component :is="Component" :key="route.fullPath" />
-          </KeepAlive>
-        </template>
-      </RouterView>
+      <RouteView />
     </a-watermark>
   </BasicLayout>
   <SettingDrawer
