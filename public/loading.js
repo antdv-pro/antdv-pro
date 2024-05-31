@@ -98,8 +98,8 @@
           -ms-transform-origin: 50% 50%;
           transform-origin: 50% 50%;
           opacity: 0.3;
-          -webkit-animation: antSpinMove 1s infinite linear alternate;
-          animation: antSpinMove 1s infinite linear alternate;
+          -webkit-animation: ant-spin-move 1s infinite linear alternate;
+          animation: ant-spin-move 1s infinite linear alternate;
         }
 
         .ant-spin-dot-item:nth-child(1) {
@@ -132,8 +132,8 @@
           -webkit-transform: rotate(45deg);
           -ms-transform: rotate(45deg);
           transform: rotate(45deg);
-          -webkit-animation: antRotate 1.2s infinite linear;
-          animation: antRotate 1.2s infinite linear;
+          -webkit-animation: ant-rotate 1.2s infinite linear;
+          animation: ant-rotate 1.2s infinite linear;
         }
 
         .ant-spin-lg .ant-spin-dot {
@@ -154,26 +154,26 @@
           }
         }
 
-        @-webkit-keyframes antSpinMove {
+        @-webkit-keyframes ant-spin-move {
           to {
             opacity: 1;
           }
         }
 
-        @keyframes antSpinMove {
+        @keyframes ant-spin-move {
           to {
             opacity: 1;
           }
         }
 
-        @-webkit-keyframes antRotate {
+        @-webkit-keyframes ant-rotate {
           to {
             -webkit-transform: rotate(405deg);
             transform: rotate(405deg);
           }
         }
 
-        @keyframes antRotate {
+        @keyframes ant-rotate {
           to {
             -webkit-transform: rotate(405deg);
             transform: rotate(405deg);
