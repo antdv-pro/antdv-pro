@@ -40,13 +40,7 @@ function formatMenu(route: RouteRecordRaw, path?: string) {
 // 本地静态路由生成菜单的信息
 export function genRoutes(routes: RouteRecordRaw[], parent?: MenuDataItem) {
   const menuData: MenuData = []
-  const { hasAccess } = useAccess()
   routes.forEach((route) => {
-    if (route.meta?.access) {
-      const isAccess = hasAccess(route.meta?.access)
-      if (!isAccess)
-        return
-    }
     let path = route.path
     if (!path.startsWith('/') && !isUrl(path)) {
       // 判断当前是不是以 /开头，如果不是就表示当前的路由地址为不完全的地址
@@ -143,7 +137,21 @@ export function generateTreeRoutes(menus: MenuData) {
  */
 
 export async function generateRoutes() {
-  const menuData = genRoutes(dynamicRoutes)
+  const { hasAccess } = useAccess()
+  function filterRoutesByAccess(routes: RouteRecordRaw[]) {
+    return routes
+      .filter((route) => {
+        return !route.meta?.access || hasAccess(route.meta?.access)
+      })
+      .map((route) => {
+        if (route.children?.length) {
+          route.children = filterRoutesByAccess(route.children || [])
+        }
+        return route
+      })
+  }
+  const accessRoutes = filterRoutesByAccess(dynamicRoutes)
+  const menuData = genRoutes(accessRoutes)
 
   return {
     menuData,
