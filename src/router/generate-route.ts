@@ -145,7 +145,7 @@ export async function generateRoutes() {
       })
       .map((route) => {
         if (route.children?.length) {
-          route.children = filterRoutesByAccess(route.children || [])
+          route.children = filterRoutesByAccess(route.children)
         }
         return route
       })
