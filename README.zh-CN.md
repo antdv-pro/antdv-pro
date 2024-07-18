@@ -51,9 +51,6 @@ QQ群: 申请微信群
 
 Discord: [discord](https://discord.gg/tPb4G6gXmm)
 
-### Antdv 小助手微信回复【101】邀请进一群
-
-<img src="https://git.lingyu.org.cn/yanyu/images/raw/branch/main/robot1.jpg" width="300">
 ## 使用
 
 ```bash
