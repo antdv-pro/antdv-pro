@@ -17,5 +17,7 @@ export default mist({
   rules: {
     'no-console': 0,
     'style/quote-props': 0,
+    'unused-imports/no-unused-vars': 0,
+    'ts/no-unused-expressions': 0,
   },
 })

@@ -16,8 +16,8 @@ defineSlots<{
   footer: (props: any) => any
 }>()
 const { layoutMenu: layoutMenuStore, appStore } = useLayoutMenuInject()
-const { layoutSetting } = storeToRefs(appStore)
-const { menuDataMap } = storeToRefs(layoutMenuStore)
+const { layoutSetting } = (storeToRefs as any)(appStore)
+const { menuDataMap } = (storeToRefs as any)(layoutMenuStore)
 const route = useRoute()
 function getCurrentItem() {
   const key: string = route.meta?.originPath ?? route.path
