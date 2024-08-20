@@ -47,11 +47,9 @@ QQ Group: apply wechat group
 
 Wechat: aibayanyu2022
 
+Wechat Group: Add author WeChat
+
 Discord: [discord](https://discord.gg/tPb4G6gXmm)
-
-### WeChatGroup （二群扫码）
-
-<img src="https://git.lingyu.org.cn/yanyu/images/raw/branch/main/wx-group.jpg" width="300">
 
 
 ## Useage
