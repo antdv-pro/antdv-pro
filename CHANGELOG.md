@@ -1,6 +1,104 @@
 # Changelog
 
 
+## v1.3.0
+
+[compare changes](https://github.com/antdv-pro/antdv-pro/compare/v1.1.0...v1.3.0)
+
+### 🚀 Enhancements
+
+- Add gray mode ([5d43b13](https://github.com/antdv-pro/antdv-pro/commit/5d43b13))
+- Add afterQuery fn for `table-query.ts` ([0503a37](https://github.com/antdv-pro/antdv-pro/commit/0503a37))
+- Change multi tab placeholder height calculation ([f3393d9](https://github.com/antdv-pro/antdv-pro/commit/f3393d9))
+- Add info ([492461c](https://github.com/antdv-pro/antdv-pro/commit/492461c))
+- Add info ([92268fb](https://github.com/antdv-pro/antdv-pro/commit/92268fb))
+
+### 🩹 Fixes
+
+- Fix not has page container fuild not support ([78a41cf](https://github.com/antdv-pro/antdv-pro/commit/78a41cf))
+- Change ([51ce087](https://github.com/antdv-pro/antdv-pro/commit/51ce087))
+- Fix title style in slider logo #152 ([#152](https://github.com/antdv-pro/antdv-pro/issues/152))
+- Fix page container is fast switch close #157 ([#157](https://github.com/antdv-pro/antdv-pro/issues/157))
+- **types:** Fix table query hook types ([169e9d5](https://github.com/antdv-pro/antdv-pro/commit/169e9d5))
+- **types:** Fix tsc error ([59ced75](https://github.com/antdv-pro/antdv-pro/commit/59ced75))
+- Query  typo ([ba21d97](https://github.com/antdv-pro/antdv-pro/commit/ba21d97))
+- Typo ([6e9930d](https://github.com/antdv-pro/antdv-pro/commit/6e9930d))
+- Profile menu icon ([1b4399d](https://github.com/antdv-pro/antdv-pro/commit/1b4399d))
+- I18n-ally extension setting ([fe1d87b](https://github.com/antdv-pro/antdv-pro/commit/fe1d87b))
+- Multi-tab width error ([f6e7312](https://github.com/antdv-pro/antdv-pro/commit/f6e7312))
+- Change ext ([63f0818](https://github.com/antdv-pro/antdv-pro/commit/63f0818))
+- Attribute definition error ([2206646](https://github.com/antdv-pro/antdv-pro/commit/2206646))
+- **function:** Fix 菜单手风琴模式，子菜单未能按手风琴模式进行展开/收起； ([330d5b1](https://github.com/antdv-pro/antdv-pro/commit/330d5b1))
+- Fix split multi tab close #172 ([#172](https://github.com/antdv-pro/antdv-pro/issues/172))
+- Fixed multi tab display error close #173 ([#173](https://github.com/antdv-pro/antdv-pro/issues/173))
+- Fix error ([c6bba82](https://github.com/antdv-pro/antdv-pro/commit/c6bba82))
+- Jump page is blank close #168 ([#168](https://github.com/antdv-pro/antdv-pro/issues/168))
+- Jump page blank & support page multi page ([372dae9](https://github.com/antdv-pro/antdv-pro/commit/372dae9))
+- Keep alive is not effect ([e310c7c](https://github.com/antdv-pro/antdv-pro/commit/e310c7c))
+- Transition ([db9bd34](https://github.com/antdv-pro/antdv-pro/commit/db9bd34))
+- Dynamic router is multi render ([fd0b825](https://github.com/antdv-pro/antdv-pro/commit/fd0b825))
+- Close #179 ([#179](https://github.com/antdv-pro/antdv-pro/issues/179))
+- Watermark render ([b0fd3b8](https://github.com/antdv-pro/antdv-pro/commit/b0fd3b8))
+- Watermark container ([36c6121](https://github.com/antdv-pro/antdv-pro/commit/36c6121))
+- Watermark false render ([13123bf](https://github.com/antdv-pro/antdv-pro/commit/13123bf))
+- Watermark false render ([663ec59](https://github.com/antdv-pro/antdv-pro/commit/663ec59))
+- 前端路由(dynamicRoutes)权限问题 ([a8e9623](https://github.com/antdv-pro/antdv-pro/commit/a8e9623))
+- Eslint ([a53e1ef](https://github.com/antdv-pro/antdv-pro/commit/a53e1ef))
+
+### 📖 Documentation
+
+- Word spelling mistake ([b5ce8e6](https://github.com/antdv-pro/antdv-pro/commit/b5ce8e6))
+- Add support ([afaaef9](https://github.com/antdv-pro/antdv-pro/commit/afaaef9))
+
+### 🏡 Chore
+
+- **release:** V1.1.0 ([ee4ac82](https://github.com/antdv-pro/antdv-pro/commit/ee4ac82))
+- Update deps ([a29c25c](https://github.com/antdv-pro/antdv-pro/commit/a29c25c))
+- Change ([5872282](https://github.com/antdv-pro/antdv-pro/commit/5872282))
+- Update deps ([55672d6](https://github.com/antdv-pro/antdv-pro/commit/55672d6))
+- Update deps ([2a2a29f](https://github.com/antdv-pro/antdv-pro/commit/2a2a29f))
+- Update deps ([722c5cd](https://github.com/antdv-pro/antdv-pro/commit/722c5cd))
+- Change ([5d59e94](https://github.com/antdv-pro/antdv-pro/commit/5d59e94))
+- Change ([8240b0c](https://github.com/antdv-pro/antdv-pro/commit/8240b0c))
+- Update deps ([c84c6e8](https://github.com/antdv-pro/antdv-pro/commit/c84c6e8))
+- Update deps ([b9cb20b](https://github.com/antdv-pro/antdv-pro/commit/b9cb20b))
+- Change ([9b66e0a](https://github.com/antdv-pro/antdv-pro/commit/9b66e0a))
+- Update vue-tsc to v2 ([12b6ab7](https://github.com/antdv-pro/antdv-pro/commit/12b6ab7))
+- Update deps ([5507f3c](https://github.com/antdv-pro/antdv-pro/commit/5507f3c))
+- Change ([4a0fb25](https://github.com/antdv-pro/antdv-pro/commit/4a0fb25))
+- Change ([2118246](https://github.com/antdv-pro/antdv-pro/commit/2118246))
+- Update deps ([3df11aa](https://github.com/antdv-pro/antdv-pro/commit/3df11aa))
+- Update deps ([81009b7](https://github.com/antdv-pro/antdv-pro/commit/81009b7))
+- Add js version ([9f2d91f](https://github.com/antdv-pro/antdv-pro/commit/9f2d91f))
+- Change ([abeb40f](https://github.com/antdv-pro/antdv-pro/commit/abeb40f))
+- Change ([9105c8f](https://github.com/antdv-pro/antdv-pro/commit/9105c8f))
+- Loading adjusting capitalization ([c3711e2](https://github.com/antdv-pro/antdv-pro/commit/c3711e2))
+- Comply with rules ([efa67cd](https://github.com/antdv-pro/antdv-pro/commit/efa67cd))
+- **release:** V1.2.0 ([0c8f53a](https://github.com/antdv-pro/antdv-pro/commit/0c8f53a))
+- Update deps ([ffde71a](https://github.com/antdv-pro/antdv-pro/commit/ffde71a))
+- Update generate-route.ts ([e371be3](https://github.com/antdv-pro/antdv-pro/commit/e371be3))
+- Remove qr ([678c328](https://github.com/antdv-pro/antdv-pro/commit/678c328))
+- Update deps ([b491a31](https://github.com/antdv-pro/antdv-pro/commit/b491a31))
+
+### 🤖 CI
+
+- Update husky ([bfe5333](https://github.com/antdv-pro/antdv-pro/commit/bfe5333))
+- Change ci ([4e87850](https://github.com/antdv-pro/antdv-pro/commit/4e87850))
+- Change ci ([1b01aab](https://github.com/antdv-pro/antdv-pro/commit/1b01aab))
+
+### ❤️ Contributors
+
+- Aibayanyu20 <aibayanyu@qq.com>
+- Wrong ([@wlonghaha](http://github.com/wlonghaha))
+- ZhouWei <1244620067@qq.com>
+- PonyHu <3697820@qq.com>
+- Copofe ([@copofe](http://github.com/copofe))
+- Ziggs.zhao <ziggs.zhao@gmail.com>
+- Yizhankui <2669587581@qq.com>
+- Zhang Zhi Chao ([@Alkaidcc](http://github.com/Alkaidcc))
+- Kaivanwong <kaivanwong@outlook.com>
+- Netfan ([@mynetfan](http://github.com/mynetfan))
+
 ## v1.2.0
 
 [compare changes](https://github.com/antdv-pro/antdv-pro/compare/v1.1.0...v1.2.0)
