@@ -101,7 +101,7 @@ export const useMultiTab = defineStore('multi-tab', () => {
     }
   }
 
-  const switchTab = (key: string) => {
+  const switchTab = (key: any) => {
     if (key === activeKey.value)
       return
     router.push(key)

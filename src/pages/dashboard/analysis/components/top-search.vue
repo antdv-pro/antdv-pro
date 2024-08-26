@@ -32,10 +32,7 @@ const columns: Record<string, any>[] = [
     title: '周涨幅',
     dataIndex: 'range',
     key: 'range',
-    sorter: (a: { range: number }, b: { range: number }) => {
-      // eslint-disable-next-line no-unused-expressions
-      a.range - b.range
-    },
+    sorter: (a: { range: number }, b: { range: number }) => a.range - b.range,
   },
 ]
 

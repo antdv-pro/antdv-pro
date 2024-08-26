@@ -1,11 +1,6 @@
-import mist from '@antfu/eslint-config'
+import antfu from '@antfu/eslint-config'
 
-export default mist({
-  vue: true,
-  vueJsx: false,
-  typescript: true,
-  gitignore: true,
-  markdown: true,
+export default antfu({
   ignores: [
     'types/auto-imports.d.ts',
     'types/components.d.ts',
