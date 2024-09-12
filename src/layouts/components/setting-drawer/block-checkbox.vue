@@ -23,7 +23,7 @@ const { token } = useAntdToken()
 <template>
   <a-tooltip>
     <template #title>
-      {{ t?.(`app.setting.pagestyle.${theme}` ?? '') }}
+      {{ theme ? t?.(`app.setting.pagestyle.${theme}`) : '' }}
     </template>
     <div :class="cls">
       <CheckOutlined v-show="checked" :style="{ color: token?.colorPrimary }" :class="`${prefixCls}-selectIcon`" />
