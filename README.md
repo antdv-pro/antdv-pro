@@ -45,13 +45,9 @@ Wechat: aibayanyu2022
 
 Discord: [discord](https://discord.gg/tPb4G6gXmm)
 
-### WeChatGroup （二群扫码）
+WeChatGroup: apply wechat group to add author wechat
 
-<img src="https://git.lingyu.org.cn/yanyu/images/raw/branch/main/wx-group.jpg" width="300">
 
-#### Antdv 小助手微信回复【101】邀请进一群
-
-<img src="https://git.lingyu.org.cn/yanyu/images/raw/branch/main/robot1.jpg" width="300">
 
 
 ## Useage

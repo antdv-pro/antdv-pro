@@ -11,6 +11,7 @@
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "allowJs": true,
     "noEmit": true,
     "jsx": "preserve",
     "jsxImportSource": "vue",
@@ -29,6 +30,13 @@
       "~#/*": ["src/enums/*"],
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "types/**/*.d.ts"],
+  "include": [
+    "src/**/*.js",
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "types/**/*.d.ts"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

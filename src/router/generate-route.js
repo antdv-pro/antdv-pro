@@ -33,13 +33,7 @@ function formatMenu(route, path) {
 }
 export function genRoutes(routes, parent) {
   const menuData = []
-  const { hasAccess } = useAccess()
   routes.forEach((route) => {
-    if (route.meta?.access) {
-      const isAccess = hasAccess(route.meta?.access)
-      if (!isAccess)
-        return
-    }
     let path = route.path
     if (!path.startsWith('/') && !isUrl(path)) {
       if (parent)
@@ -124,7 +118,21 @@ export function generateTreeRoutes(menus) {
   }
 }
 export async function generateRoutes() {
-  const menuData = genRoutes(dynamicRoutes)
+  const { hasAccess } = useAccess()
+  function filterRoutesByAccess(routes) {
+    return routes
+      .filter((route) => {
+        return !route.meta?.access || hasAccess(route.meta?.access)
+      })
+      .map((route) => {
+        if (route.children?.length) {
+          route.children = filterRoutesByAccess(route.children)
+        }
+        return route
+      })
+  }
+  const accessRoutes = filterRoutesByAccess(dynamicRoutes)
+  const menuData = genRoutes(accessRoutes)
   return {
     menuData,
     routeData: dynamicRoutes,
