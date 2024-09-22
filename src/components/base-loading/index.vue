@@ -1,6 +1,5 @@
 <script lang="tsx">
-import type { Component, PropType } from 'vue'
-import type { LoadingEnum } from '~#/loading-enum.js'
+import type { Component } from 'vue'
 import { loadingMap } from '~#/loading-enum.js'
 
 export default defineComponent({
@@ -23,7 +22,7 @@ export default defineComponent({
       default: true,
     },
     spin: {
-      type: String as PropType<LoadingEnum>,
+      type: String,
       default: 'chase',
     },
     full: {

@@ -75,7 +75,7 @@ const { t } = useI18n()
       </a-col>
     </a-row>
   </a-card>
-  <a-tabs v-model:activeKey="activeKey" class="mb--7">
+  <a-tabs v-model:active-key="activeKey" class="mb--7">
     <a-tab-pane key="1" :tab="t('profile.advanced.tab1')" />
     <a-tab-pane key="2" :tab="t('profile.advanced.tab2')" force-render />
   </a-tabs>
