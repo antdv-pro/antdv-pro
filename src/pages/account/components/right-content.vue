@@ -33,7 +33,7 @@ const dataSource = computed(() => {
 
 <template>
   <a-card :borderer="false">
-    <a-tabs v-model:activeKey="activeKey">
+    <a-tabs v-model:active-key="activeKey">
       <a-tab-pane key="1" :tab="t('account.center.article')">
         <article-tab :data-source="dataSource" />
       </a-tab-pane>

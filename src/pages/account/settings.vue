@@ -51,7 +51,7 @@ function seti18n(key: string) {
     <a-row :gutter="24">
       <a-col :span="4" style="padding-left: 0;">
         <a-menu
-          v-model:selectedKeys="selectedKeys"
+          v-model:selected-keys="selectedKeys"
           style="width: 250px"
           mode="inline"
           :items="items"
