@@ -1,9 +1,9 @@
 /// <reference types="vitest" />
 import { resolve } from 'node:path'
-import { fileURLToPath } from 'node:url'
 import * as process from 'node:process'
-import { loadEnv } from 'vite'
+import { fileURLToPath } from 'node:url'
 import type { ConfigEnv, UserConfig } from 'vite'
+import { loadEnv } from 'vite'
 import { createVitePlugins } from './plugins'
 import { OUTPUT_DIR } from './plugins/constants'
 
@@ -91,7 +91,7 @@ export default ({ mode }: ConfigEnv): UserConfig => {
       },
     },
     server: {
-      port: 6678,
+      port: 6679,
       proxy: {
         ...proxyObj,
         // [env.VITE_APP_BASE_API]: {

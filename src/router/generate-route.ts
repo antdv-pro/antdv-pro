@@ -1,11 +1,11 @@
 import { isUrl } from '@v-c/utils'
-import type { RouteRecordRaw } from 'vue-router'
 import { omit } from 'lodash'
+import type { RouteRecordRaw } from 'vue-router'
 import { basicRouteMap, getRouterModule } from './router-modules'
 import type { MenuData, MenuDataItem } from '~@/layouts/basic-layout/typing'
-import dynamicRoutes from '~@/router/dynamic-routes'
-import { ROOT_ROUTE_REDIRECT_PATH } from '~@/router/constant'
 import { i18n } from '~@/locales'
+import { ROOT_ROUTE_REDIRECT_PATH } from '~@/router/constant'
+import dynamicRoutes from '~@/router/dynamic-routes'
 
 let cache_key = 1
 
@@ -199,8 +199,8 @@ export function generateFlatRoutes(routes: RouteRecordRaw[]) {
     redirect: ROOT_ROUTE_REDIRECT_PATH,
     name: 'ROOT_EMPTY_PATH',
     // fix: https://github.com/antdv-pro/antdv-pro/issues/179
-    // component: getRouterModule('RouteView'),
-    children: flatRoutesList,
+    component: getRouterModule('RouteView'),
+    children: routes,
   }
   return [parentRoute]
 }

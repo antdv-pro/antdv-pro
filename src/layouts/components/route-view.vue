@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { ParentCompConsumer } from '@/layouts/basic-layout/parent-comp-consumer'
-
 defineOptions({
   name: 'CustomRouteView',
 })
@@ -13,16 +11,16 @@ const { getComp } = useCompConsumer()
 </script>
 
 <template>
-  <ParentCompConsumer>
-    <RouterView>
-      <template #default="{ Component, route }">
-        <Transition appear :name="layoutSetting.animationName" mode="out-in">
-          <KeepAlive v-if="layoutSetting.keepAlive" :include="[...cacheList]">
-            <component :is="getComp(Component)" :key="route.fullPath" />
-          </KeepAlive>
-          <component :is="Component" v-else :key="route.fullPath" />
-        </Transition>
-      </template>
-    </RouterView>
-  </ParentCompConsumer>
+  <!-- <ParentCompConsumer> -->
+  <RouterView>
+    <template #default="{ Component, route }">
+      <Transition appear :name="layoutSetting.animationName" mode="out-in">
+        <KeepAlive v-if="layoutSetting.keepAlive">
+          <component :is="Component" />
+        </KeepAlive>
+        <component :is="Component" v-else :key="route.fullPath" />
+      </Transition>
+    </template>
+  </RouterView>
+  <!-- </ParentCompConsumer> -->
 </template>
