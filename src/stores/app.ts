@@ -38,7 +38,7 @@ export const useAppStore = defineStore('app', () => {
   const { darkAlgorithm, compactAlgorithm, defaultAlgorithm } = antdTheme
   const layoutSetting = reactive<LayoutSetting>(defaultSetting)
   const themeConfig = reactive<ThemeConfig>({
-    algorithm: antdTheme.defaultAlgorithm,
+    algorithm: [antdTheme.defaultAlgorithm],
     token: {
       colorBgContainer: '#fff',
       colorPrimary: layoutSetting.colorPrimary,
@@ -50,12 +50,20 @@ export const useAppStore = defineStore('app', () => {
     lsLocaleState.value = locale
   }
   const toggleCompact = (isCompact = true) => {
+    // 判断是否存在compactAlgorithm
+    if (Array.isArray(themeConfig.algorithm)) {
+      const index = themeConfig.algorithm.findIndex(item => item === compactAlgorithm)
+      if (index >= 0 && isCompact) {
+        return
+      }
+    }
     layoutSetting.compactAlgorithm = isCompact
     const algorithm = layoutSetting.theme === 'dark' ? [darkAlgorithm] : [defaultAlgorithm]
     isCompact && algorithm.push(compactAlgorithm)
     themeConfig.algorithm = algorithm
   }
   const toggleTheme = (theme: ThemeType) => {
+    toggleCompact(layoutSetting.compactAlgorithm)
     if (layoutSetting.theme === theme)
       return
     layoutSetting.theme = theme
@@ -81,7 +89,6 @@ export const useAppStore = defineStore('app', () => {
         }
       }
     }
-    toggleCompact(layoutSetting.compactAlgorithm)
   }
 
   const toggleDrawerVisible = (visible: boolean) => {
@@ -94,16 +101,19 @@ export const useAppStore = defineStore('app', () => {
       themeConfig.token.colorPrimary = color
   }
 
-  // 如果加载进来是暗色模式，就切换到暗色模式
-  if (isDark.value)
-    toggleTheme('dark')
-
   // 监听isDark的变化
-  watch(isDark, () => {
-    if (isDark.value)
-      toggleTheme('dark')
-    else toggleTheme('light')
-  })
+  watch(
+    isDark,
+    () => {
+      if (isDark.value)
+        toggleTheme('dark')
+      else
+        toggleTheme('light')
+    },
+    {
+      immediate: true,
+    },
+  )
 
   // 监听isDark的变化
   watch(preferredLanguages, () => {
