@@ -157,7 +157,7 @@ onBeforeUnmount(() => {
               {{ t('pages.login.tips') }}
             </div>
             <a-form ref="formRef" :model="loginModel">
-              <a-tabs v-model:activeKey="loginModel.type" centered>
+              <a-tabs v-model:active-key="loginModel.type" centered>
                 <a-tab-pane key="account" :tab="t('pages.login.accountLogin.tab')" />
                 <a-tab-pane key="mobile" :tab="t('pages.login.phoneLogin.tab')" />
               </a-tabs>
