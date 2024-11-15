@@ -24,7 +24,7 @@ export default {
   keepAlive: true,
   accordionMode: false,
   leftCollapsed: true,
-  compactAlgorithm: true,
+  compactAlgorithm: false,
   headerHeight: 48,
   copyright: 'Antdv Pro Team 2023',
   animationName: 'slide-fadein-right',
