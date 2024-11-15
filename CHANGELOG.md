@@ -1,6 +1,30 @@
 # Changelog
 
 
+## v1.3.1
+
+[compare changes](https://github.com/antdv-pro/antdv-pro/compare/v1.3.0...v1.3.1)
+
+### 🩹 Fixes
+
+- Fix menu transition close #197 ([#197](https://github.com/antdv-pro/antdv-pro/issues/197))
+- Fix theme ([479ac5f](https://github.com/antdv-pro/antdv-pro/commit/479ac5f))
+- First load compactAlgorithm not effect close #204 ([#204](https://github.com/antdv-pro/antdv-pro/issues/204))
+- Fix scroller layout override ([626579f](https://github.com/antdv-pro/antdv-pro/commit/626579f))
+
+### 🏡 Chore
+
+- Update vue3.5 ([3715bae](https://github.com/antdv-pro/antdv-pro/commit/3715bae))
+- Update deps ([a9175e5](https://github.com/antdv-pro/antdv-pro/commit/a9175e5))
+- Change ts version ([f81e1c6](https://github.com/antdv-pro/antdv-pro/commit/f81e1c6))
+- Change Andtv-Pro to Antdv-Pro ([3b97af4](https://github.com/antdv-pro/antdv-pro/commit/3b97af4))
+- Update deps ([341becb](https://github.com/antdv-pro/antdv-pro/commit/341becb))
+
+### ❤️ Contributors
+
+- Aibayanyu20 <aibayanyu@qq.com>
+- 红烧粽子 ([@songsong0707](http://github.com/songsong0707))
+
 ## v1.3.0
 
 [compare changes](https://github.com/antdv-pro/antdv-pro/compare/v1.1.0...v1.3.0)
