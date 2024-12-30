@@ -7,14 +7,15 @@ import { useLayoutState } from '~/layouts/basic-layout/context'
 defineProps<{
   title?: string
 }>()
-defineSlots<{
+const slots = defineSlots<{
   default: (props: any) => any
-  title: (props: any) => any
-  content: (props: any) => any
-  extraContent: (props: any) => any
-  extra: (props: any) => any
-  footer: (props: any) => any
+  title?: (props: any) => any
+  content?: (props: any) => any
+  extraContent?: (props: any) => any
+  extra?: (props: any) => any
+  footer?: (props: any) => any
 }>()
+
 const { layoutMenu: layoutMenuStore, appStore } = useLayoutMenuInject()
 const { layoutSetting } = (storeToRefs as any)(appStore)
 const { menuDataMap } = (storeToRefs as any)(layoutMenuStore)
@@ -85,7 +86,7 @@ function renderTitle(title: VNodeChild | (() => VNodeChild)) {
           <slot name="extra" />
         </div>
       </div>
-      <div v-if="$slots.content || $slots.extraContent" pt-12px>
+      <div v-if="slots.content || slots.extraContent" pt-12px>
         <div flex w-full>
           <div flex-auto>
             <slot name="content" />
