@@ -58,7 +58,7 @@ export const useAppStore = defineStore('app', () => {
       }
     }
     layoutSetting.compactAlgorithm = isCompact
-    const algorithm = layoutSetting.theme === 'dark' ? [darkAlgorithm] : [defaultAlgorithm]
+    const algorithm = isDark.value ? [darkAlgorithm] : [defaultAlgorithm]
     isCompact && algorithm.push(compactAlgorithm)
     themeConfig.algorithm = algorithm
   }
@@ -183,7 +183,6 @@ export const useAppStore = defineStore('app', () => {
     else if (key in layoutSetting)
       (layoutSetting as any)[key] = value
   }
-
   return {
     layoutSetting,
     theme: themeConfig,
