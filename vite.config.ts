@@ -90,9 +90,6 @@ export default ({ mode }: ConfigEnv): UserConfig => {
         },
       },
     },
-    optimizeDeps: {
-      exclude: ['ant-design-vue'],
-    },
     server: {
       port: 6678,
       proxy: {
