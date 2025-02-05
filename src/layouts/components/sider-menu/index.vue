@@ -48,6 +48,13 @@ const cls = computed(() => ({
 const showLogo = computed(() => {
   return (layout.value === 'side' || isMobile.value) && layout.value !== 'mix'
 })
+
+const logoCls = computed(() => {
+  return {
+    'ant-pro-sider-collapsed': collapsed.value && !isMobile.value,
+    'ant-pro-sider-logo-dark': theme.value === 'inverted',
+  }
+})
 </script>
 
 <template>
@@ -71,10 +78,10 @@ const showLogo = computed(() => {
     :class="cls"
     :style="siderStyle"
   >
-    <div v-if="showLogo" class="ant-pro-sider-logo" :class="collapsed && !isMobile ? 'ant-pro-sider-collapsed' : ''">
+    <div v-if="showLogo" class="ant-pro-sider-logo" :class="logoCls">
       <a>
         <img :src="logo" alt="logo">
-        <h1 v-if="!collapsed || isMobile">{{ title }}</h1>
+        <h1 v-if="!collapsed || isMobile">{{ title }} </h1>
       </a>
     </div>
     <div class="flex-1 of-x-hidden of-y-auto scrollbar">
