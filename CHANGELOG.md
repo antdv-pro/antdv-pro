@@ -1,6 +1,27 @@
 # Changelog
 
 
+## v1.3.2
+
+[compare changes](https://github.com/antdv-pro/antdv-pro/compare/v1.3.1...v1.3.2)
+
+### 🩹 Fixes
+
+- Fix multi tab animation not effect ([03540a0](https://github.com/antdv-pro/antdv-pro/commit/03540a0))
+- Dark mode refresh not effect close #208 ([#208](https://github.com/antdv-pro/antdv-pro/issues/208))
+- Mobile sider logo background not has bg close #207 ([#207](https://github.com/antdv-pro/antdv-pro/issues/207))
+
+### 🏡 Chore
+
+- **release:** V1.3.1 ([134444a](https://github.com/antdv-pro/antdv-pro/commit/134444a))
+- Change compactAlgorithm default value ([4b4d66d](https://github.com/antdv-pro/antdv-pro/commit/4b4d66d))
+- Update deps ([6690973](https://github.com/antdv-pro/antdv-pro/commit/6690973))
+- Change vite config ([6020a51](https://github.com/antdv-pro/antdv-pro/commit/6020a51))
+
+### ❤️ Contributors
+
+- Aibayanyu20 <aibayanyu@qq.com>
+
 ## v1.3.1
 
 [compare changes](https://github.com/antdv-pro/antdv-pro/compare/v1.3.0...v1.3.1)
