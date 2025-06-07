@@ -45,5 +45,20 @@
     "scss",
     "pcss",
     "postcss"
-  ]
+  ],
+
+  // Extensions：i18n Ally
+  // "i18n-ally.autoDetection": true,
+  "i18n-ally.localesPaths": [
+    "src/locales/lang/global",
+    "src/locales/lang/pages",
+    "src/pages/common/locales"
+  ],
+  // "i18n-ally.keystyle": "flat",
+  // "i18n-ally.sourceLanguage": "en-US",
+  // "i18n-ally.displayLanguage": "zh-CN",
+  "i18n-ally.enabledParsers": ["ts"],
+  "i18n-ally.parsers.typescript.compilerOptions": {
+    "moduleResolution": "node" // 配置解析策略
+  }
 }

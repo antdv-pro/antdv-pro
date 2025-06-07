@@ -103,9 +103,9 @@ export default ({ mode }: ConfigEnv): UserConfig => {
         // },
       },
     },
-    test: {
-      globals: true,
-      environment: 'jsdom',
-    },
+    // test: {
+    //   globals: true,
+    //   environment: 'jsdom',
+    // },
   }
 }
