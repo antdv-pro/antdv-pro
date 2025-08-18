@@ -1,5 +1,7 @@
-export default eventHandler(async (event) => {
-  const body = await readBody(event)
+import { defineEventHandler, readBody } from 'h3'
+
+export default defineEventHandler(async (event) => {
+  const body: any = await readBody(event)
   const { type } = body
   const success = {
     code: 200,
@@ -9,6 +11,7 @@ export default eventHandler(async (event) => {
     msg: '登录成功',
   }
   if (type !== 'mobile') {
+    // eslint-disable-next-line node/prefer-global/buffer
     success.data.token = Buffer.from(body.username).toString('base64')
     // 判断用户名密码是否正确
     if (body.username === 'admin' && body.password === 'admin')
@@ -21,7 +24,8 @@ export default eventHandler(async (event) => {
     return success
   }
 
-  setResponseStatus(event, 403)
+  // setResponseStatus(event, 403)
+  event.res.status = 403
   return {
     code: 401,
     msg: '用户名或密码错误',

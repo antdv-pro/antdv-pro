@@ -1,7 +1,8 @@
 import dayjs from 'dayjs'
 import { cloneDeep } from 'lodash-es'
+import { defineEventHandler } from 'h3'
 
-export default eventHandler(async (_event) => {
+export default defineEventHandler(async (_event) => {
   const dataList = [
     {
       title: 'Aipay',
@@ -59,7 +60,7 @@ export default eventHandler(async (_event) => {
     },
   ]
 
-  const data = []
+  const data: any[] = []
 
   // 数据复制
   for (let i = 0; i < 1000; i++) {

@@ -1,5 +1,8 @@
-export default eventHandler((event) => {
-  const token = getHeader(event, 'Authorization')
+import { defineEventHandler } from 'h3'
+
+export default defineEventHandler((event) => {
+  const token = event.req.headers.get('Authorization')
+  // eslint-disable-next-line node/prefer-global/buffer
   const username = Buffer.from(token, 'base64').toString('utf-8')
   if (!token) {
     return {
