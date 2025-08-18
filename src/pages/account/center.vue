@@ -128,7 +128,7 @@ const teamData = ref<ITeamDataItem[]>([
               @blur="handleInputConfirm"
               @keyup.enter="handleInputConfirm"
             />
-            <a-tag v-else style="background: #fff; border-style: dashed" @click="showInput">
+            <a-tag v-else style="border-style: dashed" @click="showInput">
               <PlusOutlined />
             </a-tag>
           </div>
