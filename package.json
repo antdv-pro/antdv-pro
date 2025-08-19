@@ -76,7 +76,7 @@
     "picocolors": "^1.1.1",
     "treeify": "^1.1.0",
     "ts-node": "^10.9.2",
-    "typescript": "~5.5.4",
+    "typescript": "~5.8.0",
     "unocss": "^66.4.2",
     "unocss-preset-chinese": "^0.3.3",
     "unocss-preset-ease": "^0.0.3",
