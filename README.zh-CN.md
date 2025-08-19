@@ -47,7 +47,7 @@ AntdvPro是一个基于Vue3、Vite4、ant-design-vue4、Pinia、UnoCSS和Typescr
 
 QQ群: 申请微信群
 
-微信: [aibayanyu2022](https://u.wechat.com/MASIsAa8353Hi4e59-aBPaA)
+微信: 已经被广告闹麻了自己控制台 Console解密 atob("YWliYXlhbnl1MjAyMg==") 再有广告就对不起大家了，gitee删库不做gitee仓库了
 
 Discord: [discord](https://discord.gg/tPb4G6gXmm)
 

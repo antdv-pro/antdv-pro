@@ -111,10 +111,9 @@ export default ({ mode }: ConfigEnv): UserConfig => {
         // },
       },
     },
-    // @ts-expect-error this is vitest config
-    test: {
-      globals: true,
-      environment: 'jsdom',
-    },
+    // test: {
+    //   globals: true,
+    //   environment: 'jsdom',
+    // },
   }
 }
