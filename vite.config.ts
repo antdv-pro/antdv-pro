@@ -97,6 +97,22 @@ export default ({ mode }: ConfigEnv): UserConfig => {
           },
         },
       },
+      rolldownOptions: {
+        output: {
+          advancedChunks: {
+            groups: [
+              {
+                test: /[\\/]node_modules[\\/](vue|vue-router|pinia|vue-i18n|@vueuse[\\/]core)[\\/]/,
+                name: 'vue',
+              },
+              {
+                test: /[\\/]node_modules[\\/](ant-design-vue|@ant-design[\\/]icons-vue|dayjs)[\\/]/,
+                name: 'antd',
+              },
+            ],
+          },
+        },
+      },
     },
     server: {
       port: 6678,
