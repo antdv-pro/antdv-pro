@@ -1,6 +1,30 @@
 # Changelog
 
 
+## v1.4.0
+
+[compare changes](https://github.com/antdv-pro/antdv-pro/compare/v1.3.2...v1.4.0)
+
+### 🚀 Enhancements
+
+- Use mock-h3 replace nitro ([33e1ff7](https://github.com/antdv-pro/antdv-pro/commit/33e1ff7))
+
+### 🩹 Fixes
+
+- The newly added tag theme is not working on the dark background of the personal center ([27cb016](https://github.com/antdv-pro/antdv-pro/commit/27cb016))
+
+### 🏡 Chore
+
+- **release:** V1.3.2 ([71529e3](https://github.com/antdv-pro/antdv-pro/commit/71529e3))
+- I18n ally ext's  config compatibility，remove vite v6 invalid opts ([f995df2](https://github.com/antdv-pro/antdv-pro/commit/f995df2))
+- Use rolldown-vite build project ([91e9091](https://github.com/antdv-pro/antdv-pro/commit/91e9091))
+
+### ❤️ Contributors
+
+- Aibayanyu20 <aibayanyu@qq.com>
+- ZhouWei <1244620067@qq.com>
+- 阿鸡艾克斯蒙 <dosicker@gmail.com>
+
 ## v1.3.2
 
 [compare changes](https://github.com/antdv-pro/antdv-pro/compare/v1.3.1...v1.3.2)
