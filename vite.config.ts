@@ -1,4 +1,5 @@
 /// <reference types="vitest" />
+
 import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import * as process from 'node:process'
@@ -82,10 +83,17 @@ export default ({ mode }: ConfigEnv): UserConfig => {
       outDir: OUTPUT_DIR,
       rollupOptions: {
         output: {
-          manualChunks: {
-            vue: ['vue', 'vue-router', 'pinia', 'vue-i18n', '@vueuse/core'],
-            antd: ['ant-design-vue', '@ant-design/icons-vue', 'dayjs'],
-            // lodash: ['loadsh-es'],
+          advancedChunks: {
+            groups: [
+              {
+                test: /[\\/]node_modules[\\/](vue|vue-router|pinia|vue-i18n|@vueuse[\\/]core)[\\/]/,
+                name: 'vue',
+              },
+              {
+                test: /[\\/]node_modules[\\/](ant-design-vue|@ant-design[\\/]icons-vue|dayjs)[\\/]/,
+                name: 'antd',
+              },
+            ],
           },
         },
       },
@@ -103,6 +111,7 @@ export default ({ mode }: ConfigEnv): UserConfig => {
         // },
       },
     },
+    // @ts-expect-error this is vitest config
     test: {
       globals: true,
       environment: 'jsdom',
