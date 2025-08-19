@@ -1,3 +1,5 @@
+import { defineEventHandler } from 'h3'
+
 const menuData = [
   {
     id: 2,
@@ -460,8 +462,8 @@ export const accessMenuData = [
 
 ]
 
-export default eventHandler((event) => {
-  const token = getHeader(event, 'Authorization')
+export default defineEventHandler((event) => {
+  const token = event.req.headers.get('Authorization')
   // eslint-disable-next-line node/prefer-global/buffer
   const username = Buffer.from(token as any, 'base64').toString('utf-8')
   return {

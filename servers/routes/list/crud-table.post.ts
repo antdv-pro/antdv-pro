@@ -1,4 +1,6 @@
-export default eventHandler(async (_event) => {
+import { defineEventHandler, readBody } from 'h3'
+
+export default defineEventHandler(async (_event) => {
   const body = await readBody(_event)
 
   const dataList = [

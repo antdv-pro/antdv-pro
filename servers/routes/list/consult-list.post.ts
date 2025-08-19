@@ -1,4 +1,5 @@
 import dayjs from 'dayjs'
+import { defineEventHandler, readBody } from 'h3'
 
 enum STATUS {
   OFF = '0',
@@ -7,8 +8,8 @@ enum STATUS {
   ERROR = '3',
 }
 
-export default eventHandler(async (_event) => {
-  const body = await readBody(_event)
+export default defineEventHandler(async (_event) => {
+  const body = (await readBody(_event)) as { name?: string }
 
   const dataList = [
     {
