@@ -66,11 +66,13 @@ function errorHandler(error: AxiosError): Promise<any> {
        * 这里处理清空用户信息和token的逻辑，后续扩展
        */
       token.value = null
+
+      const { fullPath, query: { redirect } } = router.currentRoute.value
       router
         .push({
           path: '/login',
           query: {
-            redirect: router.currentRoute.value.fullPath,
+            redirect: redirect || fullPath,
           },
         })
         .then(() => {})
