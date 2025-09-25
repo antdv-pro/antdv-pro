@@ -1,5 +1,5 @@
-import { theme } from 'ant-design-vue'
 import type { GlobalToken } from 'ant-design-vue/es/theme'
+import { theme } from 'ant-design-vue'
 
 export const useAntdToken = createSharedComposable(() => {
   const { token: antdToken } = theme.useToken()

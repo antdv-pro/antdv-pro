@@ -5,26 +5,26 @@ on:
     branches:
       - main
 jobs:
-    DEPLOY:
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v3
-        - uses: pnpm/action-setup@v2
-        - uses: actions/setup-node@v3
-          with:
-            node-version: 20.x
-            cache: pnpm
+  DEPLOY:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20.x
+          cache: pnpm
 
-        - name: Install
-          run: pnpm install --no-frozen-lockfile
+      - name: Install
+        run: pnpm install --no-frozen-lockfile
 
-        - name: Build
-          run: pnpm run build
+      - name: Build
+        run: pnpm run build
 
-        - name: Deploy
-          uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-          with:
-              server: ${{ secrets.FTP_HOST }} # e.g. ftp.host.com or sftp.host.com (without ftp:// or ftps://)
-              username: ${{ secrets.FTP_USERNAME }} # FTP username
-              password: ${{ secrets.FTP_PASSWORD }} # FTP password
-              local-dir: dist/ # optional, local path, default is: dist
+      - name: Deploy
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_HOST }} # e.g. ftp.host.com or sftp.host.com (without ftp:// or ftps://)
+          username: ${{ secrets.FTP_USERNAME }} # FTP username
+          password: ${{ secrets.FTP_PASSWORD }} # FTP password
+          local-dir: dist/ # optional, local path, default is: dist

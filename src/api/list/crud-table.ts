@@ -24,7 +24,7 @@ export async function deleteApi(id: string | number) {
   return useDelete(`/list/${id}`)
 }
 
-export type{
-  CrudTableParams,
+export type {
   CrudTableModel,
+  CrudTableParams,
 }

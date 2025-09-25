@@ -1,13 +1,13 @@
+import type { App } from 'vue'
 import { createPinia } from 'pinia'
 import { createApp } from 'vue'
-import type { App } from 'vue'
+import router from '~/router'
 import Root from './App.vue'
-import { setupI18n } from './locales'
 import {
   setupAccessDirective,
   setupLoadingDirective,
 } from './directive'
-import router from '~/router'
+import { setupI18n } from './locales'
 import '~/router/router-guard'
 import 'ant-design-vue/dist/reset.css'
 import '~/assets/styles/reset.css'

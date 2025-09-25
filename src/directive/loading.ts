@@ -1,6 +1,6 @@
 import type { App, Directive } from 'vue'
-import { useLoading } from '@/composables/base-loading'
 import BaseLoading from '@/components/base-loading/index.vue'
+import { useLoading } from '@/composables/base-loading'
 
 const loadingDirective: Directive = {
   mounted(el, bind) {

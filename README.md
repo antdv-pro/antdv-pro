@@ -1,6 +1,5 @@
 <div align="center"> <a href="https://github.com/antdv-pro/antdv-pro"> <img alt="VbenAdmin Logo" width="200" height="200" src="./public/logo.svg"> </a> <br> <br>
 
-
 <h1>Antdv Pro</h1>
 
 </div>
@@ -10,11 +9,9 @@
 
 **English** | [简体中文](./README.zh-CN.md)
 
-
 ## Introduction
 
 AntdvPro is a complete set of enterprise-level mid-backend front-end/design solutions based on Vue3, Vite4, ant-design-vue4, Pinia, UnoCSS and Typescript. It refers to the design pattern of Ali react version antd-pro, using the latest and most popular The front-end technology stack has built-in dynamic routing, multi-theme, multi-layout and other functions, which can help you quickly build enterprise-level mid-background product prototypes.
-
 
 ## Features
 
@@ -29,7 +26,6 @@ AntdvPro is a complete set of enterprise-level mid-backend front-end/design solu
 * Theme: The design specifications of antd-pro of the react version are used, and a set of theme modes based on vue are developed. On this basis, some new functions are added to meet various different needs as much as possible.
 * Request function: Based on axios, a set of request functions with complete types and some basic interceptor encapsulations are encapsulated. You only need to make corresponding implementation adjustments according to the requirements to meet the different needs of various projects.
 * Mobile compatibility: We have tried our best to make the basic framework compatible with the mobile terminal mode, but because our main goal is the enterprise-level mid-background product, we have not made too much adaptation to the mobile terminal. If your project needs to adapt to the mobile terminal, you can refer to our code for corresponding adjustments.
-
 
 ## Preview
 
@@ -50,7 +46,6 @@ Wechat: aibayanyu2022
 Wechat Group: Add author WeChat
 
 Discord: [discord](https://discord.gg/tPb4G6gXmm)
-
 
 ## Useage
 
@@ -75,7 +70,6 @@ pnpm dev
 ## Contribute
 
 We are very welcome to have you participate in our open source project.
-
 
 **Pull Request:**
 

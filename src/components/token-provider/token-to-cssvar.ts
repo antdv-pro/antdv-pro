@@ -1,6 +1,6 @@
 import type { GlobalToken } from 'ant-design-vue/es/theme'
-import { kebabCase } from 'lodash'
 import { canUseDom, updateCSS } from '@v-c/utils'
+import { kebabCase } from 'lodash'
 
 function formatKey(key: string, prefixCls: string) {
   return `${prefixCls}${kebabCase(key)}`

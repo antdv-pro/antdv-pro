@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { HeatmapLayer, Mapbox, PointLayer, Scene } from '@antv/l7'
-import mapGrid from './map-grid.ts'
 import mapData from './map-data.ts'
+import mapGrid from './map-grid.ts'
 
 let scene: Scene
 let layer: HeatmapLayer
@@ -108,9 +108,9 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped lang="less">
- #map{
-   position: relative;
-   width: 100%;
-   height: 452px;
- }
+ #map {
+  position: relative;
+  width: 100%;
+  height: 452px;
+}
 </style>

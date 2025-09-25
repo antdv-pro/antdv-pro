@@ -1,63 +1,63 @@
-.ant-pro-sider{
-  .ant-layout-sider-children{
+.ant-pro-sider {
+  .ant-layout-sider-children {
     display: flex;
     flex-direction: column;
     height: 100%;
   }
 
-  &-fixed{
-    position: fixed!important;
+  &-fixed {
+    position: fixed !important;
     top: 0;
     left: 0;
     height: 100%;
     z-index: 100;
-    box-shadow: 2px 0 8px 0 rgba(29,35,41,.05);
+    box-shadow: 2px 0 8px 0 rgba(29, 35, 41, 0.05);
   }
 
-  &-menu{
+  &-menu {
     position: relative;
     z-index: 10;
     min-height: 100%;
     border-inline-end: none !important;
   }
 
-  &-collapsed-button{
-    border-top: 1px solid rgba(0,0,0,.06);
+  &-collapsed-button {
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
   }
 
-  &-collapsed-button-inverted{
+  &-collapsed-button-inverted {
     border-top: 1px solid rgba(143, 132, 117, 0.06);
   }
 
-  &-light{
-    .ant-menu-light{
-      border-right-color:  transparent;
+  &-light {
+    .ant-menu-light {
+      border-right-color: transparent;
     }
   }
 
-  &-logo{
+  &-logo {
     position: relative;
     display: flex;
     align-items: center;
     padding: 16px 24px;
     cursor: pointer;
-    transition: padding .3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition: padding 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 
-    >a{
-      display:flex;
+    > a {
+      display: flex;
       align-items: center;
       justify-content: center;
       min-height: 32px;
       width: 100%;
     }
 
-    img{
+    img {
       display: inline-block;
       height: 32px;
       vertical-align: middle;
     }
 
-    h1{
+    h1 {
       display: inline-block;
       height: 32px;
       margin: 0 0 0 12px;
@@ -65,7 +65,7 @@
       font-size: 18px;
       line-height: 32px;
       vertical-align: middle;
-      animation: pro-layout-title-hide .3s;
+      animation: pro-layout-title-hide 0.3s;
       width: calc(100% - 32px);
       overflow: hidden;
       white-space: nowrap;
@@ -73,21 +73,20 @@
     }
   }
 
-  &-logo-dark{
+  &-logo-dark {
     background: #001529;
-    h1{
-        color: rgba(255, 255, 255, 0.65);
+    h1 {
+      color: rgba(255, 255, 255, 0.65);
     }
   }
 
-  &-collapsed{
+  &-collapsed {
     padding: 16px 8px;
   }
 }
 
-
 [data-theme='dark'] .ant-pro-sider {
-  &-collapsed-button{
+  &-collapsed-button {
     border-top: 1px solid rgba(143, 132, 117, 0.06);
   }
 
@@ -96,22 +95,20 @@
   }
 }
 
-
-
 @keyframes pro-layout-title-hide {
   0% {
-      display: none;
-      opacity: 0
+    display: none;
+    opacity: 0;
   }
 
   80% {
-      display: none;
-      opacity: 0
+    display: none;
+    opacity: 0;
   }
 
   to {
-      display: unset;
-      opacity: 1
+    display: unset;
+    opacity: 1;
   }
 }
 

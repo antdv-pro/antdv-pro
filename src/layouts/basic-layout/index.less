@@ -1,27 +1,27 @@
-.ant-pro-basicLayout{
+.ant-pro-basicLayout {
   display: flex;
   flex-direction: column;
   width: 100%;
   min-height: 100%;
-  .ant-layout{
+  .ant-layout {
     background: #f0f2f5;
   }
 
-  &-content{
+  &-content {
     // position: relative;
     margin: 24px;
     display: flex;
 
-    &-fluid{
+    &-fluid {
       width: 100%;
     }
 
-    &-fixed{
+    &-fixed {
       width: 1200px;
       max-width: 1200px;
       margin: 0 auto;
 
-      &:has(.ant-pro-page-container){
+      &:has(.ant-pro-page-container) {
         width: 100%;
         max-width: unset;
         margin: unset;
@@ -30,9 +30,8 @@
   }
 }
 
-[data-theme='dark']{
-  .ant-layout{
+[data-theme='dark'] {
+  .ant-layout {
     background: rgb(42, 44, 44);
   }
 }
-

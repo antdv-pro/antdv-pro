@@ -1,7 +1,7 @@
-import { readdir, stat } from 'node:fs'
-import type { Plugin, ResolvedConfig } from 'vite'
-import dayjs from 'dayjs'
 import type { Dayjs } from 'dayjs'
+import type { Plugin, ResolvedConfig } from 'vite'
+import { readdir, stat } from 'node:fs'
+import dayjs from 'dayjs'
 import duration from 'dayjs/plugin/duration'
 import pkg from 'picocolors'
 
@@ -10,6 +10,7 @@ dayjs.extend(duration)
 
 const fileListTotal: number[] = []
 
+// eslint-disable-next-line ts/no-unsafe-function-type
 function recursiveDirectory(folder: string, callback: Function): void {
   readdir(folder, (err, files: string[]) => {
     if (err)
@@ -81,8 +82,8 @@ export function viteBuildInfo(name: string): Plugin {
                 `恭喜打包完成🎉（总用时${dayjs
                   .duration(endTime.diff(startTime))
                   .format('mm分ss秒')}，打包后的大小为${formatBytes(
-                    sum(fileListTotal),
-                  )}）`,
+                  sum(fileListTotal),
+                )}）`,
               ),
             ),
           )

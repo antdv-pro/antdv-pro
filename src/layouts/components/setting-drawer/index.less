@@ -1,4 +1,4 @@
-.ant-pro-drawer-setting-handle{
+.ant-pro-drawer-setting-handle {
   position: fixed;
   inset-block-start: 240px;
   inset-inline-end: 0px;
@@ -15,31 +15,29 @@
   cursor: pointer;
   pointer-events: auto;
 
-  &-icon{
+  &-icon {
     color: #fff;
   }
 
-  &-icon-dark{
-    color: #e5e0d8
+  &-icon-dark {
+    color: #e5e0d8;
   }
 }
 
-
-.ant-pro-drawer-setting-block-checkbox{
+.ant-pro-drawer-setting-block-checkbox {
   display: flex;
   min-height: 42px;
 
-
-  &-selectIcon{
+  &-selectIcon {
     position: absolute;
     right: 6px;
     bottom: 4px;
     font-weight: 700;
     font-size: 14px;
-    pointer-events: none
+    pointer-events: none;
   }
 
-  &-item{
+  &-item {
     position: relative;
     width: 44px;
     height: 36px;
@@ -47,120 +45,123 @@
     overflow: hidden;
     background-color: #f0f2f5;
     border-radius: 4px;
-    box-shadow: 0 1px 2.5px 0 rgba(0,0,0,.18);
+    box-shadow: 0 1px 2.5px 0 rgba(0, 0, 0, 0.18);
     cursor: pointer;
 
-    &::before{
+    &::before {
       position: absolute;
       top: 0;
       left: 0;
       width: 33%;
       height: 100%;
       background-color: #fff;
-      content: "";
+      content: '';
     }
 
-    &::after{
+    &::after {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 25%;
       background-color: #fff;
-      content: ""
+      content: '';
     }
 
-    &-dark{
-      background-color: rgba(0,21,41,.85);
+    &-dark {
+      background-color: rgba(0, 21, 41, 0.85);
 
-      &::before{
-        background-color: rgba(0,21,41,.65);
-        content: "";
+      &::before {
+        background-color: rgba(0, 21, 41, 0.65);
+        content: '';
       }
 
-      &::after{
-        background-color: rgba(0,21,41,.85);
+      &::after {
+        background-color: rgba(0, 21, 41, 0.85);
       }
     }
 
-    &-light{
-      &::before{
+    &-light {
+      &::before {
         background-color: #fff;
-        content: "";
+        content: '';
       }
 
-      &::after{
-        background-color: #fff
+      &::after {
+        background-color: #fff;
       }
     }
 
-    &-inverted::before,&-side::before{
+    &-inverted::before,
+    &-side::before {
       z-index: 1;
       background-color: #001529;
-      content: ""
+      content: '';
     }
 
-    &-inverted::after,&-side::after{
-      background-color: #fff
-    }
-
-    &-top::before{
-      background-color: transparent;
-      content: ""
-    }
-
-    &-top::after{
-      background-color: #001529;
-    }
-
-    &-mix::before{
+    &-inverted::after,
+    &-side::after {
       background-color: #fff;
-      content: ""
     }
 
-    &-mix::after{
+    &-top::before {
+      background-color: transparent;
+      content: '';
+    }
+
+    &-top::after {
       background-color: #001529;
     }
 
+    &-mix::before {
+      background-color: #fff;
+      content: '';
+    }
+
+    &-mix::after {
+      background-color: #001529;
+    }
   }
 
-  &-theme-item{
+  &-theme-item {
     background: rgb(42, 44, 44);
     box-shadow: rgba(13, 13, 13, 0.18) 0px 1px 2.5px 0px;
 
-    &-light{
-      &::before,&::after{
+    &-light {
+      &::before,
+      &::after {
         background-color: rgb(36, 37, 37);
       }
     }
 
-    &-dark{
-      &::before,&::after{
-       background-color: rgba(15, 28, 41, 0.65);
+    &-dark {
+      &::before,
+      &::after {
+        background-color: rgba(15, 28, 41, 0.65);
       }
     }
 
-    &-side::before,&-inverted::before{
-      background-color: rgb(15, 28, 41); 
+    &-side::before,
+    &-inverted::before {
+      background-color: rgb(15, 28, 41);
     }
 
-    &-side::after,&-inverted::after{
+    &-side::after,
+    &-inverted::after {
       background-color: rgb(36, 37, 37);
     }
 
-    &-mix::before{
+    &-mix::before {
       background-color: rgb(36, 37, 37);
     }
-
   }
 }
 
-
-.ant-pro-drawer-setting-theme-color{
+.ant-pro-drawer-setting-theme-color {
   margin-top: 16px;
   overflow: hidden;
 
-  &-block{
+  &-block {
     float: left;
     width: 20px;
     height: 20px;
@@ -172,14 +173,13 @@
     align-items: center;
     justify-content: center;
     border-radius: 2px;
-    cursor: pointer
+    cursor: pointer;
   }
-
 }
 
-.ant-pro-drawer-setting-content{
-  .ant-list{
-    &-item{
+.ant-pro-drawer-setting-content {
+  .ant-list {
+    &-item {
       padding-inline: 0;
       padding-block: 8px;
     }

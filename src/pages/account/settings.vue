@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import basicSetting from './components/basic-setting.vue'
-import securitySetting from './components/security-setting.vue'
 import accountSetting from './components/account-setting.vue'
+import basicSetting from './components/basic-setting.vue'
 import messageSetting from './components/message-setting.vue'
+import securitySetting from './components/security-setting.vue'
 
 const { t } = useI18n()
 const selectedKeys = ref(['1'])

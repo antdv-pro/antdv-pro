@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import headerInfo from './header-info.vue'
+import logCard from './log-card.vue'
+import phoneDataCard from './phone-data.vue'
 import stepCard from './step-card.vue'
 import userInfoCard from './user-info.vue'
-import phoneDataCard from './phone-data.vue'
-import logCard from './log-card.vue'
 </script>
 
 <template>

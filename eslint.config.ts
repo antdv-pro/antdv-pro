@@ -1,6 +1,9 @@
 import antfu from '@antfu/eslint-config'
 
 export default antfu({
+  formatters: {
+    css: true,
+  },
   ignores: [
     'types/auto-imports.d.ts',
     'types/components.d.ts',

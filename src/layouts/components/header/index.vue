@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { CSSProperties } from 'vue'
-import GlobalHeader from '../global-header/index.vue'
 import { useLayoutState } from '../../basic-layout/context'
+import GlobalHeader from '../global-header/index.vue'
 
 const {
   headerHeight,

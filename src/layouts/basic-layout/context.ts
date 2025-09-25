@@ -1,6 +1,6 @@
-import { runEvent } from '@v-c/utils'
 import type { SelectEventHandler } from 'ant-design-vue/es/menu/src/interface'
 import type { Key, MenuData, MenuDataItem, ProLayoutProps } from './typing'
+import { runEvent } from '@v-c/utils'
 
 export interface ProLayoutProviderMethods {
   handleCollapsed?: (collapsed: boolean) => void

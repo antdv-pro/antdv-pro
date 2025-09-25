@@ -103,8 +103,8 @@ const praiseList = shallowRef([
 </template>
 
 <style lang="less">
-.category-other-item{
-  .ant-form-item{
+.category-other-item {
+  .ant-form-item {
     margin-bottom: 0;
   }
 }

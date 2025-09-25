@@ -1,13 +1,13 @@
-import path from 'path'
+import path from 'node:path'
 import { theme } from 'ant-design-vue'
-import lodash from 'lodash'
 import fsExtra from 'fs-extra'
+import lodash from 'lodash'
 
 const { defaultAlgorithm, defaultSeed } = theme
 
 const mapToken = defaultAlgorithm(defaultSeed)
 
-const formatKey = (key: string, prefixCls: string) => {
+function formatKey(key: string, prefixCls: string) {
   return `${prefixCls}${lodash.kebabCase(key)}`
 }
 const prefixCls = '--pro-ant-'
@@ -28,6 +28,8 @@ for (const key in mapToken) {
   }
 }
 
+// eslint-disable-next-line node/prefer-global/process
 fsExtra.outputFile(path.resolve(process.cwd(), './themes/antd-uno-theme.json'), JSON.stringify(variables, null, 2))
 
+// eslint-disable-next-line node/prefer-global/process
 fsExtra.outputFile(path.resolve(process.cwd(), './themes/color-theme-var.md'), colorTheme)

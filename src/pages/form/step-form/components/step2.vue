@@ -89,11 +89,11 @@ function prevStep() {
 
 <style lang="less" scoped>
   .stepFormText {
-    margin-bottom: 24px;
+  margin-bottom: 24px;
 
-    .ant-form-item-label,
-    .ant-form-item-control {
-      line-height: 22px;
-    }
+  .ant-form-item-label,
+  .ant-form-item-control {
+    line-height: 22px;
   }
+}
 </style>

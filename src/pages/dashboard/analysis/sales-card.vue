@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Column } from '@antv/g2plot'
 import type { Key } from 'ant-design-vue/es/_util/type'
+import { Column } from '@antv/g2plot'
 import dayjs from 'dayjs'
 
 defineProps({
@@ -272,7 +272,7 @@ onBeforeUnmount(() => {
     &::before,
     &::after {
       display: table;
-      content: " ";
+      content: ' ';
     }
     &::after {
       clear: both;

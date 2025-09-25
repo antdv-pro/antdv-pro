@@ -1,6 +1,8 @@
 .slide-fadein-up-enter-active,
 .slide-fadein-up-leave-active {
-  transition: opacity 0.3s, transform 0.4s;
+  transition:
+    opacity 0.3s,
+    transform 0.4s;
 }
 
 .slide-fadein-up-enter-from {
@@ -15,7 +17,10 @@
 
 .slide-fadein-right-enter-active,
 .slide-fadein-right-leave-active {
-  transition: opacity 0.3s, transform 0.3s, -webkit-transform 0.3s;
+  transition:
+    opacity 0.3s,
+    transform 0.3s,
+    -webkit-transform 0.3s;
 }
 
 .slide-fadein-right-enter-from {
@@ -30,7 +35,9 @@
 
 .zoom-fadein-enter-active,
 .zoom-fadein-leave-active {
-  transition: transform 0.3s, opacity 0.3s ease-in-out;
+  transition:
+    transform 0.3s,
+    opacity 0.3s ease-in-out;
 }
 
 .zoom-fadein-enter-from {
