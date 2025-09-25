@@ -1,6 +1,28 @@
 # Changelog
 
 
+## v1.5.0
+
+[compare changes](https://github.com/antdv-pro/antdv-pro/compare/v1.4.0...v1.5.0)
+
+### 🚀 Enhancements
+
+- Update deps close #218 ([#218](https://github.com/antdv-pro/antdv-pro/issues/218))
+
+### 🔥 Performance
+
+- 优化路由拦截器中的errorHandler响应到401（鉴权失败）状态码时路由器追加返回redirect的问题 ([80bc908](https://github.com/antdv-pro/antdv-pro/commit/80bc908))
+
+### 🏡 Chore
+
+- Use rolldown options ([80a7a1f](https://github.com/antdv-pro/antdv-pro/commit/80a7a1f))
+- Change version ([c6b9bc6](https://github.com/antdv-pro/antdv-pro/commit/c6b9bc6))
+
+### ❤️ Contributors
+
+- Aibayanyu20 <aibayanyu@qq.com>
+- 阿鸡艾克斯蒙 <adiovo@163.com>
+
 ## v1.4.0
 
 [compare changes](https://github.com/antdv-pro/antdv-pro/compare/v1.3.2...v1.4.0)
