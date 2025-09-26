@@ -40,7 +40,8 @@
     "pinia": "^2.3.1",
     "vue": "^3.5.22",
     "vue-i18n": "^9.14.5",
-    "vue-router": "^4.5.1"
+    "vue-router": "^4.5.1",
+    "vxe-table": "^4.16.20"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^5.4.1",

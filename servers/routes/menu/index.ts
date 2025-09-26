@@ -447,6 +447,15 @@ const menuData = [
     keepAlive: true,
     locale: 'menu.menu4.menu2',
   },
+  {
+    id: 48,
+    parentId: 26,
+    path: '/list/vex-table',
+    component: '/list/vex-table',
+    title: 'Vex表格',
+    name: 'VexTable',
+    locale: 'menu.list.vex-table',
+  },
 ]
 
 export const accessMenuData = [

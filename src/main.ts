@@ -1,6 +1,7 @@
 import type { App } from 'vue'
 import { createPinia } from 'pinia'
 import { createApp } from 'vue'
+import VxeUITable from 'vxe-table'
 import router from '~/router'
 import Root from './App.vue'
 import {
@@ -8,8 +9,10 @@ import {
   setupLoadingDirective,
 } from './directive'
 import { setupI18n } from './locales'
+
 import '~/router/router-guard'
 import 'ant-design-vue/dist/reset.css'
+import 'vxe-table/lib/style.css'
 import '~/assets/styles/reset.css'
 import 'uno.css'
 
@@ -20,6 +23,7 @@ async function start() {
   await setupI18n(app)
   setupDirective(app)
   app.use(router)
+  app.use(VxeUITable)
   app.mount('#app')
   app.config.performance = true
 }
