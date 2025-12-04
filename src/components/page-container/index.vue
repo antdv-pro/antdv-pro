@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { isFunction } from '@v-c/utils'
 import type { VNodeChild } from 'vue'
-import { useLayoutMenuInject } from './context.ts'
+import { isFunction } from '@v-c/utils'
 import { useLayoutState } from '~/layouts/basic-layout/context'
+import { useLayoutMenuInject } from './context.ts'
 
 defineProps<{
   title?: string

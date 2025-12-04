@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import articleTab from './article-tab.vue'
 import applicationTab from './application-tab.vue'
+import articleTab from './article-tab.vue'
 import proTab from './pro-tab.vue'
 
 const { t } = useI18n()

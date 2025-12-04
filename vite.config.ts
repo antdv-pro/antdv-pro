@@ -1,10 +1,10 @@
 /// <reference types="vitest" />
 
-import { resolve } from 'node:path'
-import { fileURLToPath } from 'node:url'
-import * as process from 'node:process'
-import { loadEnv } from 'vite'
 import type { ConfigEnv, UserConfig } from 'vite'
+import { resolve } from 'node:path'
+import * as process from 'node:process'
+import { fileURLToPath } from 'node:url'
+import { loadEnv } from 'vite'
 import { createVitePlugins } from './plugins'
 import { OUTPUT_DIR } from './plugins/constants'
 

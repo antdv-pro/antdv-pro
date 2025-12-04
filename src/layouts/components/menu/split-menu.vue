@@ -25,11 +25,11 @@ const menuDataList = computed(() => menuData.value?.map(v => ({ ...omit(v, ['chi
 </template>
 
 <style lang="less">
-.ant-pro-sider-menu-header{
+.ant-pro-sider-menu-header {
   margin-left: 14px;
 }
-[data-theme='dark']{
-  .ant-pro-sider-menu-header{
+[data-theme='dark'] {
+  .ant-pro-sider-menu-header {
     background: transparent;
   }
 }

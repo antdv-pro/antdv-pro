@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import Header from '../components/header/index.vue'
-import SiderMenu from '../components/sider-menu/index.vue'
 import DrawerMenu from '../components/drawer-menu/index.vue'
+import GlobalFooter from '../components/global-footer/index.vue'
+import Header from '../components/header/index.vue'
 import Menu from '../components/menu/index.vue'
 import SplitMenu from '../components/menu/split-menu.vue'
-import GlobalFooter from '../components/global-footer/index.vue'
-import { proLayoutProps } from './typing'
+import SiderMenu from '../components/sider-menu/index.vue'
 import { useLayoutProvider } from './context'
+import { proLayoutProps } from './typing'
 
 defineOptions({
   name: 'BasicLayout',

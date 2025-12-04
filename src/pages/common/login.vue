@@ -1,12 +1,12 @@
 <script setup lang="ts">
+import type { LoginMobileParams, LoginParams } from '~@/api/common/login'
 import { AlipayCircleFilled, LockOutlined, MobileOutlined, TaobaoCircleFilled, UserOutlined, WeiboCircleFilled } from '@ant-design/icons-vue'
 import { delayTimer } from '@v-c/utils'
 import { AxiosError } from 'axios'
-import GlobalLayoutFooter from '~/layouts/components/global-footer/index.vue'
-import { loginApi } from '~/api/common/login'
-import { getQueryParam } from '~/utils/tools'
-import type { LoginMobileParams, LoginParams } from '~@/api/common/login'
 import pageBubble from '@/utils/page-bubble'
+import { loginApi } from '~/api/common/login'
+import GlobalLayoutFooter from '~/layouts/components/global-footer/index.vue'
+import { getQueryParam } from '~/utils/tools'
 
 const message = useMessage()
 const notification = useNotification()
@@ -297,11 +297,11 @@ onBeforeUnmount(() => {
   height: 100%;
   padding: 32px 0;
   overflow: auto;
-  background: inherit
+  background: inherit;
 }
 
 .ant-pro-form-login-header a {
-  text-decoration: none
+  text-decoration: none;
 }
 
 .ant-pro-form-login-title {
@@ -315,13 +315,13 @@ onBeforeUnmount(() => {
   width: 44px;
   height: 44px;
   margin-right: 16px;
-  vertical-align: top
+  vertical-align: top;
 }
 
 .ant-pro-form-login-desc {
   color: var(--text-color-1);
   font-size: 14px;
-  margin-left: 16px
+  margin-left: 16px;
 }
 
 .ant-pro-form-login-main-right {
@@ -332,12 +332,11 @@ onBeforeUnmount(() => {
 
   .ant-pro-form-login-other {
     line-height: 22px;
-    text-align: center
+    text-align: center;
   }
-
 }
 
-.ant-pro-form-login-main{
+.ant-pro-form-login-main {
   box-shadow: var(--c-shadow);
 }
 
@@ -347,41 +346,41 @@ onBeforeUnmount(() => {
   font-size: 24px;
   vertical-align: middle;
   cursor: pointer;
-  transition: color .3s;
+  transition: color 0.3s;
 
   &:hover {
     color: var(--pro-ant-color-primary);
   }
 }
 .login-media(@width:100%) {
-  .ant-pro-form-login-main{
+  .ant-pro-form-login-main {
     width: @width;
   }
-  .ant-pro-form-login-main-left{
+  .ant-pro-form-login-main-left {
     display: none;
   }
-  .ant-pro-form-login-main-right{
+  .ant-pro-form-login-main-right {
     width: 100%;
   }
-  .ant-pro-form-login-desc{
+  .ant-pro-form-login-desc {
     display: none;
   }
 }
-@media (min-width : 992px) {
-  .ant-pro-form-login-main-left{
+@media (min-width: 992px) {
+  .ant-pro-form-login-main-left {
     width: 700px;
   }
 }
-@media(min-width:768px) and (max-width:991px){
-  .ant-pro-login-divider{
+@media (min-width: 768px) and (max-width: 991px) {
+  .ant-pro-login-divider {
     display: none;
   }
-  .login-media(400px)
+  .login-media(400px);
 }
-@media screen and (max-width:767px) {
+@media screen and (max-width: 767px) {
   .login-media(350px);
 
-  .ant-pro-login-divider{
+  .ant-pro-login-divider {
     display: none;
   }
 }

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { Modal } from 'ant-design-vue'
-import { ColumnHeightOutlined, DownOutlined, PlusOutlined, ReloadOutlined, SettingOutlined, UpOutlined } from '@ant-design/icons-vue'
 import type { MenuProps, PaginationProps, TableProps } from 'ant-design-vue'
 import type { ConsultTableModel, ConsultTableParams } from '~@/api/list/table-list'
+import { ColumnHeightOutlined, DownOutlined, PlusOutlined, ReloadOutlined, SettingOutlined, UpOutlined } from '@ant-design/icons-vue'
+import { Modal } from 'ant-design-vue'
 import { deleteApi, getListApi } from '~@/api/list/table-list'
 
 const statusMap = {

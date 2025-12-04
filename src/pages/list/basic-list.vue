@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { Modal } from 'ant-design-vue'
 import { ExclamationCircleOutlined } from '@ant-design/icons-vue'
-import { createVNode } from 'vue'
+import { Modal } from 'ant-design-vue'
 import dayjs from 'dayjs'
+import { createVNode } from 'vue'
 import { getListApi } from '~@/api/list/basic-list'
 import VirtualList from '@/components/virtual-list/index.vue'
 

@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import type { CSSProperties } from 'vue'
+import type { RouteLocationNormalized } from 'vue-router'
 import {
   CloseOutlined,
   MoreOutlined,
   ReloadOutlined,
 } from '@ant-design/icons-vue'
-import type { RouteLocationNormalized } from 'vue-router'
 import { listenerRouteChange, removeRouteListener } from '~@/utils/route-listener'
 import { useLayoutState } from '~/layouts/basic-layout/context'
 
@@ -187,10 +187,9 @@ onUnmounted(() => {
 
 <style lang="less">
 .pro-ant-multi-tab {
-  transition: all .3s;
+  transition: all 0.3s;
   .ant-tabs-nav-operations {
     display: none !important;
   }
-
 }
 </style>

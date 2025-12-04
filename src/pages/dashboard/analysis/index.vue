@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import IntroduceRow from '~/pages/dashboard/analysis/introduce-row.vue'
-import SalesCard from '~/pages/dashboard/analysis/sales-card.vue'
 import TopSearch from '~/pages/dashboard/analysis/components/top-search.vue'
-import ProportionSales from '~/pages/dashboard/analysis/proportion-sales.vue'
+import IntroduceRow from '~/pages/dashboard/analysis/introduce-row.vue'
 import OfflineData from '~/pages/dashboard/analysis/offline-data.vue'
+import ProportionSales from '~/pages/dashboard/analysis/proportion-sales.vue'
+import SalesCard from '~/pages/dashboard/analysis/sales-card.vue'
 
 defineOptions({
   name: 'Analysis',

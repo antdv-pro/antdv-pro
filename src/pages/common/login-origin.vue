@@ -1,10 +1,10 @@
 <script setup lang="ts">
+import type { LoginMobileParams, LoginParams } from '~@/api/common/login'
 import { AlipayCircleFilled, LockOutlined, MobileOutlined, TaobaoCircleFilled, UserOutlined, WeiboCircleFilled } from '@ant-design/icons-vue'
 import { AxiosError } from 'axios'
-import GlobalLayoutFooter from '~/layouts/components/global-footer/index.vue'
 import { loginApi } from '~/api/common/login'
+import GlobalLayoutFooter from '~/layouts/components/global-footer/index.vue'
 import { getQueryParam } from '~/utils/tools'
-import type { LoginMobileParams, LoginParams } from '~@/api/common/login'
 
 const message = useMessage()
 const notification = useNotification()
@@ -217,7 +217,7 @@ async function submit() {
 </template>
 
 <style lang="less" scoped>
-.login-container{
+.login-container {
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -231,22 +231,22 @@ async function submit() {
   line-height: 44px;
 }
 
-.login-content{
+.login-content {
   flex: 1 1;
-  padding: 32px 0
+  padding: 32px 0;
 }
-.ant-pro-form-login-container{
+.ant-pro-form-login-container {
   display: flex;
   flex: 1 1;
   flex-direction: column;
   height: 100%;
   padding: 32px 0;
   overflow: auto;
-  background: inherit
+  background: inherit;
 }
 
 .ant-pro-form-login-top {
-  text-align: center
+  text-align: center;
 }
 
 .ant-pro-form-login-header {
@@ -254,11 +254,11 @@ async function submit() {
   align-items: center;
   justify-content: center;
   height: 44px;
-  line-height: 44px
+  line-height: 44px;
 }
 
 .ant-pro-form-login-header a {
-  text-decoration: none
+  text-decoration: none;
 }
 
 .ant-pro-form-login-title {
@@ -266,25 +266,25 @@ async function submit() {
   top: 2px;
   color: var(--text-color);
   font-weight: 600;
-  font-size: 33px
+  font-size: 33px;
 }
 
 .ant-pro-form-login-logo {
   width: 44px;
   height: 44px;
   margin-right: 16px;
-  vertical-align: top
+  vertical-align: top;
 }
 
 .ant-pro-form-login-logo img {
-  width: 100%
+  width: 100%;
 }
 
 .ant-pro-form-login-desc {
   margin-top: 12px;
   margin-bottom: 40px;
   color: var(--text-color-1);
-  font-size: 14px
+  font-size: 14px;
 }
 
 .ant-pro-form-login-main {
@@ -299,40 +299,40 @@ async function submit() {
   .ant-pro-form-login-other {
     margin-top: 24px;
     line-height: 22px;
-    text-align: left
+    text-align: left;
   }
 
-  .icon{
+  .icon {
     margin-left: 8px;
     color: var(--text-color-2);
     font-size: 24px;
     vertical-align: middle;
     cursor: pointer;
-    transition: color .3s;
+    transition: color 0.3s;
 
-    &:hover{
+    &:hover {
       color: var(--pro-ant-color-primary);
     }
   }
 }
 
-@media(min-width: 768px){
-  .login-container{
-    background-image:url(https://gw.alipayobjects.com/zos/rmsportal/TVYTbAXWheQpRcWDaDMu.svg);
+@media (min-width: 768px) {
+  .login-container {
+    background-image: url(https://gw.alipayobjects.com/zos/rmsportal/TVYTbAXWheQpRcWDaDMu.svg);
     background-repeat: no-repeat;
     background-position: center 110px;
     background-size: 100%;
   }
 
-  .login-content{
+  .login-content {
     padding: 32px 0 24px;
   }
 
-  .ant-pro-form-login-container{
-    padding:32px 0 24px;
+  .ant-pro-form-login-container {
+    padding: 32px 0 24px;
     background-repeat: no-repeat;
     background-position: center 110px;
-    background-size: 100%
+    background-size: 100%;
   }
 }
 </style>

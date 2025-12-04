@@ -2,7 +2,7 @@ name: Issue Close Require
 
 on:
   schedule:
-    - cron: "0 0 * * *"
+    - cron: '0 0 * * *'
 
 jobs:
   close-issues:
@@ -11,8 +11,8 @@ jobs:
       - name: need reproduce
         uses: actions-cool/issues-helper@v1.7
         with:
-          actions: 'close-issues'
-          labels: '🤔 Need Reproduce'
+          actions: close-issues
+          labels: 🤔 Need Reproduce
           inactive-day: 7
           body: |
             Since the issue was labeled with `Need Reproduce`, but no response in 7 days. This issue will be closed. If you have any questions, you can comment and reply.

@@ -1,9 +1,9 @@
 import type { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios'
 import axios from 'axios'
-import { AxiosLoading } from './loading'
-import { STORAGE_AUTHORIZE_KEY, useAuthorization } from '~/composables/authorization'
 import { ContentTypeEnum, RequestEnum } from '~#/http-enum'
+import { STORAGE_AUTHORIZE_KEY, useAuthorization } from '~/composables/authorization'
 import router from '~/router'
+import { AxiosLoading } from './loading'
 
 export interface ResponseBody<T = any> {
   code: number
@@ -66,11 +66,13 @@ function errorHandler(error: AxiosError): Promise<any> {
        * 这里处理清空用户信息和token的逻辑，后续扩展
        */
       token.value = null
+
+      const { fullPath, query: { redirect } } = router.currentRoute.value
       router
         .push({
           path: '/login',
           query: {
-            redirect: router.currentRoute.value.fullPath,
+            redirect: redirect || fullPath,
           },
         })
         .then(() => {})
@@ -116,34 +118,33 @@ function instancePromise<R = any, T = any>(options: AxiosOptions<T> & RequestCon
       resolve(res as any)
     }).catch((e: Error | AxiosError) => {
       reject(e)
+    }).finally(() => {
+      if (loading)
+        axiosLoading.closeLoading()
     })
-      .finally(() => {
-        if (loading)
-          axiosLoading.closeLoading()
-      })
   })
 }
-export function useGet< R = any, T = any>(url: string, params?: T, config?: AxiosRequestConfig & RequestConfigExtra): Promise<ResponseBody<R>> {
+export function useGet<R = any, T = any>(url: string, params?: T, config?: AxiosRequestConfig & RequestConfigExtra): Promise<ResponseBody<R>> {
   const options = {
     url,
     params,
     method: RequestEnum.GET,
     ...config,
   }
-  return instancePromise< R, T >(options)
+  return instancePromise<R, T>(options)
 }
 
-export function usePost< R = any, T = any>(url: string, data?: T, config?: AxiosRequestConfig & RequestConfigExtra): Promise<ResponseBody<R>> {
+export function usePost<R = any, T = any>(url: string, data?: T, config?: AxiosRequestConfig & RequestConfigExtra): Promise<ResponseBody<R>> {
   const options = {
     url,
     data,
     method: RequestEnum.POST,
     ...config,
   }
-  return instancePromise< R, T >(options)
+  return instancePromise<R, T>(options)
 }
 
-export function usePut< R = any, T = any>(url: string, data?: T, config?: AxiosRequestConfig & RequestConfigExtra): Promise<ResponseBody<R>> {
+export function usePut<R = any, T = any>(url: string, data?: T, config?: AxiosRequestConfig & RequestConfigExtra): Promise<ResponseBody<R>> {
   const options = {
     url,
     data,
@@ -153,7 +154,7 @@ export function usePut< R = any, T = any>(url: string, data?: T, config?: AxiosR
   return instancePromise<R, T>(options)
 }
 
-export function useDelete< R = any, T = any>(url: string, data?: T, config?: AxiosRequestConfig & RequestConfigExtra): Promise<ResponseBody<R>> {
+export function useDelete<R = any, T = any>(url: string, data?: T, config?: AxiosRequestConfig & RequestConfigExtra): Promise<ResponseBody<R>> {
   const options = {
     url,
     data,

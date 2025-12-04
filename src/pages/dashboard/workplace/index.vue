@@ -494,7 +494,7 @@ onBeforeUnmount(() => {
     line-height: 22px;
     .contentTitle {
       margin-bottom: 12px;
-      color:var(--pro-ant-color-text);
+      color: var(--pro-ant-color-text);
       font-weight: 500;
       font-size: 20px;
       line-height: 28px;
@@ -519,7 +519,7 @@ onBeforeUnmount(() => {
     }
     > p {
       margin: 0;
-      color:var(--pro-ant-color-text);
+      color: var(--pro-ant-color-text);
       font-size: 30px;
       line-height: 38px;
       > span {
@@ -577,7 +577,7 @@ onBeforeUnmount(() => {
       display: inline-block;
       height: 24px;
       margin-left: 12px;
-      color:var(--pro-ant-color-text);
+      color: var(--pro-ant-color-text);
       font-size: 14px;
       line-height: 24px;
       vertical-align: top;

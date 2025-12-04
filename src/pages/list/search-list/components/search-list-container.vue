@@ -32,11 +32,11 @@ function handleChangePage(key: any) {
 </template>
 
 <style lang="less">
-.search-list-container{
-  .ant-tabs-nav{
+.search-list-container {
+  .ant-tabs-nav {
     margin-bottom: 0;
   }
-  .ant-tabs-nav::before{
+  .ant-tabs-nav::before {
     border-bottom: none;
   }
 }

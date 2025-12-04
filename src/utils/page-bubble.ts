@@ -17,7 +17,7 @@ const bubble: {
   requestId: null,
 }
 
-export const init = function (canvasInstance: HTMLCanvasElement) {
+export function init(canvasInstance: HTMLCanvasElement) {
   if (!bubble || !canvasInstance)
     throw new Error('no canvasInstance')
   bubble.width = window.innerWidth

@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { pick } from '@v-c/utils'
+import { animationNameList } from '~@/config/default-setting'
 import BasicLayout from './basic-layout/index.vue'
+import RouteView from './components/route-view.vue'
 import SettingDrawer from './components/setting-drawer/index.vue'
 import MultiTab from './multi-tab/index.vue'
-import RouteView from './components/route-view.vue'
-import { animationNameList } from '~@/config/default-setting'
 
 defineOptions({
   name: 'ProLayout',

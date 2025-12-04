@@ -1,5 +1,5 @@
-import { isUrl } from '@v-c/utils'
 import type { MenuData, MenuDataItem } from '~@/layouts/basic-layout/typing'
+import { isUrl } from '@v-c/utils'
 import router from '~@/router'
 import { deepFind } from '~@/utils/tree'
 

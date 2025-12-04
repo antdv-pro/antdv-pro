@@ -39,8 +39,8 @@ export async function deleteApi(id: string | number) {
   return useDelete(`/list/${id}`)
 }
 
-export type{
+export type {
+  ConsultTableModel,
   ConsultTableParams,
   STATUS,
-  ConsultTableModel,
 }

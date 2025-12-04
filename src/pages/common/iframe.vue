@@ -23,8 +23,8 @@ function finishLoading() {
 </template>
 
 <style>
-.ant-pro-iframe-wrap{
-  .ant-spin-container{
+.ant-pro-iframe-wrap {
+  .ant-spin-container {
     height: 100% !important;
     width: 100% !important;
     display: flex;

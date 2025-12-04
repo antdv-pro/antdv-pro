@@ -48,7 +48,7 @@ function finish() {
 
 <style lang="less" scoped>
   .steps {
-    max-width: 750px;
-    margin: 16px auto;
-  }
+  max-width: 750px;
+  margin: 16px auto;
+}
 </style>
