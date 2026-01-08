@@ -85,7 +85,7 @@
     "unplugin-auto-import": "^19.3.0",
     "unplugin-config": "^0.1.5",
     "unplugin-vue-components": "^29.1.0",
-    "vite": "npm:rolldown-vite@7.1.13",
+    "vite": "8.0.0-beta.0",
     "vitest": "^3.2.4",
     "vue-tsc": "^3.0.8"
   },
