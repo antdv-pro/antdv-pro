@@ -61,21 +61,22 @@ function renderTitle(title: VNodeChild | (() => VNodeChild)) {
 
   return title
 }
+const breadcrumbItems = computed(() => {
+  const items: { title: VNodeChild }[] = []
+  const matched = currentItem.value?.matched ?? []
+  matched.forEach((item: any) => {
+    items.push({ title: renderTitle(item.title) })
+  })
+  if (currentItem.value?.title)
+    items.push({ title: renderTitle(currentItem.value.title) })
+  return items
+})
 </script>
 
 <template>
   <div class="ant-pro-page-container">
     <div class="bg-[var(--bg-color)]" :class="layoutSetting.multiTab ? 'pb-16px' : 'py-16px'" px-24px mb-24px mx--24px mt--24px>
-      <a-breadcrumb v-if="!currentItem.hideInBreadcrumb">
-        <template v-if="currentItem.matched?.length">
-          <a-breadcrumb-item v-for="item in currentItem.matched" :key="item.path">
-            {{ renderTitle(item.title) }}
-          </a-breadcrumb-item>
-        </template>
-        <a-breadcrumb-item>
-          {{ renderTitle(currentItem.title) }}
-        </a-breadcrumb-item>
-      </a-breadcrumb>
+      <a-breadcrumb v-if="!currentItem.hideInBreadcrumb" :items="breadcrumbItems" />
       <div flex mt-8px justify-between>
         <div flex items-center my-4px of-hidden>
           <slot name="title">

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { FormInstance } from 'ant-design-vue'
+import type { FormInstance } from 'antdv-next'
 
 defineOptions({
   name: 'BasicForm',
@@ -26,11 +26,16 @@ const formState = reactive<Record<string, any>>({
   target: 1,
 })
 const { t } = useI18n()
+const inviteOptions = computed(() => ([
+  { value: '4', label: t('form.basic-form.option.A') },
+  { value: '5', label: t('form.basic-form.option.B') },
+  { value: '6', label: t('form.basic-form.option.C') },
+]))
 </script>
 
 <template>
   <page-container>
-    <a-card :body-style="{ padding: '24px 32px' }" :bordered="false">
+    <a-card :styles="{ body: { padding: '24px 32px' } }" variant="borderless">
       <a-form ref="formRef" :model="formState">
         <a-form-item
           name="name"
@@ -134,17 +139,7 @@ const { t } = useI18n()
             </a-radio>
           </a-radio-group>
           <a-form-item v-show="formState.target === 2">
-            <a-select mode="multiple">
-              <a-select-option value="4">
-                {{ t('form.basic-form.option.A') }}
-              </a-select-option>
-              <a-select-option value="5">
-                {{ t('form.basic-form.option.B') }}
-              </a-select-option>
-              <a-select-option value="6">
-                {{ t('form.basic-form.option.C') }}
-              </a-select-option>
-            </a-select>
+            <a-select mode="multiple" :options="inviteOptions" />
           </a-form-item>
         </a-form-item>
         <a-form-item

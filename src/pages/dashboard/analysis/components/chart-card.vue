@@ -4,9 +4,9 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
-  bordered: {
-    type: Boolean,
-    default: false,
+  variant: {
+    type: String,
+    default: 'borderless',
   },
   title: {
     type: String,
@@ -22,7 +22,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <a-card :bind="props" :body-style="{ padding: '20px 24px 8px 24px' }">
+  <a-card :loading="props.loading" :variant="props.variant" :styles="{ body: { padding: '20px 24px 8px 24px' } }">
     <div class="chartCard">
       <div class="chartTop">
         <div class="metaWrap">
@@ -114,7 +114,7 @@ const props = defineProps({
   .footer {
     margin-top: 8px;
     padding-top: 9px;
-    border-top: 1px solid var(--pro-ant-color-border);
+    border-top: 1px solid var(--ant-color-border);
     & > * {
       position: relative;
     }

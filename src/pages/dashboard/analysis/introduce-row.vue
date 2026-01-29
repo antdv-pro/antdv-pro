@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { InfoCircleOutlined } from '@ant-design/icons-vue'
+import { InfoCircleOutlined } from '@antdv-next/icons'
 import { Progress, TinyArea, TinyColumn } from '@antv/g2plot'
 import ChartCard from '~/pages/dashboard/analysis/components/chart-card.vue'
 import Field from '~/pages/dashboard/analysis/components/field.vue'
@@ -81,7 +81,7 @@ onBeforeUnmount(() => {
 <template>
   <a-row :gutter="24">
     <a-col v-bind="{ ...topColResponsiveProps }">
-      <ChartCard :bordered="false" title="总销售额" :loading="loading" :content-height="46">
+      <ChartCard variant="borderless" title="总销售额" :loading="loading" :content-height="46">
         <template #action>
           <a-tooltip title="指标说明">
             <InfoCircleOutlined />
@@ -105,7 +105,7 @@ onBeforeUnmount(() => {
     </a-col>
 
     <a-col v-bind="{ ...topColResponsiveProps }">
-      <ChartCard :bordered="false" title="访问量" :loading="loading" :content-height="46">
+      <ChartCard variant="borderless" title="访问量" :loading="loading" :content-height="46">
         <template #action>
           <a-tooltip title="指标说明">
             <InfoCircleOutlined />
@@ -122,7 +122,7 @@ onBeforeUnmount(() => {
     </a-col>
 
     <a-col v-bind="{ ...topColResponsiveProps }">
-      <ChartCard :bordered="false" title="支付笔数" :loading="loading" :content-height="46">
+      <ChartCard variant="borderless" title="支付笔数" :loading="loading" :content-height="46">
         <template #action>
           <a-tooltip title="指标说明">
             <InfoCircleOutlined />
@@ -139,7 +139,7 @@ onBeforeUnmount(() => {
     </a-col>
 
     <a-col v-bind="{ ...topColResponsiveProps }">
-      <ChartCard :bordered="false" title="运营活动效果" :loading="loading" :content-height="46">
+      <ChartCard variant="borderless" title="运营活动效果" :loading="loading" :content-height="46">
         <template #action>
           <a-tooltip title="指标说明">
             <InfoCircleOutlined />

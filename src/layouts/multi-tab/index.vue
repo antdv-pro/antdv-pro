@@ -5,13 +5,14 @@ import {
   CloseOutlined,
   MoreOutlined,
   ReloadOutlined,
-} from '@ant-design/icons-vue'
+} from '@antdv-next/icons'
 import { listenerRouteChange, removeRouteListener } from '~@/utils/route-listener'
 import { useLayoutState } from '~/layouts/basic-layout/context'
 
 const multiTabStore = useMultiTab()
 const { list, activeKey } = storeToRefs(multiTabStore)
 const { layoutSetting } = storeToRefs(useAppStore())
+const { t } = useI18n()
 const {
   layout,
 } = useLayoutState()
@@ -30,6 +31,14 @@ const tabStyle = computed<CSSProperties>(() => {
   return style
 })
 const tabsRef = shallowRef()
+const tabItems = computed(() =>
+  list.value.map(item => ({
+    key: item.fullPath,
+    label: item.locale ? t(item.locale) : item.title,
+    tabData: item,
+  })),
+)
+const resolveTabTitle = (item: any) => (item?.locale ? t(item.locale) : item?.title)
 
 function handleSwitch({ key }: any, current: string) {
   if (key === 'closeCurrent')
@@ -69,6 +78,48 @@ const otherDisabled = computed(() => {
     list.value.length === 1 || list.value.filter(v => !v.affix).length <= 1
   )
 })
+
+function contextMenuItems(current: string) {
+  return [
+    {
+      key: 'closeCurrent',
+      label: t('app.multiTab.closeCurrent'),
+      disabled: isCurrentDisabled.value || activeKey.value !== current,
+    },
+    {
+      key: 'closeLeft',
+      label: t('app.multiTab.closeLeft'),
+      disabled: isCurrentDisabled.value || leftDisabled(current),
+    },
+    {
+      key: 'closeRight',
+      label: t('app.multiTab.closeRight'),
+      disabled: isCurrentDisabled.value || rightDisabled(current),
+    },
+    {
+      key: 'closeOther',
+      label: t('app.multiTab.closeOther'),
+      disabled: isCurrentDisabled.value || otherDisabled.value,
+    },
+    {
+      key: 'refresh',
+      label: t('app.multiTab.refresh'),
+      disabled: !isCurrentDisabled.value,
+    },
+  ]
+}
+
+const moreMenuItems = computed(() => [
+  {
+    key: 'closeOther',
+    label: t('app.multiTab.closeOther'),
+    disabled: isCurrentDisabled.value || otherDisabled.value,
+  },
+  {
+    key: 'refresh',
+    label: t('app.multiTab.refresh'),
+  },
+])
 listenerRouteChange((route: RouteLocationNormalized) => {
   if (route.fullPath.startsWith('/redirect'))
     return
@@ -94,69 +145,38 @@ onUnmounted(() => {
     type="card"
     size="small"
     :tab-bar-gutter="5"
+    :items="tabItems"
     @update:active-key="multiTabStore.switchTab"
   >
-    <a-tab-pane v-for="item in list" :key="item.fullPath">
-      <template #tab>
-        <a-dropdown :trigger="['contextmenu']">
-          <div>
-            {{ item.locale ? $t(item.locale) : item.title }}
-            <button
-              v-if="activeKey === item.fullPath"
-              class="ant-tabs-tab-remove"
-              style="margin: 0"
-              @click.stop="multiTabStore.refresh(item.fullPath)"
-            >
-              <ReloadOutlined :spin="item.loading" />
-            </button>
-            <button
-              v-if="!item.affix && list.length > 1"
-              class="ant-tabs-tab-remove"
-              style="margin: 0"
-              @click.stop="multiTabStore.close(item.fullPath)"
-            >
-              <CloseOutlined />
-            </button>
-          </div>
-          <template #overlay>
-            <a-menu @click="handleSwitch($event, item.fullPath)">
-              <a-menu-item
-                key="closeCurrent"
-                :disabled="isCurrentDisabled || activeKey !== item.fullPath"
-              >
-                <!-- 关闭当前 -->
-                {{ $t("app.multiTab.closeCurrent") }}
-              </a-menu-item>
-              <a-menu-item
-                key="closeLeft"
-                :disabled="isCurrentDisabled || leftDisabled(item.fullPath)"
-              >
-                <!-- 关闭左侧 -->
-                {{ $t("app.multiTab.closeLeft") }}
-              </a-menu-item>
-              <a-menu-item
-                key="closeRight"
-                :disabled="isCurrentDisabled || rightDisabled(item.fullPath)"
-              >
-                <!-- 关闭右侧 -->
-                {{ $t("app.multiTab.closeRight") }}
-              </a-menu-item>
-              <a-menu-item
-                key="closeOther"
-                :disabled="isCurrentDisabled || otherDisabled"
-              >
-                <!-- 关闭其他 -->
-                {{ $t("app.multiTab.closeOther") }}
-              </a-menu-item>
-              <a-menu-item key="refresh" :disabled="!isCurrentDisabled">
-                <!-- 刷新当前 -->
-                {{ $t("app.multiTab.refresh") }}
-              </a-menu-item>
-            </a-menu>
-          </template>
-        </a-dropdown>
-      </template>
-    </a-tab-pane>
+    <template #labelRender="{ item }">
+      <a-dropdown :trigger="['contextMenu']">
+        <div>
+          {{ resolveTabTitle(item.tabData) }}
+          <button
+            v-if="activeKey === item.key"
+            class="ant-tabs-tab-remove"
+            style="margin: 0"
+            @click.stop="multiTabStore.refresh(item.key)"
+          >
+            <ReloadOutlined :spin="item.tabData?.loading" />
+          </button>
+          <button
+            v-if="!item.tabData?.affix && list.length > 1"
+            class="ant-tabs-tab-remove"
+            style="margin: 0"
+            @click.stop="multiTabStore.close(item.key)"
+          >
+            <CloseOutlined />
+          </button>
+        </div>
+        <template #overlay>
+          <a-menu
+            :items="contextMenuItems(item.key)"
+            @click="handleSwitch($event, item.key)"
+          />
+        </template>
+      </a-dropdown>
+    </template>
     <template #leftExtra>
       <div class="w-24px" />
     </template>
@@ -165,19 +185,10 @@ onUnmounted(() => {
         <a-dropdown :trigger="['hover']">
           <MoreOutlined class="text-16px" />
           <template #overlay>
-            <a-menu @click="handleSwitch($event, activeKey)">
-              <a-menu-item
-                key="closeOther"
-                :disabled="isCurrentDisabled || otherDisabled"
-              >
-                <!-- 关闭其他 -->
-                {{ $t("app.multiTab.closeOther") }}
-              </a-menu-item>
-              <a-menu-item key="refresh">
-                <!-- 刷新当前 -->
-                {{ $t("app.multiTab.refresh") }}
-              </a-menu-item>
-            </a-menu>
+            <a-menu
+              :items="moreMenuItems"
+              @click="handleSwitch($event, activeKey)"
+            />
           </template>
         </a-dropdown>
       </div>

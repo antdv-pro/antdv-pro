@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CheckOutlined } from '@ant-design/icons-vue'
+import { CheckOutlined } from '@antdv-next/icons'
 
 const props = defineProps<{
   theme?: 'light' | 'dark' | 'inverted' | 'top' | 'side' | 'mix'

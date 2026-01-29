@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@ant-design/icons-vue':
-        specifier: ^7.0.1
-        version: 7.0.1(vue@3.5.25(typescript@5.8.3))
       '@antdv-next/auto-import-resolver':
         specifier: 1.0.0-rc.1
         version: 1.0.0-rc.1(unplugin-vue-components@29.2.0(@babel/parser@7.28.5)(vue@3.5.25(typescript@5.8.3)))
@@ -35,9 +32,6 @@ importers:
       '@vueuse/core':
         specifier: ^10.11.1
         version: 10.11.1(vue@3.5.25(typescript@5.8.3))
-      ant-design-vue:
-        specifier: ^4.2.6
-        version: 4.2.6(vue@3.5.25(typescript@5.8.3))
       antdv-next:
         specifier: 1.0.0-rc.3
         version: 1.0.0-rc.3(vue@3.5.25(typescript@5.8.3))

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CaretDownOutlined, CaretUpOutlined } from '@ant-design/icons-vue'
+import { CaretDownOutlined, CaretUpOutlined } from '@antdv-next/icons'
 
 defineProps({
   flag: {

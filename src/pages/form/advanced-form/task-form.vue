@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { FormInstance } from 'ant-design-vue'
+import type { FormInstance } from 'antdv-next'
 
 defineProps({
   showSubmit: {
@@ -24,6 +24,16 @@ const formState = reactive<Record<string, any>>({
   dateRange2: null,
   type2: null,
 })
+const ownerOptions = [
+  { value: 'KirkLin', label: 'Kirk Lin' },
+]
+const approverOptions = [
+  { value: 'Aibayanyu', label: 'Aibayanyu' },
+]
+const typeOptions = [
+  { value: '定时执行', label: '定时执行' },
+  { value: '周期执行', label: '周期执行' },
+]
 defineExpose({
   handleSubmit,
 })
@@ -59,11 +69,8 @@ defineExpose({
           <a-select
             v-model:value="formState.owner2"
             placeholder="请选择执行人"
-          >
-            <a-select-option value="KirkLin">
-              Kirk Lin
-            </a-select-option>
-          </a-select>
+            :options="ownerOptions"
+          />
         </a-form-item>
       </a-col>
     </a-row>
@@ -77,11 +84,8 @@ defineExpose({
           <a-select
             v-model:value="formState.approver2"
             placeholder="请选择责任人"
-          >
-            <a-select-option value="Aibayanyu">
-              Aibayanyu
-            </a-select-option>
-          </a-select>
+            :options="approverOptions"
+          />
         </a-form-item>
       </a-col>
       <a-col :xl="{ span: 7, offset: 1 }" :lg="{ span: 8 }" :md="{ span: 12 }" :sm="24">
@@ -105,14 +109,8 @@ defineExpose({
           <a-select
             v-model:value="formState.type2"
             placeholder="请选择任务类型"
-          >
-            <a-select-option value="定时执行">
-              定时执行
-            </a-select-option>
-            <a-select-option value="周期执行">
-              周期执行
-            </a-select-option>
-          </a-select>
+            :options="typeOptions"
+          />
         </a-form-item>
       </a-col>
     </a-row>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CheckOutlined } from '@ant-design/icons-vue'
+import { CheckOutlined } from '@antdv-next/icons'
 
 defineProps<{
   colorList: ({ key: string, color: string })[]

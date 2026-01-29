@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PlusOutlined } from '@ant-design/icons-vue'
+import { PlusOutlined } from '@antdv-next/icons'
 
 const links = [
   {

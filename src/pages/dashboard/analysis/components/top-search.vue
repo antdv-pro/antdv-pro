@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { EllipsisOutlined, InfoCircleOutlined } from '@ant-design/icons-vue'
+import { EllipsisOutlined, InfoCircleOutlined } from '@antdv-next/icons'
 import { TinyArea } from '@antv/g2plot'
 import NumberInfo from '~/pages/dashboard/analysis/number-info.vue'
 import Trend from '~/pages/dashboard/analysis/trend.vue'
@@ -389,6 +389,11 @@ const searchData = [
   },
 ]
 
+const actionMenuItems = [
+  { key: 'action-1', label: '操作一' },
+  { key: 'action-2', label: '操作二' },
+]
+
 const visitData2 = [1, 6, 4, 8, 3, 7, 2]
 
 const tinyAreaContainer1 = ref()
@@ -414,18 +419,15 @@ onMounted(() => {
 <template>
   <a-card
     :loading="loading"
-    :bordered="false"
+    variant="borderless"
     title="线上热门搜索"
     :style="{ height: '100%' }"
   >
     <template #extra>
       <span class="iconGroup">
         <a-dropdown placement="bottomRight">
-          <template #overlay>
-            <a-menu>
-              <a-menu-item>操作一</a-menu-item>
-              <a-menu-item>操作二</a-menu-item>
-            </a-menu>
+          <template #popupRender>
+            <a-menu :items="actionMenuItems" />
           </template>
           <EllipsisOutlined />
         </a-dropdown>
@@ -442,9 +444,9 @@ onMounted(() => {
           <template #subTitle>
             <span>
               人均搜索次数
-              <Tooltip title="指标说明">
+              <a-tooltip title="指标说明">
                 <InfoCircleOutlined :style="{ marginLeft: '8px' }" />
-              </Tooltip>
+              </a-tooltip>
             </span>
           </template>
         </NumberInfo>
@@ -460,9 +462,9 @@ onMounted(() => {
           <template #subTitle>
             <span>
               搜索用户数
-              <Tooltip title="指标说明">
+              <a-tooltip title="指标说明">
                 <InfoCircleOutlined :style="{ marginLeft: '8px' }" />
-              </Tooltip>
+              </a-tooltip>
             </span>
           </template>
         </NumberInfo>

@@ -2,6 +2,11 @@
 const command = ref('a')
 const activeKey = ref()
 const { t } = useI18n()
+
+const tabItems = computed(() => ([
+  { key: '1', label: t('profile.advanced.tab1') },
+  { key: '2', label: t('profile.advanced.tab2') },
+]))
 </script>
 
 <template>
@@ -25,7 +30,7 @@ const { t } = useI18n()
       </a-radio-group>
     </a-col>
   </a-row>
-  <a-card :bordered="false" class="my-5">
+  <a-card variant="borderless" class="my-5">
     <a-row>
       <a-col :span="8">
         <div>
@@ -75,10 +80,7 @@ const { t } = useI18n()
       </a-col>
     </a-row>
   </a-card>
-  <a-tabs v-model:active-key="activeKey" class="mb--7">
-    <a-tab-pane key="1" :tab="t('profile.advanced.tab1')" />
-    <a-tab-pane key="2" :tab="t('profile.advanced.tab2')" force-render />
-  </a-tabs>
+  <a-tabs v-model:active-key="activeKey" class="mb--7" :items="tabItems" />
 </template>
 
 <style scoped lang="less">

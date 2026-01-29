@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { LoginMobileParams, LoginParams } from '~@/api/common/login'
-import { AlipayCircleFilled, LockOutlined, MobileOutlined, TaobaoCircleFilled, UserOutlined, WeiboCircleFilled } from '@ant-design/icons-vue'
+import { AlipayCircleFilled, LockOutlined, MobileOutlined, TaobaoCircleFilled, UserOutlined, WeiboCircleFilled } from '@antdv-next/icons'
 import { delayTimer } from '@v-c/utils'
 import { AxiosError } from 'axios'
 import pageBubble from '@/utils/page-bubble'
@@ -29,6 +29,10 @@ const resetCounter = 60
 const submitLoading = shallowRef(false)
 const errorAlert = shallowRef(false)
 const bubbleCanvas = ref<HTMLCanvasElement>()
+const loginTabItems = computed(() => ([
+  { key: 'account', label: t('pages.login.accountLogin.tab') },
+  { key: 'mobile', label: t('pages.login.phoneLogin.tab') },
+]))
 const { counter, pause, reset, resume, isActive } = useInterval(1000, {
   controls: true,
   immediate: false,
@@ -157,10 +161,7 @@ onBeforeUnmount(() => {
               {{ t('pages.login.tips') }}
             </div>
             <a-form ref="formRef" :model="loginModel">
-              <a-tabs v-model:active-key="loginModel.type" centered>
-                <a-tab-pane key="account" :tab="t('pages.login.accountLogin.tab')" />
-                <a-tab-pane key="mobile" :tab="t('pages.login.phoneLogin.tab')" />
-              </a-tabs>
+              <a-tabs v-model:active-key="loginModel.type" centered :items="loginTabItems" />
               <!-- 判断是否存在error -->
               <a-alert
                 v-if="errorAlert && loginModel.type === 'account'" mb-24px
@@ -349,7 +350,7 @@ onBeforeUnmount(() => {
   transition: color 0.3s;
 
   &:hover {
-    color: var(--pro-ant-color-primary);
+    color: var(--ant-color-primary);
   }
 }
 .login-media(@width:100%) {

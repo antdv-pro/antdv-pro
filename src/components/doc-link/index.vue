@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ReadOutlined } from '@ant-design/icons-vue'
+import { ReadOutlined } from '@antdv-next/icons'
 </script>
 
 <template>

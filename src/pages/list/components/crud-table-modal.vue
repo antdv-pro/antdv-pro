@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { FormInstance } from 'ant-design-vue'
+import type { FormInstance } from 'antdv-next'
 import type { CrudTableModel } from '~@/api/list/crud-table'
 import { cloneDeep } from 'lodash'
 

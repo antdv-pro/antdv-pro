@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { AlipayOutlined, DingdingOutlined, TaobaoOutlined } from '@ant-design/icons-vue'
+import { AlipayOutlined, DingdingOutlined, TaobaoOutlined } from '@antdv-next/icons'
 
 interface DataItem {
   title: string
@@ -27,30 +27,33 @@ const data = computed<DataItem[]>(() => {
 </script>
 
 <template>
-  <a-card :title="t('account.settings.account-setting')" :bordered="false">
-    <a-list item-layout="horizontal" :data-source="data">
-      <template #renderItem="{ item }">
-        <a-list-item>
-          <a-list-item-meta
-            :description="t('account.settings.account.not.bind')"
-          >
-            <template #title>
-              <a href="https://www.antdv.com/">{{ item.title }}</a>
-            </template>
-            <template #avatar>
+  <a-card :title="t('account.settings.account-setting')" variant="borderless">
+    <div class="ant-list">
+      <div v-for="item in data" :key="item.title" class="ant-list-item">
+        <div class="flex items-center justify-between w-full">
+          <div class="ant-list-item-meta">
+            <div class="ant-list-item-meta-avatar">
               <TaobaoOutlined v-if="item.avatar === 'TaobaoOutlined' " style="color: #ff4000;" class="account-setting-avatar" />
               <AlipayOutlined v-if="item.avatar === 'AlipayOutlined' " style="color: #2eabff" class="account-setting-avatar" />
               <DingdingOutlined v-if="item.avatar === 'DingdingOutlined' " style="color: #fff; background-color: #2eabff" class="account-setting-avatar" />
-            </template>
-          </a-list-item-meta>
-          <template #actions>
+            </div>
+            <div class="ant-list-item-meta-content">
+              <div class="ant-list-item-meta-title">
+                <a href="https://www.antdv.com/">{{ item.title }}</a>
+              </div>
+              <div class="ant-list-item-meta-description">
+                {{ t('account.settings.account.not.bind') }}
+              </div>
+            </div>
+          </div>
+          <div class="ant-list-item-action">
             <a-button type="link">
               {{ t('account.settings.account.bind') }}
             </a-button>
-          </template>
-        </a-list-item>
-      </template>
-    </a-list>
+          </div>
+        </div>
+      </div>
+    </div>
   </a-card>
 </template>
 

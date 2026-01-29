@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { CSSProperties } from 'vue'
-import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons-vue'
+import { MenuFoldOutlined, MenuUnfoldOutlined } from '@antdv-next/icons'
+import { h } from 'vue'
 import { useLayoutState } from '../../basic-layout/context'
 import Menu from '../menu/index.vue'
 
@@ -55,6 +56,14 @@ const logoCls = computed(() => {
     'ant-pro-sider-logo-dark': theme.value === 'inverted',
   }
 })
+
+const collapseMenuItems = computed(() => [
+  {
+    key: 'toggle',
+    label: '',
+    icon: collapsed.value ? h(MenuUnfoldOutlined) : h(MenuFoldOutlined),
+  },
+])
 </script>
 
 <template>
@@ -93,19 +102,13 @@ const logoCls = computed(() => {
       :class="theme === 'inverted' ? 'ant-pro-sider-collapsed-button-inverted' : ''"
     >
       <a-menu
+        :items="collapseMenuItems"
         class="ant-pro-sider-menu"
         mode="inline"
         :theme="theme === 'inverted' ? 'dark' : 'light'"
         :selectable="false"
         @click="handleCollapsed?.(!collapsed)"
-      >
-        <a-menu-item>
-          <template #icon>
-            <MenuUnfoldOutlined v-if="collapsed" />
-            <MenuFoldOutlined v-else />
-          </template>
-        </a-menu-item>
-      </a-menu>
+      />
     </div>
   </a-layout-sider>
 </template>

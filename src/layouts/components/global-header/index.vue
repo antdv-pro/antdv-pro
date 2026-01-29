@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons-vue'
+import { MenuFoldOutlined, MenuUnfoldOutlined } from '@antdv-next/icons'
 import { useLayoutState } from '../../basic-layout/context'
 import GlobalHeaderLogo from './global-header-logo.vue'
 

@@ -27,22 +27,25 @@ const data = reactive<DataItem[]>([
 </script>
 
 <template>
-  <a-card :title="t('account.settings.message-setting')" :bordered="false">
-    <a-list item-layout="horizontal" :data-source="data">
-      <template #renderItem="{ item }">
-        <a-list-item>
-          <a-list-item-meta
-            :description="item.desc"
-          >
-            <template #title>
-              <a href="https://www.antdv.com/">{{ item.title }}</a>
-            </template>
-          </a-list-item-meta>
-          <template #actions>
+  <a-card :title="t('account.settings.message-setting')" variant="borderless">
+    <div class="ant-list">
+      <div v-for="item in data" :key="item.title" class="ant-list-item">
+        <div class="flex items-center justify-between w-full">
+          <div class="ant-list-item-meta">
+            <div class="ant-list-item-meta-content">
+              <div class="ant-list-item-meta-title">
+                <a href="https://www.antdv.com/">{{ item.title }}</a>
+              </div>
+              <div class="ant-list-item-meta-description">
+                {{ item.desc }}
+              </div>
+            </div>
+          </div>
+          <div class="ant-list-item-action">
             <a-switch v-model:checked="item.checked" />
-          </template>
-        </a-list-item>
-      </template>
-    </a-list>
+          </div>
+        </div>
+      </div>
+    </div>
   </a-card>
 </template>

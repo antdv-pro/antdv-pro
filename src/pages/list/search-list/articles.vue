@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { LikeOutlined, MessageOutlined, StarOutlined } from '@ant-design/icons-vue'
+import { LikeOutlined, MessageOutlined, StarOutlined } from '@antdv-next/icons'
 import dayjs from 'dayjs'
 import Category from './components/category.vue'
 
@@ -203,26 +203,17 @@ function formatTimer(timer: number | string) {
 <template>
   <div>
     <Category />
-    <a-card :bordered="false" class="mt-4">
-      <a-list :data-source="list" item-layout="vertical">
-        <template #renderItem="{ item }">
-          <a-list-item :key="item.id">
-            <template #actions>
-              <span>
-                <StarOutlined /> {{ item.star }}
-              </span>
-              <span>
-                <LikeOutlined /> {{ item.like }}
-              </span>
-              <span>
-                <MessageOutlined /> {{ item.message }}
-              </span>
-            </template>
-            <a-list-item-meta style="margin-bottom: 0">
-              <template #title>
-                {{ item.title }}
-              </template>
-            </a-list-item-meta>
+    <a-card variant="borderless" class="mt-4">
+      <div class="ant-list">
+        <div v-for="item in list" :key="item.id" class="ant-list-item">
+          <div class="flex flex-col gap-2 w-full">
+            <div class="ant-list-item-meta" style="margin-bottom: 0">
+              <div class="ant-list-item-meta-content">
+                <div class="ant-list-item-meta-title">
+                  {{ item.title }}
+                </div>
+              </div>
+            </div>
             <div class="flex flex-col gap-2">
               <div>
                 <a-tag>
@@ -250,9 +241,20 @@ function formatTimer(timer: number | string) {
                 </span>
               </div>
             </div>
-          </a-list-item>
-        </template>
-      </a-list>
+            <div class="ant-list-item-action flex items-center gap-6">
+              <span>
+                <StarOutlined /> {{ item.star }}
+              </span>
+              <span>
+                <LikeOutlined /> {{ item.like }}
+              </span>
+              <span>
+                <MessageOutlined /> {{ item.message }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
     </a-card>
   </div>
 </template>

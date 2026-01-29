@@ -10,7 +10,7 @@ const { mobileCollapsed, siderWidth } = useLayoutState()
     v-model:open="mobileCollapsed"
     :closable="false"
     placement="left"
-    :width="siderWidth"
+    :size="siderWidth"
   >
     <SideMenu />
   </a-drawer>

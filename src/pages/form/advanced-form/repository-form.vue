@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { FormInstance } from 'ant-design-vue'
+import type { FormInstance } from 'antdv-next'
 
 defineProps({
   showSubmit: {
@@ -25,6 +25,19 @@ const formState = reactive<Record<string, any>>({
   dateRange: null,
   type: null,
 })
+const ownerOptions = [
+  { value: '林同学', label: '林同学' },
+  { value: '张同学', label: '张同学' },
+  { value: '李同学', label: '李同学' },
+]
+const approverOptions = [
+  { value: 'Kirk Lin', label: 'Kirk Lin' },
+  { value: 'Aibayanyu', label: 'Aibayanyu' },
+]
+const typeOptions = [
+  { value: '公开', label: '公开' },
+  { value: '私密', label: '私密' },
+]
 defineExpose({
   handleSubmit,
 })
@@ -60,17 +73,8 @@ defineExpose({
           <a-select
             v-model:value="formState.owner"
             placeholder="请选择管理员"
-          >
-            <a-select-option value="林同学">
-              林同学
-            </a-select-option>
-            <a-select-option value="张同学">
-              张同学
-            </a-select-option>
-            <a-select-option value="李同学">
-              李同学
-            </a-select-option>
-          </a-select>
+            :options="ownerOptions"
+          />
         </a-form-item>
       </a-col>
     </a-row>
@@ -84,14 +88,8 @@ defineExpose({
           <a-select
             v-model:value="formState.approver"
             placeholder="请选择审批员"
-          >
-            <a-select-option value="Kirk Lin">
-              Kirk Lin
-            </a-select-option>
-            <a-select-option value="Aibayanyu">
-              Aibayanyu
-            </a-select-option>
-          </a-select>
+            :options="approverOptions"
+          />
         </a-form-item>
       </a-col>
       <a-col :xl="{ span: 7, offset: 1 }" :lg="{ span: 8 }" :md="{ span: 12 }" :sm="24">
@@ -115,14 +113,8 @@ defineExpose({
           <a-select
             v-model:value="formState.type"
             placeholder="请选择仓库类型"
-          >
-            <a-select-option value="公开">
-              公开
-            </a-select-option>
-            <a-select-option value="私密">
-              私密
-            </a-select-option>
-          </a-select>
+            :options="typeOptions"
+          />
         </a-form-item>
       </a-col>
     </a-row>

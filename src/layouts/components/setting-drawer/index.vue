@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { ContentWidth, LayoutType, ThemeType } from '../../basic-layout/typing'
-import { CloseOutlined, CopyOutlined, NotificationOutlined, SettingOutlined } from '@ant-design/icons-vue'
+import { CloseOutlined, CopyOutlined, NotificationOutlined, SettingOutlined } from '@antdv-next/icons'
 import { useClipboard } from '@v-c/utils'
 import BlockCheckbox from './block-checkbox.vue'
 import Body from './body.vue'
@@ -107,7 +107,7 @@ const { token } = useAntdToken()
       style="font-size: 20px"
     />
   </div>
-  <a-drawer :open="open" :width="300" placement="right" :closable="false" @update:open="handleVisible">
+  <a-drawer :open="open" :size="300" placement="right" :closable="false" @update:open="handleVisible">
     <template #handle>
       <div
         :class="`${prefixCls}-handle`"

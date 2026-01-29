@@ -620,7 +620,7 @@ onMounted(() => {
   <page-container>
     <a-row :gutter="24">
       <a-col :xl="18" :lg="24" :md="24" :sm="24" :xs="24" :style="{ marginBottom: '24px' }">
-        <a-card title="活动实时交易情况" :bordered="false">
+        <a-card title="活动实时交易情况" variant="borderless">
           <a-row>
             <a-col :md="6" :sm="12" :xs="24">
               <a-statistic
@@ -645,14 +645,14 @@ onMounted(() => {
         </a-card>
       </a-col>
       <a-col :xl="6" :lg="24" :md="24" :sm="24" :xs="24">
-        <a-card title="活动情况预测" :style="{ marginBottom: '24px' }" :bordered="false">
+        <a-card title="活动情况预测" :style="{ marginBottom: '24px' }" variant="borderless">
           <ActiveChart />
         </a-card>
         <a-card
           title="券核效率"
           :style="{ marginBottom: 24 }"
-          :body-style="{ textAlign: 'center' }"
-          :bordered="false"
+          :styles="{ body: { textAlign: 'center' } }"
+          variant="borderless"
         >
           <div ref="gaugeContainer" />
         </a-card>
@@ -660,7 +660,7 @@ onMounted(() => {
     </a-row>
     <a-row :gutter="24">
       <a-col :xl="12" :lg="24" :sm="24" :xs="24" :style="{ marginBottom: '24px' }">
-        <a-card title="各品类占比" :bordered="false" class="pieCard">
+        <a-card title="各品类占比" variant="borderless" class="pieCard">
           <a-row :style="{ padding: '16px 0' }">
             <a-col :span="8">
               <div ref="ringContainer1" />
@@ -677,8 +677,8 @@ onMounted(() => {
       <a-col :xl="6" :lg="12" :sm="24" :xs="24" :style="{ marginBottom: 24 }">
         <a-card
           title="热门搜索"
-          :bordered="false"
-          :body-style="{ overflow: 'hidden' }"
+          variant="borderless"
+          :styles="{ body: { overflow: 'hidden' } }"
         >
           <div ref="wordCloudContainer" />
         </a-card>
@@ -686,8 +686,8 @@ onMounted(() => {
       <a-col :xl="6" :lg="12" :sm="24" :xs="24" :style="{ marginBottom: 24 }">
         <a-card
           title="资源剩余"
-          :body-style="{ textAlign: 'center', fontSize: 0 }"
-          :bordered="false"
+          :styles="{ body: { textAlign: 'center', fontSize: 0 } }"
+          variant="borderless"
         >
           <div ref="liquidContainer" />
         </a-card>

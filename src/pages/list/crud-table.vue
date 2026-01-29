@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { CrudTableModel } from '~@/api/list/crud-table'
-import { PlusOutlined } from '@ant-design/icons-vue'
+import { PlusOutlined } from '@antdv-next/icons'
 import { deleteApi, getListApi } from '~@/api/list/crud-table'
 import { useTableQuery } from '~@/composables/table-query'
 import CrudTableModal from './components/crud-table-modal.vue'

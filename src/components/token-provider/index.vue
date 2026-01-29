@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { App, theme } from 'ant-design-vue'
+import { App, theme } from 'antdv-next'
 import { registerTokenToCSSVar } from './token-to-cssvar'
 
 defineOptions({

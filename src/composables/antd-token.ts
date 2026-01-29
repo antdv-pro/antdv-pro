@@ -1,5 +1,5 @@
-import type { GlobalToken } from 'ant-design-vue/es/theme'
-import { theme } from 'ant-design-vue'
+import type { GlobalToken } from 'antdv-next/dist/theme/interface/cssinjs-utils'
+import { theme } from 'antdv-next'
 
 export const useAntdToken = createSharedComposable(() => {
   const { token: antdToken } = theme.useToken()

@@ -1,5 +1,6 @@
-import type { message, notification } from 'ant-design-vue'
-import type { ModalFunc } from 'ant-design-vue/es/modal/Modal'
+import type { message, notification } from 'antdv-next'
+
+type ModalFunc = (...args: any[]) => any
 
 interface GlobalConfigIntl {
   message?: Omit<typeof message, 'useMessage'>

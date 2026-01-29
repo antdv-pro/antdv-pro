@@ -26,7 +26,6 @@
     "toJS": "esno scripts/to-js"
   },
   "dependencies": {
-    "@ant-design/icons-vue": "^7.0.1",
     "@antdv-next/auto-import-resolver": "1.0.0-rc.1",
     "@antdv-next/icons": "1.0.0-rc.1",
     "@antdv-next/unocss": "1.0.0-rc.1",
@@ -35,7 +34,6 @@
     "@ctrl/tinycolor": "^4.2.0",
     "@v-c/utils": "^0.0.26",
     "@vueuse/core": "^10.11.1",
-    "ant-design-vue": "^4.2.6",
     "antdv-next": "1.0.0-rc.3",
     "axios": "^1.12.2",
     "dayjs": "^1.11.18",

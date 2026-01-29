@@ -48,7 +48,7 @@ const data = ref([
         </a-col>
         <a-col v-for="(item, index) in data" :key="index" :xs="16" :sm="8" :md="6" :lg="6" :xl="6" class="mb-4">
           <a-card
-            :bordered="false"
+            variant="borderless"
             style="borderRadius: 0"
             class="cursor-pointer
             hover:shadow-[0_4px_20px_-5px_rgba(0,0,0,0.35)]

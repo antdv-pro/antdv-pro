@@ -10,6 +10,11 @@ const state = reactive({
   currentTab: 0,
   form: null,
 })
+const stepItems = [
+  { title: '填写转账信息' },
+  { title: '确认转账信息' },
+  { title: '完成' },
+]
 
 function nextStep() {
   if (state.currentTab < 2)
@@ -31,12 +36,8 @@ function finish() {
     <template #content>
       将一个冗长或用户不熟悉的表单任务分成多个步骤，指导用户完成。
     </template>
-    <a-card :bordered="false">
-      <a-steps class="steps" :current="state.currentTab">
-        <a-step title="填写转账信息" />
-        <a-step title="确认转账信息" />
-        <a-step title="完成" />
-      </a-steps>
+    <a-card variant="borderless">
+      <a-steps class="steps" :current="state.currentTab" :items="stepItems" />
       <div class="content">
         <Step1 v-if="state.currentTab === 0" @next-step="nextStep" />
         <Step2 v-if="state.currentTab === 1" @next-step="nextStep" @prev-step="prevStep" />

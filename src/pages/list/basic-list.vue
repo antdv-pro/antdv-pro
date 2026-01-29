@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ExclamationCircleOutlined } from '@ant-design/icons-vue'
-import { Modal } from 'ant-design-vue'
+import { ExclamationCircleOutlined } from '@antdv-next/icons'
+import { Modal } from 'antdv-next'
 import dayjs from 'dayjs'
 import { createVNode } from 'vue'
 import { getListApi } from '~@/api/list/basic-list'
@@ -90,6 +90,14 @@ const openModalValue = ref(false)
 
 const isAdd = ref<boolean>(false)
 
+const moreMenuItems = [
+  { key: 'edit', label: '编辑' },
+  { key: 'delete', label: '删除' },
+]
+const ownerOptions = [
+  { value: 'owner', label: '清风不问烟雨' },
+]
+
 // 打开对话框
 function openModal(item: any, charge?: boolean) {
   if (charge) {
@@ -104,6 +112,13 @@ function openModal(item: any, charge?: boolean) {
     formState.start = dayjs(item.start)
     formState.index = dataSource.value.indexOf(item)
   }
+}
+
+function handleMoreAction(info: any, item: any) {
+  if (info.key === 'edit')
+    openModal(item)
+  else if (info.key === 'delete')
+    showConfirm(item.index)
 }
 
 // 操作成功后操作
@@ -195,7 +210,7 @@ onMounted(() => {
     <!-- 列表 -->
     <a-card class="mt-5">
       <template #title>
-        <a-card :bordered="false">
+        <a-card variant="borderless">
           <a-row style="font-weight: normal;">
             <a-col :span="14">
               <span>基本列表</span>
@@ -229,18 +244,21 @@ onMounted(() => {
       <!-- 列表主体 -->
       <VirtualList v-if="dataSource.length !== 0" :data-source="dataSource">
         <template #renderItem="{ item }">
-          <a-list-item>
-            <a-list-item-meta
-              :description="item.content"
-            >
-              <template #title>
-                <a href="https://www.antdv.com/">{{ item.title }}</a>
-              </template>
-              <template #avatar>
+          <div class="ant-list-item">
+            <div class="ant-list-item-meta">
+              <div class="ant-list-item-meta-avatar">
                 <a-avatar :src="item.link" />
-              </template>
-            </a-list-item-meta>
-            <template #actions>
+              </div>
+              <div class="ant-list-item-meta-content">
+                <div class="ant-list-item-meta-title">
+                  <a href="https://www.antdv.com/">{{ item.title }}</a>
+                </div>
+                <div class="ant-list-item-meta-description">
+                  {{ item.content }}
+                </div>
+              </div>
+            </div>
+            <div class="ant-list-item-action">
               <div class="flex text-gray-400">
                 <div class="flex flex-col items-center">
                   <div>Owner</div>
@@ -254,8 +272,8 @@ onMounted(() => {
                   <a-progress :percent="item.percent" :status="item.status" />
                 </div>
               </div>
-            </template>
-            <template #extra>
+            </div>
+            <div class="ant-list-item-extra">
               <div class="a-extra">
                 <a key="list-loadmore-edit" class="m-4" @click="openModal(item)">
                   编辑
@@ -265,19 +283,12 @@ onMounted(() => {
                     更多
                   </a>
                   <template #overlay>
-                    <a-menu>
-                      <a-menu-item>
-                        <a @click="openModal">编辑</a>
-                      </a-menu-item>
-                      <a-menu-item>
-                        <a @click="showConfirm(item.index)">删除</a>
-                      </a-menu-item>
-                    </a-menu>
+                    <a-menu :items="moreMenuItems" @click="info => handleMoreAction(info, item)" />
                   </template>
                 </a-dropdown>
               </div>
-            </template>
-          </a-list-item>
+            </div>
+          </div>
         </template>
       </VirtualList>
     </a-card>
@@ -315,11 +326,11 @@ onMounted(() => {
           name="owner"
           :rules="[{ required: true, message: '请输入任务负责人' }]"
         >
-          <a-select v-model:value="formState.owner" placeholder="please select your zone">
-            <a-select-option value="owner">
-              清风不问烟雨
-            </a-select-option>
-          </a-select>
+          <a-select
+            v-model:value="formState.owner"
+            placeholder="please select your zone"
+            :options="ownerOptions"
+          />
         </a-form-item>
         <a-form-item
           label="产品描述"

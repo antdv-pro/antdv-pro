@@ -1,6 +1,7 @@
-import type { PaginationProps } from 'ant-design-vue'
-import type { TableRowSelection } from 'ant-design-vue/es/table/interface'
+import type { PaginationProps, TableProps } from 'antdv-next'
 import { assign } from 'lodash'
+
+type TableRowSelection = NonNullable<TableProps['rowSelection']>
 
 /**
  * 表格分页扩展类型

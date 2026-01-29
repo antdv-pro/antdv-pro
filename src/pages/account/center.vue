@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ApartmentOutlined, AuditOutlined, HomeOutlined, PlusOutlined } from '@ant-design/icons-vue'
+import { ApartmentOutlined, AuditOutlined, HomeOutlined, PlusOutlined } from '@antdv-next/icons'
 import { nextTick, reactive, ref } from 'vue'
 import rightContent from './components/right-content.vue'
 

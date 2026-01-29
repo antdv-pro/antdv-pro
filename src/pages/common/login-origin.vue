@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { LoginMobileParams, LoginParams } from '~@/api/common/login'
-import { AlipayCircleFilled, LockOutlined, MobileOutlined, TaobaoCircleFilled, UserOutlined, WeiboCircleFilled } from '@ant-design/icons-vue'
+import { AlipayCircleFilled, LockOutlined, MobileOutlined, TaobaoCircleFilled, UserOutlined, WeiboCircleFilled } from '@antdv-next/icons'
 import { AxiosError } from 'axios'
 import { loginApi } from '~/api/common/login'
 import GlobalLayoutFooter from '~/layouts/components/global-footer/index.vue'
@@ -26,6 +26,10 @@ const codeLoading = shallowRef(false)
 const resetCounter = 60
 const submitLoading = shallowRef(false)
 const errorAlert = shallowRef(false)
+const loginTabItems = computed(() => ([
+  { key: 'account', label: t('pages.login.accountLogin.tab') },
+  { key: 'mobile', label: t('pages.login.phoneLogin.tab') },
+]))
 
 const { counter, pause, reset, resume, isActive } = useInterval(1000, {
   controls: true,
@@ -127,10 +131,7 @@ async function submit() {
         </div>
         <div class="ant-pro-form-login-main" w-335px>
           <a-form ref="formRef" :model="loginModel">
-            <a-tabs v-model:active-key="loginModel.type" centered>
-              <a-tab-pane key="account" :tab="t('pages.login.accountLogin.tab')" />
-              <a-tab-pane key="mobile" :tab="t('pages.login.phoneLogin.tab')" />
-            </a-tabs>
+            <a-tabs v-model:active-key="loginModel.type" centered :items="loginTabItems" />
             <!-- 判断是否存在error -->
             <a-alert v-if="errorAlert && loginModel.type === 'account'" mb-24px :message="t('pages.login.accountLogin.errorMessage')" type="error" show-icon />
             <a-alert v-if="errorAlert && loginModel.type === 'mobile'" mb-24px :message="t('pages.login.phoneLogin.errorMessage')" type="error" show-icon />
@@ -311,7 +312,7 @@ async function submit() {
     transition: color 0.3s;
 
     &:hover {
-      color: var(--pro-ant-color-primary);
+      color: var(--ant-color-primary);
     }
   }
 }

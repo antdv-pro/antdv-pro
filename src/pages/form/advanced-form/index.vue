@@ -94,10 +94,10 @@ function remove(key: string) {
       高级表单常见于一次性输入和提交大批量数据的场景。
     </template>
     <a-space size="large" direction="vertical" :style="{ width: '100%' }">
-      <a-card class="card" title="仓库管理" :bordered="false">
+      <a-card class="card" title="仓库管理" variant="borderless">
         <RepositoryForm ref="repositoryFormRef" :show-submit="false" />
       </a-card>
-      <a-card class="card" title="任务管理" :bordered="false">
+      <a-card class="card" title="任务管理" variant="borderless">
         <TaskForm ref="taskFormRef" :show-submit="false" />
       </a-card>
       <a-card>

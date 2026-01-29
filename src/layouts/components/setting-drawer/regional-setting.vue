@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import type { SelectValue } from 'ant-design-vue/es/select'
+import type { SelectProps } from 'antdv-next'
 import type { CheckedType, LayoutType } from '../../basic-layout/typing'
+
+type SelectValue = SelectProps['value']
 
 const props = defineProps<{
   layout?: LayoutType
@@ -74,11 +76,18 @@ function handleChangeSetting(key: string, value: any) {
 </script>
 
 <template>
-  <a-list :data-source="list" :split="false">
-    <template #renderItem="{ item }">
+  <div class="ant-list">
+    <div
+      v-for="item in list"
+      :key="item.key"
+      class="ant-list-item"
+    >
       <a-tooltip :title="item.disabled ? item.disabledReason : ''" placement="left">
-        <a-list-item>
-          <template #actions>
+        <div class="flex items-center justify-between w-full">
+          <span :style="{ opacity: item.disabled ? '0.5' : '1' }">
+            {{ t?.(`app.setting.content-area.${item.key}`, item.title) ?? item.title }}
+          </span>
+          <div class="ant-list-item-action">
             <a-switch
               v-if="item.key !== 'animationName'"
               size="small"
@@ -92,12 +101,9 @@ function handleChangeSetting(key: string, value: any) {
               :options="animationNameList" size="small"
               @update:value="(e:SelectValue) => handleChangeSetting(item.key, e)"
             />
-          </template>
-          <span :style="{ opacity: item.disabled ? '0.5' : '1' }">
-            {{ t?.(`app.setting.content-area.${item.key}`, item.title) ?? item.title }}
-          </span>
-        </a-list-item>
+          </div>
+        </div>
       </a-tooltip>
-    </template>
-  </a-list>
+    </div>
+  </div>
 </template>

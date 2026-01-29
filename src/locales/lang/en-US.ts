@@ -1,4 +1,4 @@
-import enUS from 'ant-design-vue/es/locale/en_US'
+import enUS from 'antdv-next/locale/en_US'
 
 const enUSModules = import.meta.glob([
   './global/en-US.ts',

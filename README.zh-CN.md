@@ -11,7 +11,7 @@
 
 ## 介绍
 
-AntdvPro是一个基于Vue3、Vite4、ant-design-vue4、Pinia、UnoCSS和Typescript的一整套企业级中后台前端/设计解决方案，它参考了阿里react版本antd-pro的设计模式，使用了最新最流行的前端技术栈，内置了动态路由、多主题、多布局等功能，可以帮助你快速搭建企业级中后台产品原型。
+AntdvPro是一个基于Vue3、Vite4、antdv-next、Pinia、UnoCSS和Typescript的一整套企业级中后台前端/设计解决方案，它参考了阿里react版本antd-pro的设计模式，使用了最新最流行的前端技术栈，内置了动态路由、多主题、多布局等功能，可以帮助你快速搭建企业级中后台产品原型。
 
 ## 特性
 
@@ -19,7 +19,7 @@ AntdvPro是一个基于Vue3、Vite4、ant-design-vue4、Pinia、UnoCSS和Typescr
 * vite：vite作为前端开发工具，它可以大大加快项目的启动速度，同时还支持热更新，可以大大提高开发效率。
 * vue3：vue3.3.x作为前端框架，基础代码全部使用script-setup的写法，代码量少维护成本低。
 * nitro mock：采用nitro作为服务端的mock数据，从工程中解耦处理，更加灵活易用。
-* ant-design-vue4：ant-design-vue4作为UI框架，admin-pro的作者也是ant-design-vue的核心成员，可提供长期的维护支持。
+* antdv-next：antdv-next作为UI框架，admin-pro的作者也是ant-design-vue的核心成员，可提供长期的维护支持。
 * pinia：pinia作为状态管理工具，它可以大大提高代码的可读性和可维护性，同时还支持Typescript。
 * UnoCSS：原子化的CSS框架，减少我们去想一些通用类名带来的烦恼，提升我们的开发效率。
 * 代码规范：我们封装了一套基于eslint的代码规范配置文件，开箱即用，统一不同团队所带来的问题。

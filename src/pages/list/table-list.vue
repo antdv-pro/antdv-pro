@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { MenuProps, PaginationProps, TableProps } from 'ant-design-vue'
+import type { MenuProps, PaginationProps, TableProps } from 'antdv-next'
 import type { ConsultTableModel, ConsultTableParams } from '~@/api/list/table-list'
-import { ColumnHeightOutlined, DownOutlined, PlusOutlined, ReloadOutlined, SettingOutlined, UpOutlined } from '@ant-design/icons-vue'
-import { Modal } from 'ant-design-vue'
+import { ColumnHeightOutlined, DownOutlined, PlusOutlined, ReloadOutlined, SettingOutlined, UpOutlined } from '@antdv-next/icons'
+import { Modal } from 'antdv-next'
 import { deleteApi, getListApi } from '~@/api/list/table-list'
 
 const statusMap = {
@@ -68,6 +68,12 @@ const formModel = reactive<ConsultTableParams>({
   status: undefined,
   updatedAt: undefined,
 })
+const statusOptions = [
+  { value: '0', label: '关闭' },
+  { value: '1', label: '运行中' },
+  { value: '2', label: '上线' },
+  { value: '3', label: '错误' },
+]
 
 const tableSize = ref<string[]>(['large'])
 const sizeItems = ref<MenuProps['items']>([
@@ -271,20 +277,8 @@ const expand = ref(false)
             <a-form-item name="status" label="状态">
               <a-select
                 v-model:value="formModel.status"
-              >
-                <a-select-option value="0">
-                  关闭
-                </a-select-option>
-                <a-select-option value="1">
-                  运行中
-                </a-select-option>
-                <a-select-option value="2">
-                  上线
-                </a-select-option>
-                <a-select-option value="3">
-                  错误
-                </a-select-option>
-              </a-select>
+                :options="statusOptions"
+              />
             </a-form-item>
           </a-col>
           <a-col :span="8">

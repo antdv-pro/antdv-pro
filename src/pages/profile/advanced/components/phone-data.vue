@@ -43,13 +43,24 @@ function removeItem(item: PhoneItem) {
 
 <template>
   <a-card :title="t('profile.advanced.call-log')">
-    <a-list
-      item-layout="horizontal"
-      :data-source="phoneDate"
-    >
-      <template #renderItem="{ item }">
-        <a-list-item>
-          <template #actions>
+    <div class="ant-list">
+      <div
+        v-for="item in phoneDate"
+        :key="`${item.name}-${item.phone}-${item.date}`"
+        class="ant-list-item"
+      >
+        <div class="flex items-center justify-between w-full">
+          <div class="ant-list-item-meta">
+            <div class="ant-list-item-meta-content">
+              <div class="ant-list-item-meta-title">
+                <a>{{ item.name }}</a>
+              </div>
+              <div class="ant-list-item-meta-description">
+                {{ item.phone }}
+              </div>
+            </div>
+          </div>
+          <div class="ant-list-item-action flex items-center">
             <div>
               <span>{{ t('profile.advanced.call-spent') }}</span>
               <span>{{ item.spentTime }}</span>
@@ -61,17 +72,10 @@ function removeItem(item: PhoneItem) {
             <a-button danger type="link" @click="removeItem(item)">
               {{ t('profile.advanced.remove') }}
             </a-button>
-          </template>
-          <a-list-item-meta
-            :description="item.phone"
-          >
-            <template #title>
-              <a>{{ item.name }}</a>
-            </template>
-          </a-list-item-meta>
-        </a-list-item>
-      </template>
-    </a-list>
+          </div>
+        </div>
+      </div>
+    </div>
   </a-card>
 </template>
 

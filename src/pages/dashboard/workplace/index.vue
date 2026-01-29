@@ -326,9 +326,9 @@ onBeforeUnmount(() => {
           class="projectList"
           :style="{ marginBottom: '24px' }"
           title="进行中的项目"
-          :bordered="false"
+          variant="borderless"
           :loading="false"
-          :body-style="{ padding: 0 }"
+          :styles="{ body: { padding: 0 } }"
         >
           <template #extra>
             <router-link to="/">
@@ -336,7 +336,7 @@ onBeforeUnmount(() => {
             </router-link>
           </template>
           <a-card-grid v-for="item in projectNotice" :key="item.id" class="projectGrid">
-            <a-card :body-style="{ padding: 0 }" style="box-shadow: none" :bordered="false">
+            <a-card :styles="{ body: { padding: 0 } }" style="box-shadow: none" variant="borderless">
               <a-card-meta
                 :description="item.description"
                 class="w-full"
@@ -362,20 +362,24 @@ onBeforeUnmount(() => {
           </a-card-grid>
         </a-card>
         <a-card
-          :body-style="{ padding: 0 }"
-          :bordered="false"
+          :styles="{ body: { padding: 0 } }"
+          variant="borderless"
           class="activeCard"
           title="动态"
           :loading="false"
         >
-          <a-list
-            :data-source="activities"
-            class="activitiesList"
-          >
-            <template #renderItem="{ item }">
-              <a-list-item :key="item.id">
-                <a-list-item-meta>
-                  <template #title>
+          <div class="activitiesList ant-list">
+            <div
+              v-for="item in activities"
+              :key="item.id"
+              class="ant-list-item"
+            >
+              <div class="ant-list-item-meta">
+                <div class="ant-list-item-meta-avatar">
+                  <a-avatar :src="item.user.avatar" />
+                </div>
+                <div class="ant-list-item-meta-content">
+                  <div class="ant-list-item-meta-title">
                     <span>
                       <a class="username">{{ item.user.name }}</a>&nbsp;
                       <span class="event">
@@ -385,33 +389,30 @@ onBeforeUnmount(() => {
                         <a href=""> {{ item?.project?.name }} </a>
                       </span>
                     </span>
-                  </template>
-                  <template #avatar>
-                    <a-avatar :src="item.user.avatar" />
-                  </template>
-                  <template #description>
+                  </div>
+                  <div class="ant-list-item-meta-description">
                     <span class="datetime" :title="item.updatedAt">
                       {{ item.updatedAt }}
                     </span>
-                  </template>
-                </a-list-item-meta>
-              </a-list-item>
-            </template>
-          </a-list>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </a-card>
       </a-col>
       <a-col :xl="8" :lg="24" :md="24" :sm="24" :xs="24">
         <a-card
           :style="{ marginBottom: '24px' }"
           title="快速开始 / 便捷导航"
-          :bordered="false"
-          :body-style="{ padding: 0 }"
+          variant="borderless"
+          :styles="{ body: { padding: 0 } }"
         >
           <EditableLinkGroup />
         </a-card>
         <a-card
           :style="{ marginBottom: '24px' }"
-          :bordered="false"
+          variant="borderless"
           title="XX 指数"
         >
           <div class="chart">
@@ -419,8 +420,8 @@ onBeforeUnmount(() => {
           </div>
         </a-card>
         <a-card
-          :body-style="{ paddingTop: '12px', paddingBottom: '12px' }"
-          :bordered="false"
+          :styles="{ body: { paddingTop: '12px', paddingBottom: '12px' } }"
+          variant="borderless"
           title="团队"
         >
           <div class="members">
@@ -490,11 +491,11 @@ onBeforeUnmount(() => {
     top: 4px;
     flex: 1 1 auto;
     margin-left: 24px;
-    color: var(--pro-ant-color-text-tertiary);
+    color: var(--ant-color-text-tertiary);
     line-height: 22px;
     .contentTitle {
       margin-bottom: 12px;
-      color: var(--pro-ant-color-text);
+      color: var(--ant-color-text);
       font-weight: 500;
       font-size: 20px;
       line-height: 28px;
@@ -513,17 +514,17 @@ onBeforeUnmount(() => {
     padding: 0 32px;
     > p:first-child {
       margin-bottom: 4px;
-      color: var(--pro-ant-color-text-tertiary);
+      color: var(--ant-color-text-tertiary);
       font-size: 14px;
       line-height: 22px;
     }
     > p {
       margin: 0;
-      color: var(--pro-ant-color-text);
+      color: var(--ant-color-text);
       font-size: 30px;
       line-height: 38px;
       > span {
-        color: var(--pro-ant-color-text-tertiary);
+        color: var(--ant-color-text-tertiary);
         font-size: 20px;
       }
     }
@@ -568,7 +569,7 @@ onBeforeUnmount(() => {
   :deep(.ant-card-meta-description) {
     height: 44px;
     overflow: hidden;
-    color: var(--pro-ant-color-text-tertiary);
+    color: var(--ant-color-text-tertiary);
     line-height: 22px;
   }
   .cardTitle {
@@ -577,12 +578,12 @@ onBeforeUnmount(() => {
       display: inline-block;
       height: 24px;
       margin-left: 12px;
-      color: var(--pro-ant-color-text);
+      color: var(--ant-color-text);
       font-size: 14px;
       line-height: 24px;
       vertical-align: top;
       &:hover {
-        color: var(--pro-ant-color-primary-hover);
+        color: var(--ant-color-primary-hover);
       }
     }
   }
@@ -600,22 +601,22 @@ onBeforeUnmount(() => {
     a {
       display: inline-block;
       flex: 1 1 0;
-      color: var(--pro-ant-color-text-tertiary);
+      color: var(--ant-color-text-tertiary);
       .textOverflow();
       &:hover {
-        color: var(--pro-ant-color-primary-hover);
+        color: var(--ant-color-primary-hover);
       }
     }
     .datetime {
       flex: 0 0 auto;
       float: right;
-      color: var(--pro-ant-color-text-quaternary);
+      color: var(--ant-color-text-quaternary);
     }
   }
 }
 
 .datetime {
-  color: var(--pro-ant-color-text-quaternary);
+  color: var(--ant-color-text-quaternary);
 }
 
 @media screen and (max-width: 1200px) and (min-width: 992px) {

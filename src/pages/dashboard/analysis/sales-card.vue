@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import type { Key } from 'ant-design-vue/es/_util/type'
 import { Column } from '@antv/g2plot'
 import dayjs from 'dayjs'
+
+type Key = string | number
 
 defineProps({
   loading: {
@@ -19,6 +20,10 @@ for (let i = 0; i < 7; i += 1) {
 }
 
 const rangePickerValue = ref()
+const tabItems = [
+  { key: 'sales', label: '销售额' },
+  { key: 'views', label: '访问量' },
+]
 
 function getDateRange(type: string) {
   const today = new Date()
@@ -171,11 +176,12 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <a-card :loading="loading" :bordered="false" :body-style="{ padding: 0 }">
+  <a-card :loading="loading" variant="borderless" :styles="{ body: { padding: 0 } }">
     <div class="salesCard">
       <a-tabs
         size="large"
         :tab-bar-style="{ marginBottom: '24px' }"
+        :items="tabItems"
         @change="changTab"
       >
         <template #rightExtra>
@@ -192,8 +198,8 @@ onBeforeUnmount(() => {
             />
           </div>
         </template>
-        <a-tab-pane key="sales" tab="销售额">
-          <a-row>
+        <template #contentRender="{ item }">
+          <a-row v-if="item.key === 'sales'">
             <a-col :xl="16" :lg="12" :md="12" :sm="24" :xs="24">
               <div class="salesBar">
                 <div ref="columnPlotContainer1" />
@@ -222,9 +228,7 @@ onBeforeUnmount(() => {
               </div>
             </a-col>
           </a-row>
-        </a-tab-pane>
-        <a-tab-pane key="views" tab="访问量">
-          <a-row>
+          <a-row v-else-if="item.key === 'views'">
             <a-col :xl="16" :lg="12" :md="12" :sm="24" :xs="24">
               <div class="salesBar">
                 <div ref="columnPlotContainer2" />
@@ -253,7 +257,7 @@ onBeforeUnmount(() => {
               </div>
             </a-col>
           </a-row>
-        </a-tab-pane>
+        </template>
       </a-tabs>
     </div>
   </a-card>

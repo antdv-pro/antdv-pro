@@ -9,7 +9,7 @@ import {
 } from './directive'
 import { setupI18n } from './locales'
 import '~/router/router-guard'
-import 'ant-design-vue/dist/reset.css'
+import 'antdv-next/dist/reset.css'
 import '~/assets/styles/reset.css'
 import 'uno.css'
 

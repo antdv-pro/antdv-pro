@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { LogoutOutlined, ProfileOutlined, UserOutlined } from '@ant-design/icons-vue'
+import { LogoutOutlined, ProfileOutlined, UserOutlined } from '@antdv-next/icons'
+import { h } from 'vue'
 
 const message = useMessage()
 const userStore = useUserStore()
@@ -7,7 +8,34 @@ const multiTabStore = useMultiTab()
 const layoutMenuStore = useLayoutMenu()
 const router = useRouter()
 const { avatar, nickname } = storeToRefs(userStore)
+
+const menuItems = [
+  {
+    key: 'center',
+    label: '个人中心',
+    icon: h(UserOutlined),
+  },
+  {
+    key: 'settings',
+    label: '个人设置',
+    icon: h(ProfileOutlined),
+  },
+  { type: 'divider' },
+  {
+    key: 'logout',
+    label: '退出登录',
+    icon: h(LogoutOutlined),
+  },
+]
 async function handleClick({ key }: any) {
+  if (key === 'center') {
+    await router.push({ path: '/account/center' })
+    return
+  }
+  if (key === 'settings') {
+    await router.push({ path: '/account/settings' })
+    return
+  }
   if (key === 'logout') {
     const hide = message.loading('退出登录...', 0)
     try {
@@ -34,31 +62,7 @@ async function handleClick({ key }: any) {
       <span class="anticon">{{ nickname }}</span>
     </span>
     <template #overlay>
-      <a-menu @click="handleClick">
-        <a-menu-item key="0">
-          <template #icon>
-            <UserOutlined />
-          </template>
-          <RouterLink to="/account/center">
-            个人中心
-          </RouterLink>
-        </a-menu-item>
-        <a-menu-item key="1">
-          <template #icon>
-            <ProfileOutlined />
-          </template>
-          <RouterLink to="/account/settings">
-            个人设置
-          </RouterLink>
-        </a-menu-item>
-        <a-menu-divider />
-        <a-menu-item key="logout">
-          <template #icon>
-            <LogoutOutlined />
-          </template>
-          退出登录
-        </a-menu-item>
-      </a-menu>
+      <a-menu :items="menuItems" @click="handleClick" />
     </template>
   </a-dropdown>
 </template>

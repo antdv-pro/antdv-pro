@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { GithubOutlined } from '@ant-design/icons-vue'
+import { GithubOutlined } from '@antdv-next/icons'
 </script>
 
 <template>

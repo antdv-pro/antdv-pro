@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { FormInstance } from 'ant-design-vue'
+import type { FormInstance } from 'antdv-next'
 
 const emit = defineEmits(['prevStep', 'nextStep'])
 const formRef = ref<FormInstance>()

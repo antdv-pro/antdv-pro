@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { EllipsisOutlined } from '@ant-design/icons-vue'
+import { EllipsisOutlined } from '@antdv-next/icons'
 import { Pie } from '@antv/g2plot'
 
 defineProps({
@@ -13,6 +13,10 @@ const salesType = ref('all')
 const pieContainer1 = ref()
 const pieContainer2 = ref()
 const pieContainer3 = ref()
+const actionMenuItems = [
+  { key: 'action-1', label: '操作一' },
+  { key: 'action-2', label: '操作二' },
+]
 function handleChangeSalesType(e: any) {
   salesType.value = e.target.value
 }
@@ -138,7 +142,7 @@ onUnmounted(() => {
   <a-card
     :loading="loading"
     class="salesCard"
-    :bordered="false"
+    variant="borderless"
     title="销售额类别占比"
     :style="{
       height: '100%',
@@ -148,10 +152,7 @@ onUnmounted(() => {
       <div class="salesCardExtra">
         <a-dropdown placement="bottomRight">
           <template #overlay>
-            <a-menu>
-              <a-menu-item>操作一</a-menu-item>
-              <a-menu-item>操作二</a-menu-item>
-            </a-menu>
+            <a-menu :items="actionMenuItems" />
           </template>
           <EllipsisOutlined />
         </a-dropdown>

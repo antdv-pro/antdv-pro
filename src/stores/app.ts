@@ -1,8 +1,10 @@
-import type { ThemeConfig } from 'ant-design-vue/es/config-provider/context'
+import type { ConfigProviderProps } from 'antdv-next'
 import type { AnimationNameValueType } from '~@/config/default-setting'
 import type { ContentWidth, LayoutType, ThemeType } from '~@/layouts/basic-layout/typing'
-import { theme as antdTheme } from 'ant-design-vue/es'
+import { theme as antdTheme } from 'antdv-next'
 import defaultSetting from '~@/config/default-setting'
+
+type ThemeConfig = NonNullable<ConfigProviderProps['theme']>
 
 export interface LayoutSetting {
   title?: string
@@ -82,8 +84,8 @@ export const useAppStore = defineStore('app', () => {
         themeConfig.components = {
           ...themeConfig.components,
           Menu: {
-            colorItemBg: 'rgb(36, 37, 37)',
-            colorSubItemBg: 'rgb(36, 37, 37)',
+            itemBg: 'rgb(36, 37, 37)',
+            subMenuItemBg: 'rgb(36, 37, 37)',
             menuSubMenuBg: 'rgb(36, 37, 37)',
           } as any,
         }

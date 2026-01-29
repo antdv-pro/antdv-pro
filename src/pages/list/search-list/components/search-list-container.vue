@@ -5,6 +5,11 @@ const activeKey = computed(() => route.path)
 function handleChangePage(key: any) {
   router.push(key)
 }
+const tabItems = [
+  { key: '/list/search-list/articles', label: '文章' },
+  { key: '/list/search-list/projects', label: '项目' },
+  { key: '/list/search-list/applications', label: '应用' },
+]
 </script>
 
 <template>
@@ -20,11 +25,7 @@ function handleChangePage(key: any) {
     </template>
     <template #footer>
       <div class="mt-6 mb--16px">
-        <a-tabs :active-key="activeKey" @update:active-key="handleChangePage">
-          <a-tab-pane key="/list/search-list/articles" tab="文章" />
-          <a-tab-pane key="/list/search-list/projects" tab="项目" />
-          <a-tab-pane key="/list/search-list/applications" tab="应用" />
-        </a-tabs>
+        <a-tabs :active-key="activeKey" :items="tabItems" @update:active-key="handleChangePage" />
       </div>
     </template>
     <slot />

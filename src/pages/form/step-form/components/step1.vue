@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { FormInstance } from 'ant-design-vue'
+import type { FormInstance } from 'antdv-next'
 
 const emit = defineEmits(['nextStep'])
 const formRef = ref<FormInstance>()
@@ -18,6 +18,9 @@ const formState = reactive<FirstFormState>({
   name: 'Kirk Lin',
   amount: 1000000,
 })
+const paymentAccountOptions = [
+  { value: '1', label: 'antdv@aibayanyu.com' },
+]
 async function nextStep() {
   try {
     await formRef.value?.validateFields()
@@ -43,11 +46,8 @@ async function nextStep() {
         <a-select
           v-model:value="formState.paymentAccount"
           placeholder="ant-design@alipay.com"
-        >
-          <a-select-option value="1">
-            antdv@aibayanyu.com
-          </a-select-option>
-        </a-select>
+          :options="paymentAccountOptions"
+        />
       </a-form-item>
       <a-form-item
         label="收款账户"

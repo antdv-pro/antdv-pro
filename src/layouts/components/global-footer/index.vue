@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CopyrightCircleOutlined } from '@ant-design/icons-vue'
+import { CopyrightCircleOutlined } from '@antdv-next/icons'
 
 defineOptions({
   name: 'GlobalFooter',

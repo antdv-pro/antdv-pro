@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CloseCircleOutlined, RightOutlined } from '@ant-design/icons-vue'
+import { CloseCircleOutlined, RightOutlined } from '@antdv-next/icons'
 
 const { t } = useI18n()
 const result = computed(() => {
@@ -11,7 +11,7 @@ const result = computed(() => {
 </script>
 
 <template>
-  <a-card :bordered="false">
+  <a-card variant="borderless">
     <a-result status="error" :title="result.title" :sub-title="result.description">
       <template #extra>
         <a-button type="primary">

@@ -1,11 +1,14 @@
-import type { GlobalToken } from 'ant-design-vue/es/theme'
+import type { GlobalToken } from 'antdv-next/dist/theme/interface/cssinjs-utils'
 import { canUseDom, updateCSS } from '@v-c/utils'
+
 import { kebabCase } from 'lodash'
+
+// type GlobalToken = ReturnType<typeof import('antdv-next').theme.useToken>['token']['value']
 
 function formatKey(key: string, prefixCls: string) {
   return `${prefixCls}${kebabCase(key)}`
 }
-const prefixCls = '--pro-ant-'
+const prefixCls = '--ant-'
 
 const dynamicStyleMark = `${prefixCls}${Date.now()}-${Math.random()}`
 

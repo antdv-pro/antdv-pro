@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { DownloadOutlined, EditOutlined, EllipsisOutlined, ShareAltOutlined } from '@ant-design/icons-vue'
+import { DownloadOutlined, EditOutlined, EllipsisOutlined, ShareAltOutlined } from '@antdv-next/icons'
 
 const { t } = useI18n()
 </script>

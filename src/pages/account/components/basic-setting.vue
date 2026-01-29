@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { UnwrapRef } from 'vue'
-import { UploadOutlined } from '@ant-design/icons-vue'
+import { UploadOutlined } from '@antdv-next/icons'
 
 interface FormState {
   eamil: string
@@ -24,6 +24,9 @@ const formState: UnwrapRef<FormState> = reactive({
   address: '',
   phoneNumber: '',
 })
+const regionOptions = computed(() => ([
+  { value: 'China', label: t('account.settings.form-region-China') },
+]))
 const rules: any = computed(() => {
   return {
     name: [
@@ -65,7 +68,7 @@ function handleChange() {
 </script>
 
 <template>
-  <a-card :title="t('account.settings.basic-setting')" :bordered="false">
+  <a-card :title="t('account.settings.basic-setting')" variant="borderless">
     <a-row>
       <a-col :span="12">
         <a-form
@@ -82,11 +85,11 @@ function handleChange() {
             <a-input v-model:value="formState.name" :placeholder="t('account.settings.form-input-plac')" style="width: 320px;" />
           </a-form-item>
           <a-form-item :label="t('account.settings.form-region')" :label-col="{ span: 24 }" name="region">
-            <a-select v-model:value="formState.region" :placeholder="t('account.settings.form-select-plac')">
-              <a-select-option value="China">
-                {{ t('account.settings.form-region-China') }}
-              </a-select-option>
-            </a-select>
+            <a-select
+              v-model:value="formState.region"
+              :placeholder="t('account.settings.form-select-plac')"
+              :options="regionOptions"
+            />
           </a-form-item>
           <a-form-item :label-col="{ span: 24 }" :label="t('account.settings.form-address')" name="address">
             <a-input v-model:value="formState.address" :placeholder="t('account.settings.form-input-plac')" style="width: 320px;" />

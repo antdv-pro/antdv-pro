@@ -74,24 +74,24 @@ function getI18n(key: any) {
   else if (key === 'info')
     return t('profile.advanced.log-info')
 }
+const tabItems = computed(() => ([
+  { key: '1', label: t('profile.advanced.log') },
+  { key: '2', label: t('profile.advanced.log1') },
+  { key: '3', label: t('profile.advanced.log2') },
+]))
 </script>
 
 <template>
   <a-card class="my-6">
-    <a-tabs v-model:active-key="activeKey">
-      <a-tab-pane key="1" :tab="t('profile.advanced.log')">
-        <a-table :data-source="data" :columns="columns">
+    <a-tabs v-model:active-key="activeKey" :items="tabItems">
+      <template #contentRender="{ item }">
+        <a-table v-if="item.key === '1'" :data-source="data" :columns="columns">
           <template #headerCell="scope">
             {{ getI18n(scope?.column?.key) }}
           </template>
         </a-table>
-      </a-tab-pane>
-      <a-tab-pane key="2" :tab="t('profile.advanced.log1')">
-        <a-table :data-source="data" :columns="columns" />
-      </a-tab-pane>
-      <a-tab-pane key="3" :tab="t('profile.advanced.log2')">
-        <a-table :data-source="data" :columns="columns" />
-      </a-tab-pane>
+        <a-table v-else :data-source="data" :columns="columns" />
+      </template>
     </a-tabs>
   </a-card>
 </template>

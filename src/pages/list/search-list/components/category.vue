@@ -70,7 +70,7 @@ const praiseList = shallowRef([
 </script>
 
 <template>
-  <a-card :bordered="false">
+  <a-card variant="borderless">
     <a-form>
       <a-form-item label="所属类目">
         <div class="flex flex-wrap gap-2">

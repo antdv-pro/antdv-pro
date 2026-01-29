@@ -1,6 +1,8 @@
-import type { SelectEventHandler } from 'ant-design-vue/es/menu/src/interface'
+import type { MenuEmits } from 'antdv-next'
 import type { Key, MenuData, MenuDataItem, ProLayoutProps } from './typing'
 import { runEvent } from '@v-c/utils'
+
+type SelectEventHandler = NonNullable<MenuEmits['select']>
 
 export interface ProLayoutProviderMethods {
   handleCollapsed?: (collapsed: boolean) => void

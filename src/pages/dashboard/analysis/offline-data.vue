@@ -259,34 +259,41 @@ const offlineChartData = [
     value: 23,
   },
 ]
+const tabItems = computed(() =>
+  offlineData.map((item, index) => ({
+    key: `${index}`,
+    label: item.name,
+    data: item,
+  })),
+)
 </script>
 
 <template>
-  <a-card :loading="loading" class="offlineCard" :bordered="false" :style="{ marginTop: '32px' }">
-    <a-tabs v-model:active-key="activeKey" @change="handleTabChange">
-      <a-tab-pane v-for="(item, index) in offlineData" :key="index">
-        <template #tab>
-          <a-row :gutter="8" :style="{ width: '138px', margin: '8px 0' }">
-            <a-col :span="12">
-              <NumberInfo
-                :title="item.name"
-                :gap="2"
-                :total="`${item.cvr * 100}%`"
-              >
-                <template #subTitle>
-                  {{ '转化率' }}
-                </template>
-              </NumberInfo>
-            </a-col>
-            <a-col :span="12" :style="{ paddingTop: '36px' }">
-              <CustomRingProgress :percent="item.cvr" />
-            </a-col>
-          </a-row>
-        </template>
+  <a-card :loading="loading" class="offlineCard" variant="borderless" :style="{ marginTop: '32px' }">
+    <a-tabs v-model:active-key="activeKey" :items="tabItems" @change="handleTabChange">
+      <template #labelRender="{ item }">
+        <a-row :gutter="8" :style="{ width: '138px', margin: '8px 0' }">
+          <a-col :span="12">
+            <NumberInfo
+              :title="item.data?.name"
+              :gap="2"
+              :total="`${item.data?.cvr * 100}%`"
+            >
+              <template #subTitle>
+                {{ '转化率' }}
+              </template>
+            </NumberInfo>
+          </a-col>
+          <a-col :span="12" :style="{ paddingTop: '36px' }">
+            <CustomRingProgress :percent="item.data?.cvr" />
+          </a-col>
+        </a-row>
+      </template>
+      <template #contentRender>
         <div :style="{ padding: '0 24px' }">
           <CustomLine :offline-chart-data="offlineChartData" />
         </div>
-      </a-tab-pane>
+      </template>
     </a-tabs>
   </a-card>
 </template>

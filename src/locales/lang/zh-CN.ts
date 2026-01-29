@@ -1,4 +1,4 @@
-import zhCN from 'ant-design-vue/es/locale/zh_CN'
+import zhCN from 'antdv-next/locale/zh_CN'
 
 const zhCNModules = import.meta.glob([
   './global/zh-CN.ts',

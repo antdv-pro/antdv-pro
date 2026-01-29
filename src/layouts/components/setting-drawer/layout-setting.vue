@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import type { SelectValue } from 'ant-design-vue/es/select'
+import type { SelectProps } from 'antdv-next'
 import type { CheckedType, ContentWidth, LayoutType } from '../../basic-layout/typing'
+
+type SelectValue = SelectProps['value']
 
 const props = defineProps<{
   contentWidth?: ContentWidth
@@ -66,31 +68,46 @@ const list = computed(() => [
     disabledReason: '',
   },
 ])
+const contentWidthOptions = computed(() => {
+  const options: { value: ContentWidth, label: string }[] = []
+  if (props.layout === 'top') {
+    options.push({
+      value: 'Fixed',
+      label: props.t?.('app.setting.content-width.fixed') ?? 'Fixed',
+    })
+  }
+  options.push({
+    value: 'Fluid',
+    label: props.t?.('app.setting.content-width.fluid') ?? 'Fluid',
+  })
+  return options
+})
 function handleChangeSetting(key: string, value: any) {
   emit('changeSetting', key, value)
 }
 </script>
 
 <template>
-  <a-list :data-source="list" :split="false">
-    <template #renderItem="{ item }">
+  <div class="ant-list">
+    <div
+      v-for="item in list"
+      :key="item.key"
+      class="ant-list-item"
+    >
       <a-tooltip :title="item.disabled ? item.disabledReason : ''" placement="left">
-        <a-list-item>
-          <template #actions>
+        <div class="flex items-center justify-between w-full">
+          <span :style="{ opacity: item.disabled ? '0.5' : '1' }">
+            {{ t?.(`app.setting.content-width.${item.key}`, item.title) ?? item.title }}
+          </span>
+          <div class="ant-list-item-action">
             <template v-if="item.key === 'contentWidth'">
               <a-select
                 size="small"
                 :disabled="item.disabled"
                 :value="contentWidth || 'Fluid'"
+                :options="contentWidthOptions"
                 @update:value="(e:SelectValue) => handleChangeSetting('contentWidth', e)"
-              >
-                <a-select-option v-if="layout === 'top'" value="Fixed">
-                  {{ t?.('app.setting.content-width.fixed') ?? 'Fixed' }}
-                </a-select-option>
-                <a-select-option value="Fluid">
-                  {{ t?.('app.setting.content-width.fluid') ?? 'Fluid' }}
-                </a-select-option>
-              </a-select>
+              />
             </template>
             <template v-if="item.key === 'fixedHeader'">
               <a-switch
@@ -148,12 +165,9 @@ function handleChangeSetting(key: string, value: any) {
                 @update:checked="(e:CheckedType) => handleChangeSetting('compactAlgorithm', e)"
               />
             </template>
-          </template>
-          <span :style="{ opacity: item.disabled ? '0.5' : '1' }">
-            {{ t?.(`app.setting.content-width.${item.key}`, item.title) ?? item.title }}
-          </span>
-        </a-list-item>
+          </div>
+        </div>
       </a-tooltip>
-    </template>
-  </a-list>
+    </div>
+  </div>
 </template>

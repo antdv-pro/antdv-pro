@@ -1,25 +1,34 @@
 <script setup lang="ts">
-import { omit } from '@v-c/utils'
 import { useLayoutState } from '../../basic-layout/context'
-import SubMenu from './sub-menu.vue'
+import { createMenuItems } from './menu-items'
 
 const { splitState, menuData, handleSplitSelectedKeys } = useLayoutState()
 
-const menuDataList = computed(() => menuData.value?.map(v => ({ ...omit(v, ['children']), childrenCount: (v.children ?? []).length })))
+const menuItems = computed(() => createMenuItems(menuData.value ?? [], {
+  link: item => (item.children ?? []).length <= 0 || item.hideChildrenInMenu,
+}))
+const resolveLabel = (label: any) => (typeof label === 'function' ? label() : label)
 </script>
 
 <template>
   <a-menu
+    :items="menuItems"
     mode="horizontal"
     theme="dark"
     class="ant-pro-sider-menu-header"
     :selected-keys="splitState.selectedKeys"
     @update:selected-keys="handleSplitSelectedKeys"
   >
-    <template v-for="item in menuDataList">
-      <template v-if="!item.hideInMenu">
-        <SubMenu :key="item.path" :item="item" :link="item.childrenCount <= 0" />
-      </template>
+    <template #labelRender="item">
+      <span v-if="item.children?.length || item.link === false">
+        {{ resolveLabel(item.label) }}
+      </span>
+      <RouterLink v-else-if="!item.isUrl" :to="item.path">
+        {{ resolveLabel(item.label) }}
+      </RouterLink>
+      <a v-else :href="item.path" :target="item.target ?? '_blank'">
+        {{ resolveLabel(item.label) }}
+      </a>
     </template>
   </a-menu>
 </template>

@@ -62,7 +62,7 @@ export default ({ mode }: ConfigEnv): UserConfig => {
                 name: 'vue',
               },
               {
-                test: /[\\/]node_modules[\\/](ant-design-vue|@ant-design[\\/]icons-vue|dayjs)[\\/]/,
+                test: /[\\/]node_modules[\\/](antdv-next|@antdv-next[\\/]icons|dayjs)[\\/]/,
                 name: 'antd',
               },
             ],
@@ -78,7 +78,7 @@ export default ({ mode }: ConfigEnv): UserConfig => {
                 name: 'vue',
               },
               {
-                test: /[\\/]node_modules[\\/](ant-design-vue|@ant-design[\\/]icons-vue|dayjs)[\\/]/,
+                test: /[\\/]node_modules[\\/](antdv-next|@antdv-next[\\/]icons|dayjs)[\\/]/,
                 name: 'antd',
               },
             ],

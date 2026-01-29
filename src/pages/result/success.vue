@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { DingdingOutlined } from '@ant-design/icons-vue'
+import { DingdingOutlined } from '@antdv-next/icons'
+import { h } from 'vue'
 
 const { t } = useI18n()
-const { isMobile } = useQueryBreakpoints()
 
 const result = computed(() => {
   return {
@@ -10,10 +10,42 @@ const result = computed(() => {
     description: t('result.success.description'),
   }
 })
+const stepItems = computed(() => ([
+  {
+    key: '1',
+    title: h('span', { class: 'text-3' }, t('result.success.step1-title')),
+    content: h('div', { class: 'relative text-12px align-left left-42px' }, [
+      h('div', { style: 'margin: 8px 0 4px' }, [
+        t('result.success.step1-operator'),
+        h(DingdingOutlined, { class: 'm-1 c-primary' }),
+      ]),
+      h('div', '2023-08-17 12:32'),
+    ]),
+  },
+  {
+    key: '2',
+    title: h('span', { class: 'text-3' }, t('result.success.step2-title')),
+    content: h('div', { class: 'relative text-12px align-left left-42px' }, [
+      h('div', { style: 'margin: 8px 0 4px' }, [
+        t('result.success.step2-operator'),
+        h(DingdingOutlined, { class: 'm-1 c-primary' }),
+      ]),
+      h('div', '2023-08-17 13:32'),
+    ]),
+  },
+  {
+    key: '3',
+    title: h('span', { class: 'text-3' }, t('result.success.step3-title')),
+  },
+  {
+    key: '4',
+    title: h('span', { class: 'text-3' }, t('result.success.step4-title')),
+  },
+]))
 </script>
 
 <template>
-  <a-card :bordered="false">
+  <a-card variant="borderless">
     <a-result status="success" :title="result.title" :sub-title="result.description">
       <template #extra>
         <a-button type="primary">
@@ -44,38 +76,7 @@ const result = computed(() => {
             2023-08-12 ~ 2024-08-12
           </a-col>
         </a-row>
-        <a-steps :current="1" :direction="isMobile && 'horizontal' || 'horizontal'" progress-dot>
-          <a-step :title="t('result.success.step1-title')">
-            <span class="text-3">{{ t('result.success.step1-title') }}</span>
-            <template #description>
-              <div class="relative text-12px align-left left-42px">
-                <div style="margin: 8px 0 4px">
-                  {{ t("result.success.step1-operator") }}
-                  <DingdingOutlined class="m-1 c-primary" />
-                </div>
-                <div>2023-08-17 12:32</div>
-              </div>
-            </template>
-          </a-step>
-          <a-step :title="t('result.success.step2-title')">
-            <span class="text-3">{{ t('result.success.step2-title') }}</span>
-            <template #description>
-              <div class="relative text-12px align-left left-42px">
-                <div style="margin: 8px 0 4px">
-                  {{ t("result.success.step2-operator") }}
-                  <DingdingOutlined class="m-1 c-primary" />
-                </div>
-                <div>2023-08-17 13:32</div>
-              </div>
-            </template>
-          </a-step>
-          <a-step :title="t('result.success.step3-title')">
-            <span class="text-3">{{ t('result.success.step3-title') }}</span>
-          </a-step>
-          <a-step :title="t('result.success.step4-title')">
-            <span class="text-3">{{ t('result.success.step4-title') }}</span>
-          </a-step>
-        </a-steps>
+        <a-steps :current="1" orientation="horizontal" type="dot" :items="stepItems" />
       </div>
     </a-result>
   </a-card>

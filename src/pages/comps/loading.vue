@@ -41,7 +41,7 @@ function startTimeLoading() {
 
 <template>
   <div class="loading-wrapper">
-    <a-card title="指令方式加载loading" :hoverable="true" :bordered="false">
+    <a-card title="指令方式加载loading" :hoverable="true" variant="borderless">
       <div
         v-loading="loading"
         class="relative w-full h-[150px]"
@@ -59,14 +59,14 @@ function startTimeLoading() {
         </a-space>
       </div>
     </a-card>
-    <a-card title="hook加载loading" hoverable :bordered="false" style="margin-top:15px">
+    <a-card title="hook加载loading" hoverable variant="borderless" style="margin-top:15px">
       <a-space :size="15">
         <a-button v-for="(item, index) in loadingList" :key="item" type="primary" @click="startLoading(item)">
           loading{{ index + 1 }}
         </a-button>
       </a-space>
     </a-card>
-    <a-card title="hooloading最小时长" hoverable :bordered="false">
+    <a-card title="hooloading最小时长" hoverable variant="borderless">
       <a-space :size="15">
         <a-input-number v-model:value="time" />
         <a-button type="primary" @click="startTimeLoading">

@@ -30,21 +30,25 @@ function isToggleChecked(key: string) {
 </script>
 
 <template>
-  <a-list :data-source="list" :split="false">
-    <template #renderItem="{ item }">
-      <a-list-item>
-        <template #actions>
+  <div class="ant-list">
+    <div
+      v-for="item in list"
+      :key="item.key"
+      class="ant-list-item"
+    >
+      <div class="flex items-center justify-between w-full">
+        <span :style="{ opacity: item.disabled ? '0.5' : '1' }">
+          {{ t?.(`app.setting.${item.title}`, item.title) ?? item.title }}
+        </span>
+        <div class="ant-list-item-action">
           <a-switch
             size="small"
             :checked="isToggleChecked(item.key)"
             :disabled="item.disabled"
             @update:checked="handleToggleChange(item.key, $event)"
           />
-        </template>
-        <span :style="{ opacity: item.disabled ? '0.5' : '1' }">
-          {{ t?.(`app.setting.${item.title}`, item.title) ?? item.title }}
-        </span>
-      </a-list-item>
-    </template>
-  </a-list>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>

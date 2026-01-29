@@ -18,7 +18,7 @@ const data = ref<IDataItem[]>([
   {
     title: 'Antdv Pro',
     tags: ['Ant Design Vue', '中后台', '自动化'],
-    content: 'AntdvPro是一个基于Vue3、Vite4、ant-design-vue4、Pinia、UnoCSS和Typescript的一整套企业级中后台前端/设计解决方案，它参考了阿里react版本antd-pro的设计模式，使用了最新最流行的前端技术栈，内置了动态路由、多主题、多布局等功能，可以帮助你快速搭建企业级中后台产品原型。',
+    content: 'AntdvPro是一个基于Vue3、Vite4、antdv-next、Pinia、UnoCSS和Typescript的一整套企业级中后台前端/设计解决方案，它参考了阿里react版本antd-pro的设计模式，使用了最新最流行的前端技术栈，内置了动态路由、多主题、多布局等功能，可以帮助你快速搭建企业级中后台产品原型。',
   },
 ])
 
@@ -29,20 +29,21 @@ const dataSource = computed(() => {
 
   return arr
 })
+const tabItems = computed(() => ([
+  { key: '1', label: t('account.center.article') },
+  { key: '2', label: t('account.center.application') },
+  { key: '3', label: t('account.center.project') },
+]))
 </script>
 
 <template>
-  <a-card :borderer="false">
-    <a-tabs v-model:active-key="activeKey">
-      <a-tab-pane key="1" :tab="t('account.center.article')">
-        <article-tab :data-source="dataSource" />
-      </a-tab-pane>
-      <a-tab-pane key="2" :tab="t('account.center.application')" force-render>
-        <application-tab />
-      </a-tab-pane>
-      <a-tab-pane key="3" :tab="t('account.center.project')">
-        <pro-tab />
-      </a-tab-pane>
+  <a-card variant="borderless">
+    <a-tabs v-model:active-key="activeKey" :items="tabItems">
+      <template #contentRender="{ item }">
+        <article-tab v-if="item.key === '1'" :data-source="dataSource" />
+        <application-tab v-else-if="item.key === '2'" />
+        <pro-tab v-else-if="item.key === '3'" />
+      </template>
     </a-tabs>
   </a-card>
 </template>
