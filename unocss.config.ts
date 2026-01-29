@@ -1,3 +1,4 @@
+import { presetAntd } from '@antdv-next/unocss'
 import {
   defineConfig,
   presetAttributify,
@@ -9,16 +10,12 @@ import {
 } from 'unocss'
 import presetChinese from 'unocss-preset-chinese'
 import presetEase from 'unocss-preset-ease'
-import antdUnoTheme from './themes/antd-uno-theme.json'
 
 export default defineConfig({
   safelist: [
     'py-16px',
     'pb-16px',
   ],
-  theme: {
-    ...antdUnoTheme,
-  },
   presets: [
     presetWind3(),
     presetAttributify(),
@@ -29,6 +26,7 @@ export default defineConfig({
       scale: 1.2,
       warn: true,
     }),
+    presetAntd(),
   ],
   shortcuts: [
     ['flex-center', 'flex items-center justify-center'],

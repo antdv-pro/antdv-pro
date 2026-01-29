@@ -1,13 +1,14 @@
 import type { PluginOption } from 'vite'
+import { AntdvNextResolver } from '@antdv-next/auto-import-resolver'
 import VitePluginPreloadAll from '@mistjs/vite-plugin-preload'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
-import AntdvResolver from 'antdv-component-resolver'
 import { mockH3 } from 'mock-h3/vite'
 import Unocss from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import GenerateConfig from 'unplugin-config/vite'
 import Components from 'unplugin-vue-components/vite'
+import dayjs from 'vite-plugin-dayjs'
 import { GLOB_CONFIG_FILE_NAME, OUTPUT_DIR } from './constants'
 import { viteBuildInfo } from './vite-build-info'
 
@@ -16,6 +17,7 @@ export function createVitePlugins(env: Record<string, string>) {
     vue(),
     vueJsx(),
     mockH3({}),
+    dayjs(),
     VitePluginPreloadAll(),
     AutoImport({
       imports: [
@@ -29,7 +31,7 @@ export function createVitePlugins(env: Record<string, string>) {
       dirs: ['src/stores', 'src/composables'],
     }),
     Components({
-      resolvers: [AntdvResolver()],
+      resolvers: [AntdvNextResolver()],
       dts: 'types/components.d.ts',
       dirs: ['src/components'],
     }),
