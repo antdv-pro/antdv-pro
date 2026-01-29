@@ -72,6 +72,7 @@ const layoutProps = computed(() =>
     <a-watermark
       class="h-full w-full flex flex-col flex-1"
       :content="layoutSetting.watermark ? layoutSetting.title ?? 'Antdv Pro' : ' ' "
+      style="overflow:unset"
     >
       <RouteView />
     </a-watermark>

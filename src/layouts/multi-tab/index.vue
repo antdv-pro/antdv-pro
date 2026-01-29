@@ -140,8 +140,7 @@ onUnmounted(() => {
     ref="tabsRef"
     :active-key="activeKey"
     :style="tabStyle"
-    class=" bg-white dark:bg-#242525 w-100% pro-ant-multi-tab"
-    pt-10px
+    class="bg-white dark:bg-#242525 w-100% pro-ant-multi-tab pt-10px"
     type="card"
     size="small"
     :tab-bar-gutter="5"
@@ -169,7 +168,7 @@ onUnmounted(() => {
             <CloseOutlined />
           </button>
         </div>
-        <template #overlay>
+        <template #popupRender>
           <a-menu
             :items="contextMenuItems(item.key)"
             @click="handleSwitch($event, item.key)"
@@ -184,7 +183,7 @@ onUnmounted(() => {
       <div class="w-48px flex item-center justify-center">
         <a-dropdown :trigger="['hover']">
           <MoreOutlined class="text-16px" />
-          <template #overlay>
+          <template #popupRender>
             <a-menu
               :items="moreMenuItems"
               @click="handleSwitch($event, activeKey)"

@@ -633,7 +633,7 @@ onMounted(() => {
               <a-statistic title="销售目标完成率" value="92%" />
             </a-col>
             <a-col :md="6" :sm="12" :xs="24">
-              <a-statistic-countdown title="活动剩余时间" :value="deadline" format="HH:mm:ss:SSS" />
+              <a-statistic-timer type="countdown" title="活动剩余时间" :value="deadline" format="HH:mm:ss:SSS" />
             </a-col>
             <a-col :md="6" :sm="12" :xs="24">
               <a-statistic title="每秒交易总额" suffix="元" :value="convertNumber(234)" />

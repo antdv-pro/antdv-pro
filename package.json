@@ -34,7 +34,7 @@
     "@ctrl/tinycolor": "^4.2.0",
     "@v-c/utils": "^0.0.26",
     "@vueuse/core": "^10.11.1",
-    "antdv-next": "1.0.0-rc.3",
+    "antdv-next": "1.0.0-rc.4",
     "axios": "^1.12.2",
     "dayjs": "^1.11.18",
     "lodash-es": "^4.17.21",

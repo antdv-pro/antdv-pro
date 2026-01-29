@@ -49,6 +49,7 @@ const inviteOptions = computed(() => ([
             :placeholder="t('form.basic-form.title.placeholder')"
           />
         </a-form-item>
+
         <a-form-item
           :label="t('form.basic-form.date.label')"
           :label-col="{ lg: { span: 7 }, sm: { span: 7 } }"
