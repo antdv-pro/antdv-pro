@@ -41,7 +41,7 @@ function layoutStateFunc(props: ProLayoutProps, methods: ProLayoutProviderMethod
 
   const menuDataMap = reactive(new Map<Key, MenuDataItem>())
   const splitState = reactive<{
-    selectedKeys: Key[]
+    selectedKeys: string[]
   }>({
     selectedKeys: [],
   })

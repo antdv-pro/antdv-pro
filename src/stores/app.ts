@@ -1,7 +1,7 @@
 import type { ConfigProviderProps } from 'antdv-next'
 import type { AnimationNameValueType } from '~@/config/default-setting'
 import type { ContentWidth, LayoutType, ThemeType } from '~@/layouts/basic-layout/typing'
-import { theme as antdTheme, ConfigProvider } from 'antdv-next'
+import { theme as antdTheme } from 'antdv-next'
 import defaultSetting from '~@/config/default-setting'
 
 type ThemeConfig = NonNullable<ConfigProviderProps['theme']>
@@ -94,10 +94,6 @@ export const useAppStore = defineStore('app', () => {
         }
       }
     }
-    console.log(themeConfig)
-    ConfigProvider.config({
-      theme: themeConfig,
-    })
   }
 
   const toggleDrawerVisible = (visible: boolean) => {

@@ -116,7 +116,7 @@ export function useTableQuery(_options: Partial<TableQueryOptions>) {
         showSizeChanger: true,
         showQuickJumper: true,
         showTotal: total => `总数据位：${total}`,
-        onChange(current, pageSize) {
+        onChange(current: number, pageSize: number) {
           state.pagination!.pageSize = pageSize
           state.pagination!.current = current
           query()

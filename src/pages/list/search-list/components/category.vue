@@ -87,16 +87,14 @@ const praiseList = shallowRef([
       </a-form-item>
       <a-divider dashed />
       <a-form-item label="其他选项">
-        <a-form-item-rest>
-          <div class="flex gap-4 category-other-item">
-            <a-form-item label="作者">
-              <a-select placeholder="不限" style="width: 100px" :options="authorList" />
-            </a-form-item>
-            <a-form-item label="好评度">
-              <a-select placeholder="不限" style="width: 100px" :options="praiseList" />
-            </a-form-item>
-          </div>
-        </a-form-item-rest>
+        <div class="flex gap-4 category-other-item">
+          <a-form-item label="作者">
+            <a-select placeholder="不限" style="width: 100px" :options="authorList" />
+          </a-form-item>
+          <a-form-item label="好评度">
+            <a-select placeholder="不限" style="width: 100px" :options="praiseList" />
+          </a-form-item>
+        </div>
       </a-form-item>
     </a-form>
   </a-card>

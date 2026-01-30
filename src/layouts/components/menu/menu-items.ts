@@ -1,42 +1,36 @@
 import type { MenuProps } from 'antdv-next'
 import type { MenuDataItem } from '~@/layouts/basic-layout/typing'
 import { isUrl } from '@v-c/utils'
-import { h } from 'vue'
-import AsyncIcon from './async-icon.vue'
+import { omit } from 'lodash'
+import AsyncIcon from '~/layouts/components/menu/async-icon.vue'
 
 type MenuItems = NonNullable<MenuProps['items']>
-type MenuItem = NonNullable<MenuItems>[number] & {
-  path?: string
-  target?: MenuDataItem['target']
-  link?: boolean
-  isUrl?: boolean
-  label?: MenuDataItem['title']
-}
 
-function resolveLink(link: boolean | ((item: MenuDataItem) => boolean), item: MenuDataItem) {
-  return typeof link === 'function' ? link(item) : link
-}
-
-export function createMenuItems(
-  items: MenuDataItem[],
-  options: { link?: boolean | ((item: MenuDataItem) => boolean) } = {},
-): MenuItems {
-  const { link = true } = options
+export function createMenuItems(items: MenuDataItem[]): MenuItems {
   return (items ?? [])
     .filter(item => !item.hideInMenu)
     .map((item) => {
       const children = (item.children ?? []).filter(child => !child.hideInMenu)
       const hasChildren = children.length > 0 && !item.hideChildrenInMenu
-      const menuItem: MenuItem = {
+      const menuItem: Record<string, any> = {
+        ...omit(item, ['children']),
         key: item.path,
         label: item.title,
-        icon: item.icon ? h(AsyncIcon, { icon: item.icon }) : undefined,
-        children: hasChildren ? createMenuItems(children, { link }) : undefined,
         path: item.path,
         target: item.target,
-        link: resolveLink(link, item),
         isUrl: isUrl(item.path),
       }
-      return menuItem
+      if (item.icon) {
+        if (typeof item.icon === 'function') {
+          menuItem.icon = item.icon
+        }
+        else {
+          menuItem.icon = () => h(AsyncIcon, { icon: item.icon as string })
+        }
+      }
+      if (hasChildren) {
+        menuItem.children = createMenuItems(children)
+      }
+      return menuItem as MenuItems[number]
     })
 }

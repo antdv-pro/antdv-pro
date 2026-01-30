@@ -4,7 +4,7 @@ import { arrayType, booleanType, eventType, numberType, stringType } from '@v-c/
 export type CheckedType = boolean | string | number
 export type MenuData = MenuDataItem[]
 
-export type Key = string | number
+export type Key = string
 
 export interface MenuDataItem {
   // 唯一id

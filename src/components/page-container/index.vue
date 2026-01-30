@@ -62,7 +62,7 @@ function renderTitle(title: VNodeChild | (() => VNodeChild)) {
   return title
 }
 const breadcrumbItems = computed(() => {
-  const items: { title: VNodeChild }[] = []
+  const items: { title: any }[] = []
   const matched = currentItem.value?.matched ?? []
   matched.forEach((item: any) => {
     items.push({ title: renderTitle(item.title) })

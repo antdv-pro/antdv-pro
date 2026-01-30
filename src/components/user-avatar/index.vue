@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import type { MenuItemType } from 'antdv-next'
 import { LogoutOutlined, ProfileOutlined, UserOutlined } from '@antdv-next/icons'
+
 import { h } from 'vue'
 
 const message = useMessage()
@@ -9,7 +11,7 @@ const layoutMenuStore = useLayoutMenu()
 const router = useRouter()
 const { avatar, nickname } = storeToRefs(userStore)
 
-const menuItems = [
+const menuItems: MenuItemType[] = [
   {
     key: 'center',
     label: '个人中心',

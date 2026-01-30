@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { VNodeChild } from 'vue'
-import * as icons from '@antdv-next/icons'
+import * as icons from '@antdv-next/icons/all'
 import { isFunction } from '@v-c/utils'
 
 const props = defineProps<{

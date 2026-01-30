@@ -9,7 +9,8 @@ const menuTheme = computed(() => {
   return theme.value
 })
 const menuItems = computed(() => createMenuItems(selectedMenus.value ?? []))
-const resolveLabel = (label: any) => (typeof label === 'function' ? label() : label)
+console.log(selectedMenus.value, menuItems)
+const { t } = useI18nLocale()
 </script>
 
 <template>
@@ -20,20 +21,20 @@ const resolveLabel = (label: any) => (typeof label === 'function' ? label() : la
     :mode="(layout === 'top' && !isMobile) ? 'horizontal' : 'inline'"
     :theme="menuTheme"
     :collapsed="collapsed"
-    class="ant-pro-sider-menu"
+    class="ant-pro-sidr-menu"
     @update:open-keys="handleOpenKeys"
     @update:selected-keys="handleSelectedKeys"
     @select="handleMenuSelect"
   >
     <template #labelRender="item">
       <span v-if="item?.children?.length || item?.link === false">
-        {{ resolveLabel(item.label) }}
+        {{ item.locale ? t(item.locale) : item.label }}
       </span>
       <RouterLink v-else-if="!item.isUrl" :to="item.path">
-        {{ resolveLabel(item.label) }}
+        {{ item.locale ? t(item.locale) : item.label }}
       </RouterLink>
       <a v-else :href="item.path" :target="item.target ?? '_blank'">
-        {{ resolveLabel(item.label) }}
+        {{ item.locale ? t(item.locale) : item.label }}
       </a>
     </template>
   </a-menu>
