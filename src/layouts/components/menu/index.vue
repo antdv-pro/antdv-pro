@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import AsyncIcon from '~/layouts/components/menu/async-icon.vue'
 import { useLayoutState } from '../../basic-layout/context'
 import { createMenuItems } from './menu-items'
 
@@ -9,7 +10,6 @@ const menuTheme = computed(() => {
   return theme.value
 })
 const menuItems = computed(() => createMenuItems(selectedMenus.value ?? []))
-console.log(selectedMenus.value, menuItems)
 const { t } = useI18nLocale()
 </script>
 
@@ -26,6 +26,9 @@ const { t } = useI18nLocale()
     @update:selected-keys="handleSelectedKeys"
     @select="handleMenuSelect"
   >
+    <template #iconRender="item">
+      <AsyncIcon v-if="item.icon" :icon="item.icon" />
+    </template>
     <template #labelRender="item">
       <span v-if="item?.children?.length || item?.link === false">
         {{ item.locale ? t(item.locale) : item.label }}

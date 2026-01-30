@@ -2,7 +2,6 @@ import type { MenuProps } from 'antdv-next'
 import type { MenuDataItem } from '~@/layouts/basic-layout/typing'
 import { isUrl } from '@v-c/utils'
 import { omit } from 'lodash'
-import AsyncIcon from '~/layouts/components/menu/async-icon.vue'
 
 type MenuItems = NonNullable<MenuProps['items']>
 
@@ -19,14 +18,7 @@ export function createMenuItems(items: MenuDataItem[]): MenuItems {
         path: item.path,
         target: item.target,
         isUrl: isUrl(item.path),
-      }
-      if (item.icon) {
-        if (typeof item.icon === 'function') {
-          menuItem.icon = item.icon
-        }
-        else {
-          menuItem.icon = () => h(AsyncIcon, { icon: item.icon as string })
-        }
+        icon: item.icon,
       }
       if (hasChildren) {
         menuItem.children = createMenuItems(children)
