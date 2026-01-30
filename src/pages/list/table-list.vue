@@ -320,7 +320,7 @@ const expand = ref(false)
             <ReloadOutlined @click="onSearch" />
           </a-tooltip>
           <a-tooltip title="密度">
-            <a-dropdown trigger="click">
+            <a-dropdown :trigger="['click']">
               <ColumnHeightOutlined />
               <template #popupRender>
                 <a-menu v-model:selected-keys="tableSize" :items="sizeItems" @click="handleSizeChange" />
@@ -328,7 +328,7 @@ const expand = ref(false)
             </a-dropdown>
           </a-tooltip>
           <a-tooltip title="列设置">
-            <a-dropdown v-model:open="dropdownVisible" trigger="click">
+            <a-dropdown v-model:open="dropdownVisible" :trigger="['click']">
               <SettingOutlined />
               <template #popupRender>
                 <a-card>
