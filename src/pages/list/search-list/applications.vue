@@ -347,7 +347,7 @@ const list = [
             <ShareAltOutlined />
             <a-dropdown>
               <EllipsisOutlined />
-              <template #overlay>
+              <template #popupRender>
                 <a-menu :items="actionMenuItems" />
               </template>
             </a-dropdown>

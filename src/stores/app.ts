@@ -1,7 +1,7 @@
 import type { ConfigProviderProps } from 'antdv-next'
 import type { AnimationNameValueType } from '~@/config/default-setting'
 import type { ContentWidth, LayoutType, ThemeType } from '~@/layouts/basic-layout/typing'
-import { theme as antdTheme } from 'antdv-next'
+import { theme as antdTheme, ConfigProvider } from 'antdv-next'
 import defaultSetting from '~@/config/default-setting'
 
 type ThemeConfig = NonNullable<ConfigProviderProps['theme']>
@@ -46,6 +46,7 @@ export const useAppStore = defineStore('app', () => {
       colorPrimary: layoutSetting.colorPrimary,
     },
     components: {},
+    zeroRuntime: true,
   })
   const locale = ref<string>(lsLocaleState.value)
   const toggleLocale = (locale: string) => {
@@ -84,13 +85,19 @@ export const useAppStore = defineStore('app', () => {
         themeConfig.components = {
           ...themeConfig.components,
           Menu: {
-            itemBg: 'rgb(36, 37, 37)',
-            subMenuItemBg: 'rgb(36, 37, 37)',
-            menuSubMenuBg: 'rgb(36, 37, 37)',
+            darkItemBg: 'rgb(36, 37, 37)',
+            darkSubMenuItemBg: 'rgb(36, 37, 37)',
+            darkMenuSubMenuBg: 'rgb(36, 37, 37)',
+            darkItemHoverBg: 'rgba(255, 255, 255, 0.12)',
+            darkPopupBg: 'rgb(36, 37, 37)',
           } as any,
         }
       }
     }
+    console.log(themeConfig)
+    ConfigProvider.config({
+      theme: themeConfig,
+    })
   }
 
   const toggleDrawerVisible = (visible: boolean) => {

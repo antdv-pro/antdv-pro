@@ -151,7 +151,7 @@ onUnmounted(() => {
     <template #extra>
       <div class="salesCardExtra">
         <a-dropdown placement="bottomRight">
-          <template #overlay>
+          <template #popupRender>
             <a-menu :items="actionMenuItems" />
           </template>
           <EllipsisOutlined />

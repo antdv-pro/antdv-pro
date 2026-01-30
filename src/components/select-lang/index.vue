@@ -25,7 +25,7 @@ const menuItems = [
     <span hover="bg-[var(--hover-color)]" flex items-center h-48px px-12px text-16px cursor-pointer class="transition-all-300">
       <CarbonLanguage class="anticon" />
     </span>
-    <template #overlay>
+    <template #popupRender>
       <a-menu :selected-keys="[locale]" :items="menuItems" @click="handleClick" />
     </template>
   </a-dropdown>

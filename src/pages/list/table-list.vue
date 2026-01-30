@@ -322,7 +322,7 @@ const expand = ref(false)
           <a-tooltip title="密度">
             <a-dropdown trigger="click">
               <ColumnHeightOutlined />
-              <template #overlay>
+              <template #popupRender>
                 <a-menu v-model:selected-keys="tableSize" :items="sizeItems" @click="handleSizeChange" />
               </template>
             </a-dropdown>
@@ -330,7 +330,7 @@ const expand = ref(false)
           <a-tooltip title="列设置">
             <a-dropdown v-model:open="dropdownVisible" trigger="click">
               <SettingOutlined />
-              <template #overlay>
+              <template #popupRender>
                 <a-card>
                   <template #title>
                     <a-checkbox v-model:checked="state.checkAll" :indeterminate="state.indeterminate" @change="handleCheckAllChange">

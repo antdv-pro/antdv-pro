@@ -16,7 +16,7 @@ const resolveLabel = (label: any) => (typeof label === 'function' ? label() : la
   <a-menu
     :items="menuItems"
     :selected-keys="selectedKeys"
-    :open-keys="collapsed ? [] : openKeys"
+    :open-keys="(collapsed || layout === 'top') ? undefined : openKeys"
     :mode="(layout === 'top' && !isMobile) ? 'horizontal' : 'inline'"
     :theme="menuTheme"
     :collapsed="collapsed"

@@ -61,7 +61,7 @@ async function handleClick({ key }: any) {
       <a-avatar :src="avatar" mr-8px size="small" />
       <span class="anticon">{{ nickname }}</span>
     </span>
-    <template #overlay>
+    <template #popupRender>
       <a-menu :items="menuItems" @click="handleClick" />
     </template>
   </a-dropdown>

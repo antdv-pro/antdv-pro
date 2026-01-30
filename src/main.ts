@@ -10,6 +10,7 @@ import {
 import { setupI18n } from './locales'
 import '~/router/router-guard'
 import 'antdv-next/dist/reset.css'
+import 'antdv-next/dist/antd.css'
 import '~/assets/styles/reset.css'
 import 'uno.css'
 

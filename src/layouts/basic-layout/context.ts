@@ -77,6 +77,9 @@ function layoutStateFunc(props: ProLayoutProps, methods: ProLayoutProviderMethod
   const openKeys = computed(() => props.openKeys)
   const selectedKeys = computed(() => props.selectedKeys)
   const handleOpenKeys = (val: Key[]) => {
+    if (collapsed.value || layout.value === 'top') {
+      return
+    }
     runEvent(props['onUpdate:openKeys'], val)
   }
 

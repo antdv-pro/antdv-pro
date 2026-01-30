@@ -282,7 +282,7 @@ onMounted(() => {
                   <a class="ant-dropdown-link" @click.prevent>
                     更多
                   </a>
-                  <template #overlay>
+                  <template #popupRender>
                     <a-menu :items="moreMenuItems" @click="info => handleMoreAction(info, item)" />
                   </template>
                 </a-dropdown>
