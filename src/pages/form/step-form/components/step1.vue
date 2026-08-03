@@ -70,7 +70,7 @@ async function nextStep() {
         name="amount"
         :rules="[{ required: true, message: '转账金额必须填写' }]"
       >
-        <a-input v-model:value="formState.amount" prefix="￥" />
+        <business-input-number v-model:value="formState.amount" class="w-full" :min="0" :precision="2" prefix="￥" />
       </a-form-item>
       <a-form-item :wrapper-col="{ span: 19, offset: 5 }">
         <a-button type="primary" @click="nextStep">

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { AlipayOutlined, DingdingOutlined, TaobaoOutlined } from '@ant-design/icons-vue'
-
 interface DataItem {
   title: string
   avatar: string
@@ -9,20 +7,7 @@ interface DataItem {
 const { t } = useI18n()
 
 const data = computed<DataItem[]>(() => {
-  return [
-    {
-      title: t('account.settings.account.taobao'),
-      avatar: 'TaobaoOutlined',
-    },
-    {
-      title: t('account.settings.account.alipay'),
-      avatar: 'AlipayOutlined',
-    },
-    {
-      title: t('account.settings.account.dingding'),
-      avatar: 'DingdingOutlined',
-    },
-  ]
+  return []
 })
 </script>
 
@@ -36,11 +21,6 @@ const data = computed<DataItem[]>(() => {
           >
             <template #title>
               <a href="https://www.antdv.com/">{{ item.title }}</a>
-            </template>
-            <template #avatar>
-              <TaobaoOutlined v-if="item.avatar === 'TaobaoOutlined' " style="color: #ff4000;" class="account-setting-avatar" />
-              <AlipayOutlined v-if="item.avatar === 'AlipayOutlined' " style="color: #2eabff" class="account-setting-avatar" />
-              <DingdingOutlined v-if="item.avatar === 'DingdingOutlined' " style="color: #fff; background-color: #2eabff" class="account-setting-avatar" />
             </template>
           </a-list-item-meta>
           <template #actions>

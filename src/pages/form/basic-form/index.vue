@@ -111,7 +111,7 @@ const { t } = useI18n()
           :required="false"
           name="weight"
         >
-          <a-input-number v-model:value="formState.weight" :min="0" :max="100" />
+          <business-input-number v-model:value="formState.weight" :min="0" :max="100" />
           <span> %</span>
         </a-form-item>
         <a-form-item

@@ -28,6 +28,7 @@ const codeLoading = shallowRef(false)
 const resetCounter = 60
 const submitLoading = shallowRef(false)
 const errorAlert = shallowRef(false)
+const loginErrorMessage = shallowRef('')
 const bubbleCanvas = ref<HTMLCanvasElement>()
 const { counter, pause, reset, resume, isActive } = useInterval(1000, {
   controls: true,
@@ -57,6 +58,8 @@ async function getCode() {
 
 async function submit() {
   submitLoading.value = true
+  errorAlert.value = false
+  loginErrorMessage.value = ''
   try {
     await formRef.value?.validate()
     let params: LoginParams | LoginMobileParams
@@ -89,12 +92,30 @@ async function submit() {
     })
   }
   catch (e) {
-    if (e instanceof AxiosError)
+    if (e instanceof AxiosError) {
+      const status = e.response?.status
+      const serverMessage = (e.response?.data as { msg?: string } | undefined)?.msg
+      if (!e.response)
+        loginErrorMessage.value = '无法连接登录服务，请检查网络后重试'
+      else if (status && status >= 500)
+        loginErrorMessage.value = serverMessage || '登录服务暂不可用，请稍后重试'
+      else
+        loginErrorMessage.value = serverMessage || t('pages.login.accountLogin.errorMessage')
       errorAlert.value = true
+    }
+    else {
+      loginErrorMessage.value = '登录失败，请稍后重试'
+      errorAlert.value = true
+    }
 
     submitLoading.value = false
   }
 }
+
+watch(() => loginModel.type, () => {
+  errorAlert.value = false
+  loginErrorMessage.value = ''
+})
 onMounted(async () => {
   await delayTimer(300)
   pageBubble.init(unref(bubbleCanvas)!)
@@ -107,7 +128,7 @@ onBeforeUnmount(() => {
 
 <template>
   <div class="login-container">
-    <div h-screen w-screen absolute z-10>
+    <div class="login-bubble-layer" h-screen w-full absolute z-10>
       <canvas ref="bubbleCanvas" />
     </div>
     <div class="login-content flex-center">
@@ -118,10 +139,10 @@ onBeforeUnmount(() => {
         >
           <div class="flex-end">
             <span class="ant-pro-form-login-logo">
-              <img w-full h-full object-cover src="/logo.svg">
+              <img w-full h-full object-cover src="/logo.png">
             </span>
             <span class="ant-pro-form-login-title">
-              Antdv Pro
+              企业管理系统
             </span>
             <span class="ant-pro-form-login-desc">
               {{ t("pages.layouts.userLayout.title") }}
@@ -159,16 +180,15 @@ onBeforeUnmount(() => {
             <a-form ref="formRef" :model="loginModel">
               <a-tabs v-model:active-key="loginModel.type" centered>
                 <a-tab-pane key="account" :tab="t('pages.login.accountLogin.tab')" />
-                <a-tab-pane key="mobile" :tab="t('pages.login.phoneLogin.tab')" />
               </a-tabs>
               <!-- 判断是否存在error -->
               <a-alert
                 v-if="errorAlert && loginModel.type === 'account'" mb-24px
-                :message="t('pages.login.accountLogin.errorMessage')" type="error" show-icon
+                :message="loginErrorMessage || t('pages.login.accountLogin.errorMessage')" type="error" show-icon
               />
               <a-alert
                 v-if="errorAlert && loginModel.type === 'mobile'" mb-24px
-                :message="t('pages.login.phoneLogin.errorMessage')" type="error" show-icon
+                :message="loginErrorMessage || t('pages.login.phoneLogin.errorMessage')" type="error" show-icon
               />
               <template v-if="loginModel.type === 'account'">
                 <a-form-item name="username" :rules="[{ required: true, message: t('pages.login.username.required') }]">
@@ -213,7 +233,7 @@ onBeforeUnmount(() => {
                   </a-input>
                 </a-form-item>
                 <a-form-item name="code" :rules="[{ required: true, message: t('pages.login.captcha.required') }]">
-                  <div flex items-center>
+                  <div class="login-code-row" flex items-center>
                     <a-input
                       v-model:value="loginModel.code"
                       style="flex: 1 1 0%; transition: width 0.3s ease 0s; margin-right: 8px;" allow-clear
@@ -256,7 +276,7 @@ onBeforeUnmount(() => {
         </div>
       </div>
     </div>
-    <div py-24px px-50px fixed bottom-0 z-11 w-screen :data-theme="layoutSetting.theme" text-14px>
+    <div class="login-footer" py-24px px-50px fixed bottom-0 left-0 right-0 z-11 :data-theme="layoutSetting.theme" text-14px>
       <GlobalLayoutFooter
         :copyright="layoutSetting.copyright" icp="鲁ICP备2023021414号-2"
       >
@@ -274,7 +294,21 @@ onBeforeUnmount(() => {
   flex-direction: column;
   height: 100vh;
   overflow: auto;
+  overflow-x: hidden;
   background: var(--bg-color-container);
+  min-height: 100dvh;
+  padding: max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right))
+    max(84px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+}
+
+.login-bubble-layer {
+  inset-inline: 0;
+  width: auto;
+  pointer-events: none;
+}
+
+.login-footer {
+  width: 100%;
 }
 
 .login-lang {
@@ -283,11 +317,12 @@ onBeforeUnmount(() => {
 }
 
 .login-content {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  display: flex;
+  flex: 1 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 0;
 }
 
 .ant-pro-form-login-container {
@@ -325,6 +360,7 @@ onBeforeUnmount(() => {
 }
 
 .ant-pro-form-login-main-right {
+  min-width: 0;
   .ant-tabs-nav-list {
     margin: 0 auto;
     font-size: 16px;
@@ -338,6 +374,22 @@ onBeforeUnmount(() => {
 
 .ant-pro-form-login-main {
   box-shadow: var(--c-shadow);
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.login-code-row {
+  width: 100%;
+  min-width: 0;
+}
+
+.login-code-row .ant-input-affix-wrapper {
+  min-width: 0;
+}
+
+.login-code-row .ant-btn {
+  flex: 0 0 auto;
+  white-space: nowrap;
 }
 
 .icon {
@@ -378,10 +430,52 @@ onBeforeUnmount(() => {
   .login-media(400px);
 }
 @media screen and (max-width: 767px) {
-  .login-media(350px);
+  .login-media(min(350px, 100%));
 
   .ant-pro-login-divider {
     display: none;
+  }
+
+  .login-container {
+    padding-inline: 12px;
+  }
+
+  .ant-pro-form-login-main-right {
+    padding-inline: 16px !important;
+  }
+
+  .ant-pro-form-login-title {
+    font-size: 24px;
+  }
+
+  .ant-pro-form-login-logo {
+    width: 36px;
+    height: 36px;
+    margin-right: 10px;
+  }
+
+  .login-code-row {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .login-code-row .ant-btn {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .ant-pro-form-login-main-right {
+    padding-inline: 12px !important;
+  }
+
+  .ant-pro-form-login-title {
+    font-size: 21px;
+  }
+
+  .login-lang {
+    gap: 4px;
   }
 }
 </style>

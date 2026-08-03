@@ -18,7 +18,7 @@ const { t } = useI18n()
       <a-list-item>
         <a-list-item-meta>
           <template #title>
-            <a href="https://www.antdv.com/">{{ item.title }}</a>
+            <span>{{ item.title }}</span>
             <div class="my-3">
               <a-tag v-for="(tag, index) in item.tags" :key="index">
                 {{ tag }}
@@ -34,7 +34,7 @@ const { t } = useI18n()
             <span class="flex items-center">
               <a-avatar :size="20" class="mr-2">
                 <template #icon>
-                  <img src="/logo.svg" alt="">
+                  <img src="/logo.png" alt="">
                 </template>
               </a-avatar>
               <span style="color: rgb(22, 119, 255);">
@@ -45,8 +45,8 @@ const { t } = useI18n()
               {{ t('account.center.posted') }}
             </span>
             <span>
-              <a-button type="link" href="https://www.antdv-pro.com/">
-                https://www.antdv-pro.com/
+              <a-button type="link">
+                企业内网公告
               </a-button>
             </span>
           </div>

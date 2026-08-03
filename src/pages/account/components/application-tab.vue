@@ -8,9 +8,9 @@ const { t } = useI18n()
   <a-row>
     <a-col v-for="(_, index) in 10" :key="index" :span="12" class="mb-6">
       <a-card hoverable style="width: 400px">
-        <a-card-meta title="Antdv Pro">
+        <a-card-meta title="企业管理系统">
           <template #avatar>
-            <a-avatar src="/logo.svg" />
+            <a-avatar src="/logo.png" />
           </template>
           <template #description>
             <div class="flex">

@@ -40,11 +40,13 @@ export function getRouterModule(path?: string): any {
   // 组装数据格式
   const fullPath = `/src/pages/${path}.vue`
   const fullPathIndex = `/src/pages/${path}/index.vue`
+  if (fullPath in routerModules)
+    return checkEager(routerModules[fullPath])
+
   if (fullPathIndex in routerModules)
     return checkEager(routerModules[fullPathIndex])
 
-  // 返回插件信息
-  return checkEager(routerModules[fullPath])
+  return basicRouteMap.ComponentError
 }
 
 export default routerModules

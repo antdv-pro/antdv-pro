@@ -1,9 +1,9 @@
 import type { LayoutSetting } from '~@/stores/app'
 
 export default {
-  title: 'Antdv Pro',
+  title: '企业管理系统',
   theme: 'light',
-  logo: '/logo.svg',
+  logo: '/logo.png',
   collapsed: false,
   drawerVisible: false,
   colorPrimary: '#1677FF',
@@ -14,7 +14,7 @@ export default {
   splitMenus: false,
   header: true,
   menu: true,
-  watermark: true,
+  watermark: false,
   menuHeader: true,
   footer: false,
   colorWeak: false,
@@ -26,7 +26,7 @@ export default {
   leftCollapsed: true,
   compactAlgorithm: false,
   headerHeight: 48,
-  copyright: 'Antdv Pro Team 2023',
+  copyright: '企业管理系统 2026',
   animationName: 'slide-fadein-right',
 } as LayoutSetting
 

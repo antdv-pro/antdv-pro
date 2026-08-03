@@ -1,0 +1,55 @@
+export interface TransportVehicleOption {
+  code: string
+  plateNo: string
+  trailerNo: string
+  driverName: string
+  escortName: string
+}
+
+export const transportVehicleOptions: TransportVehicleOption[] = [
+  { code: 'RY001', plateNo: '青H31702', trailerNo: '青H1035挂', driverName: '许杰', escortName: '胥清燕' },
+  { code: 'RY002', plateNo: '青H31712', trailerNo: '青H1605挂', driverName: '王波', escortName: '方敏' },
+  { code: 'RY003', plateNo: '青H31763', trailerNo: '青H1115挂', driverName: '袁英俊', escortName: '袁汉东' },
+  { code: 'RY004', plateNo: '青H36720', trailerNo: '青H1015挂', driverName: '袁英俊', escortName: '袁汉东' },
+  { code: 'RY005', plateNo: '青H50598', trailerNo: '青H5939挂', driverName: '李建民', escortName: '莫伟功' },
+  { code: 'RY006', plateNo: '青H75178', trailerNo: '青H8683挂', driverName: '曹继红', escortName: '杨俊丽' },
+  { code: 'RY007', plateNo: '青H52321', trailerNo: '青H1283挂', driverName: '曹亚斌', escortName: '张存平' },
+  { code: 'RY008', plateNo: '青H52609', trailerNo: '青H5276挂', driverName: '崔超', escortName: '陈凯' },
+  { code: 'RY009', plateNo: '青H53546', trailerNo: '青H5488挂', driverName: '莫义功', escortName: '李明成' },
+  { code: 'RY010', plateNo: '青H55343', trailerNo: '青H5282挂', driverName: '马么叶来', escortName: '法土买' },
+  { code: 'RY011', plateNo: '青H55373', trailerNo: '青H1761挂', driverName: '杜俊钰', escortName: '牛海英' },
+  { code: 'RY012', plateNo: '青H55881', trailerNo: '青H1903挂', driverName: '马进宝', escortName: '马进孝' },
+  { code: 'RY013', plateNo: '青H56668', trailerNo: '青H6008挂', driverName: '何沛民', escortName: '苗丽娟' },
+  { code: 'RY014', plateNo: '青H53946', trailerNo: '青H1037挂', driverName: '马转成', escortName: '刘尚德' },
+  { code: 'RY015', plateNo: '青H75105', trailerNo: '青H8536挂', driverName: '哈登虎', escortName: '袁英俊' },
+  { code: 'RY016', plateNo: '青H75106', trailerNo: '青H0559挂', driverName: '哈登虎', escortName: '袁英俊' },
+  { code: 'RY017', plateNo: '青H75176', trailerNo: '青H8939挂', driverName: '王正海', escortName: '王峰' },
+  { code: 'RY018', plateNo: '青H76702', trailerNo: '青H8920挂', driverName: '李建民', escortName: '莫伟功' },
+  { code: 'RY019', plateNo: '青H76720', trailerNo: '青H0031挂', driverName: '莫义功', escortName: '李明成' },
+  { code: 'RY020', plateNo: '青H76770', trailerNo: '青H8680挂', driverName: '曹亚斌', escortName: '张存平' },
+  { code: 'RY021', plateNo: '青H76763', trailerNo: '青H8669挂', driverName: '哈登虎', escortName: '袁英俊' },
+  { code: 'RY022', plateNo: '青H79390', trailerNo: '青H8695挂', driverName: '边文军', escortName: '钟晓严' },
+  { code: 'RY023', plateNo: '青H95902', trailerNo: '青H8575挂', driverName: '哈登虎', escortName: '袁英俊' },
+  { code: 'RY024', plateNo: '青H76930', trailerNo: '青H1209挂', driverName: '付锋', escortName: '李和' },
+  { code: 'RY025', plateNo: '青HA1167', trailerNo: '青H0105挂', driverName: '曹亚斌', escortName: '张存平' },
+  { code: 'RY026', plateNo: '青HA2493', trailerNo: '青H5343挂', driverName: '李洪全', escortName: '林永花' },
+  { code: 'RY027', plateNo: '青HA4594', trailerNo: '青H6800挂', driverName: '黄敏', escortName: '邓彩霞' },
+  { code: 'RY028', plateNo: '青HA3541', trailerNo: '青H8708挂', driverName: '吴强', escortName: '陈莲' },
+  { code: 'RY029', plateNo: '青HA3479', trailerNo: '青H8176挂', driverName: '王索南', escortName: '李才让卓玛' },
+  { code: 'RY030', plateNo: '青HA3920', trailerNo: '青H8137挂', driverName: '鲁乙撒格', escortName: '马自力哈' },
+  { code: 'RY031', plateNo: '青HA4509', trailerNo: '青H4659挂', driverName: '陈苍安', escortName: '郭海莲' },
+  { code: 'RY032', plateNo: '青H58682', trailerNo: '青H4285挂', driverName: '韩牙亥牙', escortName: '马克力草麦' },
+  { code: 'RY033', plateNo: '青HA4752', trailerNo: '青H4785挂', driverName: '马如龙', escortName: '马桂莲' },
+  { code: 'RY034', plateNo: '青HA4780', trailerNo: '青H3093挂', driverName: '马利新', escortName: '马哈哲莱' },
+  { code: 'RY035', plateNo: '青H95941', trailerNo: '青H5307挂', driverName: '韩智辉', escortName: '韩启超' },
+  { code: 'RY036', plateNo: '青H79394', trailerNo: '青H1609挂', driverName: '马忠录', escortName: '马金花' },
+  { code: 'RY037', plateNo: '青H76461', trailerNo: '青H3961挂', driverName: '韩生云', escortName: '韩台乙布' },
+  { code: 'RY038', plateNo: '青HA4710', trailerNo: '青H3099挂', driverName: '韩智福', escortName: '韩索来么' },
+  { code: 'RY039', plateNo: '青H36712', trailerNo: '青H1301挂', driverName: '张静', escortName: '谭素芳' },
+  { code: 'RY040', plateNo: '青H53948', trailerNo: '青H1037挂', driverName: '韩生富', escortName: '马海军' },
+  { code: 'RY041', plateNo: '青H75104', trailerNo: '青H3391挂', driverName: '马鑫', escortName: '祁永琳' },
+  { code: 'RY042', plateNo: '青H75141', trailerNo: '青H2826挂', driverName: '马治英', escortName: '马海车' },
+  { code: 'RY043', plateNo: '青H75194', trailerNo: '青H5488挂', driverName: '马海军', escortName: '马有莲' },
+  { code: 'RY044', plateNo: '青H53424', trailerNo: '青H0031挂', driverName: '马明财', escortName: '白英祥' },
+  { code: 'RY045', plateNo: '青H51384', trailerNo: '青H1510挂', driverName: '马么叶来', escortName: '法土买' },
+]

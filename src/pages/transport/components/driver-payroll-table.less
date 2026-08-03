@@ -1,0 +1,649 @@
+.salary-stat-value {
+  display: inline-flex;
+  min-width: 46px;
+  justify-content: flex-end;
+  color: var(--admin-text);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.salary-net-amount {
+  color: var(--admin-success);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.salary-date-value {
+  color: var(--admin-text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+:deep(.transport-driver-payroll-table .ant-table-thead > tr > th) {
+  white-space: nowrap;
+  color: var(--admin-text-secondary);
+  font-size: 13px;
+  font-weight: 650;
+}
+
+:deep(.transport-driver-payroll-table .ant-table-tbody > tr > td) {
+  color: var(--admin-text);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+:deep(.transport-driver-payroll-table .ant-table-tbody > tr > td:nth-child(2)) {
+  font-weight: 650;
+}
+
+.driver-payroll-card {
+  :deep(.ant-card-head) {
+    min-height: 54px;
+  }
+}
+
+.driver-payroll-tabs {
+  margin-bottom: 12px;
+
+  :deep(.ant-tabs-nav) {
+    margin-bottom: 0;
+  }
+}
+
+.salary-mode-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(260px, 1fr));
+  gap: 12px;
+  padding: 4px 0 8px;
+  overflow-x: auto;
+}
+
+.salary-mode-amount-row {
+  display: grid;
+  grid-template-columns: minmax(100px, auto) minmax(100px, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+  margin-top: 14px;
+  color: currentColor;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.salary-mode-card {
+  min-width: 220px;
+  padding: 18px;
+  border: 1px solid #dce3ec;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.salary-mode-card-header {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.salary-mode-card h3 {
+  margin: 0;
+  color: currentColor;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.salary-mode-card p {
+  min-height: 40px;
+  margin: 6px 0 0;
+  color: var(--admin-text-secondary);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.salary-mode-card.mode-fixed {
+  color: #1677ff;
+  background: #f7faff;
+}
+
+.salary-mode-card.mode-base-diff {
+  color: #389e0d;
+  background: #f8fff4;
+}
+
+.salary-mode-card.mode-base-mileage {
+  color: #d46b08;
+  background: #fffaf2;
+}
+
+.salary-mode-card.mode-mileage {
+  color: #722ed1;
+  background: #fbf8ff;
+}
+
+.salary-mode-driver-count {
+  flex: none;
+  padding: 3px 8px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.salary-mode-card-period {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+  padding: 10px 0;
+  border-top: 1px solid rgb(15 23 42 / 9%);
+  border-bottom: 1px solid rgb(15 23 42 / 9%);
+  color: var(--admin-text-secondary);
+  font-size: 13px;
+}
+
+.salary-mode-card-period strong {
+  color: var(--admin-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.salary-mode-driver-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-height: 30px;
+  margin-top: 12px;
+}
+
+.salary-mode-driver-list button {
+  height: 28px;
+  padding: 0 10px;
+  border: 1px solid #d5dce6;
+  border-radius: 6px;
+  color: var(--admin-text);
+  background: #fff;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.salary-mode-driver-list button:hover,
+.salary-mode-driver-list button:focus-visible {
+  border-color: currentColor;
+  color: currentColor;
+}
+
+.salary-mode-empty {
+  color: var(--admin-muted);
+  font-size: 13px;
+  line-height: 28px;
+}
+
+@media (max-width: 1100px) {
+  .salary-mode-card-grid {
+    grid-template-columns: repeat(2, minmax(240px, 1fr));
+  }
+}
+
+.linked-field-tip {
+  margin-top: 6px;
+  color: rgb(89 89 89);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.driver-attendance-toolbar {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0 12px;
+  overflow-x: auto;
+}
+
+.attendance-legend {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  min-width: max-content;
+  color: var(--admin-text-secondary);
+  font-size: 12px;
+}
+
+.attendance-legend-title {
+  color: var(--admin-text);
+  font-weight: 650;
+}
+
+.legend-check {
+  position: relative;
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+  color: var(--admin-text-secondary);
+}
+
+.legend-check::before {
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--admin-border);
+  border-radius: 4px;
+  content: '';
+  background: #fff;
+}
+
+.legend-check.is-active::before {
+  border-color: #5ed6a4;
+  background: #c8f7df;
+  box-shadow: inset 0 0 0 4px #effff7;
+}
+
+.mode-pill {
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  padding: 0 12px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-weight: 650;
+  line-height: 1;
+}
+
+.mode-fixed {
+  color: #1677ff;
+  background: #eaf2ff;
+}
+
+.mode-base-diff {
+  color: #389e0d;
+  background: #edf9e8;
+}
+
+.mode-base-mileage {
+  color: #d46b08;
+  background: #fff4e6;
+}
+
+.mode-mileage {
+  color: #722ed1;
+  background: #f4ecff;
+}
+
+.attendance-tip {
+  color: var(--admin-muted);
+}
+
+.driver-attendance-board {
+  overflow: auto hidden;
+  border: 1px solid var(--admin-border-subtle);
+  border-radius: var(--admin-radius);
+  background: var(--admin-surface);
+  font-variant-numeric: tabular-nums;
+}
+
+.attendance-grid {
+  display: grid;
+  min-width: max-content;
+}
+
+.attendance-header-row {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: #f7f9fc;
+  color: var(--admin-text-secondary);
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.attendance-body-row {
+  min-height: 56px;
+  border-top: 1px solid var(--admin-border-subtle);
+}
+
+.attendance-fixed-col,
+.attendance-total-col,
+.attendance-day-head {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  padding: 8px 10px;
+}
+.attendance-sort-button {
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+  padding: 0;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+}
+.attendance-sort-button span {
+  color: #1677ff;
+  font-size: 13px;
+}
+
+.attendance-day-head {
+  flex-direction: column;
+  gap: 2px;
+  justify-content: center;
+  border: 0;
+  border-left: 1px solid #d9e1ec;
+  color: var(--admin-text-secondary);
+  background: transparent;
+  cursor: pointer;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.attendance-day-head small {
+  color: var(--admin-muted);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.attendance-day-head.is-weekend,
+.attendance-day-head.is-weekend small {
+  color: #ff4d4f;
+}
+
+.driver-name-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: flex-start;
+  justify-content: center;
+  color: var(--admin-text);
+}
+
+.driver-name-cell strong {
+  max-width: 100%;
+  overflow: hidden;
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.driver-status-text {
+  color: var(--admin-muted);
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+.attendance-stack {
+  display: grid;
+  grid-auto-rows: minmax(32px, 1fr);
+  gap: 4px;
+  align-content: center;
+}
+
+.attendance-person-line {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  min-width: 0;
+}
+
+.attendance-person-line strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.crew-role-badge {
+  flex: none;
+  min-width: 42px;
+  color: var(--admin-muted);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.attendance-person-line:first-child .crew-role-badge {
+  color: #1677ff;
+  font-weight: 650;
+}
+
+.attendance-person-line:not(:first-child) strong {
+  color: var(--admin-text-secondary);
+  font-weight: 500;
+}
+
+.plate-list-cell {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  overflow: hidden;
+  flex-wrap: wrap;
+}
+
+.plate-list-cell :deep(.ant-tag) {
+  max-width: none;
+  height: 26px;
+  padding: 0 10px;
+  border-color: #d5e0ef;
+  border-radius: 999px;
+  color: #18263b;
+  background: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 24px;
+  margin-inline-end: 0;
+  white-space: nowrap;
+}
+
+.plate-add-button,
+.plate-edit-button {
+  display: inline-flex;
+  width: 28px;
+  height: 28px;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  color: var(--admin-text);
+  background: transparent;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 15px;
+  line-height: 1;
+}
+
+.plate-edit-button:hover {
+  color: #1677ff;
+  background: #f0f6ff;
+}
+
+.plate-edit-button:focus-visible,
+.inline-config-button:focus-visible,
+.attendance-day-cell:focus-visible {
+  outline: 2px solid #1677ff;
+  outline-offset: 2px;
+}
+
+.inline-config-button {
+  width: fit-content;
+  max-width: 100%;
+  padding: 0;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+}
+
+.mode-config-control {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.mode-config-action {
+  color: #1677ff;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.mode-config-control:hover .mode-config-action {
+  text-decoration: underline;
+}
+
+.date-config-button {
+  color: #1677ff;
+  font-variant-numeric: tabular-nums;
+}
+
+.attendance-day-slot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 56px;
+  border-left: 1px solid #e2e8f0;
+  background: #fbfcfe;
+}
+
+.attendance-day-empty,
+.attendance-empty {
+  color: var(--admin-muted);
+}
+
+.attendance-day-cell {
+  width: 28px;
+  height: 28px;
+  align-self: center;
+  justify-self: center;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  background: #fff;
+  cursor: pointer;
+  color: #16324f;
+  font-size: 13px;
+  line-height: 1;
+  transition:
+    background-color 0.16s ease,
+    border-color 0.16s ease,
+    box-shadow 0.16s ease;
+}
+
+.plate-editor-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-height: 30px;
+  margin-bottom: 8px;
+}
+
+.plate-add-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 150px auto;
+  gap: 8px;
+}
+
+.full-width-input {
+  width: 100%;
+}
+
+@media (max-width: 575px) {
+  .plate-add-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.salary-mode-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.salary-mode-option {
+  min-height: 48px;
+  padding: 10px 14px;
+  border: 1px solid #d7dee8;
+  border-radius: 8px;
+  color: var(--admin-text);
+  background: #fff;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 650;
+  transition:
+    border-color 0.16s ease,
+    background-color 0.16s ease,
+    box-shadow 0.16s ease;
+}
+
+.salary-mode-option:hover {
+  border-color: currentColor;
+}
+
+.salary-mode-option.is-selected {
+  border-color: currentColor;
+  box-shadow: inset 0 0 0 1px currentColor;
+}
+
+.salary-mode-option.mode-fixed {
+  color: #1677ff;
+  background: #f5f9ff;
+}
+
+.salary-mode-option.mode-base-diff {
+  color: #389e0d;
+  background: #f6ffed;
+}
+
+.salary-mode-option.mode-base-mileage {
+  color: #d46b08;
+  background: #fff7e6;
+}
+
+.salary-mode-option.mode-mileage {
+  color: #722ed1;
+  background: #f9f0ff;
+}
+
+.salary-mode-option:focus-visible {
+  outline: 2px solid #1677ff;
+  outline-offset: 2px;
+}
+
+.attendance-day-cell.is-marked.mode-fixed {
+  border-color: #91caff;
+  background: #9cc4ff;
+}
+
+.attendance-day-cell.is-marked.mode-base-diff {
+  border-color: #95de64;
+  background: #8bdc73;
+}
+
+.attendance-day-cell.is-marked.mode-base-mileage {
+  border-color: #ffc069;
+  background: #ffba63;
+}
+
+.attendance-day-cell.is-marked.mode-mileage {
+  border-color: #d3adf7;
+  background: #bf8df2;
+}
+
+.attendance-day-cell.is-selected-day {
+  box-shadow: 0 0 0 2px #4f7df3;
+}
+
+.attendance-day-cell:hover {
+  border-color: #4f7df3;
+  background: #f5f8ff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .attendance-day-cell {
+    transition: none;
+  }
+}
+
+.attendance-total-value {
+  justify-content: flex-end;
+  color: #00a66a;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}

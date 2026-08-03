@@ -42,12 +42,28 @@ export const useAppStore = defineStore('app', () => {
     token: {
       colorBgContainer: '#fff',
       colorPrimary: layoutSetting.colorPrimary,
+      borderRadius: 6,
+      colorText: '#0f172a',
+      colorTextSecondary: '#475569',
+      colorTextTertiary: '#64748b',
+      colorBorder: '#d7e0ea',
+      colorBorderSecondary: '#edf2f7',
     },
-    components: {},
+    components: {
+      Card: {
+        borderRadiusLG: 8,
+        paddingLG: 18,
+      },
+      Button: {
+        borderRadius: 6,
+        controlHeight: 34,
+      },
+    },
   })
   const locale = ref<string>(lsLocaleState.value)
-  const toggleLocale = (locale: string) => {
-    lsLocaleState.value = locale
+  const toggleLocale = (nextLocale: string) => {
+    locale.value = nextLocale
+    lsLocaleState.value = nextLocale
   }
   const toggleCompact = (isCompact = true) => {
     // 判断是否存在compactAlgorithm
@@ -114,11 +130,6 @@ export const useAppStore = defineStore('app', () => {
       immediate: true,
     },
   )
-
-  // 监听isDark的变化
-  watch(preferredLanguages, () => {
-    toggleLocale(preferredLanguages.value[0])
-  })
 
   const toggleCollapsed = (collapsed: boolean) => {
     layoutSetting.collapsed = collapsed

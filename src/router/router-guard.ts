@@ -17,19 +17,20 @@ router.beforeEach(async (to, _, next) => {
       next({
         path: loginPath,
         query: {
-          redirect: encodeURIComponent(to.fullPath),
+          redirect: to.fullPath,
         },
       })
       return
     }
   }
   else {
-    if (!userStore.userInfo && !allowList.includes(to.path) && !to.path.startsWith('/redirect')) {
+    if (!userStore.routerData && !allowList.includes(to.path) && !to.path.startsWith('/redirect')) {
       try {
-        // 获取用户信息
-        await userStore.getUserInfo()
-        // 获取路由菜单的信息
-        const currentRoute = await userStore.generateDynamicRoutes()
+        // 用户信息与菜单互不依赖，并行恢复登录态，避免刷新时串行等待两个接口。
+        const [, currentRoute] = await Promise.all([
+          userStore.userInfo ? Promise.resolve() : userStore.getUserInfo(),
+          userStore.generateDynamicRoutes(),
+        ])
         router.addRoute(currentRoute)
         next({
           ...to,
@@ -43,7 +44,10 @@ router.beforeEach(async (to, _, next) => {
           next({
             path: '/401',
           })
+          return
         }
+        next(false)
+        return
       }
     }
     else {

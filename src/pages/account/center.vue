@@ -44,8 +44,8 @@ interface ITeamDataItem {
 
 const teamData = ref<ITeamDataItem[]>([
   {
-    name: 'Antdv Pro',
-    link: '/logo.svg',
+    name: '运营管理部',
+    link: '/logo.png',
   },
   {
     name: '学习小组',
@@ -92,7 +92,7 @@ const teamData = ref<ITeamDataItem[]>([
                 <ApartmentOutlined />
               </span>
               <span>
-                蚂蚁金服－某某某事业群－某某平台部－某某技术部－UED
+                企业总部-运营中心-数字化管理部
               </span>
             </p>
             <p>

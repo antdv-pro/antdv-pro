@@ -8,7 +8,7 @@ const LOCALE_KEY = 'locale'
 
 export const preferredLanguages = usePreferredLanguages()
 
-export const lsLocaleState = useStorage(LOCALE_KEY, preferredLanguages.value[0])
+export const lsLocaleState = useStorage(LOCALE_KEY, 'zh-CN')
 
 export const useI18nLocale = createSharedComposable(() => {
   // 加载多语言的loading状态

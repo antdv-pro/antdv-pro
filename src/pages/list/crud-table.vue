@@ -1,11 +1,19 @@
 <script setup lang="ts">
 import type { CrudTableModel } from '~@/api/list/crud-table'
-import { PlusOutlined } from '@ant-design/icons-vue'
+import { DownloadOutlined, PlusOutlined } from '@ant-design/icons-vue'
+import * as XLSX from 'xlsx'
 import { deleteApi, getListApi } from '~@/api/list/crud-table'
+import FinancialPeriodFilter from '~@/components/financial-period-filter/index.vue'
+import { useFinancialPeriodFilter } from '~@/composables/financial-period-filter'
 import { useTableQuery } from '~@/composables/table-query'
 import CrudTableModal from './components/crud-table-modal.vue'
 
 const message = useMessage()
+const {
+  model: financialPeriodFilter,
+  queryParams: financialQueryParams,
+  resetFinancialPeriodFilter,
+} = useFinancialPeriodFilter()
 
 const columns = shallowRef([
   {
@@ -23,15 +31,20 @@ const columns = shallowRef([
   {
     title: '操作',
     dataIndex: 'action',
+    width: 180,
   },
 ])
 
-const { state, initQuery, resetQuery, query } = useTableQuery({
+const { state, initQuery, query } = useTableQuery({
   queryApi: getListApi,
   queryParams: {
     name: undefined,
     value: undefined,
     remark: undefined,
+    ...financialQueryParams.value,
+  },
+  beforeQuery: () => {
+    Object.assign(state.queryParams, financialQueryParams.value)
   },
   afterQuery: (res) => {
     console.log(res)
@@ -65,6 +78,37 @@ function handleAdd() {
 function handleEdit(record: CrudTableModel) {
   crudTableModal.value?.open(record)
 }
+
+function handleReset() {
+  resetFinancialPeriodFilter()
+  state.queryParams = {
+    name: undefined,
+    value: undefined,
+    remark: undefined,
+    ...financialQueryParams.value,
+  }
+  initQuery()
+}
+
+function exportCurrentRows() {
+  const payload = financialQueryParams.value
+  const workbook = XLSX.utils.book_new()
+  const conditionSheet = XLSX.utils.json_to_sheet([
+    {
+      名: state.queryParams.name ?? '',
+      值: state.queryParams.value ?? '',
+      备注: state.queryParams.remark ?? '',
+      startDate: payload.startDate,
+      endDate: payload.endDate,
+      查询周期: payload.periodType,
+    },
+  ])
+  const dataSheet = XLSX.utils.json_to_sheet(state.dataSource.map(row => ({ ...row })))
+
+  XLSX.utils.book_append_sheet(workbook, conditionSheet, '筛选条件')
+  XLSX.utils.book_append_sheet(workbook, dataSheet, '导出数据')
+  XLSX.writeFile(workbook, `增删改查表格_${payload.startDate}_${payload.endDate}.xlsx`)
+}
 </script>
 
 <template>
@@ -87,12 +131,13 @@ function handleEdit(record: CrudTableModel) {
               <a-input v-model:value="state.queryParams.remark" placeholder="请输入备注" />
             </a-form-item>
           </a-col>
-          <a-col :span="6">
+          <FinancialPeriodFilter v-model="financialPeriodFilter" />
+          <a-col :xs="24" :md="8" :xl="6">
             <a-space flex justify-end w-full>
               <a-button :loading="state.loading" type="primary" @click="initQuery">
                 查询
               </a-button>
-              <a-button :loading="state.loading" @click="resetQuery">
+              <a-button :loading="state.loading" @click="handleReset">
                 重置
               </a-button>
             </a-space>
@@ -110,6 +155,12 @@ function handleEdit(record: CrudTableModel) {
             </template>
             新增
           </a-button>
+          <a-button @click="exportCurrentRows">
+            <template #icon>
+              <DownloadOutlined />
+            </template>
+            导出
+          </a-button>
         </a-space>
       </template>
       <a-table
@@ -118,19 +169,34 @@ function handleEdit(record: CrudTableModel) {
       >
         <template #bodyCell="scope">
           <template v-if="scope?.column?.dataIndex === 'action'">
-            <div flex gap-2>
-              <a-button type="link" @click="handleEdit(scope?.record as CrudTableModel)">
-                编辑
+            <a-space>
+              <a-button type="link" size="small">
+                查看
               </a-button>
-              <a-popconfirm
-                title="确定删除该条数据？" ok-text="确定" cancel-text="取消"
-                @confirm="handleDelete(scope?.record as CrudTableModel)"
-              >
-                <a-button type="link">
-                  删除
+              <a-button type="link" size="small">
+                审核
+              </a-button>
+              <a-dropdown>
+                <a-button type="link" size="small">
+                  更多
                 </a-button>
-              </a-popconfirm>
-            </div>
+                <template #overlay>
+                  <a-menu>
+                    <a-menu-item>
+                      <a @click="handleEdit(scope?.record as CrudTableModel)">编辑</a>
+                    </a-menu-item>
+                    <a-menu-item>
+                      <a-popconfirm
+                        title="确定删除该条数据？" ok-text="确定" cancel-text="取消"
+                        @confirm="handleDelete(scope?.record as CrudTableModel)"
+                      >
+                        <span>删除</span>
+                      </a-popconfirm>
+                    </a-menu-item>
+                  </a-menu>
+                </template>
+              </a-dropdown>
+            </a-space>
           </template>
         </template>
       </a-table>

@@ -16,6 +16,7 @@ const layoutMenu = useLayoutMenu()
 const { t } = useI18nLocale()
 const { selectedKeys, openKeys } = storeToRefs(layoutMenu)
 const { isMobile, isPad } = useQueryBreakpoints()
+const showSettingDrawer = !import.meta.env.PROD
 watch(isPad, (val) => {
   if (val)
     appStore.toggleCollapsed(true)
@@ -59,24 +60,22 @@ const layoutProps = computed(() =>
     <template #headerActions>
       <UserAvatar />
       <SelectLang />
-      <GithubLink />
-      <template v-if="!isMobile">
-        <GiteeLink />
-        <DocLink />
-      </template>
     </template>
     <template #contentPrefix>
       <MultiTab v-if="layoutSetting.multiTab" />
     </template>
     <template #renderFooterLinks />
     <a-watermark
+      v-if="layoutSetting.watermark"
       class="h-full w-full flex flex-col flex-1"
-      :content="layoutSetting.watermark ? layoutSetting.title ?? 'Antdv Pro' : ' ' "
+      :content="layoutSetting.title ?? '企业管理系统'"
     >
       <RouteView />
     </a-watermark>
+    <RouteView v-else />
   </BasicLayout>
   <SettingDrawer
+    v-if="showSettingDrawer"
     v-model:open="layoutSetting.drawerVisible"
     :t="t"
     :theme="layoutSetting.theme"

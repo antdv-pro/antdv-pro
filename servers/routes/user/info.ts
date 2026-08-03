@@ -1,10 +1,18 @@
 import { defineEventHandler } from 'h3'
+import { systemStore } from '../../utils/system-store'
+import { repairMojibake } from '../../utils/text-repair'
 
 export default defineEventHandler((event) => {
   const token = event.req.headers.get('Authorization')
-  // eslint-disable-next-line node/prefer-global/buffer
-  const username = Buffer.from(token, 'base64').toString('utf-8')
   if (!token) {
+    return {
+      code: 401,
+      msg: '登录失效',
+    }
+  }
+  const user = systemStore.getUserByToken(token)
+  if (!user || user.status === 'disabled') {
+    event.res.status = 401
     return {
       code: 401,
       msg: '登录失效',
@@ -14,11 +22,15 @@ export default defineEventHandler((event) => {
     code: 200,
     msg: '获取成功',
     data: {
-      id: 1,
-      username,
-      nickname: username === 'admin' ? '超级管理员' : '普通用户',
+      id: user.id,
+      username: user.username,
+      nickname: repairMojibake(user.nickname),
       avatar: 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png',
-      roles: username === 'admin' ? ['ADMIN'] : ['USER'],
+      roles: user.roles,
+      deptId: user.deptId,
+      deptName: repairMojibake(user.deptName),
+      postId: user.postId,
+      postName: repairMojibake(user.postName),
     },
   }
 })

@@ -115,10 +115,10 @@ async function submit() {
         <div class="ant-pro-form-login-top">
           <div class="ant-pro-form-login-header">
             <span class="ant-pro-form-login-logo">
-              <img src="/logo.svg">
+              <img src="/logo.png">
             </span>
             <span class="ant-pro-form-login-title">
-              Antdv Pro
+              企业管理系统
             </span>
           </div>
           <div class="ant-pro-form-login-desc">
@@ -169,7 +169,7 @@ async function submit() {
               <a-form-item name="code" :rules="[{ required: true, message: t('pages.login.captcha.required') }]">
                 <div flex items-center>
                   <a-input
-                    v-model:value="loginModel.code" style="flex: 1 1 0%; transition: width 0.3s ease 0s; margin-right: 8px;"
+                    v-model:value="loginModel.code" style="flex: 1 1 0%; margin-right: 8px;"
                     allow-clear :placeholder="t('pages.login.captcha.placeholder')" size="large" @press-enter="submit"
                   >
                     <template #prefix>

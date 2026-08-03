@@ -8,9 +8,23 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
+.env
+.env.development
+.env.production
+.env.local
+.env.*.local
 dist
 dist-ssr
 *.local
+
+# Generated reports and local runtime data
+coverage/
+deploy-artifacts/
+.playwright-cli/
+.impeccable/
+storage/
+tmp/
+uploads/
 
 # Editor directories and files
 .vscode/*

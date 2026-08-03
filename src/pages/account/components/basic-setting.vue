@@ -17,8 +17,8 @@ const formRef = ref()
 const labelCol = { span: 0 }
 const wrapperCol = { span: 13 }
 const formState: UnwrapRef<FormState> = reactive({
-  eamil: 'AntdvPro@abc.com',
-  name: 'AntdvPro',
+  eamil: 'admin@company.com',
+  name: '企业管理员',
   region: undefined,
   desc: '',
   address: '',
