@@ -68,7 +68,7 @@ function startTimeLoading() {
     </a-card>
     <a-card title="hooloading最小时长" hoverable :bordered="false">
       <a-space :size="15">
-        <a-input-number v-model:value="time" />
+        <business-input-number v-model:value="time" />
         <a-button type="primary" @click="startTimeLoading">
           点击触发loading
         </a-button>

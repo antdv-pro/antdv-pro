@@ -1,37 +1,37 @@
 <script setup lang="ts">
-const content = '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一套标准规范。'
+const content = '围绕企业管理场景沉淀标准流程、权限规则、数据指标和协同机制，帮助团队快速完成业务处理与运营跟踪。'
 
 const data = ref([
   {
-    title: 'Aipay',
+    title: '客户管理',
     link: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png',
   },
   {
-    title: 'Ant Design Vue',
+    title: '合同管理',
     link: 'https://www.antdv.com/assets/logo.1ef800a8.svg',
   },
   {
-    title: 'Vue',
+    title: '项目管理',
     link: 'https://gw.alipayobjects.com/zos/rmsportal/ComBAopevLwENQdKWiIn.png',
   },
   {
-    title: 'Vite',
+    title: '流程审批',
     link: 'https://cn.vitejs.dev/logo.svg',
   },
   {
-    title: 'React',
+    title: '资产管理',
     link: 'https://gw.alipayobjects.com/zos/rmsportal/kZzEzemZyKLKFsojXItE.png',
   },
   {
-    title: 'Antdv Pro',
-    link: '/logo.svg',
+    title: '数据看板',
+    link: '/logo.png',
   },
   {
-    title: 'Webpack',
+    title: '组织架构',
     link: 'https://gw.alipayobjects.com/zos/rmsportal/nxkuOJlFJuAUhzlMTCEe.png',
   },
   {
-    title: 'Angular',
+    title: '系统设置',
     link: 'https://gw.alipayobjects.com/zos/rmsportal/zOsKZmFRdUtvpqCImOVY.png',
   },
 ])

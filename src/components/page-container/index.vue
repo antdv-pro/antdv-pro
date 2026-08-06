@@ -65,7 +65,7 @@ function renderTitle(title: VNodeChild | (() => VNodeChild)) {
 
 <template>
   <div class="ant-pro-page-container">
-    <div class="bg-[var(--bg-color)]" :class="layoutSetting.multiTab ? 'pb-16px' : 'py-16px'" px-24px mb-24px mx--24px mt--24px>
+    <div class="page-container-header bg-[var(--bg-color)]" :class="layoutSetting.multiTab ? 'pb-16px' : 'py-16px'" px-24px mb-20px mx--24px mt--24px>
       <a-breadcrumb v-if="!currentItem.hideInBreadcrumb">
         <template v-if="currentItem.matched?.length">
           <a-breadcrumb-item v-for="item in currentItem.matched" :key="item.path">
@@ -103,3 +103,33 @@ function renderTitle(title: VNodeChild | (() => VNodeChild)) {
     </div>
   </div>
 </template>
+
+<style scoped lang="less">
+.ant-pro-page-container {
+  min-width: 0;
+}
+
+.page-container-header {
+  border-bottom: 1px solid var(--admin-border-subtle);
+
+  :deep(.ant-breadcrumb) {
+    margin-bottom: 6px;
+  }
+
+  :deep(.ant-btn) {
+    min-height: 34px;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-container-header {
+    margin-bottom: 12px !important;
+
+    > div:nth-of-type(1) {
+      gap: 12px;
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+}
+</style>

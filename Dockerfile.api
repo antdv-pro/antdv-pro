@@ -1,0 +1,20 @@
+FROM docker.m.daocloud.io/library/node:20-alpine
+
+LABEL maintainer="enterprise-system"
+
+WORKDIR /app
+
+ENV NODE_ENV=production \
+  PORT=3001
+
+RUN mkdir -p /app/uploads /app/logs
+
+COPY dist/package.json ./package.json
+COPY dist/servers ./dist/servers
+
+EXPOSE 3001
+
+HEALTHCHECK --interval=30s --timeout=5s --start-period=15s --retries=3 \
+  CMD wget -qO- http://127.0.0.1:3001/api/healthz || exit 1
+
+CMD ["node", "dist/servers/app.js"]

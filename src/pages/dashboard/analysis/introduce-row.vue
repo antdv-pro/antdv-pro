@@ -29,7 +29,7 @@ const tinyAreaContainer = ref()
 const tinyColumnContainer = ref()
 const progressContainer = ref()
 
-const visitData = [7, 5, 4, 2, 4, 7, 5, 6, 5, 9, 6, 3, 1, 5, 3, 6, 5]
+const visitData: any[] = []
 
 const tinyArea = shallowRef()
 const tinyColumn = shallowRef()

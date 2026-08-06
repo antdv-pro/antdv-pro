@@ -78,6 +78,7 @@ export function generateTreeRoutes(menus: MenuData) {
       component: getRouterModule(menuItem.component!),
       redirect: menuItem.redirect || undefined,
       meta: {
+        ...menuItem.meta,
         title: menuItem?.title as string,
         icon: menuItem?.icon as string,
         keepAlive: menuItem?.keepAlive,
@@ -155,7 +156,7 @@ export async function generateRoutes() {
 
   return {
     menuData,
-    routeData: dynamicRoutes,
+    routeData: accessRoutes,
   }
 }
 

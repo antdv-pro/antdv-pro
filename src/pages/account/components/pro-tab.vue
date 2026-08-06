@@ -9,7 +9,7 @@ const { t } = useI18n()
         <template #cover>
           <img src="https://gw.alipayobjects.com/zos/rmsportal/iZBVOIhGJiAnhplqjvZW.png" alt="">
         </template>
-        <a-card-meta title="Antdv Pro">
+        <a-card-meta title="运营协同平台">
           <template #description>
             <div class="flex">
               好好学习, 天天向上

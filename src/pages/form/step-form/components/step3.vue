@@ -69,7 +69,7 @@ function toOrderList() {
   }
 }
 .money {
-  font-family: 'Helvetica Neue', sans-serif;
+  font-family: inherit;
   font-weight: 500;
   font-size: 20px;
   line-height: 14px;

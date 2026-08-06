@@ -1,5 +1,4 @@
 import type { PluginOption } from 'vite'
-import VitePluginPreloadAll from '@mistjs/vite-plugin-preload'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import AntdvResolver from 'antdv-component-resolver'
@@ -15,8 +14,12 @@ export function createVitePlugins(env: Record<string, string>) {
   const vitePluginList: (PluginOption | PluginOption[])[] = [
     vue(),
     vueJsx(),
-    mockH3({}),
-    VitePluginPreloadAll(),
+    mockH3({
+      build: {
+        host: '0.0.0.0',
+        port: 3001,
+      },
+    }),
     AutoImport({
       imports: [
         'vue',

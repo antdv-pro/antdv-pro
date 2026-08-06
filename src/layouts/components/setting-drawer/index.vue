@@ -89,12 +89,17 @@ const { token } = useAntdToken()
 <template>
   <div
     :class="`${prefixCls}-handle`"
+    role="button"
+    tabindex="0"
+    :aria-label="open ? '关闭设置面板' : '打开设置面板'"
     :style="{
       backgroundColor: token?.colorPrimary,
       borderEndStartRadius: `${token?.borderRadius}px`,
       borderStartStartRadius: `${token?.borderRadius}px`,
     }"
     @click="handleVisible(!open)"
+    @keydown.enter.prevent="handleVisible(!open)"
+    @keydown.space.prevent="handleVisible(!open)"
   >
     <CloseOutlined
       v-if="open"
@@ -111,6 +116,9 @@ const { token } = useAntdToken()
     <template #handle>
       <div
         :class="`${prefixCls}-handle`"
+        role="button"
+        tabindex="0"
+        :aria-label="open ? '关闭设置面板' : '打开设置面板'"
         :style="{
           position: 'absolute',
           top: '240px',
@@ -120,6 +128,8 @@ const { token } = useAntdToken()
           borderStartStartRadius: `${token?.borderRadius}px`,
         }"
         @click="handleVisible(!open)"
+        @keydown.enter.prevent="handleVisible(!open)"
+        @keydown.space.prevent="handleVisible(!open)"
       >
         <CloseOutlined
           v-if="open"

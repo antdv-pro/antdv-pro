@@ -15,10 +15,11 @@ export interface RequestConfigExtra {
   token?: boolean
   customDev?: boolean
   loading?: boolean
+  errorNotification?: boolean
 }
 const instance: AxiosInstance = axios.create({
   baseURL: import.meta.env.VITE_APP_BASE_API ?? '/',
-  timeout: 60000,
+  timeout: 15000,
   headers: { 'Content-Type': ContentTypeEnum.JSON },
 })
 const axiosLoading = new AxiosLoading()
@@ -53,15 +54,32 @@ function responseHandler(response: any): ResponseBody<any> | AxiosResponse<any> 
 function errorHandler(error: AxiosError): Promise<any> {
   const token = useAuthorization()
   const notification = useNotification()
+  const showErrorNotification = (error.config as RequestConfigExtra | undefined)?.errorNotification !== false
 
-  if (error.response) {
+  if (error.code === 'ECONNABORTED' && showErrorNotification) {
+    notification?.error({
+      message: '服务响应超时',
+      description: '服务器暂时无法响应，请稍后重试。',
+      duration: 5,
+    })
+  }
+  else if (!error.response && showErrorNotification) {
+    notification?.error({
+      message: '无法连接服务器',
+      description: '请检查网络连接，或稍后重试。',
+      duration: 5,
+    })
+  }
+  else if (error.response) {
     const { data, status, statusText } = error.response as AxiosResponse<ResponseBody>
     if (status === 401) {
-      notification?.error({
-        message: '401',
-        description: data?.msg || statusText,
-        duration: 3,
-      })
+      if (showErrorNotification) {
+        notification?.error({
+          message: '401',
+          description: data?.msg || statusText,
+          duration: 3,
+        })
+      }
       /**
        * 这里处理清空用户信息和token的逻辑，后续扩展
        */
@@ -77,21 +95,21 @@ function errorHandler(error: AxiosError): Promise<any> {
         })
         .then(() => {})
     }
-    else if (status === 403) {
+    else if (status === 403 && showErrorNotification) {
       notification?.error({
         message: '403',
         description: data?.msg || statusText,
         duration: 3,
       })
     }
-    else if (status === 500) {
+    else if (status === 500 && showErrorNotification) {
       notification?.error({
         message: '500',
         description: data?.msg || statusText,
         duration: 3,
       })
     }
-    else {
+    else if (showErrorNotification) {
       notification?.error({
         message: '服务错误',
         description: data?.msg || statusText,
@@ -126,40 +144,40 @@ function instancePromise<R = any, T = any>(options: AxiosOptions<T> & RequestCon
 }
 export function useGet<R = any, T = any>(url: string, params?: T, config?: AxiosRequestConfig & RequestConfigExtra): Promise<ResponseBody<R>> {
   const options = {
+    ...config,
     url,
     params,
     method: RequestEnum.GET,
-    ...config,
   }
   return instancePromise<R, T>(options)
 }
 
 export function usePost<R = any, T = any>(url: string, data?: T, config?: AxiosRequestConfig & RequestConfigExtra): Promise<ResponseBody<R>> {
   const options = {
+    ...config,
     url,
     data,
     method: RequestEnum.POST,
-    ...config,
   }
   return instancePromise<R, T>(options)
 }
 
 export function usePut<R = any, T = any>(url: string, data?: T, config?: AxiosRequestConfig & RequestConfigExtra): Promise<ResponseBody<R>> {
   const options = {
+    ...config,
     url,
     data,
     method: RequestEnum.PUT,
-    ...config,
   }
   return instancePromise<R, T>(options)
 }
 
 export function useDelete<R = any, T = any>(url: string, data?: T, config?: AxiosRequestConfig & RequestConfigExtra): Promise<ResponseBody<R>> {
   const options = {
+    ...config,
     url,
     data,
     method: RequestEnum.DELETE,
-    ...config,
   }
   return instancePromise<R, T>(options)
 }

@@ -7,23 +7,7 @@ interface DataItem {
 
 const { t } = useI18n()
 
-const data = reactive<DataItem[]>([
-  {
-    title: t('account.settings.message.title1'),
-    desc: t('account.settings.message.desc1'),
-    checked: true,
-  },
-  {
-    title: t('account.settings.message.title2'),
-    desc: t('account.settings.message.desc2'),
-    checked: true,
-  },
-  {
-    title: t('account.settings.message.title3'),
-    desc: t('account.settings.message.desc3'),
-    checked: true,
-  },
-])
+const data = reactive<DataItem[]>([])
 </script>
 
 <template>

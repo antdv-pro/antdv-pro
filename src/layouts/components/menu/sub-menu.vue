@@ -13,10 +13,18 @@ function renderTitle(title: VNodeChild | (() => VNodeChild)) {
 
   return title
 }
+
+function hasVisibleChildren(item: MenuDataItem) {
+  return (item.children ?? []).some(menu => !menu.hideInMenu)
+}
+
+function visibleChildren(item: MenuDataItem) {
+  return (item.children ?? []).filter(menu => !menu.hideInMenu)
+}
 </script>
 
 <template>
-  <template v-if="item.children && !item.hideChildrenInMenu">
+  <template v-if="hasVisibleChildren(item) && !item.hideChildrenInMenu">
     <a-sub-menu :key="item.path">
       <template v-if="item.icon" #icon>
         <AsyncIcon :icon="item.icon" />
@@ -24,32 +32,26 @@ function renderTitle(title: VNodeChild | (() => VNodeChild)) {
       <template #title>
         {{ renderTitle(item.title) }}
       </template>
-      <template v-for="menu in item.children">
-        <template v-if="!menu.hideInMenu">
-          <template v-if="menu.children">
-            <sub-menu :key="menu.path" :item="menu" />
+      <template v-for="menu in visibleChildren(item)" :key="menu.path">
+        <sub-menu v-if="hasVisibleChildren(menu) && !menu.hideChildrenInMenu" :item="menu" />
+        <a-menu-item v-else :key="menu.path">
+          <template v-if="menu.icon" #icon>
+            <AsyncIcon :icon="menu.icon" />
+          </template>
+          <template v-if="!isUrl(menu.path)">
+            <RouterLink v-if="link" :to="menu.path">
+              {{ renderTitle(menu.title) }}
+            </RouterLink>
+            <template v-else>
+              {{ renderTitle(menu.title) }}
+            </template>
           </template>
           <template v-else>
-            <a-menu-item :key="menu.path">
-              <template v-if="menu.icon" #icon>
-                <AsyncIcon :icon="menu.icon" />
-              </template>
-              <template v-if="!isUrl(menu.path)">
-                <RouterLink v-if="link" :to="menu.path">
-                  {{ renderTitle(menu.title) }}
-                </RouterLink>
-                <template v-else>
-                  {{ renderTitle(menu.title) }}
-                </template>
-              </template>
-              <template v-else>
-                <a :href="menu.path" :target="menu.target ?? '_blank'">
-                  {{ renderTitle(menu.title) }}
-                </a>
-              </template>
-            </a-menu-item>
+            <a :href="menu.path" :target="menu.target ?? '_blank'">
+              {{ renderTitle(menu.title) }}
+            </a>
           </template>
-        </template>
+        </a-menu-item>
       </template>
     </a-sub-menu>
   </template>

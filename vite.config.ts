@@ -5,13 +5,15 @@ import { resolve } from 'node:path'
 import * as process from 'node:process'
 import { fileURLToPath } from 'node:url'
 import { loadEnv } from 'vite'
+import { configDefaults } from 'vitest/config'
 import { createVitePlugins } from './plugins'
 import { OUTPUT_DIR } from './plugins/constants'
 
 const baseSrc = fileURLToPath(new URL('./src', import.meta.url))
 // https://vitejs.dev/config/
 export default ({ mode }: ConfigEnv): UserConfig => {
-  const env = loadEnv(mode, process.cwd())
+  const env = loadEnv(mode, process.cwd(), '')
+  Object.assign(process.env, env)
   const proxyObj = {}
   if (mode === 'development' && env.VITE_APP_BASE_API_DEV && env.VITE_APP_BASE_URL_DEV) {
     proxyObj[env.VITE_APP_BASE_API_DEV] = {
@@ -127,9 +129,22 @@ export default ({ mode }: ConfigEnv): UserConfig => {
         // },
       },
     },
-    // test: {
-    //   globals: true,
-    //   environment: 'jsdom',
-    // },
+    test: {
+      environment: 'node',
+      exclude: [...configDefaults.exclude, 'tmp/**', '.codex-tmp/**'],
+      coverage: {
+        provider: 'v8',
+        reporter: ['text', 'json-summary', 'html'],
+        include: ['src/**/*.ts', 'servers/utils/**/*.ts', 'servers/routes/**/*.ts'],
+        exclude: [
+          '**/*.test.ts',
+          '**/*.d.ts',
+          'src/types/**',
+          'src/data/**',
+          'src/**/locales/**',
+          'src/pages/dashboard/monitor/map-*.ts',
+        ],
+      },
+    },
   }
 }

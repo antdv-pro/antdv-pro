@@ -47,6 +47,8 @@ export interface MenuDataItem {
   target?: '_blank' | '_self' | '_parent'
   // 多语言配置
   locale?: string
+  // 页面级自定义元信息，用于后台菜单模式下还原复用组件的路由状态
+  meta?: Record<string, any>
 }
 
 export type LayoutType = 'mix' | 'side' | 'top'

@@ -42,6 +42,7 @@ export const useLayoutMenu = defineStore('layout-menu', () => {
     }
   }
   watch(() => userStore.menuData, (val) => {
+    menuDataMap.clear()
     toMapMenuData(val, menuDataMap)
     changeMenu()
   }, { immediate: true, flush: 'post' })

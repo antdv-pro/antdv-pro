@@ -1,13 +1,13 @@
 export default {
   // LoginPage
-  'pages.layouts.userLayout.title': 'Antdv Pro is a universal middle-stage management system based on Ant Design Vue',
+  'pages.layouts.userLayout.title': 'Integrated enterprise operations and collaboration platform',
   'pages.login.accountLogin.tab': 'Account Login',
-  'pages.login.accountLogin.errorMessage': 'Incorrect username/password(admin/admin)',
+  'pages.login.accountLogin.errorMessage': 'Incorrect username or password',
   'pages.login.failure': 'Login failed, please try again!',
   'pages.login.success': 'Login successful!',
-  'pages.login.username.placeholder': 'Username: admin or user',
+  'pages.login.username.placeholder': 'Username',
   'pages.login.username.required': 'Please input your username!',
-  'pages.login.password.placeholder': 'Password: admin',
+  'pages.login.password.placeholder': 'Password',
   'pages.login.password.required': 'Please input your password!',
   'pages.login.phoneLogin.tab': 'Phone Login',
   'pages.login.phoneLogin.errorMessage': 'Verification Code Error',
@@ -23,5 +23,5 @@ export default {
   'pages.login.submit': 'Login',
   'pages.login.loginWith': 'Login with :',
   'pages.login.registerAccount': 'Register Account',
-  'pages.login.tips': 'welcome to the system',
+  'pages.login.tips': 'Welcome to Enterprise Management System',
 }

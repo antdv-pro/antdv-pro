@@ -1,0 +1,15 @@
+CREATE TABLE IF NOT EXISTS transport_site_directory (
+  id BIGINT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(128) NOT NULL,
+  url VARCHAR(1024) NOT NULL,
+  domain VARCHAR(255) NOT NULL,
+  category VARCHAR(64) NOT NULL,
+  username VARCHAR(255) NOT NULL,
+  owner VARCHAR(128) NOT NULL,
+  favorite TINYINT(1) NOT NULL DEFAULT 0,
+  updated_by BIGINT NULL,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  INDEX idx_site_directory_category (category),
+  INDEX idx_site_directory_updated (updated_at)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

@@ -107,7 +107,7 @@ export function useTableQuery(_options: Partial<TableQueryOptions>) {
     pagination:
       assign({
         pageSize: 10,
-        pageSizeOptions: ['10', '20', '30', '40'],
+        pageSizeOptions: ['10', '20', '50', '100'],
         current: 1,
         total: 0,
         order: 'desc',

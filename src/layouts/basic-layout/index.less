@@ -4,21 +4,23 @@
   width: 100%;
   min-height: 100%;
   .ant-layout {
-    background: #f0f2f5;
+    background: var(--admin-page-bg);
   }
 
   &-content {
     // position: relative;
-    margin: 24px;
+    margin: 20px 24px 24px;
     display: flex;
+    min-width: 0;
 
     &-fluid {
       width: 100%;
+      min-width: 0;
     }
 
     &-fixed {
-      width: 1200px;
-      max-width: 1200px;
+      width: min(1200px, 100%);
+      max-width: 100%;
       margin: 0 auto;
 
       &:has(.ant-pro-page-container) {
@@ -32,6 +34,20 @@
 
 [data-theme='dark'] {
   .ant-layout {
-    background: rgb(42, 44, 44);
+    background: var(--admin-page-bg);
+  }
+}
+
+@media (max-width: 768px) {
+  .ant-pro-basicLayout {
+    &-content {
+      margin: 12px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .ant-pro-basicLayout-content {
+    margin: 8px;
   }
 }

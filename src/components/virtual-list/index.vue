@@ -135,8 +135,8 @@ onMounted(() => {
         display: flex;
         align-items: center;
         width: 100%;
-        height: 50px;
-        padding: 0 20px;
+        height: 44px;
+        padding: 0 12px;
         border-bottom: 1px solid var(--bg-color-container);
 
         :deep(.ant-list-item) {
@@ -146,7 +146,7 @@ onMounted(() => {
           width: 100%;
 
           .ant-list-item-action {
-            margin-top: 18px;
+            margin-block: 0;
           }
 
           & > div:nth-child(1) {
@@ -157,7 +157,7 @@ onMounted(() => {
         :deep(.ant-list-item-meta) {
           display: flex;
           .ant-list-item-meta-avatar {
-            margin-right: 15px;
+            margin-right: 10px;
           }
         }
       }

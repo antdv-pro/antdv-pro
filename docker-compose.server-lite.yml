@@ -1,0 +1,74 @@
+services:
+  edge:
+    image: nginx:1.27-alpine
+    restart: unless-stopped
+    depends_on:
+      web:
+        condition: service_healthy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./deploy/nginx/edge.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./certbot/www:/var/www/certbot:ro
+      - ./certbot/conf:/etc/letsencrypt:ro
+    networks:
+      - enterprise_net
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: enterprise-system-web:${APP_VERSION:-latest}
+    restart: unless-stopped
+    depends_on:
+      api:
+        condition: service_healthy
+    expose:
+      - "80"
+    volumes:
+      - uploads_data:/data/uploads:ro
+      - ./logs/nginx:/var/log/nginx
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1/healthz"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+    networks:
+      - enterprise_net
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    image: enterprise-system-api:${APP_VERSION:-latest}
+    restart: unless-stopped
+    env_file:
+      - .env.production
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      DB_REQUIRED: "true"
+    volumes:
+      - uploads_data:/app/uploads
+      - ./logs/api:/app/logs
+    expose:
+      - "3001"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:3001/api/healthz"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+    networks:
+      - enterprise_net
+      - codex_mysql_net
+
+volumes:
+  uploads_data:
+
+networks:
+  enterprise_net:
+    driver: bridge
+  codex_mysql_net:
+    external: true
+    name: codex-system_default

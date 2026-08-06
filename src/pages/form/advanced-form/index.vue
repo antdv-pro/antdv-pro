@@ -44,6 +44,7 @@ const state = reactive({
     {
       title: '操作',
       key: 'action',
+      width: 180,
       scopedSlots: { customRender: 'operation' },
     },
   ],
@@ -108,13 +109,28 @@ function remove(key: string) {
         >
           <template #bodyCell="scope">
             <template v-if="scope?.column?.key === 'action'">
-              <a-popconfirm
-                v-if="state.data.length"
-                title="Sure to delete?"
-                @confirm="remove(scope?.record?.key)"
-              >
-                <a>Delete</a>
-              </a-popconfirm>
+              <a-space>
+                <a>查看</a>
+                <a disabled>审核</a>
+                <a-dropdown>
+                  <a @click.prevent>更多</a>
+                  <template #overlay>
+                    <a-menu>
+                      <a-menu-item>
+                        <a-popconfirm
+                          v-if="state.data.length"
+                          title="确定删除该成员？"
+                          ok-text="确定"
+                          cancel-text="取消"
+                          @confirm="remove(scope?.record?.key)"
+                        >
+                          <span>删除</span>
+                        </a-popconfirm>
+                      </a-menu-item>
+                    </a-menu>
+                  </template>
+                </a-dropdown>
+              </a-space>
             </template>
           </template>
         </a-table>

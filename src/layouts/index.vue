@@ -59,22 +59,19 @@ const layoutProps = computed(() =>
     <template #headerActions>
       <UserAvatar />
       <SelectLang />
-      <GithubLink />
-      <template v-if="!isMobile">
-        <GiteeLink />
-        <DocLink />
-      </template>
     </template>
     <template #contentPrefix>
       <MultiTab v-if="layoutSetting.multiTab" />
     </template>
     <template #renderFooterLinks />
     <a-watermark
+      v-if="layoutSetting.watermark"
       class="h-full w-full flex flex-col flex-1"
-      :content="layoutSetting.watermark ? layoutSetting.title ?? 'Antdv Pro' : ' ' "
+      :content="layoutSetting.title ?? '企业管理系统'"
     >
       <RouteView />
     </a-watermark>
+    <RouteView v-else />
   </BasicLayout>
   <SettingDrawer
     v-model:open="layoutSetting.drawerVisible"

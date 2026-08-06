@@ -7,28 +7,7 @@ interface DataItem {
 const { t } = useI18n()
 
 const data = computed<DataItem[]>(() => {
-  return [
-    {
-      title: t('account.settings.security.account-password'),
-      desc: t('account.settings.security.account-password-desc'),
-    },
-    {
-      title: t('account.settings.security.phone'),
-      desc: t('account.settings.security.phone-desc'),
-    },
-    {
-      title: t('account.settings.security-problem'),
-      desc: t('account.settings.security-problem-desc'),
-    },
-    {
-      title: t('account.settings.security.email'),
-      desc: t('account.settings.security.email-desc'),
-    },
-    {
-      title: t('account.settings.security.MFA'),
-      desc: t('account.settings.security.MFA-desc'),
-    },
-  ]
+  return []
 })
 </script>
 

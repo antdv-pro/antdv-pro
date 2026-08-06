@@ -29,7 +29,7 @@ AntdvPro is a complete set of enterprise-level mid-backend front-end/design solu
 
 ## Preview
 
-[antdv-pro](https://antdv-pro.com) -  Test Account: admin/admin
+[antdv-pro](https://antdv-pro.com) - production deployments require an explicit strong administrator bootstrap password.
 
 [antdv-pro-js](https://github.com/antdv-pro/antdv-pro/tree/feat-js) - Javascript version
 

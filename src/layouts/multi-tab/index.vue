@@ -4,7 +4,6 @@ import type { RouteLocationNormalized } from 'vue-router'
 import {
   CloseOutlined,
   MoreOutlined,
-  ReloadOutlined,
 } from '@ant-design/icons-vue'
 import { listenerRouteChange, removeRouteListener } from '~@/utils/route-listener'
 import { useLayoutState } from '~/layouts/basic-layout/context'
@@ -29,8 +28,6 @@ const tabStyle = computed<CSSProperties>(() => {
 
   return style
 })
-const tabsRef = shallowRef()
-
 function handleSwitch({ key }: any, current: string) {
   if (key === 'closeCurrent')
     multiTabStore.close(activeKey.value)
@@ -86,7 +83,6 @@ onUnmounted(() => {
 
 <template>
   <a-tabs
-    ref="tabsRef"
     :active-key="activeKey"
     :style="tabStyle"
     class=" bg-white dark:bg-#242525 w-100% pro-ant-multi-tab"
@@ -99,16 +95,8 @@ onUnmounted(() => {
     <a-tab-pane v-for="item in list" :key="item.fullPath">
       <template #tab>
         <a-dropdown :trigger="['contextmenu']">
-          <div>
-            {{ item.locale ? $t(item.locale) : item.title }}
-            <button
-              v-if="activeKey === item.fullPath"
-              class="ant-tabs-tab-remove"
-              style="margin: 0"
-              @click.stop="multiTabStore.refresh(item.fullPath)"
-            >
-              <ReloadOutlined :spin="item.loading" />
-            </button>
+          <div class="multi-tab-label">
+            <span class="multi-tab-title">{{ item.locale ? $t(item.locale) : item.title }}</span>
             <button
               v-if="!item.affix && list.length > 1"
               class="ant-tabs-tab-remove"
@@ -148,7 +136,7 @@ onUnmounted(() => {
                 <!-- 关闭其他 -->
                 {{ $t("app.multiTab.closeOther") }}
               </a-menu-item>
-              <a-menu-item key="refresh" :disabled="!isCurrentDisabled">
+              <a-menu-item key="refresh">
                 <!-- 刷新当前 -->
                 {{ $t("app.multiTab.refresh") }}
               </a-menu-item>
@@ -190,6 +178,20 @@ onUnmounted(() => {
   transition: all 0.3s;
   .ant-tabs-nav-operations {
     display: none !important;
+  }
+
+  .multi-tab-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    max-width: 180px;
+    min-width: 0;
+  }
+
+  .multi-tab-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
 </style>

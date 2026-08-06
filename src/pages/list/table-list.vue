@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import type { MenuProps, PaginationProps, TableProps } from 'ant-design-vue'
 import type { ConsultTableModel, ConsultTableParams } from '~@/api/list/table-list'
-import { ColumnHeightOutlined, DownOutlined, PlusOutlined, ReloadOutlined, SettingOutlined, UpOutlined } from '@ant-design/icons-vue'
+import { ColumnHeightOutlined, DownloadOutlined, DownOutlined, PlusOutlined, ReloadOutlined, SettingOutlined, UpOutlined } from '@ant-design/icons-vue'
 import { Modal } from 'ant-design-vue'
+import * as XLSX from 'xlsx'
 import { deleteApi, getListApi } from '~@/api/list/table-list'
+import FinancialPeriodFilter from '~@/components/financial-period-filter/index.vue'
+import { useFinancialPeriodFilter } from '~@/composables/financial-period-filter'
 
 const statusMap = {
   0: '关闭',
@@ -42,13 +45,13 @@ const columns = shallowRef([
   {
     title: '操作',
     dataIndex: 'action',
-    width: 200,
+    width: 180,
   },
 ])
 const loading = shallowRef(false)
 const pagination = reactive<PaginationProps>({
   pageSize: 10,
-  pageSizeOptions: ['10', '20', '30', '40'],
+  pageSizeOptions: ['10', '20', '50', '100'],
   current: 1,
   total: 100,
   showSizeChanger: true,
@@ -68,6 +71,11 @@ const formModel = reactive<ConsultTableParams>({
   status: undefined,
   updatedAt: undefined,
 })
+const {
+  model: financialPeriodFilter,
+  queryParams: financialQueryParams,
+  resetFinancialPeriodFilter,
+} = useFinancialPeriodFilter()
 
 const tableSize = ref<string[]>(['large'])
 const sizeItems = ref<MenuProps['items']>([
@@ -118,6 +126,7 @@ async function init() {
   try {
     const { data } = await getListApi({
       ...formModel,
+      ...financialQueryParams.value,
       current: pagination.current,
       pageSize: pagination.pageSize,
     })
@@ -139,8 +148,34 @@ async function onSearch() {
 async function onReset() {
   // 清空所有参数重新请求
   formModel.name = undefined
+  formModel.callNo = undefined
   formModel.desc = undefined
+  formModel.status = undefined
+  formModel.updatedAt = undefined
+  resetFinancialPeriodFilter()
+  pagination.current = 1
   await init()
+}
+
+function exportCurrentRows() {
+  const payload = financialQueryParams.value
+  const workbook = XLSX.utils.book_new()
+  const conditionSheet = XLSX.utils.json_to_sheet([
+    {
+      规则名称: formModel.name ?? '',
+      描述: formModel.desc ?? '',
+      状态: formModel.status ?? '',
+      服务调用次数: formModel.callNo ?? '',
+      startDate: payload.startDate,
+      endDate: payload.endDate,
+      查询周期: payload.periodType,
+    },
+  ])
+  const dataSheet = XLSX.utils.json_to_sheet(dataSource.value.map(row => ({ ...row })))
+
+  XLSX.utils.book_append_sheet(workbook, conditionSheet, '筛选条件')
+  XLSX.utils.book_append_sheet(workbook, dataSheet, '导出数据')
+  XLSX.writeFile(workbook, `查询表格_${payload.startDate}_${payload.endDate}.xlsx`)
 }
 
 /**
@@ -260,11 +295,7 @@ const expand = ref(false)
               <a-input v-model:value="formModel.desc" />
             </a-form-item>
           </a-col>
-          <a-col :span="8">
-            <a-form-item name="updatedAt" label="上次调用时间">
-              <a-date-picker v-model:value="formModel.updatedAt" style="width: 100%" />
-            </a-form-item>
-          </a-col>
+          <FinancialPeriodFilter v-model="financialPeriodFilter" />
         </a-row>
         <a-row v-if="expand" :gutter="[15, 0]">
           <a-col :span="8">
@@ -289,7 +320,7 @@ const expand = ref(false)
           </a-col>
           <a-col :span="8">
             <a-form-item name="callNo" label="服务调用次数">
-              <a-input-number v-model:value="formModel.callNo" style="width: 100%" />
+              <business-input-number v-model:value="formModel.callNo" style="width: 100%" />
             </a-form-item>
           </a-col>
         </a-row>
@@ -321,6 +352,12 @@ const expand = ref(false)
               <PlusOutlined />
             </template>
             新增
+          </a-button>
+          <a-button @click="exportCurrentRows">
+            <template #icon>
+              <DownloadOutlined />
+            </template>
+            导出
           </a-button>
           <a-tooltip title="刷新">
             <ReloadOutlined @click="onSearch" />
@@ -358,11 +395,20 @@ const expand = ref(false)
       <a-table :loading="loading" :columns="filterColumns" :data-source="dataSource" :pagination="pagination" :size="tableSize[0] as TableProps['size']">
         <template #bodyCell="scope">
           <template v-if="scope?.column?.dataIndex === 'action'">
-            <div flex gap-2>
-              <a c-error @click="handleDelete(scope?.record as ConsultTableModel)">
-                删除
-              </a>
-            </div>
+            <a-space>
+              <a>查看</a>
+              <a>审核</a>
+              <a-dropdown>
+                <a @click.prevent>更多</a>
+                <template #overlay>
+                  <a-menu>
+                    <a-menu-item>
+                      <a c-error @click="handleDelete(scope?.record as ConsultTableModel)">删除</a>
+                    </a-menu-item>
+                  </a-menu>
+                </template>
+              </a-dropdown>
+            </a-space>
           </template>
           <template v-if="scope?.column?.dataIndex === 'status'">
             <div gap-2>
@@ -373,7 +419,7 @@ const expand = ref(false)
       </a-table>
     </a-card>
 
-    <a-modal v-model:open="open" title="新建规则" width="400px" @ok="handleOk">
+    <a-modal v-model:open="open" title="新建规则" width="400px" :mask-closable="false" @ok="handleOk">
       <a-space direction="vertical" size="large" class="w-full">
         <a-input placeholder="请输入" />
         <a-textarea placeholder="请输入" />

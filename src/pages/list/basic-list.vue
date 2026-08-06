@@ -34,8 +34,9 @@ function onSearch(value: string) {
 const dataSource = ref<any[]>([])
 
 const pagination = ref({
-  pageSize: 5,
-  pageSizeOptions: ['10', '20', '30', '40', '50'],
+  pageSize: 10,
+  pageSizeOptions: ['10', '20', '50', '100'],
+  showSizeChanger: true,
   showQuickJumper: true,
   total: 0,
 })
@@ -257,8 +258,11 @@ onMounted(() => {
             </template>
             <template #extra>
               <div class="a-extra">
-                <a key="list-loadmore-edit" class="m-4" @click="openModal(item)">
-                  编辑
+                <a key="list-loadmore-view" class="m-4">
+                  查看
+                </a>
+                <a key="list-loadmore-audit" class="m-4">
+                  审核
                 </a>
                 <a-dropdown>
                   <a class="ant-dropdown-link" @click.prevent>
@@ -288,7 +292,7 @@ onMounted(() => {
     </a-button>
 
     <!-- Modal -->
-    <a-modal v-model:open="openModalValue" title="任务编辑" @ok="handleOk" @cancel="cancelModal">
+    <a-modal v-model:open="openModalValue" title="任务编辑" :mask-closable="false" @ok="handleOk" @cancel="cancelModal">
       <a-form
         :model="formState"
         name="basic"

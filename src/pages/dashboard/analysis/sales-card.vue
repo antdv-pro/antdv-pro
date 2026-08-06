@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import type { Key } from 'ant-design-vue/es/_util/type'
 import { Column } from '@antv/g2plot'
-import dayjs from 'dayjs'
+import FinancialPeriodFilter from '~@/components/financial-period-filter/index.vue'
+import { useFinancialPeriodFilter } from '~@/composables/financial-period-filter'
+import {
+  getCurrentFinancialMonthRange,
+} from '~@/utils/financialPeriod'
 
 defineProps({
   loading: {
@@ -11,106 +15,20 @@ defineProps({
 })
 
 const rankingListData: { title: string, total: number }[] = []
-for (let i = 0; i < 7; i += 1) {
-  rankingListData.push({
-    title: `工专路 ${i} 号店`,
-    total: 323234,
-  })
-}
 
-const rangePickerValue = ref()
-
-function getDateRange(type: string) {
-  const today = new Date()
-  let startDate
-  let endDate
-  switch (type) {
-    case 'day':
-      rangePickerValue.value = [dayjs(new Date(today.getFullYear(), today.getMonth(), today.getDate())), dayjs(new Date(today.getFullYear(), today.getMonth(), today.getDate(), 23, 59, 59, 999))]
-      break
-    case 'week':
-      startDate = new Date(today.setDate(today.getDate() - today.getDay()))
-      endDate = new Date(today.setDate(today.getDate() + 6))
-      rangePickerValue.value = [dayjs(startDate), dayjs(endDate)]
-      break
-    case 'month':
-      startDate = new Date(today.getFullYear(), today.getMonth(), 1)
-      endDate = new Date(today.getFullYear(), today.getMonth() + 1, 0)
-      rangePickerValue.value = [dayjs(startDate), dayjs(endDate)]
-      break
-    case 'year':
-      startDate = new Date(today.getFullYear(), 0, 1)
-      endDate = new Date(today.getFullYear(), 11, 31)
-      rangePickerValue.value = [dayjs(startDate), dayjs(endDate)]
-      break
-    default:
-      // 返回默认值或抛出错误，视情况而定
-      return null
-  }
-}
-getDateRange('day')
-function onClick(e: any) {
-  e.target?.parentElement?.querySelectorAll('a').forEach((item: HTMLElement) => {
-    item.classList.remove('currentDate')
-  })
-  e.target?.classList.add('currentDate')
-  getDateRange(e.target.__vnode.key)
-}
+const currentFinancialMonth = getCurrentFinancialMonthRange()
+const {
+  model: financialPeriodFilter,
+} = useFinancialPeriodFilter({
+  financialYear: Number(currentFinancialMonth.key.slice(0, 4)),
+  financialMonth: Number(currentFinancialMonth.key.slice(4, 6)),
+})
 
 function convertNumber(number: number) {
   return number.toLocaleString()
 }
 
-const salesData = [
-  {
-    x: '1月',
-    y: 809,
-  },
-  {
-    x: '2月',
-    y: 766,
-  },
-  {
-    x: '3月',
-    y: 585,
-  },
-  {
-    x: '4月',
-    y: 763,
-  },
-  {
-    x: '5月',
-    y: 853,
-  },
-  {
-    x: '6月',
-    y: 898,
-  },
-  {
-    x: '7月',
-    y: 1096,
-  },
-  {
-    x: '8月',
-    y: 452,
-  },
-  {
-    x: '9月',
-    y: 244,
-  },
-  {
-    x: '10月',
-    y: 838,
-  },
-  {
-    x: '11月',
-    y: 673,
-  },
-  {
-    x: '12月',
-    y: 431,
-  },
-]
+const salesData: any[] = []
 
 const columnPlotContainer1 = ref()
 const columnPlotContainer2 = ref()
@@ -180,16 +98,11 @@ onBeforeUnmount(() => {
       >
         <template #rightExtra>
           <div class="salesExtraWrap">
-            <div class="salesExtra">
-              <a key="day" class="currentDate" @click="onClick">今日</a>
-              <a key="week" @click="onClick">本周</a>
-              <a key="month" @click="onClick">本月</a>
-              <a key="year" @click="onClick">本年</a>
-            </div>
-            <a-range-picker
-              :value="rangePickerValue"
-              :style="{ width: '256px' }"
-            />
+            <a-form class="salesPeriodForm" :label-col="{ span: 7 }">
+              <a-row :gutter="[12, 0]">
+                <FinancialPeriodFilter v-model="financialPeriodFilter" />
+              </a-row>
+            </a-form>
           </div>
         </template>
         <a-tab-pane key="sales" tab="销售额">
